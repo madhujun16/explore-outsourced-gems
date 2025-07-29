@@ -270,6 +270,8 @@ const Index = () => {
 
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-primary/90 via-primary to-primary/80 text-primary-foreground">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1605810230434-7631ac76ec81?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center bg-no-repeat" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary/90 to-primary/95" />
         <div className="absolute inset-0 bg-grid-white/10" />
         <div className="container mx-auto px-4 py-20 md:py-32 relative">
           <div className="text-center max-w-4xl mx-auto">
