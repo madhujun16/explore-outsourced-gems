@@ -44,6 +44,7 @@ const Index = () => {
     consent: false,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -73,10 +74,7 @@ const Index = () => {
         throw new Error("Failed to send message");
       }
       
-      toast({
-        title: "Thank you for contacting NovalSquad!",
-        description: "We've received your message and will get back to you within 24 hours. Check your email for confirmation.",
-      });
+      setIsSubmitted(true);
       
       setFormData({ 
         name: "", 
@@ -394,100 +392,131 @@ const Index = () => {
             </div>
             
             <div className="grid lg:grid-cols-2 gap-12 items-start">
-              {/* Contact Form */}
-              <Card className="p-8">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <Input
-                      placeholder="Your Name *"
-                      value={formData.name}
-                      onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                      required
-                      className="h-12"
-                    />
-                    <Input
-                      type="email"
-                      placeholder="Your Email *"
-                      value={formData.email}
-                      onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                      required
-                      className="h-12"
-                    />
+              {/* Contact Form or Thank You Card */}
+              {!isSubmitted ? (
+                <Card className="p-8">
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <Input
+                        placeholder="Your Name *"
+                        value={formData.name}
+                        onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                        required
+                        className="h-12"
+                      />
+                      <Input
+                        type="email"
+                        placeholder="Your Email *"
+                        value={formData.email}
+                        onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                        required
+                        className="h-12"
+                      />
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <Input
+                        placeholder="Company Name (Optional)"
+                        value={formData.company_name}
+                        onChange={(e) => setFormData(prev => ({ ...prev, company_name: e.target.value }))}
+                        className="h-12"
+                      />
+                      <Select onValueChange={(value) => setFormData(prev => ({ ...prev, industry: value }))}>
+                        <SelectTrigger className="h-12">
+                          <SelectValue placeholder="Select Industry (Optional)" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="healthcare">Healthcare</SelectItem>
+                          <SelectItem value="finance">Finance</SelectItem>
+                          <SelectItem value="retail">Retail</SelectItem>
+                          <SelectItem value="education">Education</SelectItem>
+                          <SelectItem value="automotive">Automotive</SelectItem>
+                          <SelectItem value="real-estate">Real Estate</SelectItem>
+                          <SelectItem value="gaming">Gaming</SelectItem>
+                          <SelectItem value="technology">Technology</SelectItem>
+                          <SelectItem value="manufacturing">Manufacturing</SelectItem>
+                          <SelectItem value="logistics">Logistics</SelectItem>
+                          <SelectItem value="entertainment">Entertainment</SelectItem>
+                          <SelectItem value="other">Other</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    
+                    <div>
+                      <Textarea
+                        placeholder="Tell us about your project..."
+                        value={formData.message}
+                        onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
+                        className="min-h-32"
+                        required
+                      />
+                    </div>
+                    
+                    <div className="flex items-start space-x-3">
+                      <Checkbox
+                        id="consent"
+                        checked={formData.consent}
+                        onCheckedChange={(checked) => setFormData(prev => ({ ...prev, consent: !!checked }))}
+                      />
+                      <label htmlFor="consent" className="text-sm text-muted-foreground leading-5">
+                        I agree to the{" "}
+                        <Link to="/privacy-policy" className="text-primary hover:underline">
+                          Privacy Policy
+                        </Link>{" "}
+                        and{" "}
+                        <Link to="/terms-conditions" className="text-primary hover:underline">
+                          Terms & Conditions
+                        </Link>
+                      </label>
+                    </div>
+                    
+                    <Button 
+                      type="submit" 
+                      size="lg" 
+                      className="w-full h-12"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? (
+                        "Sending..."
+                      ) : (
+                        <>
+                          Get in Touch with NovalSquad
+                          <ArrowRight className="ml-2 h-5 w-5" />
+                        </>
+                      )}
+                    </Button>
+                  </form>
+                </Card>
+              ) : (
+                <Card className="p-8 text-center">
+                  <div className="space-y-6">
+                    <div className="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
+                      <CheckCircle className="h-8 w-8 text-green-600" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-2xl mb-3">Thank You!</CardTitle>
+                      <CardDescription className="text-lg">
+                        Your message has been submitted to our team. We will get in touch with you soon.
+                      </CardDescription>
+                    </div>
+                    <div className="space-y-2">
+                      <p className="text-sm text-muted-foreground">
+                        Expect a response within 24 hours.
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        Check your email for confirmation.
+                      </p>
+                    </div>
+                    <Button 
+                      variant="outline" 
+                      onClick={() => setIsSubmitted(false)}
+                      className="mt-4"
+                    >
+                      Send Another Message
+                    </Button>
                   </div>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <Input
-                      placeholder="Company Name (Optional)"
-                      value={formData.company_name}
-                      onChange={(e) => setFormData(prev => ({ ...prev, company_name: e.target.value }))}
-                      className="h-12"
-                    />
-                    <Select onValueChange={(value) => setFormData(prev => ({ ...prev, industry: value }))}>
-                      <SelectTrigger className="h-12">
-                        <SelectValue placeholder="Select Industry (Optional)" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="healthcare">Healthcare</SelectItem>
-                        <SelectItem value="finance">Finance</SelectItem>
-                        <SelectItem value="retail">Retail</SelectItem>
-                        <SelectItem value="education">Education</SelectItem>
-                        <SelectItem value="automotive">Automotive</SelectItem>
-                        <SelectItem value="real-estate">Real Estate</SelectItem>
-                        <SelectItem value="gaming">Gaming</SelectItem>
-                        <SelectItem value="technology">Technology</SelectItem>
-                        <SelectItem value="manufacturing">Manufacturing</SelectItem>
-                        <SelectItem value="logistics">Logistics</SelectItem>
-                        <SelectItem value="entertainment">Entertainment</SelectItem>
-                        <SelectItem value="other">Other</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  
-                  <div>
-                    <Textarea
-                      placeholder="Tell us about your project..."
-                      value={formData.message}
-                      onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
-                      className="min-h-32"
-                      required
-                    />
-                  </div>
-                  
-                  <div className="flex items-start space-x-3">
-                    <Checkbox
-                      id="consent"
-                      checked={formData.consent}
-                      onCheckedChange={(checked) => setFormData(prev => ({ ...prev, consent: !!checked }))}
-                    />
-                    <label htmlFor="consent" className="text-sm text-muted-foreground leading-5">
-                      I agree to the{" "}
-                      <Link to="/privacy-policy" className="text-primary hover:underline">
-                        Privacy Policy
-                      </Link>{" "}
-                      and{" "}
-                      <Link to="/terms-conditions" className="text-primary hover:underline">
-                        Terms & Conditions
-                      </Link>
-                    </label>
-                  </div>
-                  
-                  <Button 
-                    type="submit" 
-                    size="lg" 
-                    className="w-full h-12"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? (
-                      "Sending..."
-                    ) : (
-                      <>
-                        Get in Touch with NovalSquad
-                        <ArrowRight className="ml-2 h-5 w-5" />
-                      </>
-                    )}
-                  </Button>
-                </form>
-              </Card>
+                </Card>
+              )}
 
               {/* Contact Info */}
               <div className="space-y-8">
