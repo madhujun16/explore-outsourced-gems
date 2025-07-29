@@ -258,13 +258,11 @@ const Index = () => {
       <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <img 
-                src={logoImage} 
-                alt="NovalSquad Logo" 
-                className="h-12 w-auto object-contain filter brightness-0 invert"
-              />
-              <span className="text-2xl font-bold text-primary ml-2">NovalSquad</span>
+            <div className="flex items-center space-x-2">
+              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-lg">N</span>
+              </div>
+              <span className="text-2xl font-bold text-primary">NovalSquad</span>
             </div>
             <div className="hidden md:flex items-center space-x-8">
               <a href="#services" className="text-muted-foreground hover:text-primary transition-colors">Services</a>
