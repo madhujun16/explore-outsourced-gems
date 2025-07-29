@@ -5,8 +5,10 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/components/ui/use-toast";
 import { Link } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
+import ChatBot from "@/components/ChatBot";
 import logoImage from "@/assets/novalsquad-logo.png";
 import { 
   Settings, 
@@ -32,7 +34,8 @@ import {
   Phone,
   MapPin,
   ArrowRight,
-  CheckCircle
+  CheckCircle,
+  Calculator
 } from "lucide-react";
 
 const Index = () => {
@@ -98,46 +101,53 @@ const Index = () => {
 
   const services = [
     {
+      icon: Calculator,
+      title: "Accounting & Finance",
+      description: "Complete bookkeeping, financial reporting, accounts payable/receivable, and account management solutions.",
+      color: "text-blue-600",
+      bgColor: "bg-blue-50 group-hover:bg-blue-100"
+    },
+    {
       icon: Settings,
       title: "Back Office",
       description: "Efficient HR, admin, payroll, and compliance.",
-      color: "text-blue-600",
-      bgColor: "bg-blue-50 group-hover:bg-blue-100"
+      color: "text-green-600",
+      bgColor: "bg-green-50 group-hover:bg-green-100"
     },
     {
       icon: Headphones,
       title: "Support",
       description: "24/7 multilingual customer support worldwide.",
-      color: "text-green-600",
-      bgColor: "bg-green-50 group-hover:bg-green-100"
+      color: "text-purple-600",
+      bgColor: "bg-purple-50 group-hover:bg-purple-100"
     },
     {
       icon: Users,
       title: "Virtual Staff",
       description: "On-demand trained remote teams.",
-      color: "text-purple-600",
-      bgColor: "bg-purple-50 group-hover:bg-purple-100"
+      color: "text-orange-600",
+      bgColor: "bg-orange-50 group-hover:bg-orange-100"
     },
     {
       icon: HardDrive,
       title: "IT Helpdesk",
       description: "Secure and scalable infrastructure support.",
-      color: "text-orange-600",
-      bgColor: "bg-orange-50 group-hover:bg-orange-100"
+      color: "text-red-600",
+      bgColor: "bg-red-50 group-hover:bg-red-100"
     },
     {
       icon: CheckCircle,
       title: "Virtual CISO",
       description: "Cybersecurity leadership and compliance management.",
-      color: "text-red-600",
-      bgColor: "bg-red-50 group-hover:bg-red-100"
+      color: "text-teal-600",
+      bgColor: "bg-teal-50 group-hover:bg-teal-100"
     },
     {
       icon: Database,
       title: "Cloud Services",
       description: "Migration, management, and optimization solutions.",
-      color: "text-teal-600",
-      bgColor: "bg-teal-50 group-hover:bg-teal-100"
+      color: "text-indigo-600",
+      bgColor: "bg-indigo-50 group-hover:bg-indigo-100"
     }
   ];
 
@@ -580,6 +590,9 @@ const Index = () => {
           </div>
         </div>
       </footer>
+      
+      {/* ChatBot */}
+      <ChatBot />
     </div>
   );
 };
