@@ -4,7 +4,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import { Link } from "react-router-dom";
 import { 
   Settings, 
   Headphones, 
@@ -36,8 +38,10 @@ const Index = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    company_name: "",
+    industry: "",
     message: "",
-    consent: false
+    consent: false,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
@@ -47,30 +51,46 @@ const Index = () => {
     
     if (!formData.consent) {
       toast({
-        title: "Consent Required",
-        description: "Please consent to data processing to continue.",
-        variant: "destructive"
+        title: "Consent required",
+        description: "Please agree to our Privacy Policy and Terms & Conditions.",
+        variant: "destructive",
       });
       return;
     }
 
     setIsSubmitting(true);
-    
+
     try {
-      // Simulate form submission - replace with actual Google Apps Script URL
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const response = await fetch("/functions/v1/send-contact-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
       
       toast({
-        title: "Message Sent Successfully!",
-        description: "We'll get back to you within 24 hours.",
+        title: "Message sent successfully!",
+        description: "We'll get back to you as soon as possible.",
       });
       
-      setFormData({ name: "", email: "", message: "", consent: false });
+      setFormData({ 
+        name: "", 
+        email: "", 
+        company_name: "", 
+        industry: "", 
+        message: "", 
+        consent: false 
+      });
     } catch (error) {
       toast({
         title: "Error",
         description: "Failed to send message. Please try again.",
-        variant: "destructive"
+        variant: "destructive",
       });
     } finally {
       setIsSubmitting(false);
@@ -363,7 +383,7 @@ const Index = () => {
               {/* Contact Form */}
               <Card className="p-8">
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <Input
                       placeholder="Your Name *"
                       value={formData.name}
@@ -371,9 +391,6 @@ const Index = () => {
                       required
                       className="h-12"
                     />
-                  </div>
-                  
-                  <div>
                     <Input
                       type="email"
                       placeholder="Your Email *"
@@ -382,6 +399,34 @@ const Index = () => {
                       required
                       className="h-12"
                     />
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <Input
+                      placeholder="Company Name (Optional)"
+                      value={formData.company_name}
+                      onChange={(e) => setFormData(prev => ({ ...prev, company_name: e.target.value }))}
+                      className="h-12"
+                    />
+                    <Select onValueChange={(value) => setFormData(prev => ({ ...prev, industry: value }))}>
+                      <SelectTrigger className="h-12">
+                        <SelectValue placeholder="Select Industry (Optional)" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="healthcare">Healthcare</SelectItem>
+                        <SelectItem value="finance">Finance</SelectItem>
+                        <SelectItem value="retail">Retail</SelectItem>
+                        <SelectItem value="education">Education</SelectItem>
+                        <SelectItem value="automotive">Automotive</SelectItem>
+                        <SelectItem value="real-estate">Real Estate</SelectItem>
+                        <SelectItem value="gaming">Gaming</SelectItem>
+                        <SelectItem value="technology">Technology</SelectItem>
+                        <SelectItem value="manufacturing">Manufacturing</SelectItem>
+                        <SelectItem value="logistics">Logistics</SelectItem>
+                        <SelectItem value="entertainment">Entertainment</SelectItem>
+                        <SelectItem value="other">Other</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
                   
                   <div>
@@ -401,7 +446,14 @@ const Index = () => {
                       onCheckedChange={(checked) => setFormData(prev => ({ ...prev, consent: !!checked }))}
                     />
                     <label htmlFor="consent" className="text-sm text-muted-foreground leading-5">
-                      I consent to my data being stored for contact purposes (GDPR)
+                      I agree to the{" "}
+                      <Link to="/privacy-policy" className="text-primary hover:underline">
+                        Privacy Policy
+                      </Link>{" "}
+                      and{" "}
+                      <Link to="/terms-conditions" className="text-primary hover:underline">
+                        Terms & Conditions
+                      </Link>
                     </label>
                   </div>
                   
@@ -436,13 +488,6 @@ const Index = () => {
                       </div>
                     </div>
                     
-                    <div className="flex items-start space-x-4">
-                      <Phone className="h-6 w-6 text-primary mt-1" />
-                      <div>
-                        <p className="font-medium">Phone</p>
-                        <p className="text-muted-foreground">+1 (555) 123-4567</p>
-                      </div>
-                    </div>
                     
                     <div className="flex items-start space-x-4">
                       <MapPin className="h-6 w-6 text-primary mt-1" />
@@ -479,6 +524,14 @@ const Index = () => {
             <p className="text-muted-foreground mb-6">
               Your trusted European outsourcing partner for scalable business growth.
             </p>
+            <div className="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-6 mb-4">
+              <Link to="/privacy-policy" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                Privacy Policy
+              </Link>
+              <Link to="/terms-conditions" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                Terms & Conditions
+              </Link>
+            </div>
             <p className="text-sm text-muted-foreground">
               © 2024 NovalSquad. All rights reserved.
             </p>
