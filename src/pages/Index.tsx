@@ -106,7 +106,7 @@ const Index = () => {
     {
       icon: Headphones,
       title: "Support",
-      description: "24/7 multilingual customer care for EU markets.",
+      description: "24/7 multilingual customer support worldwide.",
       color: "text-green-600",
       bgColor: "bg-green-50 group-hover:bg-green-100"
     },
@@ -144,7 +144,7 @@ const Index = () => {
     {
       icon: Code2,
       title: "Web Dev",
-      description: "Landing pages, CMS, ecommerce, EU-hosted.",
+      description: "Landing pages, CMS, ecommerce, globally hosted.",
       color: "text-cyan-600",
       bgColor: "bg-cyan-50 group-hover:bg-cyan-100"
     },
@@ -274,11 +274,11 @@ const Index = () => {
         <div className="container mx-auto px-4 py-20 md:py-32 relative">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-in slide-in-from-bottom-4 duration-1000">
-              Your Trusted European
+              Your Trusted Global
               <span className="block text-accent">Outsourcing Partner</span>
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-primary-foreground/80 animate-in slide-in-from-bottom-4 duration-1000 delay-200">
-              GDPR-compliant back office, IT, and support services built for European growth.
+              Comprehensive back office, IT, and support services built for global business growth.
             </p>
             <Button 
               size="lg" 
@@ -299,7 +299,7 @@ const Index = () => {
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Services</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Comprehensive business solutions designed for European companies
+              Comprehensive business solutions designed for growing companies worldwide
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -357,7 +357,7 @@ const Index = () => {
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Industries We Serve</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Specialized expertise across key European business sectors
+              Specialized expertise across key global business sectors
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -386,9 +386,9 @@ const Index = () => {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Let's Connect</h2>
-              <p className="text-xl text-muted-foreground">
-                Ready to scale your business with trusted European outsourcing?
-              </p>
+               <p className="text-xl text-muted-foreground">
+                 Ready to scale your business with trusted global outsourcing?
+               </p>
             </div>
             
             <div className="grid lg:grid-cols-2 gap-12 items-start">
@@ -556,7 +556,7 @@ const Index = () => {
           <div className="text-center">
             <div className="text-2xl font-bold text-primary mb-4">NovalSquad</div>
             <p className="text-muted-foreground mb-6">
-              Your trusted European outsourcing partner for scalable business growth.
+              Your trusted global outsourcing partner for scalable business growth.
             </p>
             <div className="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-6 mb-4">
               <Link to="/privacy-policy" className="text-muted-foreground hover:text-primary transition-colors text-sm">
