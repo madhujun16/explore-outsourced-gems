@@ -1,12 +1,410 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
+import { useToast } from "@/hooks/use-toast";
+import { 
+  Settings, 
+  Headphones, 
+  Users, 
+  HardDrive,
+  Code2,
+  Megaphone,
+  Database,
+  Bot,
+  Building,
+  Heart,
+  ShoppingBag,
+  Plane,
+  Mail,
+  Phone,
+  MapPin,
+  ArrowRight,
+  CheckCircle
+} from "lucide-react";
 
 const Index = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+    consent: false
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!formData.consent) {
+      toast({
+        title: "Consent Required",
+        description: "Please consent to data processing to continue.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    
+    try {
+      // Simulate form submission - replace with actual Google Apps Script URL
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      toast({
+        title: "Message Sent Successfully!",
+        description: "We'll get back to you within 24 hours.",
+      });
+      
+      setFormData({ name: "", email: "", message: "", consent: false });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const services = [
+    {
+      icon: Settings,
+      title: "Back Office",
+      description: "Efficient HR, admin, payroll, and compliance."
+    },
+    {
+      icon: Headphones,
+      title: "Support",
+      description: "24/7 multilingual customer care for EU markets."
+    },
+    {
+      icon: Users,
+      title: "Virtual Staff",
+      description: "On-demand trained remote teams."
+    },
+    {
+      icon: HardDrive,
+      title: "IT Helpdesk",
+      description: "Secure and scalable infrastructure support."
+    }
+  ];
+
+  const digitalServices = [
+    {
+      icon: Code2,
+      title: "Web Dev",
+      description: "Landing pages, CMS, ecommerce, EU-hosted."
+    },
+    {
+      icon: Megaphone,
+      title: "Marketing",
+      description: "SEO, paid ads, multilingual content strategy."
+    },
+    {
+      icon: Database,
+      title: "Data/CRM",
+      description: "GDPR-ready CRM setups, analytics dashboards."
+    },
+    {
+      icon: Bot,
+      title: "AI Chatbots",
+      description: "Automated support & sales bots, multi-language."
+    }
+  ];
+
+  const industries = [
+    {
+      icon: Building,
+      title: "Finance",
+      description: "Reconciliation, KYC, virtual assistance."
+    },
+    {
+      icon: Heart,
+      title: "Healthcare",
+      description: "Claims processing, transcription, RCM."
+    },
+    {
+      icon: ShoppingBag,
+      title: "Retail",
+      description: "Returns, catalog support, logistics helpdesk."
+    },
+    {
+      icon: Plane,
+      title: "Travel",
+      description: "Concierge support, multilingual bookings."
+    }
+  ];
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      {/* Navigation */}
+      <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <div className="text-2xl font-bold text-primary">NovalSquad</div>
+            <div className="hidden md:flex items-center space-x-8">
+              <a href="#services" className="text-muted-foreground hover:text-primary transition-colors">Services</a>
+              <a href="#digital" className="text-muted-foreground hover:text-primary transition-colors">Digital</a>
+              <a href="#industries" className="text-muted-foreground hover:text-primary transition-colors">Industries</a>
+              <a href="#contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary/90 via-primary to-primary/80 text-primary-foreground">
+        <div className="absolute inset-0 bg-grid-white/10" />
+        <div className="container mx-auto px-4 py-20 md:py-32 relative">
+          <div className="text-center max-w-4xl mx-auto">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-in slide-in-from-bottom-4 duration-1000">
+              Your Trusted European
+              <span className="block text-accent">Outsourcing Partner</span>
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 text-primary-foreground/80 animate-in slide-in-from-bottom-4 duration-1000 delay-200">
+              GDPR-compliant back office, IT, and support services built for European growth.
+            </p>
+            <Button 
+              size="lg" 
+              variant="secondary"
+              className="animate-in slide-in-from-bottom-4 duration-1000 delay-400"
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              Get a Free Consultation
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Services</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Comprehensive business solutions designed for European companies
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {services.map((service, index) => (
+              <Card key={index} className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group">
+                <CardHeader className="text-center">
+                  <div className="mx-auto mb-4 p-3 bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <service.icon className="h-8 w-8 text-primary" />
+                  </div>
+                  <CardTitle className="text-xl">{service.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-center text-base">
+                    {service.description}
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Digital Services Section */}
+      <section id="digital" className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Digital Services</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Modern digital solutions to accelerate your business growth
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {digitalServices.map((service, index) => (
+              <Card key={index} className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group">
+                <CardHeader className="text-center">
+                  <div className="mx-auto mb-4 p-3 bg-accent/10 rounded-full w-16 h-16 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+                    <service.icon className="h-8 w-8 text-accent" />
+                  </div>
+                  <CardTitle className="text-xl">{service.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-center text-base">
+                    {service.description}
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Industries Section */}
+      <section id="industries" className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Industries We Serve</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Specialized expertise across key European business sectors
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {industries.map((industry, index) => (
+              <Card key={index} className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group">
+                <CardHeader className="text-center">
+                  <div className="mx-auto mb-4 p-3 bg-secondary/10 rounded-full w-16 h-16 flex items-center justify-center group-hover:bg-secondary/20 transition-colors">
+                    <industry.icon className="h-8 w-8 text-secondary" />
+                  </div>
+                  <CardTitle className="text-xl">{industry.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-center text-base">
+                    {industry.description}
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Let's Connect</h2>
+              <p className="text-xl text-muted-foreground">
+                Ready to scale your business with trusted European outsourcing?
+              </p>
+            </div>
+            
+            <div className="grid lg:grid-cols-2 gap-12 items-start">
+              {/* Contact Form */}
+              <Card className="p-8">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div>
+                    <Input
+                      placeholder="Your Name *"
+                      value={formData.name}
+                      onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                      required
+                      className="h-12"
+                    />
+                  </div>
+                  
+                  <div>
+                    <Input
+                      type="email"
+                      placeholder="Your Email *"
+                      value={formData.email}
+                      onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                      required
+                      className="h-12"
+                    />
+                  </div>
+                  
+                  <div>
+                    <Textarea
+                      placeholder="Tell us about your project..."
+                      value={formData.message}
+                      onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
+                      className="min-h-32"
+                      required
+                    />
+                  </div>
+                  
+                  <div className="flex items-start space-x-3">
+                    <Checkbox
+                      id="consent"
+                      checked={formData.consent}
+                      onCheckedChange={(checked) => setFormData(prev => ({ ...prev, consent: !!checked }))}
+                    />
+                    <label htmlFor="consent" className="text-sm text-muted-foreground leading-5">
+                      I consent to my data being stored for contact purposes (GDPR)
+                    </label>
+                  </div>
+                  
+                  <Button 
+                    type="submit" 
+                    size="lg" 
+                    className="w-full h-12"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      "Sending..."
+                    ) : (
+                      <>
+                        Send Message
+                        <ArrowRight className="ml-2 h-5 w-5" />
+                      </>
+                    )}
+                  </Button>
+                </form>
+              </Card>
+
+              {/* Contact Info */}
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-2xl font-semibold mb-6">Get in Touch</h3>
+                  <div className="space-y-4">
+                    <div className="flex items-start space-x-4">
+                      <Mail className="h-6 w-6 text-primary mt-1" />
+                      <div>
+                        <p className="font-medium">Email</p>
+                        <p className="text-muted-foreground">contact@novalsquad.com</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start space-x-4">
+                      <Phone className="h-6 w-6 text-primary mt-1" />
+                      <div>
+                        <p className="font-medium">Phone</p>
+                        <p className="text-muted-foreground">+1 (555) 123-4567</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start space-x-4">
+                      <MapPin className="h-6 w-6 text-primary mt-1" />
+                      <div>
+                        <p className="font-medium">Location</p>
+                        <p className="text-muted-foreground">European Union</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-primary/5 rounded-lg p-6">
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle className="h-6 w-6 text-primary mt-1" />
+                    <div>
+                      <h4 className="font-semibold mb-2">GDPR Compliant</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Your data is processed securely in accordance with European privacy regulations.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-background border-t py-12">
+        <div className="container mx-auto px-4">
+          <div className="text-center">
+            <div className="text-2xl font-bold text-primary mb-4">NovalSquad</div>
+            <p className="text-muted-foreground mb-6">
+              Your trusted European outsourcing partner for scalable business growth.
+            </p>
+            <p className="text-sm text-muted-foreground">
+              © 2024 NovalSquad. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
