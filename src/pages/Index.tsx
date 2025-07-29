@@ -18,6 +18,13 @@ import {
   Heart,
   ShoppingBag,
   Plane,
+  GraduationCap,
+  Car,
+  Home,
+  Gamepad2,
+  Smartphone,
+  Factory,
+  Truck,
   Mail,
   Phone,
   MapPin,
@@ -74,22 +81,30 @@ const Index = () => {
     {
       icon: Settings,
       title: "Back Office",
-      description: "Efficient HR, admin, payroll, and compliance."
+      description: "Efficient HR, admin, payroll, and compliance.",
+      color: "text-blue-600",
+      bgColor: "bg-blue-50 group-hover:bg-blue-100"
     },
     {
       icon: Headphones,
       title: "Support",
-      description: "24/7 multilingual customer care for EU markets."
+      description: "24/7 multilingual customer care for EU markets.",
+      color: "text-green-600",
+      bgColor: "bg-green-50 group-hover:bg-green-100"
     },
     {
       icon: Users,
       title: "Virtual Staff",
-      description: "On-demand trained remote teams."
+      description: "On-demand trained remote teams.",
+      color: "text-purple-600",
+      bgColor: "bg-purple-50 group-hover:bg-purple-100"
     },
     {
       icon: HardDrive,
       title: "IT Helpdesk",
-      description: "Secure and scalable infrastructure support."
+      description: "Secure and scalable infrastructure support.",
+      color: "text-orange-600",
+      bgColor: "bg-orange-50 group-hover:bg-orange-100"
     }
   ];
 
@@ -97,22 +112,30 @@ const Index = () => {
     {
       icon: Code2,
       title: "Web Dev",
-      description: "Landing pages, CMS, ecommerce, EU-hosted."
+      description: "Landing pages, CMS, ecommerce, EU-hosted.",
+      color: "text-cyan-600",
+      bgColor: "bg-cyan-50 group-hover:bg-cyan-100"
     },
     {
       icon: Megaphone,
       title: "Marketing",
-      description: "SEO, paid ads, multilingual content strategy."
+      description: "SEO, paid ads, multilingual content strategy.",
+      color: "text-pink-600",
+      bgColor: "bg-pink-50 group-hover:bg-pink-100"
     },
     {
       icon: Database,
       title: "Data/CRM",
-      description: "GDPR-ready CRM setups, analytics dashboards."
+      description: "GDPR-ready CRM setups, analytics dashboards.",
+      color: "text-indigo-600",
+      bgColor: "bg-indigo-50 group-hover:bg-indigo-100"
     },
     {
       icon: Bot,
       title: "AI Chatbots",
-      description: "Automated support & sales bots, multi-language."
+      description: "Automated support & sales bots, multi-language.",
+      color: "text-emerald-600",
+      bgColor: "bg-emerald-50 group-hover:bg-emerald-100"
     }
   ];
 
@@ -120,22 +143,79 @@ const Index = () => {
     {
       icon: Building,
       title: "Finance",
-      description: "Reconciliation, KYC, virtual assistance."
+      description: "Reconciliation, KYC, virtual assistance.",
+      color: "text-blue-600",
+      bgColor: "bg-blue-50 group-hover:bg-blue-100"
     },
     {
       icon: Heart,
       title: "Healthcare",
-      description: "Claims processing, transcription, RCM."
+      description: "Claims processing, transcription, RCM.",
+      color: "text-red-600",
+      bgColor: "bg-red-50 group-hover:bg-red-100"
     },
     {
       icon: ShoppingBag,
       title: "Retail",
-      description: "Returns, catalog support, logistics helpdesk."
+      description: "Returns, catalog support, logistics helpdesk.",
+      color: "text-green-600",
+      bgColor: "bg-green-50 group-hover:bg-green-100"
     },
     {
       icon: Plane,
       title: "Travel",
-      description: "Concierge support, multilingual bookings."
+      description: "Concierge support, multilingual bookings.",
+      color: "text-purple-600",
+      bgColor: "bg-purple-50 group-hover:bg-purple-100"
+    },
+    {
+      icon: GraduationCap,
+      title: "Education",
+      description: "Student support, course management, virtual assistance.",
+      color: "text-orange-600",
+      bgColor: "bg-orange-50 group-hover:bg-orange-100"
+    },
+    {
+      icon: Car,
+      title: "Automotive",
+      description: "Service scheduling, parts management, customer care.",
+      color: "text-teal-600",
+      bgColor: "bg-teal-50 group-hover:bg-teal-100"
+    },
+    {
+      icon: Home,
+      title: "Real Estate",
+      description: "Property management, tenant support, documentation.",
+      color: "text-cyan-600",
+      bgColor: "bg-cyan-50 group-hover:bg-cyan-100"
+    },
+    {
+      icon: Gamepad2,
+      title: "Gaming",
+      description: "Player support, community management, QA testing.",
+      color: "text-pink-600",
+      bgColor: "bg-pink-50 group-hover:bg-pink-100"
+    },
+    {
+      icon: Smartphone,
+      title: "Technology",
+      description: "Technical support, app development, system integration.",
+      color: "text-indigo-600",
+      bgColor: "bg-indigo-50 group-hover:bg-indigo-100"
+    },
+    {
+      icon: Factory,
+      title: "Manufacturing",
+      description: "Supply chain support, quality control, documentation.",
+      color: "text-gray-600",
+      bgColor: "bg-gray-50 group-hover:bg-gray-100"
+    },
+    {
+      icon: Truck,
+      title: "Logistics",
+      description: "Shipment tracking, inventory management, delivery support.",
+      color: "text-emerald-600",
+      bgColor: "bg-emerald-50 group-hover:bg-emerald-100"
     }
   ];
 
@@ -194,8 +274,8 @@ const Index = () => {
             {services.map((service, index) => (
               <Card key={index} className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group">
                 <CardHeader className="text-center">
-                  <div className="mx-auto mb-4 p-3 bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                    <service.icon className="h-8 w-8 text-primary" />
+                  <div className={`mx-auto mb-4 p-3 rounded-full w-16 h-16 flex items-center justify-center transition-colors ${service.bgColor}`}>
+                    <service.icon className={`h-8 w-8 ${service.color}`} />
                   </div>
                   <CardTitle className="text-xl">{service.title}</CardTitle>
                 </CardHeader>
@@ -223,8 +303,8 @@ const Index = () => {
             {digitalServices.map((service, index) => (
               <Card key={index} className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group">
                 <CardHeader className="text-center">
-                  <div className="mx-auto mb-4 p-3 bg-accent/10 rounded-full w-16 h-16 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                    <service.icon className="h-8 w-8 text-accent" />
+                  <div className={`mx-auto mb-4 p-3 rounded-full w-16 h-16 flex items-center justify-center transition-colors ${service.bgColor}`}>
+                    <service.icon className={`h-8 w-8 ${service.color}`} />
                   </div>
                   <CardTitle className="text-xl">{service.title}</CardTitle>
                 </CardHeader>
@@ -248,12 +328,12 @@ const Index = () => {
               Specialized expertise across key European business sectors
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {industries.map((industry, index) => (
               <Card key={index} className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group">
                 <CardHeader className="text-center">
-                  <div className="mx-auto mb-4 p-3 bg-secondary/10 rounded-full w-16 h-16 flex items-center justify-center group-hover:bg-secondary/20 transition-colors">
-                    <industry.icon className="h-8 w-8 text-secondary" />
+                  <div className={`mx-auto mb-4 p-3 rounded-full w-16 h-16 flex items-center justify-center transition-colors ${industry.bgColor}`}>
+                    <industry.icon className={`h-8 w-8 ${industry.color}`} />
                   </div>
                   <CardTitle className="text-xl">{industry.title}</CardTitle>
                 </CardHeader>
