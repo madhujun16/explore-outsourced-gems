@@ -103,7 +103,7 @@ const Index = () => {
     {
       icon: Calculator,
       title: "Accounting & Finance",
-      description: "Complete bookkeeping, financial reporting, accounts payable/receivable, and account management solutions.",
+      description: "Complete bookkeeping, financial reporting, accounts payable/receivable and account management solutions.",
       color: "text-blue-600",
       bgColor: "bg-blue-50 group-hover:bg-blue-100"
     },
