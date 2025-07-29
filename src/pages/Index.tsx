@@ -74,8 +74,8 @@ const Index = () => {
       }
       
       toast({
-        title: "Message sent successfully!",
-        description: "We'll get back to you as soon as possible.",
+        title: "Thank you for contacting NovalSquad!",
+        description: "We've received your message and will get back to you within 24 hours. Check your email for confirmation.",
       });
       
       setFormData({ 
