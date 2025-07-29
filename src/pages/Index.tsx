@@ -7,6 +7,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { Link } from "react-router-dom";
+import logoImage from "@/assets/novalsquad-logo.png";
 import { 
   Settings, 
   Headphones, 
@@ -257,7 +258,7 @@ const Index = () => {
       <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="text-2xl font-bold text-primary">NovalSquad</div>
+            <img src={logoImage} alt="NovalSquad" className="h-8 w-auto" />
             <div className="hidden md:flex items-center space-x-8">
               <a href="#services" className="text-muted-foreground hover:text-primary transition-colors">Services</a>
               <a href="#digital" className="text-muted-foreground hover:text-primary transition-colors">Digital</a>
