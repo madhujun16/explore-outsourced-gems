@@ -61,7 +61,7 @@ const Index = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/functions/v1/send-contact-email", {
+      const response = await fetch("https://raqkxeahwupzhuyfnsew.supabase.co/functions/v1/send-contact-email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -125,6 +125,20 @@ const Index = () => {
       description: "Secure and scalable infrastructure support.",
       color: "text-orange-600",
       bgColor: "bg-orange-50 group-hover:bg-orange-100"
+    },
+    {
+      icon: CheckCircle,
+      title: "Virtual CISO",
+      description: "Cybersecurity leadership and compliance management.",
+      color: "text-red-600",
+      bgColor: "bg-red-50 group-hover:bg-red-100"
+    },
+    {
+      icon: Database,
+      title: "Cloud Services",
+      description: "Migration, management, and optimization solutions.",
+      color: "text-teal-600",
+      bgColor: "bg-teal-50 group-hover:bg-teal-100"
     }
   ];
 
@@ -467,7 +481,7 @@ const Index = () => {
                       "Sending..."
                     ) : (
                       <>
-                        Send Message
+                        Get in Touch with NovalSquad
                         <ArrowRight className="ml-2 h-5 w-5" />
                       </>
                     )}
@@ -478,22 +492,13 @@ const Index = () => {
               {/* Contact Info */}
               <div className="space-y-8">
                 <div>
-                  <h3 className="text-2xl font-semibold mb-6">Get in Touch</h3>
+                  <h3 className="text-2xl font-semibold mb-6">Get in Touch with NovalSquad</h3>
                   <div className="space-y-4">
                     <div className="flex items-start space-x-4">
                       <Mail className="h-6 w-6 text-primary mt-1" />
                       <div>
                         <p className="font-medium">Email</p>
                         <p className="text-muted-foreground">contact@novalsquad.com</p>
-                      </div>
-                    </div>
-                    
-                    
-                    <div className="flex items-start space-x-4">
-                      <MapPin className="h-6 w-6 text-primary mt-1" />
-                      <div>
-                        <p className="font-medium">Location</p>
-                        <p className="text-muted-foreground">European Union</p>
                       </div>
                     </div>
                   </div>
