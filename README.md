@@ -1,8 +1,8 @@
-
+# NovalSquad Outsourcing - Expert Business Process Outsourcing Services
 
 **Use your preferred IDE**
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in your deployment.
 
 The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
@@ -45,15 +45,40 @@ This project is built with:
 - React
 - shadcn-ui
 - Tailwind CSS
+- Supabase (Backend & Database)
 
 ## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/341c2a68-d565-456a-9856-49b5c35ea61e) and click on Share -> Publish.
+You can deploy this project using various platforms:
 
-## Can I connect a custom domain to my Lovable project?
+### Vercel (Recommended)
+```sh
+npm install -g vercel
+vercel
+```
+
+### Netlify
+```sh
+npm run build
+# Upload the dist folder to Netlify
+```
+
+### GitHub Pages
+```sh
+npm run build
+# Configure GitHub Actions for automatic deployment
+```
+
+## Can I connect a custom domain to my project?
 
 Yes, you can!
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+To connect a domain:
+1. Deploy your project to your preferred hosting platform
+2. Navigate to your hosting platform's domain settings
+3. Add your custom domain (e.g., novalsquad.com)
+4. Configure DNS settings as required by your hosting provider
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## Contact
+
+For any questions or support, contact us at contact@novalsquad.com

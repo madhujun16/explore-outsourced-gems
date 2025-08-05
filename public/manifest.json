@@ -1,0 +1,21 @@
+{
+  "name": "NovalSquad Outsourcing",
+  "short_name": "NovalSquad",
+  "description": "Expert business process outsourcing services for companies looking to scale efficiently",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1f2937",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/src/assets/novalsquad-logo.svg",
+      "sizes": "64x64",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "lang": "en",
+  "dir": "ltr"
+} 
