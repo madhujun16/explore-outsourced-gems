@@ -545,7 +545,7 @@ const Index = () => {
                       <Mail className="h-6 w-6 text-primary mt-1" />
                       <div>
                         <p className="font-medium">Email</p>
-                        <p className="text-muted-foreground">contact@novalsquad.com</p>
+                        <p className="text-muted-foreground">admin@novalsquad.com</p>
                       </div>
                     </div>
                   </div>
