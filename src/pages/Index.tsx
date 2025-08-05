@@ -35,7 +35,11 @@ import {
   MapPin,
   ArrowRight,
   CheckCircle,
-  Calculator
+  Calculator,
+  Clock,
+  Globe,
+  Shield,
+  Lock
 } from "lucide-react";
 
 const Index = () => {
@@ -292,12 +296,26 @@ const Index = () => {
         <div className="container mx-auto px-4 py-20 md:py-32 relative">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-in slide-in-from-bottom-4 duration-1000">
-              Your Trusted Global
-              <span className="block text-accent">Outsourcing Partner</span>
+              Reliable European Outsourcing for
+              <span className="block text-accent">Back Office, Support & Digital Teams</span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-primary-foreground/80 animate-in slide-in-from-bottom-4 duration-1000 delay-200">
-              Comprehensive back office, IT, and support services built for global business growth.
+            <p className="text-xl md:text-2xl mb-6 text-primary-foreground/80 animate-in slide-in-from-bottom-4 duration-1000 delay-200">
+              GDPR-compliant. Cost-effective. Ready in 5 days.
             </p>
+            <div className="flex flex-wrap justify-center items-center gap-6 mb-8 text-primary-foreground/70 animate-in slide-in-from-bottom-4 duration-1000 delay-300">
+              <div className="flex items-center gap-2">
+                <CheckCircle className="h-5 w-5 text-green-400" />
+                <span>GDPR Compliant</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="h-5 w-5 text-green-400" />
+                <span>24/7 Support</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="h-5 w-5 text-green-400" />
+                <span>Multilingual</span>
+              </div>
+            </div>
             <Button 
               size="lg" 
               variant="secondary"
@@ -311,8 +329,105 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Why Choose Us Section */}
+      <section className="py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose NovalSquad</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              European expertise with global reach - your competitive advantage
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Card className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group">
+              <CardHeader className="text-center">
+                <div className="mx-auto mb-4 p-3 rounded-full w-16 h-16 flex items-center justify-center bg-green-50 group-hover:bg-green-100 transition-colors">
+                  <Clock className="h-8 w-8 text-green-600" />
+                </div>
+                <CardTitle className="text-xl">Onboard in 3-5 Days</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-center text-base">
+                  Quick setup process with dedicated onboarding team. No long waiting periods.
+                </CardDescription>
+              </CardContent>
+            </Card>
+            
+            <Card className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group">
+              <CardHeader className="text-center">
+                <div className="mx-auto mb-4 p-3 rounded-full w-16 h-16 flex items-center justify-center bg-blue-50 group-hover:bg-blue-100 transition-colors">
+                  <Globe className="h-8 w-8 text-blue-600" />
+                </div>
+                <CardTitle className="text-xl">Multilingual European Support</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-center text-base">
+                  Native speakers in English, French, German, Spanish, and Italian.
+                </CardDescription>
+              </CardContent>
+            </Card>
+            
+            <Card className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group">
+              <CardHeader className="text-center">
+                <div className="mx-auto mb-4 p-3 rounded-full w-16 h-16 flex items-center justify-center bg-purple-50 group-hover:bg-purple-100 transition-colors">
+                  <Shield className="h-8 w-8 text-purple-600" />
+                </div>
+                <CardTitle className="text-xl">24/7 Operations</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-center text-base">
+                  No timezone gaps. Round-the-clock support for global businesses.
+                </CardDescription>
+              </CardContent>
+            </Card>
+            
+            <Card className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group">
+              <CardHeader className="text-center">
+                <div className="mx-auto mb-4 p-3 rounded-full w-16 h-16 flex items-center justify-center bg-orange-50 group-hover:bg-orange-100 transition-colors">
+                  <Lock className="h-8 w-8 text-orange-600" />
+                </div>
+                <CardTitle className="text-xl">GDPR-Native Workflows</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-center text-base">
+                  Built-in compliance with European data protection regulations.
+                </CardDescription>
+              </CardContent>
+            </Card>
+            
+            <Card className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group">
+              <CardHeader className="text-center">
+                <div className="mx-auto mb-4 p-3 rounded-full w-16 h-16 flex items-center justify-center bg-teal-50 group-hover:bg-teal-100 transition-colors">
+                  <Calculator className="h-8 w-8 text-teal-600" />
+                </div>
+                <CardTitle className="text-xl">Transparent Pricing</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-center text-base">
+                  No hidden fees. Clear, predictable costs with flexible plans.
+                </CardDescription>
+              </CardContent>
+            </Card>
+            
+            <Card className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group">
+              <CardHeader className="text-center">
+                <div className="mx-auto mb-4 p-3 rounded-full w-16 h-16 flex items-center justify-center bg-indigo-50 group-hover:bg-indigo-100 transition-colors">
+                  <Users className="h-8 w-8 text-indigo-600" />
+                </div>
+                <CardTitle className="text-xl">European Talent Pool</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-center text-base">
+                  Access to skilled professionals across France, Germany, Spain, and the UK.
+                </CardDescription>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* Services Section */}
-      <section id="services" className="py-12 bg-background">
+      <section id="services" className="py-12 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Services</h2>
@@ -369,8 +484,72 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section className="py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Trusted by European Businesses</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              See what our clients say about working with NovalSquad
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Card className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg">
+              <CardContent className="p-6">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-4">
+                    EM
+                  </div>
+                  <div>
+                    <h4 className="font-semibold">Elena M.</h4>
+                    <p className="text-sm text-muted-foreground">COO, SaaS Company (Berlin)</p>
+                  </div>
+                </div>
+                <p className="text-muted-foreground">
+                  "NovalSquad helped us reduce ticket backlog by 60% in the first month. Their multilingual support team is exceptional."
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg">
+              <CardContent className="p-6">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-4">
+                    PL
+                  </div>
+                  <div>
+                    <h4 className="font-semibold">Pierre L.</h4>
+                    <p className="text-sm text-muted-foreground">CEO, E-commerce (Paris)</p>
+                  </div>
+                </div>
+                <p className="text-muted-foreground">
+                  "The GDPR compliance and European data handling gave us peace of mind. Cost savings of 40% compared to local options."
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg">
+              <CardContent className="p-6">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-4">
+                    MS
+                  </div>
+                  <div>
+                    <h4 className="font-semibold">Maria S.</h4>
+                    <p className="text-sm text-muted-foreground">Operations Manager (Madrid)</p>
+                  </div>
+                </div>
+                <p className="text-muted-foreground">
+                  "24/7 support with no timezone issues. Our customer satisfaction scores improved by 35% within weeks."
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* Industries Section */}
-      <section id="industries" className="py-12 bg-background">
+      <section id="industries" className="py-12 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Industries We Serve</h2>
@@ -403,9 +582,9 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Let's Connect</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Scale Your European Business?</h2>
                <p className="text-xl text-muted-foreground">
-                 Ready to scale your business with trusted global outsourcing?
+                 Get a free consultation and discover how NovalSquad can help you reduce costs while maintaining quality.
                </p>
             </div>
             
@@ -428,6 +607,20 @@ const Index = () => {
                         value={formData.email}
                         onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
                         required
+                        className="h-12"
+                      />
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <Input
+                        type="tel"
+                        placeholder="Phone Number (Optional)"
+                        className="h-12"
+                      />
+                      <Input
+                        placeholder="Company Name (Optional)"
+                        value={formData.company_name}
+                        onChange={(e) => setFormData(prev => ({ ...prev, company_name: e.target.value }))}
                         className="h-12"
                       />
                     </div>
@@ -539,13 +732,27 @@ const Index = () => {
               {/* Contact Info */}
               <div className="space-y-8">
                 <div>
-                  <h3 className="text-2xl font-semibold mb-6">Get in Touch with NovalSquad</h3>
+                  <h3 className="text-2xl font-semibold mb-6">European Support Team</h3>
                   <div className="space-y-4">
                     <div className="flex items-start space-x-4">
                       <Mail className="h-6 w-6 text-primary mt-1" />
                       <div>
                         <p className="font-medium">Email</p>
-                        <p className="text-muted-foreground">admin@novalsquad.com</p>
+                        <p className="text-muted-foreground">contact@novalsquad.com</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-4">
+                      <Globe className="h-6 w-6 text-primary mt-1" />
+                      <div>
+                        <p className="font-medium">Languages</p>
+                        <p className="text-muted-foreground">English, French, German, Spanish, Italian</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-4">
+                      <Clock className="h-6 w-6 text-primary mt-1" />
+                      <div>
+                        <p className="font-medium">Response Time</p>
+                        <p className="text-muted-foreground">Within 24 hours</p>
                       </div>
                     </div>
                   </div>
