@@ -1,0 +1,3 @@
+# Supabase functions use Deno imports
+supabase/functions/**/*
+supabase/config.toml 

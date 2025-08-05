@@ -1,3 +1,4 @@
+// Deno imports for Supabase Edge Functions
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { Resend } from "npm:resend@2.0.0";
@@ -52,9 +53,9 @@ const handler = async (req: Request): Promise<Response> => {
     const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
     
     const emailResponse = await resend.emails.send({
-      from: "NovalSquad <onboarding@resend.dev>",
+      from: "NovalSquad Outsourcing <onboarding@resend.dev>",
       to: [contactData.email],
-      subject: "Thank you for contacting NovalSquad!",
+              subject: "Thank you for contacting NovalSquad Outsourcing!",
       html: `
         <h1>Thank you for contacting us, ${contactData.name}!</h1>
         <p>We have received your message and will get back to you as soon as possible.</p>
@@ -68,7 +69,7 @@ const handler = async (req: Request): Promise<Response> => {
           <li><strong>Message:</strong> ${contactData.message}</li>
         </ul>
         
-        <p>Best regards,<br>The NovalSquad Team</p>
+                  <p>Best regards,<br>The NovalSquad Outsourcing Team</p>
       `,
     });
 

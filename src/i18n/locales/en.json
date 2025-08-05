@@ -1,0 +1,229 @@
+{
+  "navigation": {
+    "home": "Home",
+    "services": "Services",
+    "industries": "Industries",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Reliable European Outsourcing for Back Office, Support & Digital Teams",
+    "subtitle": "GDPR-compliant. Cost-effective. Ready in 5 days.",
+    "cta": "Get Started",
+    "trustSignals": {
+      "gdpr": "GDPR Compliant",
+      "support": "24/7 Support",
+      "multilingual": "Multilingual"
+    }
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive outsourcing solutions tailored to your business needs",
+    "items": {
+      "accounting": {
+        "title": "Accounting & Finance",
+        "description": "Complete bookkeeping, financial reporting, accounts payable/receivable and account management solutions."
+      },
+      "backOffice": {
+        "title": "Back Office",
+        "description": "Efficient HR, admin, payroll, and compliance."
+      },
+      "support": {
+        "title": "Support",
+        "description": "24/7 multilingual customer support worldwide."
+      },
+      "virtualStaff": {
+        "title": "Virtual Staff",
+        "description": "On-demand trained remote teams."
+      },
+      "itHelpdesk": {
+        "title": "IT Helpdesk",
+        "description": "Secure and scalable infrastructure support."
+      },
+      "virtualCISO": {
+        "title": "Virtual CISO",
+        "description": "Cybersecurity leadership and compliance management."
+      },
+      "cloudServices": {
+        "title": "Cloud Services",
+        "description": "Migration, management, and optimization solutions."
+      }
+    }
+  },
+  "digitalServices": {
+    "title": "Digital Services",
+    "subtitle": "Modern digital solutions to accelerate your business growth",
+    "items": {
+      "webDev": {
+        "title": "Web Development",
+        "description": "Landing pages, CMS, ecommerce, globally hosted."
+      },
+      "marketing": {
+        "title": "Digital Marketing",
+        "description": "SEO, PPC, social media, content strategy."
+      },
+      "mobile": {
+        "title": "Mobile Apps",
+        "description": "iOS, Android, cross-platform development."
+      },
+      "design": {
+        "title": "UI/UX Design",
+        "description": "User-centered design, prototypes, branding."
+      }
+    }
+  },
+  "whyChooseUs": {
+    "title": "Why Choose NovalSquad Outsourcing",
+    "subtitle": "European expertise with global reach - your competitive advantage",
+    "items": {
+      "onboarding": {
+        "title": "Onboard in 3-5 Days",
+        "description": "Quick setup and immediate productivity"
+      },
+      "operations": {
+        "title": "24/7 Operations",
+        "description": "Round-the-clock service delivery"
+      },
+      "gdpr": {
+        "title": "GDPR-Native Workflows",
+        "description": "Built-in compliance and data protection"
+      },
+      "pricing": {
+        "title": "Transparent Pricing",
+        "description": "Clear costs with no hidden fees"
+      },
+      "talent": {
+        "title": "European Talent Pool",
+        "description": "Skilled professionals from across Europe"
+      }
+    }
+  },
+  "testimonials": {
+    "title": "Trusted by European Businesses",
+    "subtitle": "See what our clients say about working with NovalSquad Outsourcing",
+    "items": [
+      {
+        "name": "Pierre L.",
+        "role": "CEO, E-commerce (Paris)",
+        "quote": "The GDPR compliance and European data handling gave us peace of mind. Cost savings of 40% compared to local options."
+      },
+      {
+        "name": "Maria S.",
+        "role": "Operations Manager (Madrid)",
+        "quote": "24/7 support with no timezone issues. Our customer satisfaction scores improved by 35% within weeks."
+      }
+    ]
+  },
+  "industries": {
+    "title": "Industries We Serve",
+    "subtitle": "Specialized expertise across key global business sectors"
+  },
+  "contact": {
+    "title": "Ready to Scale Your European Business?",
+    "subtitle": "Get a free consultation and discover how NovalSquad Outsourcing can help you reduce costs while maintaining quality.",
+    "form": {
+      "title": "Get Your Free Consultation",
+      "subtitle": "Tell us about your project and we'll get back to you within 24 hours",
+      "sections": {
+        "personalInfo": "Personal Information",
+        "projectDetails": "Project Details"
+      },
+      "fields": {
+        "fullName": "Full Name",
+        "email": "Email Address",
+        "phone": "Phone Number",
+        "company": "Company Name",
+        "industry": "Industry/Sector",
+        "projectDescription": "Project Description",
+        "consent": "I agree to the Privacy Policy and Terms & Conditions"
+      },
+      "placeholders": {
+        "fullName": "Enter your full name",
+        "email": "your.email@company.com",
+        "phone": "+1 (555) 123-4567",
+        "company": "Your company name",
+        "industry": "Select your industry or sector",
+        "projectDescription": "Tell us about your project, requirements, and how we can help you..."
+      },
+      "helpText": {
+        "projectDescription": "Be as detailed as possible to help us provide the best solution"
+      },
+      "buttons": {
+        "reviewSubmit": "Review & Submit",
+        "processing": "Processing...",
+        "editInfo": "Edit Information",
+        "submitInfo": "Submit Information",
+        "sending": "Sending..."
+      },
+      "review": {
+        "title": "Review Your Information",
+        "subtitle": "Please review your details before submitting",
+        "sections": {
+          "personalInfo": "Personal Information",
+          "projectInfo": "Project Information"
+        }
+      }
+    },
+    "info": {
+      "title": "European Support Team",
+      "email": "admin@novalsquad.com",
+      "languages": "English",
+      "responseTime": "Within 24 hours",
+      "gdpr": {
+        "title": "GDPR Compliant",
+        "description": "Your data is processed securely in accordance with European privacy regulations."
+      }
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 NovalSquad Outsourcing. All rights reserved.",
+    "links": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms & Conditions"
+    }
+  },
+  "industriesList": {
+    "technology": "Technology & Software",
+    "finance": "Financial Services & Banking",
+    "healthcare": "Healthcare & Pharmaceuticals",
+    "retail": "Retail & E-commerce",
+    "manufacturing": "Manufacturing & Industrial",
+    "logistics": "Logistics & Transportation",
+    "realEstate": "Real Estate & Property",
+    "education": "Education & Training",
+    "automotive": "Automotive & Mobility",
+    "energy": "Energy & Utilities",
+    "media": "Media & Entertainment",
+    "gaming": "Gaming & Interactive",
+    "consulting": "Consulting & Professional Services",
+    "legal": "Legal & Compliance",
+    "insurance": "Insurance & Risk Management",
+    "hospitality": "Hospitality & Tourism",
+    "foodBeverage": "Food & Beverage",
+    "fashion": "Fashion & Apparel",
+    "construction": "Construction & Engineering",
+    "aerospace": "Aerospace & Defense",
+    "telecommunications": "Telecommunications",
+    "nonProfit": "Non-Profit & NGO",
+    "government": "Government & Public Sector",
+    "startup": "Startup & Scale-up",
+    "other": "Other"
+  },
+  "common": {
+    "required": "Required",
+    "optional": "Optional",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "close": "Close",
+    "open": "Open",
+    "yes": "Yes",
+    "no": "No"
+  }
+} 

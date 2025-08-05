@@ -1,0 +1,229 @@
+{
+  "navigation": {
+    "home": "Startseite",
+    "services": "Dienstleistungen",
+    "industries": "Branchen",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "title": "Zuverlässiges Europäisches Outsourcing für Back Office, Support & Digital Teams",
+    "subtitle": "DSGVO-konform. Kostengünstig. Bereit in 5 Tagen.",
+    "cta": "Jetzt Starten",
+    "trustSignals": {
+      "gdpr": "DSGVO-Konform",
+      "support": "24/7 Support",
+      "multilingual": "Mehrsprachig"
+    }
+  },
+  "services": {
+    "title": "Unsere Dienstleistungen",
+    "subtitle": "Umfassende Outsourcing-Lösungen, die auf Ihre Geschäftsanforderungen zugeschnitten sind",
+    "items": {
+      "accounting": {
+        "title": "Buchhaltung & Finanzen",
+        "description": "Vollständige Buchhaltung, Finanzberichterstattung, Verbindlichkeiten/Forderungen und Kontenverwaltungslösungen."
+      },
+      "backOffice": {
+        "title": "Back Office",
+        "description": "Effiziente HR, Verwaltung, Gehaltsabrechnung und Compliance."
+      },
+      "support": {
+        "title": "Support",
+        "description": "24/7 mehrsprachiger Kundensupport weltweit."
+      },
+      "virtualStaff": {
+        "title": "Virtuelles Personal",
+        "description": "Bedarfsspezifisch geschulte Remote-Teams."
+      },
+      "itHelpdesk": {
+        "title": "IT Helpdesk",
+        "description": "Sicherer und skalierbarer Infrastruktur-Support."
+      },
+      "virtualCISO": {
+        "title": "Virtueller CISO",
+        "description": "Cybersicherheits-Führung und Compliance-Management."
+      },
+      "cloudServices": {
+        "title": "Cloud Services",
+        "description": "Migrations-, Management- und Optimierungslösungen."
+      }
+    }
+  },
+  "digitalServices": {
+    "title": "Digitale Dienstleistungen",
+    "subtitle": "Moderne digitale Lösungen zur Beschleunigung Ihres Geschäftswachstums",
+    "items": {
+      "webDev": {
+        "title": "Webentwicklung",
+        "description": "Landing Pages, CMS, E-Commerce, global gehostet."
+      },
+      "marketing": {
+        "title": "Digitales Marketing",
+        "description": "SEO, PPC, Social Media, Content-Strategie."
+      },
+      "mobile": {
+        "title": "Mobile Apps",
+        "description": "iOS, Android, Cross-Platform-Entwicklung."
+      },
+      "design": {
+        "title": "UI/UX Design",
+        "description": "Nutzerzentriertes Design, Prototypen, Branding."
+      }
+    }
+  },
+  "whyChooseUs": {
+    "title": "Warum NovalSquad Outsourcing Wählen",
+    "subtitle": "Europäische Expertise mit globaler Reichweite - Ihr Wettbewerbsvorteil",
+    "items": {
+      "onboarding": {
+        "title": "Onboarding in 3-5 Tagen",
+        "description": "Schnelle Einrichtung und sofortige Produktivität"
+      },
+      "operations": {
+        "title": "24/7 Betrieb",
+        "description": "Rund-um-die-Uhr Servicebereitstellung"
+      },
+      "gdpr": {
+        "title": "DSGVO-Native Workflows",
+        "description": "Integrierte Compliance und Datenschutz"
+      },
+      "pricing": {
+        "title": "Transparente Preisgestaltung",
+        "description": "Klare Kosten ohne versteckte Gebühren"
+      },
+      "talent": {
+        "title": "Europäischer Talentpool",
+        "description": "Qualifizierte Fachkräfte aus ganz Europa"
+      }
+    }
+  },
+  "testimonials": {
+    "title": "Vertraut von Europäischen Unternehmen",
+    "subtitle": "Sehen Sie, was unsere Kunden über die Zusammenarbeit mit NovalSquad Outsourcing sagen",
+    "items": [
+      {
+        "name": "Pierre L.",
+        "role": "CEO, E-Commerce (Paris)",
+        "quote": "Die DSGVO-Compliance und europäische Datenverarbeitung gaben uns Sicherheit. 40% Kosteneinsparungen im Vergleich zu lokalen Optionen."
+      },
+      {
+        "name": "Maria S.",
+        "role": "Operations Manager (Madrid)",
+        "quote": "24/7 Support ohne Zeitzonenprobleme. Unsere Kundenzufriedenheitswerte verbesserten sich innerhalb von Wochen um 35%."
+      }
+    ]
+  },
+  "industries": {
+    "title": "Branchen, die Wir Bedienen",
+    "subtitle": "Spezialisierte Expertise in wichtigen globalen Geschäftssektoren"
+  },
+  "contact": {
+    "title": "Bereit, Ihr Europäisches Unternehmen zu Skalieren?",
+    "subtitle": "Erhalten Sie eine kostenlose Beratung und entdecken Sie, wie NovalSquad Outsourcing Ihnen helfen kann, Kosten zu senken und dabei die Qualität zu erhalten.",
+    "form": {
+      "title": "Kostenlose Beratung Erhalten",
+      "subtitle": "Erzählen Sie uns von Ihrem Projekt und wir melden uns innerhalb von 24 Stunden",
+      "sections": {
+        "personalInfo": "Persönliche Informationen",
+        "projectDetails": "Projektdetails"
+      },
+      "fields": {
+        "fullName": "Vollständiger Name",
+        "email": "E-Mail-Adresse",
+        "phone": "Telefonnummer",
+        "company": "Firmenname",
+        "industry": "Branche/Sektor",
+        "projectDescription": "Projektbeschreibung",
+        "consent": "Ich stimme der Datenschutzerklärung und den Allgemeinen Geschäftsbedingungen zu"
+      },
+      "placeholders": {
+        "fullName": "Geben Sie Ihren vollständigen Namen ein",
+        "email": "ihre.email@unternehmen.de",
+        "phone": "+49 (0) 30 12345678",
+        "company": "Name Ihres Unternehmens",
+        "industry": "Wählen Sie Ihre Branche oder Ihren Sektor",
+        "projectDescription": "Erzählen Sie uns von Ihrem Projekt, Ihren Anforderungen und wie wir Ihnen helfen können..."
+      },
+      "helpText": {
+        "projectDescription": "Seien Sie so detailliert wie möglich, um uns zu helfen, die beste Lösung zu finden"
+      },
+      "buttons": {
+        "reviewSubmit": "Überprüfen & Absenden",
+        "processing": "Verarbeitung...",
+        "editInfo": "Informationen Bearbeiten",
+        "submitInfo": "Informationen Absenden",
+        "sending": "Wird gesendet..."
+      },
+      "review": {
+        "title": "Ihre Informationen Überprüfen",
+        "subtitle": "Bitte überprüfen Sie Ihre Details vor dem Absenden",
+        "sections": {
+          "personalInfo": "Persönliche Informationen",
+          "projectInfo": "Projektinformationen"
+        }
+      }
+    },
+    "info": {
+      "title": "Europäisches Support-Team",
+      "email": "admin@novalsquad.com",
+      "languages": "Deutsch, Englisch, Französisch, Spanisch, Italienisch",
+      "responseTime": "Innerhalb von 24 Stunden",
+      "gdpr": {
+        "title": "DSGVO-Konform",
+        "description": "Ihre Daten werden sicher entsprechend den europäischen Datenschutzbestimmungen verarbeitet."
+      }
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 NovalSquad Outsourcing. Alle Rechte vorbehalten.",
+    "links": {
+      "privacy": "Datenschutzerklärung",
+      "terms": "Allgemeine Geschäftsbedingungen"
+    }
+  },
+  "industriesList": {
+    "technology": "Technologie & Software",
+    "finance": "Finanzdienstleistungen & Bankwesen",
+    "healthcare": "Gesundheitswesen & Pharmazie",
+    "retail": "Einzelhandel & E-Commerce",
+    "manufacturing": "Herstellung & Industrie",
+    "logistics": "Logistik & Transport",
+    "realEstate": "Immobilien & Eigentum",
+    "education": "Bildung & Ausbildung",
+    "automotive": "Automobil & Mobilität",
+    "energy": "Energien & Versorgung",
+    "media": "Medien & Unterhaltung",
+    "gaming": "Gaming & Interaktiv",
+    "consulting": "Beratung & Professionelle Dienstleistungen",
+    "legal": "Recht & Compliance",
+    "insurance": "Versicherung & Risikomanagement",
+    "hospitality": "Hotellerie & Tourismus",
+    "foodBeverage": "Lebensmittel & Getränke",
+    "fashion": "Mode & Bekleidung",
+    "construction": "Bau & Ingenieurwesen",
+    "aerospace": "Luft- & Raumfahrt & Verteidigung",
+    "telecommunications": "Telekommunikation",
+    "nonProfit": "Non-Profit & NGO",
+    "government": "Regierung & Öffentlicher Sektor",
+    "startup": "Startup & Scale-up",
+    "other": "Sonstige"
+  },
+  "common": {
+    "required": "Erforderlich",
+    "optional": "Optional",
+    "loading": "Lädt...",
+    "error": "Fehler",
+    "success": "Erfolg",
+    "back": "Zurück",
+    "next": "Weiter",
+    "submit": "Absenden",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "close": "Schließen",
+    "open": "Öffnen",
+    "yes": "Ja",
+    "no": "Nein"
+  }
+} 

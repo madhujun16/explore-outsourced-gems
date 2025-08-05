@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -8,6 +8,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { MessageCircle, X, Send, User, Bot } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/components/ui/use-toast';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface ChatMessage {
   id: string;
@@ -31,7 +32,7 @@ const ChatBot = () => {
     {
       id: '1',
       type: 'bot',
-      content: "Hi! I'm here to help you get in touch with NovalSquad. What's your name?",
+      content: "Hi! I'm here to help you get in touch with NovalSquad Outsourcing. What's your name?",
       timestamp: new Date()
     }
   ]);
@@ -46,6 +47,18 @@ const ChatBot = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const isMobile = useIsMobile();
+
+  // Auto-open chat after 2 seconds (desktop only)
+  useEffect(() => {
+    if (!isMobile) {
+      const timer = setTimeout(() => {
+        setIsOpen(true);
+      }, 2000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [isMobile]);
 
   const steps = [
     { field: 'name', question: "What's your name?", type: 'text' },
@@ -107,7 +120,7 @@ const ChatBot = () => {
 
       if (error) throw error;
 
-      addMessage("Perfect! Your message has been submitted successfully. Our team will get back to you within 24 hours. Thank you for choosing NovalSquad!", 'bot');
+      addMessage("Perfect! Your message has been submitted successfully. Our team will get back to you within 24 hours. Thank you for choosing NovalSquad Outsourcing!", 'bot');
       toast({
         title: "Message sent successfully!",
         description: "We'll get back to you soon.",
@@ -175,19 +188,19 @@ const ChatBot = () => {
       {!isOpen && (
         <Button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 z-50"
+          className="fixed bottom-6 right-6 h-16 w-16 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 z-50 bg-primary hover:bg-primary/90 text-primary-foreground border-2 border-primary/20"
           size="icon"
         >
-          <MessageCircle className="h-6 w-6" />
+          <MessageCircle className="h-7 w-7" />
         </Button>
       )}
 
       {/* Chat Window */}
       {isOpen && (
-        <Card className="fixed bottom-6 right-6 w-80 h-96 shadow-xl z-50 flex flex-col">
+        <Card className="fixed bottom-6 right-6 w-96 h-[500px] shadow-2xl z-50 flex flex-col border-2 border-primary/20">
           <CardHeader className="bg-primary text-primary-foreground rounded-t-lg p-4">
             <div className="flex items-center justify-between">
-              <CardTitle className="text-lg">Chat with NovalSquad</CardTitle>
+              <CardTitle className="text-lg">Chat with NovalSquad Outsourcing</CardTitle>
               <Button
                 variant="ghost"
                 size="icon"
