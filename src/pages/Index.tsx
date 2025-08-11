@@ -522,12 +522,30 @@ const Index = () => {
                   <div className={`mx-auto mb-4 p-3 rounded-full w-16 h-16 flex items-center justify-center transition-colors ${service.bgColor}`}>
                     <service.icon className={`h-8 w-8 ${service.color}`} />
                   </div>
-                  <CardTitle className="text-xl">{service.title}</CardTitle>
+                  <CardTitle className="text-xl">
+                    {service.title === "Virtual Staff" ? (
+                      <Link to="/virtual-assistants" className="hover:text-primary transition-colors">
+                        {service.title}
+                      </Link>
+                    ) : (
+                      service.title
+                    )}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-center text-base">
                     {service.description}
                   </CardDescription>
+                  {service.title === "Virtual Staff" && (
+                    <div className="mt-4 text-center">
+                      <Link to="/virtual-assistants">
+                        <Button variant="outline" size="sm" className="w-full">
+                          Learn More
+                          <ArrowRight className="ml-2 h-4 w-4" />
+                        </Button>
+                      </Link>
+                    </div>
+                  )}
                 </CardContent>
               </Card>
             ))}
