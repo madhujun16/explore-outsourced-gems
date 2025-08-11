@@ -408,9 +408,9 @@ const Index = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section id="why-choose-us" className="py-16 bg-background scroll-animate">
+      <section id="why-choose-us" className="py-10 bg-background scroll-animate">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               {t('whyChooseUs.title')}
             </h2>
@@ -473,9 +473,9 @@ const Index = () => {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-12 bg-muted/30 scroll-animate">
+      <section id="services" className="py-8 bg-muted/30 scroll-animate">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <h2 className={`text-3xl md:text-4xl font-bold mb-4 transition-all duration-1000 ${
               visibleSections.has('services') ? 'animate-in slide-in-from-bottom-4 opacity-100' : 'opacity-0 translate-y-8'
             }`}>
@@ -512,9 +512,9 @@ const Index = () => {
       </section>
 
       {/* Digital Services Section */}
-      <section id="digital" className="py-12 bg-muted/30">
+      <section id="digital" className="py-8 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('digitalServices.title')}</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               {t('digitalServices.subtitle')}
@@ -541,9 +541,9 @@ const Index = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="py-16 bg-background scroll-animate">
+      <section id="testimonials" className="py-10 bg-background scroll-animate">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <h2 className={`text-3xl md:text-4xl font-bold mb-4 transition-all duration-1000 ${
               visibleSections.has('testimonials') ? 'animate-in slide-in-from-bottom-4 opacity-100' : 'opacity-0 translate-y-8'
             }`}>
@@ -611,9 +611,9 @@ const Index = () => {
       </section>
 
       {/* Industries Section */}
-      <section id="industries" className="py-12 bg-muted/30">
+      <section id="industries" className="py-8 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Industries We Serve</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Specialized expertise across key global business sectors
@@ -640,10 +640,10 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-12 bg-muted/30">
+      <section id="contact" className="py-8 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('contact.title')}</h2>
                <p className="text-xl text-muted-foreground">
                  {t('contact.subtitle')}
@@ -995,7 +995,7 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-background border-t py-12">
+      <footer className="bg-background border-t py-8">
         <div className="container mx-auto px-4">
           <div className="text-center">
             <div className="text-2xl font-bold text-primary mb-4">NovalSquad</div>
