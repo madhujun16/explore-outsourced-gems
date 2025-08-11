@@ -12,6 +12,7 @@ const corsHeaders = {
 interface ContactRequest {
   name: string;
   email: string;
+  phone?: string;
   company_name?: string;
   industry?: string;
   message: string;
@@ -64,6 +65,7 @@ const handler = async (req: Request): Promise<Response> => {
         <ul>
           <li><strong>Name:</strong> ${contactData.name}</li>
           <li><strong>Email:</strong> ${contactData.email}</li>
+          ${contactData.phone ? `<li><strong>Phone:</strong> ${contactData.phone}</li>` : ''}
           ${contactData.company_name ? `<li><strong>Company:</strong> ${contactData.company_name}</li>` : ''}
           ${contactData.industry ? `<li><strong>Industry:</strong> ${contactData.industry}</li>` : ''}
           <li><strong>Message:</strong> ${contactData.message}</li>

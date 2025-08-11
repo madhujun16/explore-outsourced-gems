@@ -17,3 +17,10 @@ CREATE POLICY "Allow authenticated users to read contacts"
   FOR SELECT 
   TO authenticated
   USING (true);
+
+-- Add phone column to contacts table
+ALTER TABLE public.contacts 
+ADD COLUMN phone TEXT;
+
+-- Add comment for documentation
+COMMENT ON COLUMN public.contacts.phone IS 'Phone number from contact form submission';

@@ -50,6 +50,7 @@ const Index = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     company_name: "",
     industry: "",
     message: "",
@@ -113,6 +114,7 @@ const Index = () => {
       setFormData({ 
         name: "", 
         email: "", 
+        phone: "",
         company_name: "", 
         industry: "", 
         message: "", 
@@ -151,6 +153,7 @@ const Index = () => {
       setFormData({ 
         name: "", 
         email: "", 
+        phone: "",
         company_name: "", 
         industry: "", 
         message: "", 
@@ -727,6 +730,8 @@ const Index = () => {
                                <Input
                                  type="tel"
                                  placeholder={t('contact.form.placeholders.phone')}
+                                 value={formData.phone}
+                                 onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
                                 className="h-12 transition-all duration-200 focus:ring-2 focus:ring-primary/20"
                               />
                             </div>

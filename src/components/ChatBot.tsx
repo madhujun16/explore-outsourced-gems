@@ -20,6 +20,7 @@ interface ChatMessage {
 interface FormData {
   name: string;
   email: string;
+  phone: string;
   company_name: string;
   industry: string;
   message: string;
@@ -40,6 +41,7 @@ const ChatBot = () => {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
+    phone: '',
     company_name: '',
     industry: '',
     message: '',
@@ -63,6 +65,7 @@ const ChatBot = () => {
   const steps = [
     { field: 'name', question: "What's your name?", type: 'text' },
     { field: 'email', question: "What's your email address?", type: 'email' },
+    { field: 'phone', question: "What's your phone number?", type: 'text' },
     { field: 'company_name', question: "What's your company name? (Optional - type 'skip' to skip)", type: 'text' },
     { field: 'industry', question: "What industry are you in?", type: 'select' },
     { field: 'message', question: "Tell us about your project or how we can help you.", type: 'textarea' },
