@@ -964,7 +964,7 @@ const Index = () => {
                       <Globe className="h-6 w-6 text-primary mt-1" />
                       <div>
                         <p className="font-medium">Languages</p>
-                        <p className="text-muted-foreground">English, Frenchn and Japanese</p>
+                        <p className="text-muted-foreground">English, French and Japanese</p>
                       </div>
                     </div>
                     <div className="flex items-start space-x-4">
