@@ -174,7 +174,7 @@ const Index = () => {
     {
       icon: Calculator,
       title: "Accounting & Finance",
-      description: "Complete bookkeeping, financial reporting, accounts payable/receivable and account management solutions.",
+      description: "Complete book keeping, financial reporting, accounts payable/receivable and account management solutions.",
       color: "text-blue-600",
       bgColor: "bg-blue-50 group-hover:bg-blue-100"
     },
@@ -564,11 +564,11 @@ const Index = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold">Elena M.</h4>
-                    <p className="text-sm text-muted-foreground">COO, SaaS Company (Berlin)</p>
+                    <p className="text-sm text-muted-foreground">COO, SaaS Company (London)</p>
                   </div>
                 </div>
                 <p className="text-muted-foreground">
-                  "NovalSquad Outsourcing helped us reduce ticket backlog by 60% in the first month. Their multilingual support team is exceptional."
+                  "NovalSquad Outsourcing helped us reduce ticket backlog by 60% in the first month. Their support team is exceptional."
                 </p>
               </CardContent>
             </Card>
@@ -964,7 +964,7 @@ const Index = () => {
                       <Globe className="h-6 w-6 text-primary mt-1" />
                       <div>
                         <p className="font-medium">Languages</p>
-                        <p className="text-muted-foreground">English, French, German, Spanish, Italian</p>
+                        <p className="text-muted-foreground">English, Frenchn and Japanese</p>
                       </div>
                     </div>
                     <div className="flex items-start space-x-4">
