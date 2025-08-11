@@ -418,16 +418,16 @@ const Index = () => {
               {t('whyChooseUs.subtitle')}
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <Card className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group hover:scale-105">
-              <CardHeader className="text-center">
-                <div className="mx-auto mb-4 p-3 rounded-full w-16 h-16 flex items-center justify-center bg-green-50 group-hover:bg-green-100 transition-colors group-hover:scale-110 duration-300">
-                  <Clock className="h-8 w-8 text-green-600" />
+              <CardHeader className="text-center pb-3">
+                <div className="mx-auto mb-3 p-2 rounded-full w-12 h-12 flex items-center justify-center bg-green-50 group-hover:bg-green-100 transition-colors group-hover:scale-110 duration-300">
+                  <Clock className="h-6 w-6 text-green-600" />
                 </div>
-                <CardTitle className="text-xl">{t('whyChooseUs.items.onboarding.title')}</CardTitle>
+                <CardTitle className="text-lg">{t('whyChooseUs.items.onboarding.title')}</CardTitle>
               </CardHeader>
-              <CardContent>
-                <CardDescription className="text-center text-base">
+              <CardContent className="pt-0">
+                <CardDescription className="text-center text-sm">
                   {t('whyChooseUs.items.onboarding.description')}
                 </CardDescription>
               </CardContent>
@@ -436,14 +436,14 @@ const Index = () => {
 
             
             <Card className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group hover:scale-105">
-              <CardHeader className="text-center">
-                <div className="mx-auto mb-4 p-3 rounded-full w-16 h-16 flex items-center justify-center bg-purple-50 group-hover:bg-purple-100 transition-colors group-hover:scale-110 duration-300">
-                  <Shield className="h-8 w-8 text-purple-600" />
+              <CardHeader className="text-center pb-3">
+                <div className="mx-auto mb-3 p-2 rounded-full w-12 h-12 flex items-center justify-center bg-purple-50 group-hover:bg-purple-100 transition-colors group-hover:scale-110 duration-300">
+                  <Shield className="h-6 w-6 text-purple-600" />
                 </div>
-                <CardTitle className="text-xl">{t('whyChooseUs.items.operations.title')}</CardTitle>
+                <CardTitle className="text-lg">{t('whyChooseUs.items.operations.title')}</CardTitle>
               </CardHeader>
-              <CardContent>
-                <CardDescription className="text-center text-base">
+              <CardContent className="pt-0">
+                <CardDescription className="text-center text-sm">
                   {t('whyChooseUs.items.operations.description')}
                 </CardDescription>
               </CardContent>
@@ -454,14 +454,14 @@ const Index = () => {
             <Card className={`border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group hover:scale-105 ${
               visibleSections.has('why-choose-us') ? 'animate-in slide-in-from-bottom-4 duration-700 delay-400' : 'opacity-0 translate-y-8'
             }`}>
-              <CardHeader className="text-center">
-                <div className="mx-auto mb-4 p-3 rounded-full w-16 h-16 flex items-center justify-center bg-teal-50 group-hover:bg-teal-100 transition-colors group-hover:scale-110 duration-300">
-                  <Calculator className="h-8 w-8 text-teal-600" />
+              <CardHeader className="text-center pb-3">
+                <div className="mx-auto mb-3 p-2 rounded-full w-12 h-12 flex items-center justify-center bg-teal-50 group-hover:bg-teal-100 transition-colors group-hover:scale-110 duration-300">
+                  <Calculator className="h-6 w-6 text-teal-600" />
                 </div>
-                <CardTitle className="text-xl">{t('whyChooseUs.items.pricing.title')}</CardTitle>
+                <CardTitle className="text-lg">{t('whyChooseUs.items.pricing.title')}</CardTitle>
               </CardHeader>
-              <CardContent>
-                <CardDescription className="text-center text-base">
+              <CardContent className="pt-0">
+                <CardDescription className="text-center text-sm">
                   {t('whyChooseUs.items.pricing.description')}
                 </CardDescription>
               </CardContent>
