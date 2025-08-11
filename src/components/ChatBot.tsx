@@ -29,6 +29,8 @@ interface FormData {
 
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showNotification, setShowNotification] = useState(false);
+  const [notificationCount, setNotificationCount] = useState(1);
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: '1',
@@ -51,11 +53,11 @@ const ChatBot = () => {
   const { toast } = useToast();
   const isMobile = useIsMobile();
 
-  // Auto-open chat after 2 seconds (desktop only)
+  // Show notification after 2 seconds (desktop only)
   useEffect(() => {
     if (!isMobile) {
       const timer = setTimeout(() => {
-        setIsOpen(true);
+        setShowNotification(true);
       }, 2000);
 
       return () => clearTimeout(timer);
@@ -189,13 +191,26 @@ const ChatBot = () => {
     <>
       {/* Chat Button */}
       {!isOpen && (
-        <Button
-          onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 h-16 w-16 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 z-50 bg-primary hover:bg-primary/90 text-primary-foreground border-2 border-primary/20"
-          size="icon"
-        >
-          <MessageCircle className="h-7 w-7" />
-        </Button>
+        <div className="fixed bottom-6 right-6 z-50">
+          <Button
+            onClick={() => {
+              setIsOpen(true);
+              setShowNotification(false);
+              setNotificationCount(0);
+            }}
+            className={`h-16 w-16 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 bg-primary hover:bg-primary/90 text-primary-foreground border-2 border-primary/20 relative ${
+              showNotification ? 'animate-bounce' : ''
+            }`}
+            size="icon"
+          >
+            <MessageCircle className="h-7 w-7" />
+            {showNotification && notificationCount > 0 && (
+              <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center animate-pulse">
+                {notificationCount}
+              </div>
+            )}
+          </Button>
+        </div>
       )}
 
       {/* Chat Window */}
