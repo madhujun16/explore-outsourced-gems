@@ -32,11 +32,12 @@ const handler = async (req: Request): Promise<Response> => {
     );
 
     const contactData: ContactRequest = await req.json();
+    console.log("Received contactData:", contactData);
 
     // Insert contact data into database
     const { data, error } = await supabaseClient
       .from("contacts")
-      .insert([contactData])
+      .insert([{ ...contactData, phone: (contactData as any)?.phone ?? (contactData as any)?.phone_number ?? null }])
       .select()
       .single();
 
