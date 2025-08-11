@@ -181,21 +181,21 @@ const Index = () => {
     {
       icon: Settings,
       title: "Back Office",
-      description: "Efficient HR, admin, payroll, and compliance.",
+      description: "Efficient HR, admin, payroll, compliance, document management, and process optimization for streamlined operations.",
       color: "text-green-600",
       bgColor: "bg-green-50 group-hover:bg-green-100"
     },
     {
       icon: Headphones,
       title: "Support",
-      description: "24/7 multilingual customer support worldwide.",
+      description: "24/7 multilingual customer support worldwide with technical assistance, order processing, and customer relationship management.",
       color: "text-purple-600",
       bgColor: "bg-purple-50 group-hover:bg-purple-100"
     },
     {
       icon: Users,
       title: "Virtual Staff",
-      description: "On-demand trained remote teams.",
+      description: "On-demand trained remote teams with specialized skills, project management, and dedicated account support for your business needs.",
       color: "text-orange-600",
       bgColor: "bg-orange-50 group-hover:bg-orange-100"
     },
@@ -449,19 +449,7 @@ const Index = () => {
               </CardContent>
             </Card>
             
-            <Card className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group hover:scale-105">
-              <CardHeader className="text-center">
-                <div className="mx-auto mb-4 p-3 rounded-full w-16 h-16 flex items-center justify-center bg-orange-50 group-hover:bg-orange-100 transition-colors group-hover:scale-110 duration-300">
-                  <Lock className="h-8 w-8 text-orange-600" />
-                </div>
-                <CardTitle className="text-xl">{t('whyChooseUs.items.gdpr.title')}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-center text-base">
-                  {t('whyChooseUs.items.gdpr.description')}
-                </CardDescription>
-              </CardContent>
-            </Card>
+
             
             <Card className={`border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group hover:scale-105 ${
               visibleSections.has('why-choose-us') ? 'animate-in slide-in-from-bottom-4 duration-700 delay-400' : 'opacity-0 translate-y-8'
@@ -479,21 +467,7 @@ const Index = () => {
               </CardContent>
             </Card>
             
-            <Card className={`border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group hover:scale-105 ${
-              visibleSections.has('why-choose-us') ? 'animate-in slide-in-from-bottom-4 duration-700 delay-500' : 'opacity-0 translate-y-8'
-            }`}>
-              <CardHeader className="text-center">
-                <div className="mx-auto mb-4 p-3 rounded-full w-16 h-16 flex items-center justify-center bg-indigo-50 group-hover:bg-indigo-100 transition-colors group-hover:scale-110 duration-300">
-                  <Users className="h-8 w-8 text-indigo-600" />
-                </div>
-                <CardTitle className="text-xl">{t('whyChooseUs.items.talent.title')}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-center text-base">
-                  {t('whyChooseUs.items.talent.description')}
-                </CardDescription>
-              </CardContent>
-            </Card>
+
           </div>
         </div>
       </section>
@@ -523,29 +497,13 @@ const Index = () => {
                     <service.icon className={`h-8 w-8 ${service.color}`} />
                   </div>
                   <CardTitle className="text-xl">
-                    {service.title === "Virtual Staff" ? (
-                      <Link to="/virtual-assistants" className="hover:text-primary transition-colors">
-                        {service.title}
-                      </Link>
-                    ) : (
-                      service.title
-                    )}
+                    {service.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-center text-base">
                     {service.description}
                   </CardDescription>
-                  {service.title === "Virtual Staff" && (
-                    <div className="mt-4 text-center">
-                      <Link to="/virtual-assistants">
-                        <Button variant="outline" size="sm" className="w-full">
-                          Learn More
-                          <ArrowRight className="ml-2 h-4 w-4" />
-                        </Button>
-                      </Link>
-                    </div>
-                  )}
                 </CardContent>
               </Card>
             ))}
