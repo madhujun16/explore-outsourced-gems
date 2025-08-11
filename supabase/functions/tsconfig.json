@@ -14,6 +14,6 @@
     "allowJs": true,
     "types": []
   },
-  "include": ["functions/**/*"],
+  "include": ["**/*"],
   "exclude": ["node_modules"]
-} 
+}

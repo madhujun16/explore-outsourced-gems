@@ -1,3 +1,4 @@
+// @ts-nocheck -- Deno environment, not Node.js
 // Deno imports for Supabase Edge Functions
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
@@ -84,15 +85,16 @@ const handler = async (req: Request): Promise<Response> => {
         ...corsHeaders,
       },
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error in send-contact-email function:", error);
-    return new Response(
-      JSON.stringify({ error: error.message }),
-      {
-        status: 500,
-        headers: { "Content-Type": "application/json", ...corsHeaders },
-      }
-    );
+          const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+      return new Response(
+        JSON.stringify({ error: errorMessage }),
+        {
+          status: 500,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
   }
 };
 
