@@ -24,6 +24,7 @@ export type Database = {
           industry: string | null
           message: string
           name: string
+          phone: string | null
           updated_at: string
         }
         Insert: {
@@ -35,6 +36,7 @@ export type Database = {
           industry?: string | null
           message: string
           name: string
+          phone?: string | null
           updated_at?: string
         }
         Update: {
@@ -46,6 +48,7 @@ export type Database = {
           industry?: string | null
           message?: string
           name?: string
+          phone?: string | null
           updated_at?: string
         }
         Relationships: []
