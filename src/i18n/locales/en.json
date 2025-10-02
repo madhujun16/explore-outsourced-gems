@@ -6,18 +6,14 @@
     "contact": "Contact"
   },
   "hero": {
-    "title": "Reliable European Outsourcing for Back Office, Support & Digital Teams",
-    "subtitle": "GDPR-compliant. Cost-effective. Ready in 5 days.",
-    "cta": "Get Started",
-    "trustSignals": {
-      "gdpr": "GDPR Compliant",
-      "support": "24/7 Support",
-      "multilingual": "Multilingual"
-    }
+    "title": "Your Growth Partner in Outsourcing & Digital Solutions — The squad behind your squad.",
+    "subtitle": "GDPR-compliant. Cost-effective. Onboard in 5 days.",
+    "cta": "Get Started"
+
   },
   "services": {
     "title": "Our Services",
-    "subtitle": "Comprehensive outsourcing solutions tailored to your business needs",
+    "subtitle": "Everything You Need. All in One Squad.",
     "items": {
       "accounting": {
         "title": "Accounting & Finance",
@@ -73,7 +69,7 @@
   },
   "whyChooseUs": {
     "title": "Why Choose NovalSquad Outsourcing",
-    "subtitle": "European expertise with global reach - your competitive advantage",
+    "subtitle": "Outsource smarter with a squad that's available 24/7, GDPR-compliant, and built to scale your business without overheads.",
     "items": {
       "onboarding": {
         "title": "Onboard in 3-5 Days",
@@ -98,17 +94,25 @@
     }
   },
   "testimonials": {
-    "title": "Trusted by European Businesses",
-    "subtitle": "See what our clients say about working with NovalSquad Outsourcing",
+    "title": "Trusted by Businesses",
+    "subtitle": "See what our clients say about working with NovalSquad",
     "items": [
       {
-        "name": "Pierre L.",
-        "role": "CEO, E-commerce (Paris)",
-        "quote": "The GDPR compliance and European data handling gave us peace of mind. Cost savings of 40% compared to local options."
+        "name": "Suryanaryana N",
+        "role": "COO, SaaS Company (Bangalore)",
+        "initials": "EM",
+        "quote": "NovalSquad Outsourcing helped us reduce ticket backlog by 60% in the first month. Their support team is exceptional."
+      },
+      {
+        "name": "Rajagopala A",
+        "role": "CEO, E-commerce (Lucknow)",
+        "initials": "PL",
+        "quote": "They helped in reducing cost savings of 40% and improving the efficency of the operations."
       },
       {
         "name": "Maria S.",
-        "role": "Operations Manager (Madrid)",
+        "role": "Operations Manager (Hyderabad)",
+        "initials": "MS",
         "quote": "24/7 support with no timezone issues. Our customer satisfaction scores improved by 35% within weeks."
       }
     ]
@@ -118,7 +122,7 @@
     "subtitle": "Specialized expertise across key global business sectors"
   },
   "contact": {
-    "title": "Ready to Scale Your European Business?",
+    "title": "Ready to Scale Your Business?",
     "subtitle": "Get a free consultation and discover how NovalSquad Outsourcing can help you reduce costs while maintaining quality.",
     "form": {
       "title": "Get Your Free Consultation",

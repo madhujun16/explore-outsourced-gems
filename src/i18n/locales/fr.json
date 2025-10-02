@@ -6,18 +6,13 @@
     "contact": "Contact"
   },
   "hero": {
-    "title": "Externalisation Européenne Fiable pour les Équipes Back Office, Support & Digital",
+    "title": "Votre Partenaire de Croissance en Externalisation et Solutions Numériques — l'équipe derrière votre équipe.",
     "subtitle": "Conforme RGPD. Rentable. Prêt en 5 jours.",
-    "cta": "Commencer",
-    "trustSignals": {
-      "gdpr": "Conforme RGPD",
-      "support": "Support 24/7",
-      "multilingual": "Multilingue"
-    }
+    "cta": "Commencer"
   },
   "services": {
     "title": "Nos Services",
-    "subtitle": "Solutions d'externalisation complètes adaptées aux besoins de votre entreprise",
+    "subtitle": "Tout ce dont vous avez besoin. Tout dans une équipe.",
     "items": {
       "accounting": {
         "title": "Comptabilité & Finance",
@@ -73,7 +68,7 @@
   },
   "whyChooseUs": {
     "title": "Pourquoi Choisir NovalSquad Outsourcing",
-    "subtitle": "Expertise européenne avec portée mondiale - votre avantage concurrentiel",
+    "subtitle": "Externalisez plus intelligemment avec une équipe disponible 24/7, conforme RGPD et conçue pour faire évoluer votre entreprise sans frais généraux.",
     "items": {
       "onboarding": {
         "title": "Intégration en 3-5 Jours",
@@ -98,17 +93,25 @@
     }
   },
   "testimonials": {
-    "title": "Approuvé par les Entreprises Européennes",
-    "subtitle": "Découvrez ce que nos clients disent de travailler avec NovalSquad Outsourcing",
+    "title": "Approuvé par les Entreprises",
+    "subtitle": "Découvrez ce que nos clients disent de travailler avec NovalSquad",
     "items": [
       {
-        "name": "Pierre L.",
-        "role": "PDG, E-commerce (Paris)",
-        "quote": "La conformité RGPD et la gestion des données européennes nous ont donné l'esprit tranquille. Économies de 40% par rapport aux options locales."
+        "name": "Suryanaryana N",
+        "role": "COO, Entreprise SaaS (Bangalore)",
+        "initials": "EM",
+        "quote": "NovalSquad Outsourcing nous a aidés à réduire l'arriéré de tickets de 60% le premier mois. Leur équipe de support est exceptionnelle."
+      },
+      {
+        "name": "Rajagopala A",
+        "role": "PDG, E-commerce (Lucknow)",
+        "initials": "PL",
+        "quote": "Ils ont aidé à réaliser des économies de coûts de 40% et à améliorer l'efficacité des opérations."
       },
       {
         "name": "Maria S.",
-        "role": "Responsable Opérations (Madrid)",
+        "role": "Responsable Opérations (Hyderabad)",
+        "initials": "MS",
         "quote": "Support 24/7 sans problèmes de fuseau horaire. Nos scores de satisfaction client ont augmenté de 35% en quelques semaines."
       }
     ]

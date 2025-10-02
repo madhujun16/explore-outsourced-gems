@@ -6,18 +6,13 @@
     "contact": "Contacto"
   },
   "hero": {
-    "title": "Externalización Europea Confiable para Equipos de Back Office, Soporte y Digital",
+    "title": "Su Socio de Crecimiento en Externalización y Soluciones Digitales — el equipo detrás de su equipo.",
     "subtitle": "Conforme RGPD. Rentable. Listo en 5 días.",
-    "cta": "Comenzar",
-    "trustSignals": {
-      "gdpr": "Conforme RGPD",
-      "support": "Soporte 24/7",
-      "multilingual": "Multilingüe"
-    }
+    "cta": "Comenzar"
   },
   "services": {
     "title": "Nuestros Servicios",
-    "subtitle": "Soluciones integrales de externalización adaptadas a las necesidades de su empresa",
+    "subtitle": "Todo lo que necesitas. Todo en un equipo.",
     "items": {
       "accounting": {
         "title": "Contabilidad y Finanzas",
@@ -73,7 +68,7 @@
   },
   "whyChooseUs": {
     "title": "Por Qué Elegir NovalSquad Outsourcing",
-    "subtitle": "Experiencia europea con alcance global - su ventaja competitiva",
+    "subtitle": "Externaliza de manera más inteligente con un equipo disponible 24/7, conforme al RGPD y diseñado para escalar tu negocio sin gastos generales.",
     "items": {
       "onboarding": {
         "title": "Integración en 3-5 Días",
@@ -98,17 +93,25 @@
     }
   },
   "testimonials": {
-    "title": "Confiado por Empresas Europeas",
-    "subtitle": "Vea lo que nuestros clientes dicen sobre trabajar con NovalSquad Outsourcing",
+    "title": "Confiado por Empresas",
+    "subtitle": "Vea lo que nuestros clientes dicen sobre trabajar con NovalSquad",
     "items": [
       {
-        "name": "Pierre L.",
-        "role": "CEO, E-commerce (París)",
-        "quote": "La conformidad RGPD y el manejo de datos europeos nos dieron tranquilidad. Ahorros del 40% comparado con opciones locales."
+        "name": "Suryanaryana N",
+        "role": "COO, Empresa SaaS (Bangalore)",
+        "initials": "EM",
+        "quote": "NovalSquad Outsourcing nos ayudó a reducir el backlog de tickets en un 60% en el primer mes. Su equipo de soporte es excepcional."
+      },
+      {
+        "name": "Rajagopala A",
+        "role": "CEO, E-commerce (Lucknow)",
+        "initials": "PL",
+        "quote": "Ayudaron a lograr ahorros de costos del 40% y mejorar la eficiencia de las operaciones."
       },
       {
         "name": "Maria S.",
-        "role": "Gerente de Operaciones (Madrid)",
+        "role": "Gerente de Operaciones (Hyderabad)",
+        "initials": "MS",
         "quote": "Soporte 24/7 sin problemas de zona horaria. Nuestras puntuaciones de satisfacción del cliente mejoraron un 35% en semanas."
       }
     ]

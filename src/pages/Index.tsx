@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import ChatBot from "@/components/ChatBot";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
-import logoImage from "@/assets/novalsquad-logo.png";
+import NovalSquadLogo from "@/components/NovalSquadLogo";
 import { 
   Settings, 
   Headphones, 
@@ -339,12 +339,7 @@ const Index = () => {
       <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center hover:scale-105 transition-transform duration-200">
-                <span className="text-white font-bold text-lg">N</span>
-              </div>
-              <span className="text-2xl font-bold text-primary hover:text-primary/80 transition-colors duration-200">NovalSquad</span>
-            </div>
+            <NovalSquadLogo variant="dark" size="sm" />
             <div className="hidden md:flex items-center space-x-8">
               <a href="#services" className="text-muted-foreground hover:text-primary transition-colors duration-200">{t('navigation.services')}</a>
               <a href="#digital" className="text-muted-foreground hover:text-primary transition-colors duration-200">Digital</a>
@@ -367,37 +362,38 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary/90 via-primary to-primary/80 text-primary-foreground">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1605810230434-7631ac76ec81?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center bg-no-repeat animate-pulse" />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary/90 to-primary/95" />
+      <section className="relative overflow-hidden bg-gradient-to-br from-blue-600/60 via-blue-500/50 to-blue-700/60 text-white">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1605810230434-7631ac76ec81?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center bg-no-repeat" />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-700/70 via-blue-600/60 to-blue-800/70" />
         <div className="absolute inset-0 bg-grid-white/10" />
         <div className="container mx-auto px-4 py-20 md:py-32 relative">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-in slide-in-from-bottom-4 duration-1000">
-              <span className="block">{t('hero.title').split(' for ')[0]}</span>
-              <span className="block text-accent">{t('hero.title').split(' for ')[1]}</span>
+            <h1 className="mb-6 animate-in slide-in-from-bottom-4 duration-1000">
+              <span className="block text-4xl md:text-6xl font-bold text-white">
+                {t('hero.title').split(' — ')[0]}
+              </span>
+              <span className="block text-2xl md:text-3xl font-medium text-white/90 mt-2">
+                {t('hero.title').split(' — ')[1]}
+              </span>
             </h1>
-            <p className="text-xl md:text-2xl mb-6 text-primary-foreground/80 animate-in slide-in-from-bottom-4 duration-1000 delay-200">
-              {t('hero.subtitle')}
-            </p>
-            <div className="flex flex-wrap justify-center items-center gap-6 mb-8 text-primary-foreground/70 animate-in slide-in-from-bottom-4 duration-1000 delay-300">
+            <div className="flex flex-wrap justify-center items-center gap-6 mb-8 text-white/90 animate-in slide-in-from-bottom-4 duration-1000 delay-200">
               <div className="flex items-center gap-2">
-                <CheckCircle className="h-5 w-5 text-green-400" />
-                <span>{t('hero.trustSignals.gdpr')}</span>
+                <Shield className="h-5 w-5 text-green-400" />
+                <span className="text-lg md:text-xl font-medium">GDPR-compliant</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="h-5 w-5 text-green-400" />
-                <span>{t('hero.trustSignals.support')}</span>
+                <Calculator className="h-5 w-5 text-blue-400" />
+                <span className="text-lg md:text-xl font-medium">Cost-effective</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="h-5 w-5 text-green-400" />
-                <span>{t('hero.trustSignals.multilingual')}</span>
+                <Clock className="h-5 w-5 text-purple-400" />
+                <span className="text-lg md:text-xl font-medium">Onboard in 5 days</span>
               </div>
             </div>
             <Button 
               size="lg" 
               variant="secondary"
-              className="animate-in slide-in-from-bottom-4 duration-1000 delay-400 hover:scale-105 transition-transform duration-300 hover:shadow-xl"
+              className="animate-in slide-in-from-bottom-4 duration-1000 delay-400 hover:scale-105 transition-transform hover:shadow-xl"
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
               Get a Free Consultation
@@ -547,65 +543,33 @@ const Index = () => {
             <h2 className={`text-3xl md:text-4xl font-bold mb-4 transition-all duration-1000 ${
               visibleSections.has('testimonials') ? 'animate-in slide-in-from-bottom-4 opacity-100' : 'opacity-0 translate-y-8'
             }`}>
-              Trusted by European Businesses
+              {t('testimonials.title')}
             </h2>
             <p className={`text-xl text-muted-foreground max-w-2xl mx-auto transition-all duration-1000 delay-200 ${
               visibleSections.has('testimonials') ? 'animate-in slide-in-from-bottom-4 opacity-100' : 'opacity-0 translate-y-8'
             }`}>
-              See what our clients say about working with NovalSquad Outsourcing
+              {t('testimonials.subtitle')}
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg animate-in slide-in-from-bottom-4 duration-700 delay-100 hover:scale-105">
-              <CardContent className="p-6">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-4">
-                    EM
+            {(t('testimonials.items', { returnObjects: true }) as any[]).map((testimonial: any, index: number) => (
+              <Card key={index} className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg animate-in slide-in-from-bottom-4 hover:scale-105" style={{ animationDelay: `${index * 100}ms` }}>
+                <CardContent className="p-6">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-4">
+                      {testimonial.initials}
+                    </div>
+                    <div>
+                      <h4 className="font-semibold">{testimonial.name}</h4>
+                      <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-semibold">Elena M.</h4>
-                    <p className="text-sm text-muted-foreground">COO, SaaS Company (London)</p>
-                  </div>
-                </div>
-                <p className="text-muted-foreground">
-                  "NovalSquad Outsourcing helped us reduce ticket backlog by 60% in the first month. Their support team is exceptional."
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg">
-              <CardContent className="p-6">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-4">
-                    PL
-                  </div>
-                  <div>
-                    <h4 className="font-semibold">Pierre L.</h4>
-                    <p className="text-sm text-muted-foreground">CEO, E-commerce (Paris)</p>
-                  </div>
-                </div>
-                <p className="text-muted-foreground">
-                  "The GDPR compliance and European data handling gave us peace of mind. Cost savings of 40% compared to local options."
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg">
-              <CardContent className="p-6">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-4">
-                    MS
-                  </div>
-                  <div>
-                    <h4 className="font-semibold">Maria S.</h4>
-                    <p className="text-sm text-muted-foreground">Operations Manager (Madrid)</p>
-                  </div>
-                </div>
-                <p className="text-muted-foreground">
-                  "24/7 support with no timezone issues. Our customer satisfaction scores improved by 35% within weeks."
-                </p>
-              </CardContent>
-            </Card>
+                  <p className="text-muted-foreground">
+                    "{testimonial.quote}"
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
@@ -951,7 +915,7 @@ const Index = () => {
               {/* Contact Info */}
               <div className="space-y-8">
                 <div>
-                  <h3 className="text-2xl font-semibold mb-6">European Support Team</h3>
+                  <h3 className="text-2xl font-semibold mb-6"> Support Team</h3>
                   <div className="space-y-4">
                     <div className="flex items-start space-x-4">
                       <Mail className="h-6 w-6 text-primary mt-1" />
@@ -998,7 +962,9 @@ const Index = () => {
       <footer className="bg-background border-t py-8">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <div className="text-2xl font-bold text-primary mb-4">NovalSquad</div>
+            <div className="flex justify-center mb-4">
+              <NovalSquadLogo variant="dark" size="lg" />
+            </div>
             <p className="text-muted-foreground mb-6">
               Your trusted global outsourcing partner for scalable business growth.
             </p>
