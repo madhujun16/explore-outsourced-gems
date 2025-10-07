@@ -656,7 +656,7 @@ const Index = () => {
       </section>
 
       {/* Digital Services Section */}
-      <section id="digital" className="py-16 bg-white border-t-2 border-gray-200 relative overflow-hidden">
+      <section id="digital" className="py-16 bg-gradient-to-br from-violet-50 to-purple-100 border-t-2 border-gray-200 relative overflow-hidden">
         {/* Ripple Animation Background */}
         <div className="absolute inset-0 opacity-10">
           <Lottie
@@ -698,7 +698,7 @@ const Index = () => {
       </section>
 
       {/* Industries Section */}
-      <section id="industries" className="py-20 bg-gray-50 border-t-2 border-gray-200 relative overflow-hidden">
+      <section id="industries" className="py-20 bg-gradient-to-br from-violet-50 to-purple-100 border-t-2 border-gray-200 relative overflow-hidden">
         {/* Ripple Animation Background */}
         <div className="absolute inset-0 opacity-15">
           <Lottie
