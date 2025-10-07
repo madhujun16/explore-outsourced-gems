@@ -204,11 +204,11 @@ const Index = () => {
       // Clear any existing cards first
       setVisibleDigitalCards(new Set());
       
-      // Show cards one by one with 750ms intervals
+      // Show cards one by one with 300ms intervals
       digitalServices.forEach((_, index) => {
         const timeout = setTimeout(() => {
           setVisibleDigitalCards(prev => new Set([...prev, index]));
-        }, (index + 1) * 750);
+        }, (index + 1) * 300);
         timeouts.push(timeout);
       });
 
@@ -671,7 +671,7 @@ const Index = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {digitalServices.map((service, index) => (
-              <Card key={index} className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group hover:scale-105 animate-in slide-in-from-bottom-4" style={{ animationDelay: `${index * 150}ms` }}>
+              <Card key={index} className={`border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group hover:scale-105 ${visibleDigitalCards.has(index) ? 'animate-in slide-in-from-bottom-4' : 'opacity-0 translate-y-4'}`} style={{ animationDelay: `${index * 150}ms` }}>
                 <CardHeader className="text-center">
                   <div className={`mx-auto mb-4 p-3 rounded-full w-16 h-16 flex items-center justify-center transition-colors ${service.bgColor}`}>
                     <service.icon className={`h-8 w-8 ${service.color}`} />
