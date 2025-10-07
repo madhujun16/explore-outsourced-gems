@@ -5,8 +5,7 @@ import {
   MessageCircle, 
   Mail, 
   X,
-  ArrowUp,
-  Bot
+  ArrowUp
 } from 'lucide-react';
 import { trackUserInteraction } from '@/hooks/usePerformanceMonitoring';
 
@@ -71,16 +70,6 @@ const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({ onContactCl
       {/* Expanded Menu */}
       {isExpanded && (
         <div className="flex flex-col space-y-3 animate-in slide-in-from-bottom-4 items-end">
-          <Button
-            onClick={handleChatClick}
-            variant="outline"
-            size="sm"
-            className="h-10 px-4 bg-white shadow-lg hover:bg-purple-500 hover:text-white transition-all duration-200"
-          >
-            <Bot className="h-4 w-4 mr-2" />
-            Chat with us
-          </Button>
-          
           <Button
             onClick={handleContactClick}
             variant="outline"

@@ -224,7 +224,7 @@ const ChatBot = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <Card className={`fixed bottom-6 right-6 shadow-2xl z-50 flex flex-col border-2 border-primary/20 ${
+        <Card className={`fixed bottom-6 left-6 shadow-2xl z-50 flex flex-col border-2 border-primary/20 ${
           isMobile ? 'w-[calc(100vw-3rem)] h-[calc(100vh-8rem)] max-w-sm' : 'w-96 h-[500px]'
         }`}>
           <CardHeader className="bg-primary text-primary-foreground rounded-t-lg p-4">

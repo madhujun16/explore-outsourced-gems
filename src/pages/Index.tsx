@@ -15,8 +15,8 @@ import LottieBackground from "@/components/LottieBackground";
 import LottieSideImage from "@/components/LottieSideImage";
 import SkipNavigation from "@/components/SkipNavigation";
 import SEOHead from "@/components/SEOHead";
+import ChatBot from "@/components/ChatBot";
 import EnhancedNavigation from "@/components/EnhancedNavigation";
-import FloatingActionButton from "@/components/FloatingActionButton";
 import ScrollProgress from "@/components/ScrollProgress";
 import { useFormValidation } from "@/hooks/useFormValidation";
 import { usePerformanceMonitoring, trackUserInteraction, trackFormSubmission } from "@/hooks/usePerformanceMonitoring";
@@ -1208,13 +1208,8 @@ const Index = () => {
         </div>
       </footer>
       
-      {/* Floating Action Button */}
-      <FloatingActionButton 
-        onContactClick={() => {
-          trackUserInteraction('fab_contact_click', 'FAB', 'Contact Form');
-          document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-        }}
-      />
+      {/* ChatBot */}
+      <ChatBot />
       </div>
     </>
   );
