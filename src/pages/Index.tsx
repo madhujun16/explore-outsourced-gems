@@ -72,6 +72,7 @@ const Index = () => {
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
   const [visibleDigitalCards, setVisibleDigitalCards] = useState<Set<number>>(new Set());
   const [visibleWhyChooseCards, setVisibleWhyChooseCards] = useState<Set<number>>(new Set());
+  const [visibleIndustryCards, setVisibleIndustryCards] = useState<Set<number>>(new Set());
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
   const { 
@@ -257,6 +258,28 @@ const Index = () => {
       };
     }
   }, [visibleSections]);
+
+  // Sequential animation for industry cards
+  useEffect(() => {
+    if (visibleSections.has('industries')) {
+      const timeouts: NodeJS.Timeout[] = [];
+      
+      // Clear any existing cards first
+      setVisibleIndustryCards(new Set());
+      
+      // Show cards one by one with 200ms intervals (faster than other sections)
+      industries.forEach((_, index) => {
+        const timeout = setTimeout(() => {
+          setVisibleIndustryCards(prev => new Set([...prev, index]));
+        }, (index + 1) * 200);
+        timeouts.push(timeout);
+      });
+
+      return () => {
+        timeouts.forEach(timeout => clearTimeout(timeout));
+      };
+    }
+  }, [visibleSections, industries]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -675,11 +698,8 @@ const Index = () => {
               {industries.map((industry, index) => (
                 <div 
                   key={index} 
-                  className="group cursor-pointer transition-all duration-700 animate-in slide-in-from-bottom-2 fade-in"
-                  style={{ 
-                    animationDelay: `${index * 100}ms`,
-                    animationDuration: '0.6s'
-                  }}
+                  className={`group cursor-pointer transition-all duration-700 ${visibleIndustryCards.has(index) ? 'animate-in slide-in-from-bottom-4' : 'opacity-0 translate-y-4'}`}
+                  style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div className="text-center">
                     {/* Circular Industry Card */}
