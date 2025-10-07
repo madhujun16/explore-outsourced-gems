@@ -5,7 +5,8 @@ import {
   MessageCircle, 
   Mail, 
   X,
-  ArrowUp
+  ArrowUp,
+  Bot
 } from 'lucide-react';
 import { trackUserInteraction } from '@/hooks/usePerformanceMonitoring';
 
@@ -43,6 +44,13 @@ const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({ onContactCl
     setIsExpanded(false);
   };
 
+  const handleChatClick = () => {
+    trackUserInteraction('chat_click', 'FAB', 'Chat');
+    // For now, just scroll to contact form - you can integrate a chat widget later
+    onContactClick();
+    setIsExpanded(false);
+  };
+
   return (
     <div className="fixed bottom-6 left-6 z-40 flex flex-col items-start space-y-3">
       {/* Scroll to Top Button */}
@@ -63,6 +71,16 @@ const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({ onContactCl
       {/* Expanded Menu */}
       {isExpanded && (
         <div className="flex flex-col space-y-3 animate-in slide-in-from-bottom-4 items-start">
+          <Button
+            onClick={handleChatClick}
+            variant="outline"
+            size="sm"
+            className="h-10 px-4 bg-white shadow-lg hover:bg-purple-500 hover:text-white transition-all duration-200"
+          >
+            <Bot className="h-4 w-4 mr-2" />
+            Chat with us
+          </Button>
+          
           <Button
             onClick={handleContactClick}
             variant="outline"

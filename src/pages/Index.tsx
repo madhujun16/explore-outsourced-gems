@@ -9,7 +9,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/components/ui/use-toast";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
-import ChatBot from "@/components/ChatBot";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import NovalSquadLogo from "@/components/NovalSquadLogo";
 import LottieBackground from "@/components/LottieBackground";
@@ -1208,9 +1207,6 @@ const Index = () => {
           </div>
         </div>
       </footer>
-      
-      {/* ChatBot */}
-      <ChatBot />
       
       {/* Floating Action Button */}
       <FloatingActionButton 
