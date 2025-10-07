@@ -245,7 +245,7 @@ const Index = () => {
       setVisibleWhyChooseCards(new Set());
       
       // Show cards one by one with 300ms intervals
-      const whyChooseCards = [0, 1, 2]; // 3 cards
+      const whyChooseCards = [0, 1, 2, 3]; // 4 cards
       whyChooseCards.forEach((_, index) => {
         const timeout = setTimeout(() => {
           setVisibleWhyChooseCards(prev => new Set([...prev, index]));
@@ -556,6 +556,13 @@ const Index = () => {
                 description: "Clear costs with no hidden fees",
                 color: "text-teal-600",
                 bgColor: "bg-teal-50 group-hover:bg-teal-100"
+              },
+              {
+                icon: Settings,
+                title: "Custom SLAs & KPIs",
+                description: "We measure what matters to your business",
+                color: "text-orange-600",
+                bgColor: "bg-orange-50 group-hover:bg-orange-100"
               }
             ].map((item, index) => (
               <Card key={index} className={`border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group hover:scale-105 rounded-full aspect-[2/1] flex flex-col justify-center w-full max-w-[280px] mx-auto ${visibleWhyChooseCards.has(index) ? 'animate-in slide-in-from-bottom-4' : 'opacity-0 translate-y-4'}`} style={{ animationDelay: `${index * 150}ms` }}>
