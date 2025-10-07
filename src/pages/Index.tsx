@@ -485,13 +485,33 @@ const Index = () => {
                 </div>
               </div>
               <button 
-                className="bg-white border-2 border-purple-600 text-purple-600 px-6 md:px-8 py-3 md:py-4 font-semibold text-base md:text-lg rounded-full shadow-lg hover:bg-purple-600 hover:text-white transition-all duration-300 hover:scale-105 w-full sm:w-auto"
+                className="group relative bg-white border-2 border-purple-600 text-purple-600 px-6 md:px-8 py-3 md:py-4 font-semibold text-base md:text-lg rounded-full shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 w-full sm:w-auto overflow-hidden"
                 onClick={() => {
                   trackUserInteraction('cta_click', 'Hero', 'Get Free Consultation');
                   document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
                 }}
               >
-                Get Your Free Consultation →
+                {/* Animated background gradient */}
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-purple-500 to-purple-600 opacity-0 group-hover:opacity-100 scale-0 group-hover:scale-100 transition-all duration-500 rounded-full"></div>
+                
+                {/* Shimmer effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out rounded-full"></div>
+                
+                {/* Pulsing ring effect */}
+                <div className="absolute inset-0 border-2 border-purple-400 rounded-full opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 animate-pulse"></div>
+                
+                {/* Button content */}
+                <span className="relative z-10 group-hover:text-white transition-colors duration-300 flex items-center justify-center">
+                  <span className="group-hover:animate-bounce">Get Your Free Consultation</span>
+                  <span className="ml-2 group-hover:translate-x-1 transition-transform duration-300">→</span>
+                </span>
+                
+                {/* Floating particles effect */}
+                <div className="absolute inset-0 pointer-events-none">
+                  <div className="absolute top-2 left-4 w-1 h-1 bg-purple-400 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping transition-opacity duration-500"></div>
+                  <div className="absolute top-4 right-6 w-1 h-1 bg-purple-300 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping transition-opacity duration-700 delay-100"></div>
+                  <div className="absolute bottom-3 left-8 w-1 h-1 bg-purple-500 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping transition-opacity duration-600 delay-200"></div>
+                </div>
               </button>
             </div>
           </div>
@@ -982,19 +1002,24 @@ const Index = () => {
                         <Button 
                           type="submit" 
                           size="lg" 
-                          className="w-full h-14 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-lg transition-all duration-200 hover:scale-[1.02] shadow-lg hover:shadow-xl"
+                          className="group relative w-full h-14 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-lg transition-all duration-300 hover:scale-[1.02] shadow-lg hover:shadow-xl overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
                           disabled={isSubmitting}
                         >
+                          {/* Shimmer effect */}
+                          {!isSubmitting && (
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"></div>
+                          )}
+                          
                           {isSubmitting ? (
                             <div className="flex items-center space-x-2">
                               <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
                               <span>{t('contact.form.buttons.processing')}</span>
                             </div>
                           ) : (
-                            <>
-                              {t('contact.form.buttons.reviewSubmit')}
-                              <ArrowRight className="ml-2 h-5 w-5" />
-                            </>
+                            <span className="relative z-10 flex items-center justify-center">
+                              <span className="group-hover:animate-pulse">{t('contact.form.buttons.reviewSubmit')}</span>
+                              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                            </span>
                           )}
                         </Button>
                       </form>

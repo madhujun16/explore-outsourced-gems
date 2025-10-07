@@ -132,10 +132,16 @@ const EnhancedNavigation: React.FC<EnhancedNavigationProps> = ({ onContactClick 
 
             <Button 
               onClick={handleContactClick}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 py-2 h-9 transition-all duration-200 hover:scale-105 shadow-md hover:shadow-lg"
+              className="group relative bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 py-2 h-9 transition-all duration-300 hover:scale-105 shadow-md hover:shadow-xl overflow-hidden"
             >
-              {t('hero.cta')}
-              <ArrowRight className="ml-2 h-4 w-4" />
+              {/* Shimmer effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"></div>
+              
+              {/* Content */}
+              <span className="relative z-10 flex items-center">
+                <span className="group-hover:animate-pulse">{t('hero.cta')}</span>
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
+              </span>
             </Button>
           </div>
 
@@ -191,10 +197,16 @@ const EnhancedNavigation: React.FC<EnhancedNavigationProps> = ({ onContactClick 
                 
                 <Button 
                   onClick={handleContactClick}
-                  className="w-full mt-4 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
+                  className="group relative w-full mt-4 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold overflow-hidden transition-all duration-300 hover:scale-105"
                 >
-                  {t('hero.cta')}
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  {/* Shimmer effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"></div>
+                  
+                  {/* Content */}
+                  <span className="relative z-10 flex items-center justify-center">
+                    <span className="group-hover:animate-pulse">{t('hero.cta')}</span>
+                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
+                  </span>
                 </Button>
               </div>
             </div>
