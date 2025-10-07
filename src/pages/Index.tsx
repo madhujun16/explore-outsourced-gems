@@ -14,6 +14,10 @@ import LanguageSwitcher from "@/components/LanguageSwitcher";
 import NovalSquadLogo from "@/components/NovalSquadLogo";
 import LottieBackground from "@/components/LottieBackground";
 import LottieSideImage from "@/components/LottieSideImage";
+import SkipNavigation from "@/components/SkipNavigation";
+import SEOHead from "@/components/SEOHead";
+import { useFormValidation } from "@/hooks/useFormValidation";
+import { usePerformanceMonitoring, trackUserInteraction, trackFormSubmission } from "@/hooks/usePerformanceMonitoring";
 import Lottie from "lottie-react";
 import rippleAnimation from "@/assets/ripple-animation.json";
 import { 
@@ -70,7 +74,19 @@ const Index = () => {
   const [visibleIndustryCards, setVisibleIndustryCards] = useState<Set<number>>(new Set());
   const [visibleWhyChooseCards, setVisibleWhyChooseCards] = useState<Set<number>>(new Set());
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
+  const { 
+    validateForm, 
+    validateSingleField, 
+    markFieldTouched, 
+    getFieldError, 
+    hasFieldError,
+    clearErrors 
+  } = useFormValidation();
+  
+  // Initialize performance monitoring
+  usePerformanceMonitoring();
 
   const digitalServices = useMemo(() => [
     {
@@ -193,6 +209,9 @@ const Index = () => {
     const sections = document.querySelectorAll('section[id], .scroll-animate');
     sections.forEach((section) => observer.observe(section));
 
+    // Set loading to false after initial render
+    setIsLoading(false);
+
     return () => observer.disconnect();
   }, []);
 
@@ -269,10 +288,11 @@ const Index = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.consent) {
+    // Validate the entire form
+    if (!validateForm(formData)) {
       toast({
-        title: "Consent required",
-        description: "Please agree to our Privacy Policy and Terms & Conditions.",
+        title: "Please fix the errors",
+        description: "Please correct the highlighted fields and try again.",
         variant: "destructive",
       });
       return;
@@ -294,6 +314,16 @@ const Index = () => {
       }
       
       setIsSubmitted(true);
+      clearErrors();
+      
+      // Track successful form submission
+      trackFormSubmission('contact_form', true);
+      
+      // Success animation
+      toast({
+        title: "Message sent successfully!",
+        description: "We'll get back to you within 24 hours.",
+      });
       
       setFormData({ 
         name: "", 
@@ -407,8 +437,11 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-violet-50 to-purple-100">
-      {/* Navigation */}
+    <>
+      <SEOHead />
+      <SkipNavigation />
+      <div className="min-h-screen bg-gradient-to-br from-violet-50 to-purple-100">
+        {/* Navigation */}
       <nav className="border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
@@ -499,7 +532,7 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-violet-50 to-purple-100 py-6 md:py-8">
+      <section id="main-content" className="relative overflow-hidden bg-gradient-to-br from-violet-50 to-purple-100 py-6 md:py-8" tabIndex={-1}>
         <div className="container mx-auto px-4 relative">
           <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-8">
             {/* Left side - Lottie Animation */}
@@ -534,7 +567,10 @@ const Index = () => {
               </div>
               <button 
                 className="bg-white border-2 border-purple-600 text-purple-600 px-6 md:px-8 py-3 md:py-4 font-semibold text-base md:text-lg rounded-full shadow-lg hover:bg-purple-600 hover:text-white transition-all duration-300 hover:scale-105 w-full sm:w-auto"
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => {
+                  trackUserInteraction('cta_click', 'Hero', 'Get Free Consultation');
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                }}
               >
                 Get Your Free Consultation →
               </button>
@@ -858,10 +894,19 @@ const Index = () => {
                               <Input
                                 placeholder={t('contact.form.placeholders.fullName')}
                                 value={formData.name}
-                                onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                                onChange={(e) => {
+                                  setFormData(prev => ({ ...prev, name: e.target.value }));
+                                  validateSingleField('name', e.target.value);
+                                }}
+                                onBlur={() => markFieldTouched('name')}
                                 required
-                                className="h-12 transition-all duration-200 focus:ring-2 focus:ring-primary/20"
+                                className={`h-12 transition-all duration-200 focus:ring-2 focus:ring-primary/20 ${
+                                  hasFieldError('name') ? 'border-destructive focus:ring-destructive/20' : ''
+                                }`}
                               />
+                              {getFieldError('name') && (
+                                <p className="text-sm text-destructive">{getFieldError('name')}</p>
+                              )}
                             </div>
                             <div className="space-y-2">
                               <label className="text-sm font-medium text-muted-foreground">{t('contact.form.fields.email')} *</label>
@@ -869,10 +914,19 @@ const Index = () => {
                                 type="email"
                                 placeholder={t('contact.form.placeholders.email')}
                                 value={formData.email}
-                                onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                                onChange={(e) => {
+                                  setFormData(prev => ({ ...prev, email: e.target.value }));
+                                  validateSingleField('email', e.target.value);
+                                }}
+                                onBlur={() => markFieldTouched('email')}
                                 required
-                                className="h-12 transition-all duration-200 focus:ring-2 focus:ring-primary/20"
+                                className={`h-12 transition-all duration-200 focus:ring-2 focus:ring-primary/20 ${
+                                  hasFieldError('email') ? 'border-destructive focus:ring-destructive/20' : ''
+                                }`}
                               />
+                              {getFieldError('email') && (
+                                <p className="text-sm text-destructive">{getFieldError('email')}</p>
+                              )}
                             </div>
                           </div>
                           
@@ -946,10 +1000,19 @@ const Index = () => {
                             <Textarea
                               placeholder={t('contact.form.placeholders.projectDescription')}
                               value={formData.message}
-                              onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
-                              className="min-h-32 transition-all duration-200 focus:ring-2 focus:ring-primary/20 resize-none"
+                              onChange={(e) => {
+                                setFormData(prev => ({ ...prev, message: e.target.value }));
+                                validateSingleField('message', e.target.value);
+                              }}
+                              onBlur={() => markFieldTouched('message')}
+                              className={`min-h-32 transition-all duration-200 focus:ring-2 focus:ring-primary/20 resize-none ${
+                                hasFieldError('message') ? 'border-destructive focus:ring-destructive/20' : ''
+                              }`}
                               required
                             />
+                            {getFieldError('message') && (
+                              <p className="text-sm text-destructive">{getFieldError('message')}</p>
+                            )}
                             <p className="text-xs text-muted-foreground">
                               {t('contact.form.helpText.projectDescription')}
                             </p>
@@ -962,8 +1025,12 @@ const Index = () => {
                             <Checkbox
                               id="consent"
                               checked={formData.consent}
-                              onCheckedChange={(checked) => setFormData(prev => ({ ...prev, consent: !!checked }))}
-                              className="mt-1"
+                              onCheckedChange={(checked) => {
+                                setFormData(prev => ({ ...prev, consent: !!checked }));
+                                validateSingleField('consent', !!checked);
+                              }}
+                              onBlur={() => markFieldTouched('consent')}
+                              className={`mt-1 ${hasFieldError('consent') ? 'border-destructive' : ''}`}
                             />
                             <label htmlFor="consent" className="text-sm text-muted-foreground leading-5">
                               {(() => {
@@ -988,6 +1055,9 @@ const Index = () => {
                               <span className="text-red-500"> *</span>
                             </label>
                           </div>
+                          {getFieldError('consent') && (
+                            <p className="text-sm text-destructive ml-7">{getFieldError('consent')}</p>
+                          )}
                         </div>
                         
                         <Button 
@@ -1197,7 +1267,8 @@ const Index = () => {
       
       {/* ChatBot */}
       <ChatBot />
-    </div>
+      </div>
+    </>
   );
 };
 

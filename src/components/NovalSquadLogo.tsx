@@ -24,7 +24,7 @@ const NovalSquadLogo: React.FC<NovalSquadLogoProps> = ({
     <div className={`flex items-center ${className}`}>
       <img 
         src={logoImage} 
-        alt="NovalSquad Logo" 
+        alt="NovalSquad Outsourcing - Your Growth Partner in Outsourcing & Digital Solutions" 
         className={`${sizeClasses[size]} hover:scale-105 transition-transform duration-200 object-contain`}
       />
     </div>
