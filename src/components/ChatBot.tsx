@@ -191,7 +191,7 @@ const ChatBot = () => {
     <>
       {/* Chat Button */}
       {!isOpen && (
-        <div className="fixed bottom-6 right-6 z-50">
+        <div className="fixed bottom-6 right-6 z-50 animate-in fade-in slide-in-from-bottom-2 duration-300">
           <Button
             onClick={() => {
               setIsOpen(true);
@@ -224,7 +224,7 @@ const ChatBot = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <Card className={`fixed bottom-6 left-6 shadow-2xl z-50 flex flex-col border-2 border-primary/20 ${
+        <Card className={`fixed bottom-6 right-6 shadow-2xl z-50 flex flex-col border-2 border-primary/20 animate-in slide-in-from-bottom-4 fade-in duration-300 ${
           isMobile ? 'w-[calc(100vw-3rem)] h-[calc(100vh-8rem)] max-w-sm' : 'w-96 h-[500px]'
         }`}>
           <CardHeader className="bg-primary text-primary-foreground rounded-t-lg p-4">
@@ -234,7 +234,7 @@ const ChatBot = () => {
                 variant="ghost"
                 size="icon"
                 onClick={() => setIsOpen(false)}
-                className="h-8 w-8 text-primary-foreground hover:bg-primary-foreground/20"
+                className="h-8 w-8 text-primary-foreground hover:bg-primary-foreground/20 transition-all duration-200 hover:scale-110"
               >
                 <X className="h-4 w-4" />
               </Button>
@@ -242,12 +242,13 @@ const ChatBot = () => {
           </CardHeader>
           
           <CardContent className="flex-1 p-4 overflow-y-auto space-y-4">
-            {messages.map((message) => (
+            {messages.map((message, index) => (
               <div
                 key={message.id}
-                className={`flex items-start space-x-2 ${
+                className={`flex items-start space-x-2 animate-in fade-in slide-in-from-bottom-2 duration-300 ${
                   message.type === 'user' ? 'justify-end' : 'justify-start'
                 }`}
+                style={{ animationDelay: `${index * 100}ms` }}
               >
                 {message.type === 'bot' && (
                   <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
