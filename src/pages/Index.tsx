@@ -558,17 +558,17 @@ const Index = () => {
                 bgColor: "bg-teal-50 group-hover:bg-teal-100"
               }
             ].map((item, index) => (
-              <Card key={index} className={`border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group hover:scale-105 rounded-full aspect-[3/2] flex flex-col justify-center w-full ${visibleWhyChooseCards.has(index) ? 'animate-in slide-in-from-bottom-4' : 'opacity-0 translate-y-4'}`} style={{ animationDelay: `${index * 150}ms` }}>
+              <Card key={index} className={`border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group hover:scale-105 rounded-full aspect-[2/1] flex flex-col justify-center w-full max-w-[280px] mx-auto ${visibleWhyChooseCards.has(index) ? 'animate-in slide-in-from-bottom-4' : 'opacity-0 translate-y-4'}`} style={{ animationDelay: `${index * 150}ms` }}>
                 <CardHeader className="text-center pb-1">
                   <div className={`mx-auto mb-2 p-2 rounded-full w-12 h-12 flex items-center justify-center transition-colors group-hover:scale-110 duration-300 ${item.bgColor}`}>
                     <item.icon className={`h-5 w-5 ${item.color}`} />
                   </div>
-                  <CardTitle className="text-base font-semibold">
+                  <CardTitle className="text-lg font-semibold">
                     {item.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="pt-0 pb-4">
-                  <CardDescription className="text-center text-xs leading-relaxed">
+                  <CardDescription className="text-center text-sm leading-relaxed">
                     {item.description}
                   </CardDescription>
                 </CardContent>
