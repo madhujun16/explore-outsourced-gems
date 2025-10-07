@@ -534,7 +534,7 @@ const Index = () => {
               Outsource smarter with a squad that's available 24/7, GDPR-compliant, and built to scale your business without overheads.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-1">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-1">
             {[
               {
                 icon: Clock,
