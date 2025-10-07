@@ -614,7 +614,7 @@ const Index = () => {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-16 bg-gray-50 relative overflow-hidden">
+      <section id="services" className="py-16 bg-gradient-to-br from-violet-50 to-purple-100 relative overflow-hidden">
         {/* Ripple Animation Background */}
         <div className="absolute inset-0 opacity-15">
           <Lottie
