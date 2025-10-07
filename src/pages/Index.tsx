@@ -71,7 +71,6 @@ const Index = () => {
   const [showReview, setShowReview] = useState(false);
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
   const [visibleDigitalCards, setVisibleDigitalCards] = useState<Set<number>>(new Set());
-  const [visibleIndustryCards, setVisibleIndustryCards] = useState<Set<number>>(new Set());
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
   const { 
@@ -235,27 +234,6 @@ const Index = () => {
     }
   }, [visibleSections, digitalServices]);
 
-  // Sequential animation for industry cards
-  useEffect(() => {
-    if (visibleSections.has('industries')) {
-      const timeouts: NodeJS.Timeout[] = [];
-      
-      // Clear any existing cards first
-      setVisibleIndustryCards(new Set());
-      
-      // Show cards one by one with 300ms intervals
-      industries.forEach((_, index) => {
-        const timeout = setTimeout(() => {
-          setVisibleIndustryCards(prev => new Set([...prev, index]));
-        }, (index + 1) * 300);
-        timeouts.push(timeout);
-      });
-
-      return () => {
-        timeouts.forEach(timeout => clearTimeout(timeout));
-      };
-    }
-  }, [visibleSections, industries]);
 
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -680,7 +658,13 @@ const Index = () => {
               {industries.map((industry, index) => (
                 <div 
                   key={index} 
-                  className={`group cursor-pointer transition-all duration-700 ${visibleIndustryCards.has(index) ? 'animate-in slide-in-from-bottom-4' : 'opacity-0 translate-y-4'}`}
+                  className="group cursor-pointer transition-all duration-700"
+                  style={{ 
+                    animationDelay: `${index * 100}ms`,
+                    animation: 'slideInUp 0.6s ease-out forwards',
+                    opacity: 0,
+                    transform: 'translateY(30px)'
+                  }}
                 >
                   <div className="text-center">
                     {/* Circular Industry Card */}
