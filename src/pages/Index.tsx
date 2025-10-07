@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -12,6 +12,8 @@ import { supabase } from "@/integrations/supabase/client";
 import ChatBot from "@/components/ChatBot";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import NovalSquadLogo from "@/components/NovalSquadLogo";
+import LottieBackground from "@/components/LottieBackground";
+import LottieSideImage from "@/components/LottieSideImage";
 import { 
   Settings, 
   Headphones, 
@@ -42,7 +44,9 @@ import {
   Globe,
   Shield,
   Lock,
-  ArrowLeft
+  ArrowLeft,
+  Menu,
+  X
 } from "lucide-react";
 
 const Index = () => {
@@ -60,7 +64,115 @@ const Index = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [showReview, setShowReview] = useState(false);
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
+  const [visibleDigitalCards, setVisibleDigitalCards] = useState<Set<number>>(new Set());
+  const [visibleIndustryCards, setVisibleIndustryCards] = useState<Set<number>>(new Set());
+  const [visibleWhyChooseCards, setVisibleWhyChooseCards] = useState<Set<number>>(new Set([0, 1, 2]));
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { toast } = useToast();
+
+  const digitalServices = useMemo(() => [
+    {
+      icon: Code2,
+      title: "Web Dev",
+      description: "Landing pages, CMS, ecommerce, globally hosted.",
+      color: "text-green-600",
+      bgColor: "bg-green-50 group-hover:bg-green-100"
+    },
+    {
+      icon: Megaphone,
+      title: "Marketing",
+      description: "SEO, paid ads, multilingual content strategy.",
+      color: "text-blue-600",
+      bgColor: "bg-blue-50 group-hover:bg-blue-100"
+    },
+    {
+      icon: Database,
+      title: "Data/CRM",
+      description: "GDPR-ready CRM setups, analytics dashboards.",
+      color: "text-purple-600",
+      bgColor: "bg-purple-50 group-hover:bg-purple-100"
+    },
+    {
+      icon: Bot,
+      title: "AI Chatbots",
+      description: "Automated support & sales bots, multi-language.",
+      color: "text-orange-600",
+      bgColor: "bg-orange-50 group-hover:bg-orange-100"
+    }
+  ], []);
+
+  const industries = useMemo(() => [
+    {
+      icon: Building,
+      title: "Finance",
+      description: "Reconciliation, KYC, virtual assistance.",
+      color: "text-blue-600",
+      bgColor: "bg-blue-50 group-hover:bg-blue-100"
+    },
+    {
+      icon: Heart,
+      title: "Healthcare",
+      description: "Claims processing, transcription, RCM.",
+      color: "text-red-600",
+      bgColor: "bg-red-50 group-hover:bg-red-100"
+    },
+    {
+      icon: ShoppingBag,
+      title: "Retail",
+      description: "Returns, catalog support, logistics helpdesk.",
+      color: "text-green-600",
+      bgColor: "bg-green-50 group-hover:bg-green-100"
+    },
+    {
+      icon: Plane,
+      title: "Travel",
+      description: "Concierge support, multilingual bookings.",
+      color: "text-purple-600",
+      bgColor: "bg-purple-50 group-hover:bg-purple-100"
+    },
+    {
+      icon: GraduationCap,
+      title: "Education",
+      description: "Student support, course management, virtual assistance.",
+      color: "text-orange-600",
+      bgColor: "bg-orange-50 group-hover:bg-orange-100"
+    },
+    {
+      icon: Car,
+      title: "Automotive",
+      description: "Service scheduling, parts management, customer care.",
+      color: "text-teal-600",
+      bgColor: "bg-teal-50 group-hover:bg-teal-100"
+    },
+    {
+      icon: Home,
+      title: "Real Estate",
+      description: "Property management, tenant support, documentation.",
+      color: "text-cyan-600",
+      bgColor: "bg-cyan-50 group-hover:bg-cyan-100"
+    },
+    {
+      icon: Gamepad2,
+      title: "Gaming",
+      description: "Player support, community management, QA testing.",
+      color: "text-pink-600",
+      bgColor: "bg-pink-50 group-hover:bg-pink-100"
+    },
+    {
+      icon: Smartphone,
+      title: "Technology",
+      description: "Technical support, app development, system integration.",
+      color: "text-indigo-600",
+      bgColor: "bg-indigo-50 group-hover:bg-indigo-100"
+    },
+    {
+      icon: Truck,
+      title: "Logistics",
+      description: "Shipment tracking, inventory management, delivery support.",
+      color: "text-emerald-600",
+      bgColor: "bg-emerald-50 group-hover:bg-emerald-100"
+    }
+  ], []);
 
   // Scroll animation observer
   useEffect(() => {
@@ -81,6 +193,73 @@ const Index = () => {
 
     return () => observer.disconnect();
   }, []);
+
+  // Sequential animation for digital cards
+  useEffect(() => {
+    if (visibleSections.has('digital')) {
+      const timeouts: NodeJS.Timeout[] = [];
+      
+      // Clear any existing cards first
+      setVisibleDigitalCards(new Set());
+      
+      // Show cards one by one with 750ms intervals
+      digitalServices.forEach((_, index) => {
+        const timeout = setTimeout(() => {
+          setVisibleDigitalCards(prev => new Set([...prev, index]));
+        }, (index + 1) * 750);
+        timeouts.push(timeout);
+      });
+
+      return () => {
+        timeouts.forEach(timeout => clearTimeout(timeout));
+      };
+    }
+  }, [visibleSections, digitalServices]);
+
+  // Sequential animation for industry cards
+  useEffect(() => {
+    if (visibleSections.has('industries')) {
+      const timeouts: NodeJS.Timeout[] = [];
+      
+      // Clear any existing cards first
+      setVisibleIndustryCards(new Set());
+      
+      // Show cards one by one with 200ms intervals
+      industries.forEach((_, index) => {
+        const timeout = setTimeout(() => {
+          setVisibleIndustryCards(prev => new Set([...prev, index]));
+        }, (index + 1) * 200);
+        timeouts.push(timeout);
+      });
+
+      return () => {
+        timeouts.forEach(timeout => clearTimeout(timeout));
+      };
+    }
+  }, [visibleSections, industries]);
+
+  // Sequential animation for why choose us cards
+  useEffect(() => {
+    if (visibleSections.has('why-choose-us')) {
+      const timeouts: NodeJS.Timeout[] = [];
+      
+      // Show cards one by one with 300ms intervals
+      const whyChooseCards = [0, 1, 2]; // 3 cards
+      whyChooseCards.forEach((_, index) => {
+        const timeout = setTimeout(() => {
+          setVisibleWhyChooseCards(prev => new Set([...prev, index]));
+        }, index * 300);
+        timeouts.push(timeout);
+      });
+
+      return () => {
+        timeouts.forEach(timeout => clearTimeout(timeout));
+      };
+    } else {
+      // If section is not visible, show all cards immediately (fallback)
+      setVisibleWhyChooseCards(new Set([0, 1, 2]));
+    }
+  }, [visibleSections]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -222,131 +401,24 @@ const Index = () => {
     }
   ];
 
-  const digitalServices = [
-    {
-      icon: Code2,
-      title: "Web Dev",
-      description: "Landing pages, CMS, ecommerce, globally hosted.",
-      color: "text-cyan-600",
-      bgColor: "bg-cyan-50 group-hover:bg-cyan-100"
-    },
-    {
-      icon: Megaphone,
-      title: "Marketing",
-      description: "SEO, paid ads, multilingual content strategy.",
-      color: "text-pink-600",
-      bgColor: "bg-pink-50 group-hover:bg-pink-100"
-    },
-    {
-      icon: Database,
-      title: "Data/CRM",
-      description: "GDPR-ready CRM setups, analytics dashboards.",
-      color: "text-indigo-600",
-      bgColor: "bg-indigo-50 group-hover:bg-indigo-100"
-    },
-    {
-      icon: Bot,
-      title: "AI Chatbots",
-      description: "Automated support & sales bots, multi-language.",
-      color: "text-emerald-600",
-      bgColor: "bg-emerald-50 group-hover:bg-emerald-100"
-    }
-  ];
-
-  const industries = [
-    {
-      icon: Building,
-      title: "Finance",
-      description: "Reconciliation, KYC, virtual assistance.",
-      color: "text-blue-600",
-      bgColor: "bg-blue-50 group-hover:bg-blue-100"
-    },
-    {
-      icon: Heart,
-      title: "Healthcare",
-      description: "Claims processing, transcription, RCM.",
-      color: "text-red-600",
-      bgColor: "bg-red-50 group-hover:bg-red-100"
-    },
-    {
-      icon: ShoppingBag,
-      title: "Retail",
-      description: "Returns, catalog support, logistics helpdesk.",
-      color: "text-green-600",
-      bgColor: "bg-green-50 group-hover:bg-green-100"
-    },
-    {
-      icon: Plane,
-      title: "Travel",
-      description: "Concierge support, multilingual bookings.",
-      color: "text-purple-600",
-      bgColor: "bg-purple-50 group-hover:bg-purple-100"
-    },
-    {
-      icon: GraduationCap,
-      title: "Education",
-      description: "Student support, course management, virtual assistance.",
-      color: "text-orange-600",
-      bgColor: "bg-orange-50 group-hover:bg-orange-100"
-    },
-    {
-      icon: Car,
-      title: "Automotive",
-      description: "Service scheduling, parts management, customer care.",
-      color: "text-teal-600",
-      bgColor: "bg-teal-50 group-hover:bg-teal-100"
-    },
-    {
-      icon: Home,
-      title: "Real Estate",
-      description: "Property management, tenant support, documentation.",
-      color: "text-cyan-600",
-      bgColor: "bg-cyan-50 group-hover:bg-cyan-100"
-    },
-    {
-      icon: Gamepad2,
-      title: "Gaming",
-      description: "Player support, community management, QA testing.",
-      color: "text-pink-600",
-      bgColor: "bg-pink-50 group-hover:bg-pink-100"
-    },
-    {
-      icon: Smartphone,
-      title: "Technology",
-      description: "Technical support, app development, system integration.",
-      color: "text-indigo-600",
-      bgColor: "bg-indigo-50 group-hover:bg-indigo-100"
-    },
-    {
-      icon: Factory,
-      title: "Manufacturing",
-      description: "Supply chain support, quality control, documentation.",
-      color: "text-gray-600",
-      bgColor: "bg-gray-50 group-hover:bg-gray-100"
-    },
-    {
-      icon: Truck,
-      title: "Logistics",
-      description: "Shipment tracking, inventory management, delivery support.",
-      color: "text-emerald-600",
-      bgColor: "bg-emerald-50 group-hover:bg-emerald-100"
-    }
-  ];
-
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-violet-50 to-purple-100">
       {/* Navigation */}
-      <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
+      <nav className="border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <NovalSquadLogo variant="dark" size="sm" />
+            
+            {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
               <a href="#services" className="text-muted-foreground hover:text-primary transition-colors duration-200">{t('navigation.services')}</a>
               <a href="#digital" className="text-muted-foreground hover:text-primary transition-colors duration-200">Digital</a>
               <a href="#industries" className="text-muted-foreground hover:text-primary transition-colors duration-200">{t('navigation.industries')}</a>
               <a href="#contact" className="text-muted-foreground hover:text-primary transition-colors duration-200">{t('navigation.contact')}</a>
             </div>
-            <div className="flex items-center space-x-3">
+            
+            {/* Desktop Actions */}
+            <div className="hidden md:flex items-center space-x-3">
               <LanguageSwitcher />
               <Button 
                 variant="outline" 
@@ -357,137 +429,184 @@ const Index = () => {
                 {t('hero.cta')}
               </Button>
             </div>
+            
+            {/* Mobile Menu Button */}
+            <div className="md:hidden flex items-center space-x-3">
+              <LanguageSwitcher />
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="p-2"
+              >
+                {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </Button>
+            </div>
           </div>
+          
+          {/* Mobile Navigation Menu */}
+          {isMobileMenuOpen && (
+            <div className="md:hidden mt-4 pb-4 border-t border-gray-200">
+              <div className="flex flex-col space-y-4 pt-4">
+                <a 
+                  href="#services" 
+                  className="text-muted-foreground hover:text-primary transition-colors duration-200 py-2"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {t('navigation.services')}
+                </a>
+                <a 
+                  href="#digital" 
+                  className="text-muted-foreground hover:text-primary transition-colors duration-200 py-2"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Digital
+                </a>
+                <a 
+                  href="#industries" 
+                  className="text-muted-foreground hover:text-primary transition-colors duration-200 py-2"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {t('navigation.industries')}
+                </a>
+                <a 
+                  href="#contact" 
+                  className="text-muted-foreground hover:text-primary transition-colors duration-200 py-2"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {t('navigation.contact')}
+                </a>
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  className="w-full mt-4"
+                  onClick={() => {
+                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                    setIsMobileMenuOpen(false);
+                  }}
+                >
+                  {t('hero.cta')}
+                </Button>
+              </div>
+            </div>
+          )}
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-blue-600/60 via-blue-500/50 to-blue-700/60 text-white">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1605810230434-7631ac76ec81?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center bg-no-repeat" />
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-700/70 via-blue-600/60 to-blue-800/70" />
-        <div className="absolute inset-0 bg-grid-white/10" />
-        <div className="container mx-auto px-4 py-20 md:py-32 relative">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="mb-6 animate-in slide-in-from-bottom-4 duration-1000">
-              <span className="block text-4xl md:text-6xl font-bold text-white">
-                {t('hero.title').split(' — ')[0]}
-              </span>
-              <span className="block text-2xl md:text-3xl font-medium text-white/90 mt-2">
-                {t('hero.title').split(' — ')[1]}
-              </span>
-            </h1>
-            <div className="flex flex-wrap justify-center items-center gap-6 mb-8 text-white/90 animate-in slide-in-from-bottom-4 duration-1000 delay-200">
-              <div className="flex items-center gap-2">
-                <Shield className="h-5 w-5 text-green-400" />
-                <span className="text-lg md:text-xl font-medium">GDPR-compliant</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Calculator className="h-5 w-5 text-blue-400" />
-                <span className="text-lg md:text-xl font-medium">Cost-effective</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="h-5 w-5 text-purple-400" />
-                <span className="text-lg md:text-xl font-medium">Onboard in 5 days</span>
+      <section className="relative overflow-hidden bg-gradient-to-br from-violet-50 to-purple-100 py-6 md:py-8">
+        <div className="container mx-auto px-4 relative">
+          <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-8">
+            {/* Left side - Lottie Animation */}
+            <div className="w-full lg:w-2/5">
+              <div className="w-full h-[400px] lg:h-[500px]">
+                <LottieSideImage />
               </div>
             </div>
-            <Button 
-              size="lg" 
-              variant="secondary"
-              className="animate-in slide-in-from-bottom-4 duration-1000 delay-400 hover:scale-105 transition-transform hover:shadow-xl"
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              Get a Free Consultation
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-            </Button>
+            
+            {/* Right side - Text content */}
+            <div className="flex-1 max-w-2xl text-left">
+              <h1 className="mb-2 text-4xl md:text-5xl font-bold text-gray-900 hero-title leading-tight" id="heroTitle">
+                <span className="text-blue-900">Your Growth Partner in</span><br />
+                <span className="text-purple-600">Outsourcing & Digital Solutions</span>
+              </h1>
+              <p className="text-xl md:text-2xl text-gray-700 mb-8 hero-subtitle">
+                The squad behind your squad. Built to make you better
+              </p>
+              <div className="flex flex-wrap items-center gap-4 md:gap-6 mb-8 text-gray-700 hero-trust-signals">
+                <div className="flex items-center gap-2">
+                  <Shield className="h-5 w-5 text-green-600" />
+                  <span className="text-base md:text-lg lg:text-xl font-medium">GDPR-compliant</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Calculator className="h-5 w-5 text-blue-600" />
+                  <span className="text-base md:text-lg lg:text-xl font-medium">Cost-effective</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Clock className="h-5 w-5 text-purple-600" />
+                  <span className="text-base md:text-lg lg:text-xl font-medium">Onboard in 5 days</span>
+                </div>
+              </div>
+              <button 
+                className="bg-white border-2 border-purple-600 text-purple-600 px-6 md:px-8 py-3 md:py-4 font-semibold text-base md:text-lg rounded-full shadow-lg hover:bg-purple-600 hover:text-white transition-all duration-300 hover:scale-105 w-full sm:w-auto"
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Get Your Free Consultation →
+              </button>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Why Choose Us Section */}
-      <section id="why-choose-us" className="py-10 bg-background scroll-animate">
+      <section id="why-choose-us" className="py-16 bg-white border-t-2 border-gray-200">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              {t('whyChooseUs.title')}
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 animate-in slide-in-from-bottom-4">
+              Why Choose NovalSquad Outsourcing
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              {t('whyChooseUs.subtitle')}
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto animate-in slide-in-from-bottom-4" style={{ animationDelay: '200ms' }}>
+              Outsource smarter with a squad that's available 24/7, GDPR-compliant, and built to scale your business without overheads.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Card className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group hover:scale-105">
-              <CardHeader className="text-center pb-3">
-                <div className="mx-auto mb-3 p-2 rounded-full w-12 h-12 flex items-center justify-center bg-green-50 group-hover:bg-green-100 transition-colors group-hover:scale-110 duration-300">
-                  <Clock className="h-6 w-6 text-green-600" />
-                </div>
-                <CardTitle className="text-lg">{t('whyChooseUs.items.onboarding.title')}</CardTitle>
-              </CardHeader>
-              <CardContent className="pt-0">
-                <CardDescription className="text-center text-sm">
-                  {t('whyChooseUs.items.onboarding.description')}
-                </CardDescription>
-              </CardContent>
-            </Card>
-            
-
-            
-            <Card className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group hover:scale-105">
-              <CardHeader className="text-center pb-3">
-                <div className="mx-auto mb-3 p-2 rounded-full w-12 h-12 flex items-center justify-center bg-purple-50 group-hover:bg-purple-100 transition-colors group-hover:scale-110 duration-300">
-                  <Shield className="h-6 w-6 text-purple-600" />
-                </div>
-                <CardTitle className="text-lg">{t('whyChooseUs.items.operations.title')}</CardTitle>
-              </CardHeader>
-              <CardContent className="pt-0">
-                <CardDescription className="text-center text-sm">
-                  {t('whyChooseUs.items.operations.description')}
-                </CardDescription>
-              </CardContent>
-            </Card>
-            
-
-            
-            <Card className={`border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group hover:scale-105 ${
-              visibleSections.has('why-choose-us') ? 'animate-in slide-in-from-bottom-4 duration-700 delay-400' : 'opacity-0 translate-y-8'
-            }`}>
-              <CardHeader className="text-center pb-3">
-                <div className="mx-auto mb-3 p-2 rounded-full w-12 h-12 flex items-center justify-center bg-teal-50 group-hover:bg-teal-100 transition-colors group-hover:scale-110 duration-300">
-                  <Calculator className="h-6 w-6 text-teal-600" />
-                </div>
-                <CardTitle className="text-lg">{t('whyChooseUs.items.pricing.title')}</CardTitle>
-              </CardHeader>
-              <CardContent className="pt-0">
-                <CardDescription className="text-center text-sm">
-                  {t('whyChooseUs.items.pricing.description')}
-                </CardDescription>
-              </CardContent>
-            </Card>
-            
-
+            {[
+              {
+                icon: Clock,
+                title: "Onboard in 3-5 Days",
+                description: "Quick setup and immediate productivity",
+                color: "text-green-600",
+                bgColor: "bg-green-50 group-hover:bg-green-100"
+              },
+              {
+                icon: Shield,
+                title: "24/7 Operations",
+                description: "Round-the-clock service delivery",
+                color: "text-purple-600",
+                bgColor: "bg-purple-50 group-hover:bg-purple-100"
+              },
+              {
+                icon: Calculator,
+                title: "Transparent Pricing",
+                description: "Clear costs with no hidden fees",
+                color: "text-teal-600",
+                bgColor: "bg-teal-50 group-hover:bg-teal-100"
+              }
+            ].map((item, index) => (
+              <Card key={index} className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group hover:scale-105 animate-in slide-in-from-bottom-4" style={{ animationDelay: `${index * 200}ms` }}>
+                <CardHeader className="text-center">
+                  <div className={`mx-auto mb-4 p-3 rounded-full w-16 h-16 flex items-center justify-center transition-colors group-hover:scale-110 duration-300 ${item.bgColor}`}>
+                    <item.icon className={`h-8 w-8 ${item.color}`} />
+                  </div>
+                  <CardTitle className="text-xl">
+                    {item.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-center text-base">
+                    {item.description}
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-8 bg-muted/30 scroll-animate">
+      <section id="services" className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10">
-            <h2 className={`text-3xl md:text-4xl font-bold mb-4 transition-all duration-1000 ${
-              visibleSections.has('services') ? 'animate-in slide-in-from-bottom-4 opacity-100' : 'opacity-0 translate-y-8'
-            }`}>
-              {t('services.title')}
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Our Services
             </h2>
-            <p className={`text-xl text-muted-foreground max-w-2xl mx-auto transition-all duration-1000 delay-200 ${
-              visibleSections.has('services') ? 'animate-in slide-in-from-bottom-4 opacity-100' : 'opacity-0 translate-y-8'
-            }`}>
-              {t('services.subtitle')}
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Everything You Need. All in One Squad.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, index) => (
-              <Card key={index} className={`border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group hover:scale-105 ${
-                visibleSections.has('services') ? `animate-in slide-in-from-bottom-4 duration-700 delay-${(index + 1) * 100}` : 'opacity-0 translate-y-8'
-              }`}>
+              <Card key={index} className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group hover:scale-105">
                 <CardHeader className="text-center">
                   <div className={`mx-auto mb-4 p-3 rounded-full w-16 h-16 flex items-center justify-center transition-colors ${service.bgColor}`}>
                     <service.icon className={`h-8 w-8 ${service.color}`} />
@@ -508,22 +627,26 @@ const Index = () => {
       </section>
 
       {/* Digital Services Section */}
-      <section id="digital" className="py-8 bg-muted/30">
+      <section id="digital" className="py-16 bg-white border-t-2 border-gray-200">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('digitalServices.title')}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Digital Services
+            </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              {t('digitalServices.subtitle')}
+              Modern digital solutions to accelerate your business growth
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {digitalServices.map((service, index) => (
-              <Card key={index} className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group">
+              <Card key={index} className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group hover:scale-105 animate-in slide-in-from-bottom-4" style={{ animationDelay: `${index * 150}ms` }}>
                 <CardHeader className="text-center">
                   <div className={`mx-auto mb-4 p-3 rounded-full w-16 h-16 flex items-center justify-center transition-colors ${service.bgColor}`}>
                     <service.icon className={`h-8 w-8 ${service.color}`} />
                   </div>
-                  <CardTitle className="text-xl">{service.title}</CardTitle>
+                  <CardTitle className="text-xl">
+                    {service.title}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-center text-base">
@@ -536,24 +659,82 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section id="testimonials" className="py-10 bg-background scroll-animate">
+      {/* Industries Section */}
+      <section id="industries" className="py-20 bg-gray-50 border-t-2 border-gray-200">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-10">
-            <h2 className={`text-3xl md:text-4xl font-bold mb-4 transition-all duration-1000 ${
-              visibleSections.has('testimonials') ? 'animate-in slide-in-from-bottom-4 opacity-100' : 'opacity-0 translate-y-8'
-            }`}>
-              {t('testimonials.title')}
-            </h2>
-            <p className={`text-xl text-muted-foreground max-w-2xl mx-auto transition-all duration-1000 delay-200 ${
-              visibleSections.has('testimonials') ? 'animate-in slide-in-from-bottom-4 opacity-100' : 'opacity-0 translate-y-8'
-            }`}>
-              {t('testimonials.subtitle')}
+          {/* Quality Focus Header */}
+          <div className="max-w-6xl mx-auto mb-16">
+            <div className="grid lg:grid-cols-2 gap-12 items-start">
+              <div>
+                <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
+                  <span className="text-gray-900">Industries We Serve,</span>
+                  <br />
+                  <span className="text-gray-600 text-3xl md:text-4xl font-normal">with specialized expertise</span>
+                </h2>
+              </div>
+              <div>
+                <p className="text-lg text-gray-600 leading-relaxed">
+                  We provide tailored solutions across key global business sectors. Our specialized teams understand the unique challenges and requirements of each industry.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Circular Industries Grid */}
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 md:gap-12">
+              {industries.map((industry, index) => (
+                <div 
+                  key={index} 
+                  className="group cursor-pointer transition-all duration-700"
+                >
+                  <div className="text-center">
+                    {/* Circular Industry Card */}
+                    <div className="w-32 h-32 md:w-36 md:h-36 mx-auto bg-gray-50 rounded-full flex flex-col items-center justify-center p-4 group-hover:bg-gray-100 transition-all duration-300 group-hover:scale-105 shadow-sm group-hover:shadow-md mb-4">
+                      <div className={`w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center mb-3 transition-colors ${industry.bgColor}`}>
+                        <industry.icon className={`h-6 w-6 md:h-7 md:w-7 ${industry.color}`} />
+                      </div>
+                      <h3 className="text-sm md:text-base font-semibold text-gray-900 text-center leading-tight">
+                        {industry.title}
+                      </h3>
+                    </div>
+                    
+                    {/* Description Below Circle */}
+                    <p className="text-xs md:text-sm text-gray-600 text-center leading-relaxed px-2">
+                      {industry.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section id="testimonials" className="py-20 bg-white border-t-2 border-gray-200">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center mb-16">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
+                <span className="text-gray-900">Trusted by Businesses</span>
+                <br />
+                <span className="text-gray-600 text-3xl md:text-4xl font-normal">across the globe</span>
+              </h2>
+            </div>
+            <p className="text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
+              See what our clients say about working with NovalSquad. Real feedback from real businesses we've helped grow.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {(t('testimonials.items', { returnObjects: true }) as any[]).map((testimonial: any, index: number) => (
-              <Card key={index} className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg animate-in slide-in-from-bottom-4 hover:scale-105" style={{ animationDelay: `${index * 100}ms` }}>
+            {(t('testimonials.items', { returnObjects: true }) as Array<{
+              initials: string;
+              name: string;
+              role: string;
+              quote: string;
+            }>).map((testimonial, index: number) => (
+              <Card key={index} className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:scale-105 bg-white">
                 <CardContent className="p-6">
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-4">
@@ -574,38 +755,10 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Industries Section */}
-      <section id="industries" className="py-8 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Industries We Serve</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Specialized expertise across key global business sectors
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {industries.map((industry, index) => (
-              <Card key={index} className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group">
-                <CardHeader className="text-center">
-                  <div className={`mx-auto mb-4 p-3 rounded-full w-16 h-16 flex items-center justify-center transition-colors ${industry.bgColor}`}>
-                    <industry.icon className={`h-8 w-8 ${industry.color}`} />
-                  </div>
-                  <CardTitle className="text-xl">{industry.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-center text-base">
-                    {industry.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Contact Section */}
-      <section id="contact" className="py-8 bg-muted/30">
-        <div className="container mx-auto px-4">
+      <section id="contact" className="py-8 relative overflow-hidden">
+        <LottieBackground className="opacity-10" />
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('contact.title')}</h2>
@@ -625,7 +778,7 @@ const Index = () => {
                   </div>
                   
                   <div className="relative">
-                                                                 <div className="text-center mb-8">
+                    <div className="text-center mb-8">
                       <h3 className="text-2xl font-bold text-primary mb-2">{t('contact.form.title')}</h3>
                       <p className="text-muted-foreground max-w-md mx-auto">
                         {t('contact.form.subtitle')}
@@ -634,28 +787,28 @@ const Index = () => {
                     
                     {!showReview ? (
                       <form onSubmit={handleSubmit} className="space-y-6">
-                                                 {/* Personal Information Section */}
-                         <div className="space-y-4">
-                           <div className="mb-4">
-                             <h4 className="text-sm font-semibold text-primary uppercase tracking-wide">{t('contact.form.sections.personalInfo')}</h4>
-                           </div>
+                        {/* Personal Information Section */}
+                        <div className="space-y-4">
+                          <div className="mb-4">
+                            <h4 className="text-sm font-semibold text-primary uppercase tracking-wide">{t('contact.form.sections.personalInfo')}</h4>
+                          </div>
                           
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                                         <div className="space-y-2">
-                               <label className="text-sm font-medium text-muted-foreground">{t('contact.form.fields.fullName')} *</label>
-                               <Input
-                                 placeholder={t('contact.form.placeholders.fullName')}
+                            <div className="space-y-2">
+                              <label className="text-sm font-medium text-muted-foreground">{t('contact.form.fields.fullName')} *</label>
+                              <Input
+                                placeholder={t('contact.form.placeholders.fullName')}
                                 value={formData.name}
                                 onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
                                 required
                                 className="h-12 transition-all duration-200 focus:ring-2 focus:ring-primary/20"
                               />
                             </div>
-                                                         <div className="space-y-2">
-                               <label className="text-sm font-medium text-muted-foreground">{t('contact.form.fields.email')} *</label>
-                               <Input
-                                 type="email"
-                                 placeholder={t('contact.form.placeholders.email')}
+                            <div className="space-y-2">
+                              <label className="text-sm font-medium text-muted-foreground">{t('contact.form.fields.email')} *</label>
+                              <Input
+                                type="email"
+                                placeholder={t('contact.form.placeholders.email')}
                                 value={formData.email}
                                 onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
                                 required
@@ -665,20 +818,20 @@ const Index = () => {
                           </div>
                           
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                                         <div className="space-y-2">
-                               <label className="text-sm font-medium text-muted-foreground">{t('contact.form.fields.phone')}</label>
-                               <Input
-                                 type="tel"
-                                 placeholder={t('contact.form.placeholders.phone')}
-                                 value={formData.phone}
-                                 onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
+                            <div className="space-y-2">
+                              <label className="text-sm font-medium text-muted-foreground">{t('contact.form.fields.phone')}</label>
+                              <Input
+                                type="tel"
+                                placeholder={t('contact.form.placeholders.phone')}
+                                value={formData.phone}
+                                onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
                                 className="h-12 transition-all duration-200 focus:ring-2 focus:ring-primary/20"
                               />
                             </div>
-                                                         <div className="space-y-2">
-                               <label className="text-sm font-medium text-muted-foreground">{t('contact.form.fields.company')}</label>
-                               <Input
-                                 placeholder={t('contact.form.placeholders.company')}
+                            <div className="space-y-2">
+                              <label className="text-sm font-medium text-muted-foreground">{t('contact.form.fields.company')}</label>
+                              <Input
+                                placeholder={t('contact.form.placeholders.company')}
                                 value={formData.company_name}
                                 onChange={(e) => setFormData(prev => ({ ...prev, company_name: e.target.value }))}
                                 className="h-12 transition-all duration-200 focus:ring-2 focus:ring-primary/20"
@@ -687,60 +840,60 @@ const Index = () => {
                           </div>
                         </div>
 
-                                                 {/* Project Information Section */}
-                         <div className="space-y-4">
-                           <div className="mb-4">
-                             <h4 className="text-sm font-semibold text-primary uppercase tracking-wide">{t('contact.form.sections.projectDetails')}</h4>
-                           </div>
+                        {/* Project Information Section */}
+                        <div className="space-y-4">
+                          <div className="mb-4">
+                            <h4 className="text-sm font-semibold text-primary uppercase tracking-wide">{t('contact.form.sections.projectDetails')}</h4>
+                          </div>
                           
-                                                     <div className="space-y-2">
-                             <label className="text-sm font-medium text-muted-foreground">{t('contact.form.fields.industry')}</label>
-                             <Select onValueChange={(value) => setFormData(prev => ({ ...prev, industry: value }))}>
-                               <SelectTrigger className="h-12 transition-all duration-200 focus:ring-2 focus:ring-primary/20">
-                                 <SelectValue placeholder={t('contact.form.placeholders.industry')} />
-                               </SelectTrigger>
-                               <SelectContent>
-                                 <SelectItem value="technology">Technology & Software</SelectItem>
-                                 <SelectItem value="finance">Financial Services & Banking</SelectItem>
-                                 <SelectItem value="healthcare">Healthcare & Pharmaceuticals</SelectItem>
-                                 <SelectItem value="retail">Retail & E-commerce</SelectItem>
-                                 <SelectItem value="manufacturing">Manufacturing & Industrial</SelectItem>
-                                 <SelectItem value="logistics">Logistics & Transportation</SelectItem>
-                                 <SelectItem value="real-estate">Real Estate & Property</SelectItem>
-                                 <SelectItem value="education">Education & Training</SelectItem>
-                                 <SelectItem value="automotive">Automotive & Mobility</SelectItem>
-                                 <SelectItem value="energy">Energy & Utilities</SelectItem>
-                                 <SelectItem value="media">Media & Entertainment</SelectItem>
-                                 <SelectItem value="gaming">Gaming & Interactive</SelectItem>
-                                 <SelectItem value="consulting">Consulting & Professional Services</SelectItem>
-                                 <SelectItem value="legal">Legal & Compliance</SelectItem>
-                                 <SelectItem value="insurance">Insurance & Risk Management</SelectItem>
-                                 <SelectItem value="hospitality">Hospitality & Tourism</SelectItem>
-                                 <SelectItem value="food-beverage">Food & Beverage</SelectItem>
-                                 <SelectItem value="fashion">Fashion & Apparel</SelectItem>
-                                 <SelectItem value="construction">Construction & Engineering</SelectItem>
-                                 <SelectItem value="aerospace">Aerospace & Defense</SelectItem>
-                                 <SelectItem value="telecommunications">Telecommunications</SelectItem>
-                                 <SelectItem value="non-profit">Non-Profit & NGO</SelectItem>
-                                 <SelectItem value="government">Government & Public Sector</SelectItem>
-                                 <SelectItem value="startup">Startup & Scale-up</SelectItem>
-                                 <SelectItem value="other">Other</SelectItem>
-                               </SelectContent>
-                             </Select>
-                           </div>
+                          <div className="space-y-2">
+                            <label className="text-sm font-medium text-muted-foreground">{t('contact.form.fields.industry')}</label>
+                            <Select onValueChange={(value) => setFormData(prev => ({ ...prev, industry: value }))}>
+                              <SelectTrigger className="h-12 transition-all duration-200 focus:ring-2 focus:ring-primary/20">
+                                <SelectValue placeholder={t('contact.form.placeholders.industry')} />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="technology">Technology & Software</SelectItem>
+                                <SelectItem value="finance">Financial Services & Banking</SelectItem>
+                                <SelectItem value="healthcare">Healthcare & Pharmaceuticals</SelectItem>
+                                <SelectItem value="retail">Retail & E-commerce</SelectItem>
+                                <SelectItem value="manufacturing">Manufacturing & Industrial</SelectItem>
+                                <SelectItem value="logistics">Logistics & Transportation</SelectItem>
+                                <SelectItem value="real-estate">Real Estate & Property</SelectItem>
+                                <SelectItem value="education">Education & Training</SelectItem>
+                                <SelectItem value="automotive">Automotive & Mobility</SelectItem>
+                                <SelectItem value="energy">Energy & Utilities</SelectItem>
+                                <SelectItem value="media">Media & Entertainment</SelectItem>
+                                <SelectItem value="gaming">Gaming & Interactive</SelectItem>
+                                <SelectItem value="consulting">Consulting & Professional Services</SelectItem>
+                                <SelectItem value="legal">Legal & Compliance</SelectItem>
+                                <SelectItem value="insurance">Insurance & Risk Management</SelectItem>
+                                <SelectItem value="hospitality">Hospitality & Tourism</SelectItem>
+                                <SelectItem value="food-beverage">Food & Beverage</SelectItem>
+                                <SelectItem value="fashion">Fashion & Apparel</SelectItem>
+                                <SelectItem value="construction">Construction & Engineering</SelectItem>
+                                <SelectItem value="aerospace">Aerospace & Defense</SelectItem>
+                                <SelectItem value="telecommunications">Telecommunications</SelectItem>
+                                <SelectItem value="non-profit">Non-Profit & NGO</SelectItem>
+                                <SelectItem value="government">Government & Public Sector</SelectItem>
+                                <SelectItem value="startup">Startup & Scale-up</SelectItem>
+                                <SelectItem value="other">Other</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
                           
-                                                     <div className="space-y-2">
-                             <label className="text-sm font-medium text-muted-foreground">{t('contact.form.fields.projectDescription')} *</label>
-                             <Textarea
-                               placeholder={t('contact.form.placeholders.projectDescription')}
+                          <div className="space-y-2">
+                            <label className="text-sm font-medium text-muted-foreground">{t('contact.form.fields.projectDescription')} *</label>
+                            <Textarea
+                              placeholder={t('contact.form.placeholders.projectDescription')}
                               value={formData.message}
                               onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
                               className="min-h-32 transition-all duration-200 focus:ring-2 focus:ring-primary/20 resize-none"
                               required
                             />
-                                                         <p className="text-xs text-muted-foreground">
-                               {t('contact.form.helpText.projectDescription')}
-                             </p>
+                            <p className="text-xs text-muted-foreground">
+                              {t('contact.form.helpText.projectDescription')}
+                            </p>
                           </div>
                         </div>
 
@@ -753,28 +906,28 @@ const Index = () => {
                               onCheckedChange={(checked) => setFormData(prev => ({ ...prev, consent: !!checked }))}
                               className="mt-1"
                             />
-                                                         <label htmlFor="consent" className="text-sm text-muted-foreground leading-5">
-                               {(() => {
-                                 const consentText = t('contact.form.fields.consent');
-                                 if (!consentText) return 'I agree to the ';
-                                 const parts = consentText.split('Privacy Policy');
-                                 if (parts.length < 2) return consentText;
-                                 return (
-                                   <>
-                                     {parts[0]}
-                                     <Link to="/privacy-policy" className="text-primary hover:underline font-medium">
-                                       {t('footer.links.privacy')}
-                                     </Link>
-                                     {parts[1].split('Terms & Conditions')[0]}
-                                     <Link to="/terms-conditions" className="text-primary hover:underline font-medium">
-                                       {t('footer.links.terms')}
-                                     </Link>
-                                     {parts[1].split('Terms & Conditions')[1]}
-                                   </>
-                                 );
-                               })()}
-                               <span className="text-red-500"> *</span>
-                             </label>
+                            <label htmlFor="consent" className="text-sm text-muted-foreground leading-5">
+                              {(() => {
+                                const consentText = t('contact.form.fields.consent');
+                                if (!consentText) return 'I agree to the ';
+                                const parts = consentText.split('Privacy Policy');
+                                if (parts.length < 2) return consentText;
+                                return (
+                                  <>
+                                    {parts[0]}
+                                    <Link to="/privacy-policy" className="text-primary hover:underline font-medium">
+                                      {t('footer.links.privacy')}
+                                    </Link>
+                                    {parts[1].split('Terms & Conditions')[0]}
+                                    <Link to="/terms-conditions" className="text-primary hover:underline font-medium">
+                                      {t('footer.links.terms')}
+                                    </Link>
+                                    {parts[1].split('Terms & Conditions')[1]}
+                                  </>
+                                );
+                              })()}
+                              <span className="text-red-500"> *</span>
+                            </label>
                           </div>
                         </div>
                         
@@ -783,33 +936,33 @@ const Index = () => {
                           size="lg" 
                           className="w-full h-14 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-lg transition-all duration-200 hover:scale-[1.02] shadow-lg hover:shadow-xl"
                           disabled={isSubmitting}
-                                                 >
-                           {isSubmitting ? (
-                             <div className="flex items-center space-x-2">
-                               <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                               <span>{t('contact.form.buttons.processing')}</span>
-                             </div>
-                           ) : (
-                             <>
-                               {t('contact.form.buttons.reviewSubmit')}
-                               <ArrowRight className="ml-2 h-5 w-5" />
-                             </>
-                           )}
-                         </Button>
+                        >
+                          {isSubmitting ? (
+                            <div className="flex items-center space-x-2">
+                              <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                              <span>{t('contact.form.buttons.processing')}</span>
+                            </div>
+                          ) : (
+                            <>
+                              {t('contact.form.buttons.reviewSubmit')}
+                              <ArrowRight className="ml-2 h-5 w-5" />
+                            </>
+                          )}
+                        </Button>
                       </form>
                     ) : (
                       <div className="space-y-6">
-                                                 <div className="text-center mb-6">
-                           <h4 className="text-xl font-semibold text-primary mb-2">Review Your Information</h4>
-                           <p className="text-muted-foreground">Please review your details before submitting</p>
-                         </div>
+                        <div className="text-center mb-6">
+                          <h4 className="text-xl font-semibold text-primary mb-2">Review Your Information</h4>
+                          <p className="text-muted-foreground">Please review your details before submitting</p>
+                        </div>
                         
                         <div className="bg-muted/50 rounded-lg p-6 space-y-6">
-                                                     {/* Personal Info Review */}
-                           <div>
-                             <h5 className="text-sm font-semibold text-primary mb-3">
-                               Personal Information
-                             </h5>
+                          {/* Personal Info Review */}
+                          <div>
+                            <h5 className="text-sm font-semibold text-primary mb-3">
+                              Personal Information
+                            </h5>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                               <div>
                                 <p className="text-sm font-medium text-muted-foreground">Name</p>
@@ -822,11 +975,11 @@ const Index = () => {
                             </div>
                           </div>
                           
-                                                     {/* Project Info Review */}
-                           <div>
-                             <h5 className="text-sm font-semibold text-primary mb-3">
-                               Project Information
-                             </h5>
+                          {/* Project Info Review */}
+                          <div>
+                            <h5 className="text-sm font-semibold text-primary mb-3">
+                              Project Information
+                            </h5>
                             <div className="space-y-3">
                               {formData.company_name && (
                                 <div>
@@ -959,7 +1112,7 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-background border-t py-8">
+      <footer className="bg-white/60 border-t py-8">
         <div className="container mx-auto px-4">
           <div className="text-center">
             <div className="flex justify-center mb-4">
@@ -990,3 +1143,25 @@ const Index = () => {
 };
 
 export default Index;
+// Staggered animation for hero title and gradient text
+if (typeof window !== 'undefined') {
+  setTimeout(() => {
+    const titleEl = document.getElementById('heroTitle');
+    const heroSection = titleEl?.closest('.hero') || document.querySelector('.hero');
+    
+    if (titleEl) {
+      // Split title on <br> tags
+      const raw = titleEl.innerHTML.trim();
+      const parts = raw.split(/<br\s*\/?>/i).map(s => s.trim()).filter(Boolean);
+      titleEl.innerHTML = parts.map((p, i) => `<span class="line" style="--i:${i}">${p}</span>`).join('');
+      
+      // Trigger animations
+      setTimeout(() => {
+        titleEl.classList.add('in');
+        if (heroSection) {
+          heroSection.classList.add('in');
+        }
+      }, 100);
+    }
+  }, 100);
+}

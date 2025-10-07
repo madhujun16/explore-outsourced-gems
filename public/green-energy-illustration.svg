@@ -1,0 +1,87 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background platform -->
+  <defs>
+    <linearGradient id="platformGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e0f2fe;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#b3e5fc;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="storageGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f0f9ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e0f2fe;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#16a34a;stop-opacity:0.6" />
+    </linearGradient>
+    <linearGradient id="purpleAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Platform base -->
+  <path d="M50 200 L350 200 L380 170 L20 170 Z" fill="url(#platformGradient)" stroke="#94a3b8" stroke-width="1"/>
+  
+  <!-- Energy Storage Unit 1 (Left) -->
+  <rect x="80" y="120" width="60" height="80" fill="url(#storageGradient)" stroke="#94a3b8" stroke-width="1"/>
+  <rect x="85" y="125" width="50" height="70" fill="url(#greenGlow)" opacity="0.7"/>
+  <rect x="100" y="140" width="20" height="40" fill="url(#purpleAccent)"/>
+  <polygon points="100,140 110,130 120,140" fill="url(#purpleAccent)"/>
+  
+  <!-- Energy Storage Unit 2 (Right) -->
+  <rect x="200" y="120" width="60" height="80" fill="url(#storageGradient)" stroke="#94a3b8" stroke-width="1"/>
+  <rect x="205" y="125" width="50" height="70" fill="url(#greenGlow)" opacity="0.7"/>
+  <rect x="220" y="140" width="20" height="40" fill="url(#purpleAccent)"/>
+  <polygon points="220,140 230,130 240,140" fill="url(#purpleAccent)"/>
+  
+  <!-- Power Distribution Unit -->
+  <rect x="140" y="140" width="40" height="60" fill="#e0f2fe" stroke="#94a3b8" stroke-width="1"/>
+  <rect x="145" y="145" width="30" height="50" fill="#b3e5fc"/>
+  
+  <!-- Wind Turbines -->
+  <!-- Turbine 1 -->
+  <rect x="60" y="100" width="8" height="100" fill="#e2e8f0"/>
+  <circle cx="64" cy="90" r="15" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <line x1="64" y1="90" x2="64" y2="75" stroke="#64748b" stroke-width="2"/>
+  <line x1="64" y1="90" x2="79" y2="90" stroke="#64748b" stroke-width="2"/>
+  
+  <!-- Turbine 2 -->
+  <rect x="180" y="100" width="8" height="100" fill="#e2e8f0"/>
+  <circle cx="184" cy="90" r="15" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <line x1="184" y1="90" x2="184" y2="75" stroke="#64748b" stroke-width="2"/>
+  <line x1="184" y1="90" x2="199" y2="90" stroke="#64748b" stroke-width="2"/>
+  
+  <!-- Turbine 3 -->
+  <rect x="300" y="100" width="8" height="100" fill="#e2e8f0"/>
+  <circle cx="304" cy="90" r="15" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <line x1="304" y1="90" x2="304" y2="75" stroke="#64748b" stroke-width="2"/>
+  <line x1="304" y1="90" x2="319" y2="90" stroke="#64748b" stroke-width="2"/>
+  
+  <!-- Trees -->
+  <!-- Small tree 1 -->
+  <rect x="40" y="150" width="4" height="20" fill="#92400e"/>
+  <polygon points="42,150 32,140 52,140" fill="#22c55e"/>
+  
+  <!-- Small tree 2 -->
+  <rect x="320" y="150" width="4" height="20" fill="#92400e"/>
+  <polygon points="322,150 312,140 332,140" fill="#22c55e"/>
+  
+  <!-- Large tree -->
+  <rect x="160" y="130" width="6" height="40" fill="#92400e"/>
+  <circle cx="163" cy="125" r="12" fill="#16a34a"/>
+  
+  <!-- Energy connection lines -->
+  <line x1="64" y1="200" x2="110" y2="200" stroke="#3b82f6" stroke-width="2" opacity="0.6"/>
+  <line x1="184" y1="200" x2="230" y2="200" stroke="#3b82f6" stroke-width="2" opacity="0.6"/>
+  <line x1="304" y1="200" x2="230" y2="200" stroke="#3b82f6" stroke-width="2" opacity="0.6"/>
+  <line x1="160" y1="200" x2="160" y2="200" stroke="#3b82f6" stroke-width="2" opacity="0.6"/>
+  
+  <!-- Clouds -->
+  <ellipse cx="80" cy="60" rx="20" ry="8" fill="#e0f2fe" opacity="0.8"/>
+  <ellipse cx="90" cy="55" rx="15" ry="6" fill="#e0f2fe" opacity="0.8"/>
+  <ellipse cx="100" cy="60" rx="18" ry="7" fill="#e0f2fe" opacity="0.8"/>
+  
+  <ellipse cx="280" cy="50" rx="25" ry="10" fill="#e0f2fe" opacity="0.8"/>
+  <ellipse cx="290" cy="45" rx="18" ry="7" fill="#e0f2fe" opacity="0.8"/>
+  <ellipse cx="300" cy="50" rx="20" ry="8" fill="#e0f2fe" opacity="0.8"/>
+</svg>
