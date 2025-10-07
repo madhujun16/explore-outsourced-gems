@@ -23,7 +23,12 @@ const LottieBackground: React.FC<LottieBackgroundProps> = ({
         style={{
           width: '100%',
           height: '100%',
-          objectFit: 'cover'
+          objectFit: 'cover',
+          willChange: 'transform',
+          transform: 'translateZ(0)'
+        }}
+        rendererSettings={{
+          preserveAspectRatio: 'xMidYMid slice'
         }}
       />
     </div>

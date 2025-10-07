@@ -139,7 +139,7 @@ const EnhancedNavigation: React.FC<EnhancedNavigationProps> = ({ onContactClick 
               
               {/* Content */}
               <span className="relative z-10 flex items-center">
-                <span className="group-hover:animate-pulse">{t('hero.cta')}</span>
+                <span className="">{t('hero.cta')}</span>
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
               </span>
             </Button>
@@ -204,7 +204,7 @@ const EnhancedNavigation: React.FC<EnhancedNavigationProps> = ({ onContactClick 
                   
                   {/* Content */}
                   <span className="relative z-10 flex items-center justify-center">
-                    <span className="group-hover:animate-pulse">{t('hero.cta')}</span>
+                    <span className="">{t('hero.cta')}</span>
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                   </span>
                 </Button>

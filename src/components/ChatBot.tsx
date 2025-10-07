@@ -217,7 +217,7 @@ const ChatBot = () => {
             )}
             
             {/* Pulsing ring */}
-            <div className="absolute inset-0 border-2 border-purple-300 rounded-full opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 animate-pulse"></div>
+            <div className="absolute inset-0 border-2 border-purple-300 rounded-full opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"></div>
           </Button>
         </div>
       )}

@@ -460,8 +460,8 @@ const Index = () => {
             {/* Right side - Text content */}
             <div className="flex-1 max-w-2xl text-left">
               <h1 className="mb-6 text-4xl md:text-5xl font-bold text-gray-900 hero-title leading-tight" id="heroTitle">
-                <span className="text-blue-900">Your Growth Partner in</span><br />
-                <span className="text-purple-600">Outsourcing & Digital Solutions</span>
+                <span className="hero-line text-blue-900" style={{ animationDelay: '0.2s' }}>Your Growth Partner in</span><br />
+                <span className="hero-line text-purple-600" style={{ animationDelay: '0.4s' }}>Outsourcing & Digital Solutions</span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-700 hero-subtitle">
                 The squad behind your squad. Built to make you better
@@ -494,19 +494,19 @@ const Index = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out rounded-full"></div>
                 
                 {/* Pulsing ring effect */}
-                <div className="absolute inset-0 border-2 border-purple-400 rounded-full opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 animate-pulse"></div>
+                <div className="absolute inset-0 border-2 border-purple-400 rounded-full opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"></div>
                 
                 {/* Button content */}
                 <span className="relative z-10 group-hover:text-white transition-colors duration-300 flex items-center justify-center">
-                  <span className="group-hover:animate-bounce">Get Your Free Consultation</span>
+                  <span>Get Your Free Consultation</span>
                   <span className="ml-2 group-hover:translate-x-1 transition-transform duration-300">→</span>
                 </span>
                 
                 {/* Floating particles effect */}
                 <div className="absolute inset-0 pointer-events-none">
-                  <div className="absolute top-2 left-4 w-1 h-1 bg-purple-400 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping transition-opacity duration-500"></div>
-                  <div className="absolute top-4 right-6 w-1 h-1 bg-purple-300 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping transition-opacity duration-700 delay-100"></div>
-                  <div className="absolute bottom-3 left-8 w-1 h-1 bg-purple-500 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping transition-opacity duration-600 delay-200"></div>
+                  <div className="absolute top-2 left-4 w-1 h-1 bg-purple-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute top-4 right-6 w-1 h-1 bg-purple-300 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100"></div>
+                  <div className="absolute bottom-3 left-8 w-1 h-1 bg-purple-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-600 delay-200"></div>
                 </div>
               </button>
             </div>
@@ -534,7 +534,7 @@ const Index = () => {
               Outsource smarter with a squad that's available 24/7, GDPR-compliant, and built to scale your business without overheads.
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-1">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
               {
                 icon: Clock,
@@ -1021,7 +1021,7 @@ const Index = () => {
                             </div>
                           ) : (
                             <span className="relative z-10 flex items-center justify-center">
-                              <span className="group-hover:animate-pulse">{t('contact.form.buttons.reviewSubmit')}</span>
+                              <span>{t('contact.form.buttons.reviewSubmit')}</span>
                               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
                             </span>
                           )}
@@ -1221,25 +1221,4 @@ const Index = () => {
 };
 
 export default Index;
-// Staggered animation for hero title and gradient text
-if (typeof window !== 'undefined') {
-  setTimeout(() => {
-    const titleEl = document.getElementById('heroTitle');
-    const heroSection = titleEl?.closest('.hero') || document.querySelector('.hero');
-    
-    if (titleEl) {
-      // Split title on <br> tags
-      const raw = titleEl.innerHTML.trim();
-      const parts = raw.split(/<br\s*\/?>/i).map(s => s.trim()).filter(Boolean);
-      titleEl.innerHTML = parts.map((p, i) => `<span class="line" style="--i:${i}">${p}</span>`).join('');
-      
-      // Trigger animations
-      setTimeout(() => {
-        titleEl.classList.add('in');
-        if (heroSection) {
-          heroSection.classList.add('in');
-        }
-      }, 100);
-    }
-  }, 100);
-}
+// Hero animation is now handled by CSS animations in index.css

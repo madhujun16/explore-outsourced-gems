@@ -57,7 +57,12 @@ const LottieSideImage: React.FC<LottieSideImageProps> = ({
         className="w-full h-full"
         style={{
           width: '100%',
-          height: '100%'
+          height: '100%',
+          willChange: 'transform',
+          transform: 'translateZ(0)'
+        }}
+        rendererSettings={{
+          preserveAspectRatio: 'xMidYMid meet'
         }}
       />
     </div>

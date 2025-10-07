@@ -113,7 +113,7 @@ const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({ onContactCl
             <MessageCircle className="h-6 w-6 relative z-10 group-hover:scale-110 transition-transform duration-300" />
             <Badge 
               variant="destructive" 
-              className="absolute -top-1 -right-1 h-5 w-5 p-0 flex items-center justify-center text-xs animate-pulse z-20"
+              className="absolute -top-1 -right-1 h-5 w-5 p-0 flex items-center justify-center text-xs z-20"
             >
               !
             </Badge>

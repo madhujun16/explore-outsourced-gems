@@ -96,6 +96,23 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* Performance optimizations to prevent flickering */
+  * {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    perspective: 1000;
+  }
+  
+  /* Optimize animations for better performance */
+  .animate-in,
+  .scroll-animate,
+  .hero-line,
+  .hero-subtitle,
+  .hero-trust-signals > div {
+    will-change: transform, opacity;
+  }
 }
 
 @layer utilities {
@@ -121,12 +138,11 @@ All colors MUST be HSL.
 
 /* Hero Animation Styles */
 @layer utilities {
-  .hero-title .line {
+  .hero-line {
     display: inline-block;
     opacity: 0;
     transform: translateY(-30px);
     animation: slideInDown 0.8s ease-out forwards;
-    animation-delay: calc(var(--i) * 0.2s);
   }
 
   .hero-subtitle {
