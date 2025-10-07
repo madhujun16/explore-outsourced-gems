@@ -14,6 +14,8 @@ import LanguageSwitcher from "@/components/LanguageSwitcher";
 import NovalSquadLogo from "@/components/NovalSquadLogo";
 import LottieBackground from "@/components/LottieBackground";
 import LottieSideImage from "@/components/LottieSideImage";
+import Lottie from "lottie-react";
+import rippleAnimation from "@/assets/ripple-animation.json";
 import { 
   Settings, 
   Headphones, 
@@ -495,7 +497,16 @@ const Index = () => {
 
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-violet-50 to-purple-100 py-6 md:py-8">
-        <div className="container mx-auto px-4 relative">
+        {/* Ripple Animation Background */}
+        <div className="absolute inset-0 opacity-20">
+          <Lottie
+            animationData={rippleAnimation}
+            loop={true}
+            autoplay={true}
+            style={{ width: '100%', height: '100%' }}
+          />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-8">
             {/* Left side - Lottie Animation */}
             <div className="w-full lg:w-2/5">
@@ -539,8 +550,17 @@ const Index = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section id="why-choose-us" className="py-16 bg-white border-t-2 border-gray-200">
-        <div className="container mx-auto px-4">
+      <section id="why-choose-us" className="py-16 bg-white border-t-2 border-gray-200 relative overflow-hidden">
+        {/* Ripple Animation Background */}
+        <div className="absolute inset-0 opacity-10">
+          <Lottie
+            animationData={rippleAnimation}
+            loop={true}
+            autoplay={true}
+            style={{ width: '100%', height: '100%' }}
+          />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 animate-in slide-in-from-bottom-4">
               Why Choose NovalSquad Outsourcing
@@ -594,8 +614,17 @@ const Index = () => {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
+      <section id="services" className="py-16 bg-gray-50 relative overflow-hidden">
+        {/* Ripple Animation Background */}
+        <div className="absolute inset-0 opacity-15">
+          <Lottie
+            animationData={rippleAnimation}
+            loop={true}
+            autoplay={true}
+            style={{ width: '100%', height: '100%' }}
+          />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Our Services
@@ -627,8 +656,17 @@ const Index = () => {
       </section>
 
       {/* Digital Services Section */}
-      <section id="digital" className="py-16 bg-white border-t-2 border-gray-200">
-        <div className="container mx-auto px-4">
+      <section id="digital" className="py-16 bg-white border-t-2 border-gray-200 relative overflow-hidden">
+        {/* Ripple Animation Background */}
+        <div className="absolute inset-0 opacity-10">
+          <Lottie
+            animationData={rippleAnimation}
+            loop={true}
+            autoplay={true}
+            style={{ width: '100%', height: '100%' }}
+          />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Digital Services
@@ -660,8 +698,17 @@ const Index = () => {
       </section>
 
       {/* Industries Section */}
-      <section id="industries" className="py-20 bg-gray-50 border-t-2 border-gray-200">
-        <div className="container mx-auto px-4">
+      <section id="industries" className="py-20 bg-gray-50 border-t-2 border-gray-200 relative overflow-hidden">
+        {/* Ripple Animation Background */}
+        <div className="absolute inset-0 opacity-15">
+          <Lottie
+            animationData={rippleAnimation}
+            loop={true}
+            autoplay={true}
+            style={{ width: '100%', height: '100%' }}
+          />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           {/* Quality Focus Header */}
           <div className="max-w-6xl mx-auto mb-16">
             <div className="grid lg:grid-cols-2 gap-12 items-start">
@@ -713,8 +760,17 @@ const Index = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="py-20 bg-white border-t-2 border-gray-200">
-        <div className="container mx-auto px-4">
+      <section id="testimonials" className="py-20 bg-white border-t-2 border-gray-200 relative overflow-hidden">
+        {/* Ripple Animation Background */}
+        <div className="absolute inset-0 opacity-10">
+          <Lottie
+            animationData={rippleAnimation}
+            loop={true}
+            autoplay={true}
+            style={{ width: '100%', height: '100%' }}
+          />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <div>
               <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
@@ -758,6 +814,15 @@ const Index = () => {
       {/* Contact Section */}
       <section id="contact" className="py-8 relative overflow-hidden">
         <LottieBackground className="opacity-10" />
+        {/* Ripple Animation Background */}
+        <div className="absolute inset-0 opacity-15">
+          <Lottie
+            animationData={rippleAnimation}
+            loop={true}
+            autoplay={true}
+            style={{ width: '100%', height: '100%' }}
+          />
+        </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10">
