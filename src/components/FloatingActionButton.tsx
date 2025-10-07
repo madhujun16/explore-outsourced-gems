@@ -52,7 +52,7 @@ const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({ onContactCl
   };
 
   return (
-    <div className="fixed bottom-6 left-6 z-40 flex flex-col items-start space-y-3">
+    <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end space-y-3">
       {/* Scroll to Top Button */}
       {showScrollToTop && (
         <Button
@@ -70,7 +70,7 @@ const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({ onContactCl
 
       {/* Expanded Menu */}
       {isExpanded && (
-        <div className="flex flex-col space-y-3 animate-in slide-in-from-bottom-4 items-start">
+        <div className="flex flex-col space-y-3 animate-in slide-in-from-bottom-4 items-end">
           <Button
             onClick={handleChatClick}
             variant="outline"
