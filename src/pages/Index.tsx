@@ -535,7 +535,12 @@ const Index = () => {
                 bgColor: "bg-teal-50 group-hover:bg-teal-100"
               }
             ].map((item, index) => (
-              <Card key={index} className={`border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group hover:scale-105 animate-in slide-in-from-bottom-4 fade-in`} style={{ animationDelay: `${index * 200}ms` }}>
+              <Card key={index} className={`border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group hover:scale-105`} style={{ 
+                animationDelay: `${index * 200}ms`,
+                animation: 'slideInUp 0.6s ease-out forwards',
+                opacity: 0,
+                transform: 'translateY(30px)'
+              }}>
                 <CardHeader className="text-center">
                   <div className={`mx-auto mb-4 p-3 rounded-full w-16 h-16 flex items-center justify-center transition-colors group-hover:scale-110 duration-300 ${item.bgColor}`}>
                     <item.icon className={`h-8 w-8 ${item.color}`} />
