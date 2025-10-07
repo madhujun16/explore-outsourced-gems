@@ -44,22 +44,25 @@ const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({ onContactCl
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end space-y-3">
+    <div className="fixed bottom-6 left-6 z-40 flex flex-col items-start space-y-3">
       {/* Scroll to Top Button */}
       {showScrollToTop && (
         <Button
           onClick={handleScrollToTop}
           size="icon"
-          className="h-12 w-12 rounded-full shadow-lg bg-primary hover:bg-primary/90 text-primary-foreground transition-all duration-300 hover:scale-110"
+          className="group relative h-12 w-12 rounded-full shadow-lg bg-gradient-to-br from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white transition-all duration-300 hover:scale-110 overflow-hidden"
           aria-label="Scroll to top"
         >
-          <ArrowUp className="h-5 w-5" />
+          {/* Shimmer effect */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out rounded-full"></div>
+          
+          <ArrowUp className="h-5 w-5 relative z-10 group-hover:-translate-y-1 transition-transform duration-300" />
         </Button>
       )}
 
       {/* Expanded Menu */}
       {isExpanded && (
-        <div className="flex flex-col space-y-3 animate-in slide-in-from-bottom-4">
+        <div className="flex flex-col space-y-3 animate-in slide-in-from-bottom-4 items-start">
           <Button
             onClick={handleContactClick}
             variant="outline"
@@ -86,21 +89,24 @@ const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({ onContactCl
       <Button
         onClick={() => setIsExpanded(!isExpanded)}
         size="icon"
-        className={`h-14 w-14 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 ${
+        className={`group relative h-14 w-14 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 overflow-hidden ${
           isExpanded 
-            ? 'bg-destructive hover:bg-destructive/90' 
-            : 'bg-primary hover:bg-primary/90'
-        } text-primary-foreground relative`}
+            ? 'bg-gradient-to-br from-red-500 to-red-600 hover:from-red-600 hover:to-red-700' 
+            : 'bg-gradient-to-br from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800'
+        } text-white relative`}
         aria-label={isExpanded ? "Close menu" : "Open contact menu"}
       >
+        {/* Shimmer effect */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out rounded-full"></div>
+        
         {isExpanded ? (
-          <X className="h-6 w-6" />
+          <X className="h-6 w-6 relative z-10 group-hover:rotate-90 transition-transform duration-300" />
         ) : (
           <>
-            <MessageCircle className="h-6 w-6" />
+            <MessageCircle className="h-6 w-6 relative z-10 group-hover:scale-110 transition-transform duration-300" />
             <Badge 
               variant="destructive" 
-              className="absolute -top-1 -right-1 h-5 w-5 p-0 flex items-center justify-center text-xs animate-pulse"
+              className="absolute -top-1 -right-1 h-5 w-5 p-0 flex items-center justify-center text-xs animate-pulse z-20"
             >
               !
             </Badge>

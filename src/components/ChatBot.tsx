@@ -198,17 +198,26 @@ const ChatBot = () => {
               setShowNotification(false);
               setNotificationCount(0);
             }}
-            className={`h-16 w-16 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 bg-primary hover:bg-primary/90 text-primary-foreground border-2 border-primary/20 relative ${
+            className={`group relative h-16 w-16 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 bg-gradient-to-br from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white border-2 border-purple-400/30 overflow-hidden ${
               showNotification ? 'animate-bounce' : ''
             }`}
             size="icon"
           >
-            <MessageCircle className="h-7 w-7" />
+            {/* Shimmer effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out rounded-full"></div>
+            
+            {/* Icon */}
+            <MessageCircle className="h-7 w-7 relative z-10 group-hover:scale-110 transition-transform duration-300" />
+            
+            {/* Notification badge */}
             {showNotification && notificationCount > 0 && (
-              <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center animate-pulse">
+              <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center animate-pulse z-20">
                 {notificationCount}
               </div>
             )}
+            
+            {/* Pulsing ring */}
+            <div className="absolute inset-0 border-2 border-purple-300 rounded-full opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 animate-pulse"></div>
           </Button>
         </div>
       )}
