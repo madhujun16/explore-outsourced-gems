@@ -6,9 +6,14 @@
     "contact": "Contact"
   },
   "hero": {
-    "title": "Votre Partenaire de Croissance en Externalisation et Solutions Numériques — l'équipe derrière votre équipe.",
-    "subtitle": "Conforme RGPD. Rentable. Prêt en 5 jours.",
-    "cta": "Commencer"
+    "title": "Votre Partenaire de Croissance en Externalisation et Solutions Numériques",
+    "subtitle": "L'équipe derrière votre équipe. Construit pour vous rendre meilleur",
+    "cta": "Commencer",
+    "trustSignals": {
+      "gdpr": "Conforme RGPD",
+      "costEffective": "Rentable",
+      "onboard": "Prêt en 5 jours"
+    }
   },
   "services": {
     "title": "Nos Services",
@@ -49,20 +54,20 @@
     "subtitle": "Solutions numériques modernes pour accélérer la croissance de votre entreprise",
     "items": {
       "webDev": {
-        "title": "Développement Web",
+        "title": "Web Dev",
         "description": "Pages de destination, CMS, e-commerce, hébergement global."
       },
       "marketing": {
-        "title": "Marketing Digital",
-        "description": "SEO, PPC, réseaux sociaux, stratégie de contenu."
+        "title": "Marketing",
+        "description": "SEO, publicités payantes, stratégie de contenu multilingue."
       },
-      "mobile": {
-        "title": "Applications Mobiles",
-        "description": "Développement iOS, Android, cross-platform."
+      "dataCrm": {
+        "title": "Data/CRM",
+        "description": "Configurations CRM conformes RGPD, tableaux de bord analytiques."
       },
-      "design": {
-        "title": "Design UI/UX",
-        "description": "Design centré utilisateur, prototypes, branding."
+      "aiChatbots": {
+        "title": "Chatbots IA",
+        "description": "Bots de support et vente automatisés, multilingue."
       }
     }
   },
@@ -118,7 +123,49 @@
   },
   "industries": {
     "title": "Secteurs que Nous Servons",
-    "subtitle": "Expertise spécialisée dans les secteurs d'activité clés mondiaux"
+    "subtitle": "Expertise spécialisée dans les secteurs d'activité clés mondiaux",
+    "items": {
+      "finance": {
+        "title": "Finance",
+        "description": "Réconciliation, KYC, assistance virtuelle."
+      },
+      "healthcare": {
+        "title": "Santé",
+        "description": "Traitement des réclamations, transcription, RCM."
+      },
+      "retail": {
+        "title": "Commerce",
+        "description": "Retours, support catalogue, helpdesk logistique."
+      },
+      "travel": {
+        "title": "Voyage",
+        "description": "Support conciergerie, réservations multilingues."
+      },
+      "education": {
+        "title": "Éducation",
+        "description": "Support étudiant, gestion de cours, assistance virtuelle."
+      },
+      "automotive": {
+        "title": "Automobile",
+        "description": "Planification de services, gestion des pièces, service client."
+      },
+      "realEstate": {
+        "title": "Immobilier",
+        "description": "Gestion de propriétés, support locataires, documentation."
+      },
+      "gaming": {
+        "title": "Gaming",
+        "description": "Support joueurs, gestion communautaire, tests QA."
+      },
+      "technology": {
+        "title": "Technologie",
+        "description": "Support technique, développement d'applications, intégration système."
+      },
+      "logistics": {
+        "title": "Logistique",
+        "description": "Suivi d'expédition, gestion d'inventaire, support livraison."
+      }
+    }
   },
   "contact": {
     "title": "Prêt à Développer Votre Entreprise Européenne ?",
@@ -228,5 +275,32 @@
     "open": "Ouvrir",
     "yes": "Oui",
     "no": "Non"
+  },
+  "messages": {
+    "form": {
+      "fixErrors": {
+        "title": "Veuillez corriger les erreurs",
+        "description": "Veuillez corriger les champs surlignés et réessayer."
+      },
+      "success": {
+        "title": "Message envoyé avec succès !",
+        "description": "Nous vous répondrons dans les 24 heures."
+      },
+      "error": {
+        "title": "Erreur",
+        "description": "Impossible d'envoyer le message. Veuillez réessayer."
+      }
+    },
+    "review": {
+      "title": "Réviser Vos Informations",
+      "subtitle": "Veuillez réviser vos détails avant de soumettre",
+      "fields": {
+        "name": "Nom",
+        "email": "Email",
+        "company": "Entreprise",
+        "industry": "Secteur",
+        "projectDescription": "Description du Projet"
+      }
+    }
   }
 } 

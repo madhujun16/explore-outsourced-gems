@@ -6,9 +6,14 @@
     "contact": "Contatto"
   },
   "hero": {
-    "title": "Il Vostro Partner di Crescita in Outsourcing e Soluzioni Digitali — la squadra dietro la vostra squadra.",
-    "subtitle": "Conforme GDPR. Conveniente. Pronto in 5 giorni.",
-    "cta": "Inizia Ora"
+    "title": "Il Vostro Partner di Crescita in Outsourcing e Soluzioni Digitali",
+    "subtitle": "La squadra dietro la vostra squadra. Costruito per rendervi migliori",
+    "cta": "Inizia Ora",
+    "trustSignals": {
+      "gdpr": "Conforme GDPR",
+      "costEffective": "Conveniente",
+      "onboard": "Pronto in 5 giorni"
+    }
   },
   "services": {
     "title": "I Nostri Servizi",
@@ -49,20 +54,20 @@
     "subtitle": "Soluzioni digitali moderne per accelerare la crescita della tua azienda",
     "items": {
       "webDev": {
-        "title": "Sviluppo Web",
+        "title": "Web Dev",
         "description": "Landing page, CMS, e-commerce, hosting globale."
       },
       "marketing": {
-        "title": "Marketing Digitale",
-        "description": "SEO, PPC, social media, strategia dei contenuti."
+        "title": "Marketing",
+        "description": "SEO, annunci a pagamento, strategia di contenuti multilingue."
       },
-      "mobile": {
-        "title": "App Mobili",
-        "description": "Sviluppo iOS, Android, cross-platform."
+      "dataCrm": {
+        "title": "Data/CRM",
+        "description": "Configurazioni CRM conformi GDPR, dashboard analitiche."
       },
-      "design": {
-        "title": "Design UI/UX",
-        "description": "Design centrato sull'utente, prototipi, branding."
+      "aiChatbots": {
+        "title": "Chatbot IA",
+        "description": "Bot di supporto e vendita automatizzati, multilingue."
       }
     }
   },
@@ -118,7 +123,49 @@
   },
   "industries": {
     "title": "Settori che Serviamo",
-    "subtitle": "Competenza specializzata nei settori aziendali chiave globali"
+    "subtitle": "Competenza specializzata nei settori aziendali chiave globali",
+    "items": {
+      "finance": {
+        "title": "Finanza",
+        "description": "Riconciliazione, KYC, assistenza virtuale."
+      },
+      "healthcare": {
+        "title": "Sanità",
+        "description": "Elaborazione reclami, trascrizione, RCM."
+      },
+      "retail": {
+        "title": "Retail",
+        "description": "Resi, supporto catalogo, helpdesk logistico."
+      },
+      "travel": {
+        "title": "Viaggi",
+        "description": "Supporto concierge, prenotazioni multilingue."
+      },
+      "education": {
+        "title": "Educazione",
+        "description": "Supporto studenti, gestione corsi, assistenza virtuale."
+      },
+      "automotive": {
+        "title": "Automotive",
+        "description": "Pianificazione servizi, gestione ricambi, assistenza clienti."
+      },
+      "realEstate": {
+        "title": "Immobiliare",
+        "description": "Gestione proprietà, supporto inquilini, documentazione."
+      },
+      "gaming": {
+        "title": "Gaming",
+        "description": "Supporto giocatori, gestione community, test QA."
+      },
+      "technology": {
+        "title": "Tecnologia",
+        "description": "Supporto tecnico, sviluppo app, integrazione sistemi."
+      },
+      "logistics": {
+        "title": "Logistica",
+        "description": "Tracciamento spedizioni, gestione inventario, supporto consegne."
+      }
+    }
   },
   "contact": {
     "title": "Pronto a Scalare la Tua Azienda Europea?",
@@ -228,5 +275,32 @@
     "open": "Apri",
     "yes": "Sì",
     "no": "No"
+  },
+  "messages": {
+    "form": {
+      "fixErrors": {
+        "title": "Si prega di correggere gli errori",
+        "description": "Si prega di correggere i campi evidenziati e riprovare."
+      },
+      "success": {
+        "title": "Messaggio inviato con successo!",
+        "description": "Ti risponderemo entro 24 ore."
+      },
+      "error": {
+        "title": "Errore",
+        "description": "Impossibile inviare il messaggio. Si prega di riprovare."
+      }
+    },
+    "review": {
+      "title": "Rivedi le Tue Informazioni",
+      "subtitle": "Per favore rivedi i tuoi dettagli prima di inviare",
+      "fields": {
+        "name": "Nome",
+        "email": "Email",
+        "company": "Azienda",
+        "industry": "Settore",
+        "projectDescription": "Descrizione del Progetto"
+      }
+    }
   }
 } 

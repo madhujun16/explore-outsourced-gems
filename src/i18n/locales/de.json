@@ -6,13 +6,13 @@
     "contact": "Kontakt"
   },
   "hero": {
-    "title": "Ihr Wachstumspartner für Outsourcing & digitale Lösungen — Das Team hinter Ihrem Team.",
-    "subtitle": "DSGVO-konform. Kostengünstig. Bereit in 5 Tagen.",
+    "title": "Ihr Wachstumspartner für Outsourcing & digitale Lösungen",
+    "subtitle": "Das Team hinter Ihrem Team. Gebaut, um Sie besser zu machen",
     "cta": "Jetzt Starten",
     "trustSignals": {
-      "gdpr": "DSGVO-Konform",
-      "support": "24/7 Support",
-      "multilingual": "Mehrsprachig"
+      "gdpr": "DSGVO-konform",
+      "costEffective": "Kostengünstig",
+      "onboard": "Bereit in 5 Tagen"
     }
   },
   "services": {
@@ -54,20 +54,20 @@
     "subtitle": "Moderne digitale Lösungen zur Beschleunigung Ihres Geschäftswachstums",
     "items": {
       "webDev": {
-        "title": "Webentwicklung",
+        "title": "Web Dev",
         "description": "Landing Pages, CMS, E-Commerce, global gehostet."
       },
       "marketing": {
-        "title": "Digitales Marketing",
-        "description": "SEO, PPC, Social Media, Content-Strategie."
+        "title": "Marketing",
+        "description": "SEO, bezahlte Anzeigen, mehrsprachige Content-Strategie."
       },
-      "mobile": {
-        "title": "Mobile Apps",
-        "description": "iOS, Android, Cross-Platform-Entwicklung."
+      "dataCrm": {
+        "title": "Data/CRM",
+        "description": "DSGVO-konforme CRM-Einrichtungen, Analytics-Dashboards."
       },
-      "design": {
-        "title": "UI/UX Design",
-        "description": "Nutzerzentriertes Design, Prototypen, Branding."
+      "aiChatbots": {
+        "title": "KI-Chatbots",
+        "description": "Automatisierte Support- und Verkaufsbots, mehrsprachig."
       }
     }
   },
@@ -123,7 +123,49 @@
   },
   "industries": {
     "title": "Branchen, die Wir Bedienen",
-    "subtitle": "Spezialisierte Expertise in wichtigen globalen Geschäftssektoren"
+    "subtitle": "Spezialisierte Expertise in wichtigen globalen Geschäftssektoren",
+    "items": {
+      "finance": {
+        "title": "Finanzen",
+        "description": "Abstimmung, KYC, virtuelle Unterstützung."
+      },
+      "healthcare": {
+        "title": "Gesundheitswesen",
+        "description": "Schadensabwicklung, Transkription, RCM."
+      },
+      "retail": {
+        "title": "Einzelhandel",
+        "description": "Rückgaben, Katalog-Support, Logistik-Helpdesk."
+      },
+      "travel": {
+        "title": "Reisen",
+        "description": "Concierge-Support, mehrsprachige Buchungen."
+      },
+      "education": {
+        "title": "Bildung",
+        "description": "Studenten-Support, Kursmanagement, virtuelle Unterstützung."
+      },
+      "automotive": {
+        "title": "Automobil",
+        "description": "Service-Terminplanung, Teilemanagement, Kundenservice."
+      },
+      "realEstate": {
+        "title": "Immobilien",
+        "description": "Immobilienverwaltung, Mieter-Support, Dokumentation."
+      },
+      "gaming": {
+        "title": "Gaming",
+        "description": "Spieler-Support, Community-Management, QA-Testing."
+      },
+      "technology": {
+        "title": "Technologie",
+        "description": "Technischer Support, App-Entwicklung, Systemintegration."
+      },
+      "logistics": {
+        "title": "Logistik",
+        "description": "Sendungsverfolgung, Bestandsmanagement, Liefer-Support."
+      }
+    }
   },
   "contact": {
     "title": "Bereit, Ihr Europäisches Unternehmen zu Skalieren?",
@@ -233,5 +275,32 @@
     "open": "Öffnen",
     "yes": "Ja",
     "no": "Nein"
+  },
+  "messages": {
+    "form": {
+      "fixErrors": {
+        "title": "Bitte beheben Sie die Fehler",
+        "description": "Bitte korrigieren Sie die hervorgehobenen Felder und versuchen Sie es erneut."
+      },
+      "success": {
+        "title": "Nachricht erfolgreich gesendet!",
+        "description": "Wir melden uns innerhalb von 24 Stunden bei Ihnen."
+      },
+      "error": {
+        "title": "Fehler",
+        "description": "Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut."
+      }
+    },
+    "review": {
+      "title": "Ihre Informationen Überprüfen",
+      "subtitle": "Bitte überprüfen Sie Ihre Details vor dem Absenden",
+      "fields": {
+        "name": "Name",
+        "email": "E-Mail",
+        "company": "Unternehmen",
+        "industry": "Branche",
+        "projectDescription": "Projektbeschreibung"
+      }
+    }
   }
 } 

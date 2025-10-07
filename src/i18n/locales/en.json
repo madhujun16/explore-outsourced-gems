@@ -50,20 +50,20 @@
     "subtitle": "Modern digital solutions to accelerate your business growth",
     "items": {
       "webDev": {
-        "title": "Web Development",
+        "title": "Web Dev",
         "description": "Landing pages, CMS, ecommerce, globally hosted."
       },
       "marketing": {
-        "title": "Digital Marketing",
-        "description": "SEO, PPC, social media, content strategy."
+        "title": "Marketing",
+        "description": "SEO, paid ads, multilingual content strategy."
       },
-      "mobile": {
-        "title": "Mobile Apps",
-        "description": "iOS, Android, cross-platform development."
+      "dataCrm": {
+        "title": "Data/CRM",
+        "description": "GDPR-ready CRM setups, analytics dashboards."
       },
-      "design": {
-        "title": "UI/UX Design",
-        "description": "User-centered design, prototypes, branding."
+      "aiChatbots": {
+        "title": "AI Chatbots",
+        "description": "Automated support & sales bots, multi-language."
       }
     }
   },
@@ -119,7 +119,49 @@
   },
   "industries": {
     "title": "Industries We Serve",
-    "subtitle": "Specialized expertise across key global business sectors"
+    "subtitle": "Specialized expertise across key global business sectors",
+    "items": {
+      "finance": {
+        "title": "Finance",
+        "description": "Reconciliation, KYC, virtual assistance."
+      },
+      "healthcare": {
+        "title": "Healthcare",
+        "description": "Claims processing, transcription, RCM."
+      },
+      "retail": {
+        "title": "Retail",
+        "description": "Returns, catalog support, logistics helpdesk."
+      },
+      "travel": {
+        "title": "Travel",
+        "description": "Concierge support, multilingual bookings."
+      },
+      "education": {
+        "title": "Education",
+        "description": "Student support, course management, virtual assistance."
+      },
+      "automotive": {
+        "title": "Automotive",
+        "description": "Service scheduling, parts management, customer care."
+      },
+      "realEstate": {
+        "title": "Real Estate",
+        "description": "Property management, tenant support, documentation."
+      },
+      "gaming": {
+        "title": "Gaming",
+        "description": "Player support, community management, QA testing."
+      },
+      "technology": {
+        "title": "Technology",
+        "description": "Technical support, app development, system integration."
+      },
+      "logistics": {
+        "title": "Logistics",
+        "description": "Shipment tracking, inventory management, delivery support."
+      }
+    }
   },
   "contact": {
     "title": "Ready to Scale Your Business?",
@@ -229,5 +271,32 @@
     "open": "Open",
     "yes": "Yes",
     "no": "No"
+  },
+  "messages": {
+    "form": {
+      "fixErrors": {
+        "title": "Please fix the errors",
+        "description": "Please correct the highlighted fields and try again."
+      },
+      "success": {
+        "title": "Message sent successfully!",
+        "description": "We'll get back to you within 24 hours."
+      },
+      "error": {
+        "title": "Error",
+        "description": "Failed to send message. Please try again."
+      }
+    },
+    "review": {
+      "title": "Review Your Information",
+      "subtitle": "Please review your details before submitting",
+      "fields": {
+        "name": "Name",
+        "email": "Email",
+        "company": "Company",
+        "industry": "Industry",
+        "projectDescription": "Project Description"
+      }
+    }
   }
 } 

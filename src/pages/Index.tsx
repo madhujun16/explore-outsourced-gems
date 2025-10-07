@@ -71,6 +71,7 @@ const Index = () => {
   const [showReview, setShowReview] = useState(false);
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
   const [visibleDigitalCards, setVisibleDigitalCards] = useState<Set<number>>(new Set());
+  const [visibleWhyChooseCards, setVisibleWhyChooseCards] = useState<Set<number>>(new Set());
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
   const { 
@@ -234,7 +235,28 @@ const Index = () => {
     }
   }, [visibleSections, digitalServices]);
 
+  // Sequential animation for why choose us cards
+  useEffect(() => {
+    if (visibleSections.has('why-choose-us')) {
+      const timeouts: NodeJS.Timeout[] = [];
+      
+      // Clear any existing cards first
+      setVisibleWhyChooseCards(new Set());
+      
+      // Show cards one by one with 300ms intervals
+      const whyChooseCards = [0, 1, 2]; // 3 cards
+      whyChooseCards.forEach((_, index) => {
+        const timeout = setTimeout(() => {
+          setVisibleWhyChooseCards(prev => new Set([...prev, index]));
+        }, (index + 1) * 300);
+        timeouts.push(timeout);
+      });
 
+      return () => {
+        timeouts.forEach(timeout => clearTimeout(timeout));
+      };
+    }
+  }, [visibleSections]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -513,10 +535,7 @@ const Index = () => {
                 bgColor: "bg-teal-50 group-hover:bg-teal-100"
               }
             ].map((item, index) => (
-              <Card key={index} className={`border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group hover:scale-105 animate-in slide-in-from-bottom-2 fade-in`} style={{ 
-                animationDelay: `${index * 200}ms`,
-                animationDuration: '0.6s'
-              }}>
+              <Card key={index} className={`border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group hover:scale-105 ${visibleWhyChooseCards.has(index) ? 'animate-in slide-in-from-bottom-4' : 'opacity-0 translate-y-4'}`} style={{ animationDelay: `${index * 150}ms` }}>
                 <CardHeader className="text-center">
                   <div className={`mx-auto mb-4 p-3 rounded-full w-16 h-16 flex items-center justify-center transition-colors group-hover:scale-110 duration-300 ${item.bgColor}`}>
                     <item.icon className={`h-8 w-8 ${item.color}`} />

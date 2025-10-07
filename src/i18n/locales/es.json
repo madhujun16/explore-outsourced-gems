@@ -6,9 +6,14 @@
     "contact": "Contacto"
   },
   "hero": {
-    "title": "Su Socio de Crecimiento en Externalización y Soluciones Digitales — el equipo detrás de su equipo.",
-    "subtitle": "Conforme RGPD. Rentable. Listo en 5 días.",
-    "cta": "Comenzar"
+    "title": "Su Socio de Crecimiento en Externalización y Soluciones Digitales",
+    "subtitle": "El equipo detrás de su equipo. Construido para hacerlo mejor",
+    "cta": "Comenzar",
+    "trustSignals": {
+      "gdpr": "Conforme RGPD",
+      "costEffective": "Rentable",
+      "onboard": "Listo en 5 días"
+    }
   },
   "services": {
     "title": "Nuestros Servicios",
@@ -49,20 +54,20 @@
     "subtitle": "Soluciones digitales modernas para acelerar el crecimiento de su empresa",
     "items": {
       "webDev": {
-        "title": "Desarrollo Web",
+        "title": "Web Dev",
         "description": "Páginas de aterrizaje, CMS, comercio electrónico, alojamiento global."
       },
       "marketing": {
-        "title": "Marketing Digital",
-        "description": "SEO, PPC, redes sociales, estrategia de contenido."
+        "title": "Marketing",
+        "description": "SEO, anuncios pagados, estrategia de contenido multilingüe."
       },
-      "mobile": {
-        "title": "Aplicaciones Móviles",
-        "description": "Desarrollo iOS, Android, multiplataforma."
+      "dataCrm": {
+        "title": "Data/CRM",
+        "description": "Configuraciones CRM compatibles con RGPD, paneles de análisis."
       },
-      "design": {
-        "title": "Diseño UI/UX",
-        "description": "Diseño centrado en el usuario, prototipos, branding."
+      "aiChatbots": {
+        "title": "Chatbots IA",
+        "description": "Bots de soporte y ventas automatizados, multilingüe."
       }
     }
   },
@@ -118,7 +123,49 @@
   },
   "industries": {
     "title": "Industrias que Servimos",
-    "subtitle": "Experiencia especializada en sectores empresariales clave globales"
+    "subtitle": "Experiencia especializada en sectores empresariales clave globales",
+    "items": {
+      "finance": {
+        "title": "Finanzas",
+        "description": "Reconciliación, KYC, asistencia virtual."
+      },
+      "healthcare": {
+        "title": "Salud",
+        "description": "Procesamiento de reclamaciones, transcripción, RCM."
+      },
+      "retail": {
+        "title": "Retail",
+        "description": "Devoluciones, soporte de catálogo, helpdesk logístico."
+      },
+      "travel": {
+        "title": "Viajes",
+        "description": "Soporte de conserjería, reservas multilingües."
+      },
+      "education": {
+        "title": "Educación",
+        "description": "Soporte estudiantil, gestión de cursos, asistencia virtual."
+      },
+      "automotive": {
+        "title": "Automotriz",
+        "description": "Programación de servicios, gestión de repuestos, atención al cliente."
+      },
+      "realEstate": {
+        "title": "Bienes Raíces",
+        "description": "Gestión de propiedades, soporte a inquilinos, documentación."
+      },
+      "gaming": {
+        "title": "Gaming",
+        "description": "Soporte a jugadores, gestión de comunidad, pruebas QA."
+      },
+      "technology": {
+        "title": "Tecnología",
+        "description": "Soporte técnico, desarrollo de aplicaciones, integración de sistemas."
+      },
+      "logistics": {
+        "title": "Logística",
+        "description": "Seguimiento de envíos, gestión de inventario, soporte de entrega."
+      }
+    }
   },
   "contact": {
     "title": "¿Listo para Escalar su Negocio Europeo?",
@@ -228,5 +275,32 @@
     "open": "Abrir",
     "yes": "Sí",
     "no": "No"
+  },
+  "messages": {
+    "form": {
+      "fixErrors": {
+        "title": "Por favor corrija los errores",
+        "description": "Por favor corrija los campos resaltados e intente de nuevo."
+      },
+      "success": {
+        "title": "¡Mensaje enviado exitosamente!",
+        "description": "Nos pondremos en contacto con usted en 24 horas."
+      },
+      "error": {
+        "title": "Error",
+        "description": "No se pudo enviar el mensaje. Por favor intente de nuevo."
+      }
+    },
+    "review": {
+      "title": "Revisar su Información",
+      "subtitle": "Por favor revise sus detalles antes de enviar",
+      "fields": {
+        "name": "Nombre",
+        "email": "Email",
+        "company": "Empresa",
+        "industry": "Industria",
+        "projectDescription": "Descripción del Proyecto"
+      }
+    }
   }
 } 
