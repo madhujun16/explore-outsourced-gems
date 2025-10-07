@@ -658,12 +658,10 @@ const Index = () => {
               {industries.map((industry, index) => (
                 <div 
                   key={index} 
-                  className="group cursor-pointer transition-all duration-700"
+                  className="group cursor-pointer transition-all duration-700 animate-in slide-in-from-bottom-2 fade-in"
                   style={{ 
                     animationDelay: `${index * 100}ms`,
-                    animation: 'slideInUp 0.6s ease-out forwards',
-                    opacity: 0,
-                    transform: 'translateY(30px)'
+                    animationDuration: '0.6s'
                   }}
                 >
                   <div className="text-center">
