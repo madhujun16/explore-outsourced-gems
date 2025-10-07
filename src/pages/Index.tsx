@@ -497,16 +497,7 @@ const Index = () => {
 
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-violet-50 to-purple-100 py-6 md:py-8">
-        {/* Ripple Animation Background */}
-        <div className="absolute inset-0 opacity-20">
-          <Lottie
-            animationData={rippleAnimation}
-            loop={true}
-            autoplay={true}
-            style={{ width: '100%', height: '100%' }}
-          />
-        </div>
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-4 relative">
           <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-8">
             {/* Left side - Lottie Animation */}
             <div className="w-full lg:w-2/5">
