@@ -16,6 +16,9 @@ import LottieBackground from "@/components/LottieBackground";
 import LottieSideImage from "@/components/LottieSideImage";
 import SkipNavigation from "@/components/SkipNavigation";
 import SEOHead from "@/components/SEOHead";
+import EnhancedNavigation from "@/components/EnhancedNavigation";
+import FloatingActionButton from "@/components/FloatingActionButton";
+import ScrollProgress from "@/components/ScrollProgress";
 import { useFormValidation } from "@/hooks/useFormValidation";
 import { usePerformanceMonitoring, trackUserInteraction, trackFormSubmission } from "@/hooks/usePerformanceMonitoring";
 import Lottie from "lottie-react";
@@ -50,9 +53,7 @@ import {
   Globe,
   Shield,
   Lock,
-  ArrowLeft,
-  Menu,
-  X
+  ArrowLeft
 } from "lucide-react";
 
 const Index = () => {
@@ -73,7 +74,6 @@ const Index = () => {
   const [visibleDigitalCards, setVisibleDigitalCards] = useState<Set<number>>(new Set());
   const [visibleIndustryCards, setVisibleIndustryCards] = useState<Set<number>>(new Set());
   const [visibleWhyChooseCards, setVisibleWhyChooseCards] = useState<Set<number>>(new Set());
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
   const { 
@@ -440,96 +440,15 @@ const Index = () => {
     <>
       <SEOHead />
       <SkipNavigation />
+      <ScrollProgress />
       <div className="min-h-screen bg-gradient-to-br from-violet-50 to-purple-100">
-        {/* Navigation */}
-      <nav className="border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <NovalSquadLogo variant="dark" size="sm" />
-            
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
-              <a href="#services" className="text-muted-foreground hover:text-primary transition-colors duration-200">{t('navigation.services')}</a>
-              <a href="#digital" className="text-muted-foreground hover:text-primary transition-colors duration-200">Digital</a>
-              <a href="#industries" className="text-muted-foreground hover:text-primary transition-colors duration-200">{t('navigation.industries')}</a>
-              <a href="#contact" className="text-muted-foreground hover:text-primary transition-colors duration-200">{t('navigation.contact')}</a>
-            </div>
-            
-            {/* Desktop Actions */}
-            <div className="hidden md:flex items-center space-x-3">
-              <LanguageSwitcher />
-              <Button 
-                variant="outline" 
-                size="sm"
-                className="px-4 py-2 h-9"
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                {t('hero.cta')}
-              </Button>
-            </div>
-            
-            {/* Mobile Menu Button */}
-            <div className="md:hidden flex items-center space-x-3">
-              <LanguageSwitcher />
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="p-2"
-              >
-                {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-              </Button>
-            </div>
-          </div>
-          
-          {/* Mobile Navigation Menu */}
-          {isMobileMenuOpen && (
-            <div className="md:hidden mt-4 pb-4 border-t border-gray-200">
-              <div className="flex flex-col space-y-4 pt-4">
-                <a 
-                  href="#services" 
-                  className="text-muted-foreground hover:text-primary transition-colors duration-200 py-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {t('navigation.services')}
-                </a>
-                <a 
-                  href="#digital" 
-                  className="text-muted-foreground hover:text-primary transition-colors duration-200 py-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Digital
-                </a>
-                <a 
-                  href="#industries" 
-                  className="text-muted-foreground hover:text-primary transition-colors duration-200 py-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {t('navigation.industries')}
-                </a>
-                <a 
-                  href="#contact" 
-                  className="text-muted-foreground hover:text-primary transition-colors duration-200 py-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {t('navigation.contact')}
-                </a>
-                <Button 
-                  variant="outline" 
-                  size="sm"
-                  className="w-full mt-4"
-                  onClick={() => {
-                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                    setIsMobileMenuOpen(false);
-                  }}
-                >
-                  {t('hero.cta')}
-                </Button>
-              </div>
-            </div>
-          )}
-        </div>
-      </nav>
+        {/* Enhanced Navigation */}
+        <EnhancedNavigation 
+          onContactClick={() => {
+            trackUserInteraction('cta_click', 'Navigation', 'Contact CTA');
+            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+          }}
+        />
 
       {/* Hero Section */}
       <section id="main-content" className="relative overflow-hidden bg-gradient-to-br from-violet-50 to-purple-100 py-6 md:py-8" tabIndex={-1}>
@@ -1267,6 +1186,14 @@ const Index = () => {
       
       {/* ChatBot */}
       <ChatBot />
+      
+      {/* Floating Action Button */}
+      <FloatingActionButton 
+        onContactClick={() => {
+          trackUserInteraction('fab_contact_click', 'FAB', 'Contact Form');
+          document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+        }}
+      />
       </div>
     </>
   );
