@@ -512,7 +512,7 @@ const Index = () => {
                 <span className="text-blue-900">Your Growth Partner in</span><br />
                 <span className="text-purple-600">Outsourcing & Digital Solutions</span>
               </h1>
-              <p className="text-xl md:text-2xl text-gray-700 mb-8 hero-subtitle">
+              <p className="text-xl md:text-2xl text-gray-700 hero-subtitle">
                 The squad behind your squad. Built to make you better
               </p>
               <div className="flex flex-wrap items-center gap-4 md:gap-6 mb-8 text-gray-700 hero-trust-signals">
