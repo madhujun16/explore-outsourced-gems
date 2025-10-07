@@ -253,7 +253,7 @@ const Index = () => {
       whyChooseCards.forEach((_, index) => {
         const timeout = setTimeout(() => {
           setVisibleWhyChooseCards(prev => new Set([...prev, index]));
-        }, index * 300);
+        }, (index + 1) * 300); // Add 1 to start from 300ms instead of 0ms
         timeouts.push(timeout);
       });
 
