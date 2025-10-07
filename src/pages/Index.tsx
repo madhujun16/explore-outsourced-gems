@@ -226,11 +226,11 @@ const Index = () => {
       // Clear any existing cards first
       setVisibleIndustryCards(new Set());
       
-      // Show cards one by one with 200ms intervals
+      // Show cards one by one with 300ms intervals
       industries.forEach((_, index) => {
         const timeout = setTimeout(() => {
           setVisibleIndustryCards(prev => new Set([...prev, index]));
-        }, (index + 1) * 200);
+        }, (index + 1) * 300);
         timeouts.push(timeout);
       });
 
@@ -727,7 +727,7 @@ const Index = () => {
               {industries.map((industry, index) => (
                 <div 
                   key={index} 
-                  className="group cursor-pointer transition-all duration-700"
+                  className={`group cursor-pointer transition-all duration-700 ${visibleIndustryCards.has(index) ? 'animate-in slide-in-from-bottom-4' : 'opacity-0 translate-y-4'}`}
                 >
                   <div className="text-center">
                     {/* Circular Industry Card */}
