@@ -68,7 +68,7 @@ const Index = () => {
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
   const [visibleDigitalCards, setVisibleDigitalCards] = useState<Set<number>>(new Set());
   const [visibleIndustryCards, setVisibleIndustryCards] = useState<Set<number>>(new Set());
-  const [visibleWhyChooseCards, setVisibleWhyChooseCards] = useState<Set<number>>(new Set([0, 1, 2]));
+  const [visibleWhyChooseCards, setVisibleWhyChooseCards] = useState<Set<number>>(new Set());
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { toast } = useToast();
 
@@ -244,6 +244,9 @@ const Index = () => {
   useEffect(() => {
     if (visibleSections.has('why-choose-us')) {
       const timeouts: NodeJS.Timeout[] = [];
+      
+      // Clear any existing cards first
+      setVisibleWhyChooseCards(new Set());
       
       // Show cards one by one with 300ms intervals
       const whyChooseCards = [0, 1, 2]; // 3 cards
@@ -584,7 +587,7 @@ const Index = () => {
                 bgColor: "bg-teal-50 group-hover:bg-teal-100"
               }
             ].map((item, index) => (
-              <Card key={index} className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group hover:scale-105 animate-in slide-in-from-bottom-4" style={{ animationDelay: `${index * 200}ms` }}>
+              <Card key={index} className={`border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group hover:scale-105 ${visibleWhyChooseCards.has(index) ? 'animate-in slide-in-from-bottom-4' : 'opacity-0 translate-y-4'}`} style={{ animationDelay: `${index * 200}ms` }}>
                 <CardHeader className="text-center">
                   <div className={`mx-auto mb-4 p-3 rounded-full w-16 h-16 flex items-center justify-center transition-colors group-hover:scale-110 duration-300 ${item.bgColor}`}>
                     <item.icon className={`h-8 w-8 ${item.color}`} />
