@@ -3,7 +3,6 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { 
   MessageCircle, 
-  Phone, 
   Mail, 
   X,
   ArrowUp
@@ -32,10 +31,6 @@ const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({ onContactCl
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handlePhoneClick = () => {
-    trackUserInteraction('phone_click', 'FAB', 'Phone Call');
-    window.open('tel:+442012345678', '_self');
-  };
 
   const handleEmailClick = () => {
     trackUserInteraction('email_click', 'FAB', 'Email');
@@ -83,16 +78,6 @@ const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({ onContactCl
           >
             <Mail className="h-4 w-4 mr-2" />
             Email Us
-          </Button>
-          
-          <Button
-            onClick={handlePhoneClick}
-            variant="outline"
-            size="sm"
-            className="h-10 px-4 bg-white shadow-lg hover:bg-primary hover:text-primary-foreground transition-all duration-200"
-          >
-            <Phone className="h-4 w-4 mr-2" />
-            Call Now
           </Button>
         </div>
       )}

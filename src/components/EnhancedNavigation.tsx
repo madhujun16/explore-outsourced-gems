@@ -6,7 +6,6 @@ import {
   Menu, 
   X, 
   ChevronDown, 
-  Phone, 
   Mail, 
   MessageCircle,
   ArrowRight,
@@ -125,10 +124,6 @@ const EnhancedNavigation: React.FC<EnhancedNavigationProps> = ({ onContactClick 
             
             {/* Contact Info */}
             <div className="hidden xl:flex items-center space-x-4 text-sm text-muted-foreground">
-              <div className="flex items-center space-x-1">
-                <Phone className="h-3 w-3" />
-                <span>+44 20 1234 5678</span>
-              </div>
               <div className="flex items-center space-x-1">
                 <Mail className="h-3 w-3" />
                 <span>admin@novalsquad.com</span>
