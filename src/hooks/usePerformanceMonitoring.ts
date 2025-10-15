@@ -45,14 +45,17 @@ export const usePerformanceMonitoring = () => {
       try {
         fidObserver.observe({ entryTypes: ['first-input'] });
       } catch (e) {
+        // Fallback for browsers that don't support FID
+        console.debug('FID observation not supported');
       }
 
       // Monitor Cumulative Layout Shift (CLS)
       let clsValue = 0;
       const clsObserver = new PerformanceObserver((list) => {
         for (const entry of list.getEntries()) {
-          if (!(entry as any).hadRecentInput) {
-            clsValue += (entry as any).value;
+          const layoutShiftEntry = entry as PerformanceEntry & { hadRecentInput?: boolean; value?: number };
+          if (!layoutShiftEntry.hadRecentInput) {
+            clsValue += layoutShiftEntry.value || 0;
           }
         }
         if (window.gtag) {
@@ -67,6 +70,8 @@ export const usePerformanceMonitoring = () => {
       try {
         clsObserver.observe({ entryTypes: ['layout-shift'] });
       } catch (e) {
+        // Fallback for browsers that don't support CLS
+        console.debug('CLS observation not supported');
       }
 
       return () => {

@@ -12,9 +12,9 @@ interface SEOHeadProps {
 }
 
 const SEOHead: React.FC<SEOHeadProps> = ({
-  title = "GDPR-Compliant Outsourcing Services | NovalSquad BPO Solutions",
-  description = "NovalSquad provides GDPR-compliant outsourcing services. Virtual assistants, 24/7 customer support, IT helpdesk, and back office solutions for startups and enterprises. Ready in 5 days, cost-effective local talent.",
-  keywords = "GDPR-compliant outsourcing, virtual assistants, customer support outsourcing, IT helpdesk, back office outsourcing, virtual staff, BPO services, startup outsourcing, 24/7 support, remote teams",
+  title = "Outsource Smarter | GDPR-Compliant BPO & Virtual Assistant Services – NovalSquad",
+  description = "Scale faster with NovalSquad's GDPR-compliant outsourcing. Get 24/7 virtual assistants, IT helpdesk, and back-office support — ready in 5 days, cost-effective, and audit-ready.",
+  keywords = "outsourcing, BPO, virtual assistants, GDPR compliant outsourcing, IT helpdesk, customer support outsourcing, back office support, 24/7 operations, startup outsourcing, NovalSquad",
   image = "https://novalsquad.com/novalsquad-thumbnail.png",
   url = "https://novalsquad.com",
   type = "website",

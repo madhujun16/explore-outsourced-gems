@@ -463,7 +463,7 @@ const Index = () => {
                 <span className="hero-line text-blue-900" style={{ animationDelay: '0.2s' }}>{t('hero.title').split('—')[0]}</span><br />
                 <span className="hero-line bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-500 bg-clip-text text-transparent" style={{ animationDelay: '0.4s' }}>{t('hero.title').split('—')[1] || 'Outsourcing & Digital Solutions'}</span>
               </h1>
-              <p className="text-xl md:text-2xl text-gray-700 hero-subtitle">
+              <p className="text-xl md:text-2xl text-gray-700 hero-subtitle mb-6">
                 {t('hero.subtitle')}
               </p>
               <div className="flex flex-wrap items-center gap-4 md:gap-6 mb-8 text-gray-700 hero-trust-signals">
