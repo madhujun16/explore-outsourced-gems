@@ -22,7 +22,7 @@ const TermsConditions = () => {
               </div>
               <div>
                 <CardTitle className="text-3xl text-primary">Terms and Conditions</CardTitle>
-                <p className="text-muted-foreground">Last updated: July 28, 2025</p>
+                <p className="text-muted-foreground">Last updated: April 28, 2025</p>
               </div>
             </div>
           </CardHeader>

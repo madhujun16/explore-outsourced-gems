@@ -22,7 +22,7 @@ const PrivacyPolicy = () => {
               </div>
               <div>
                 <CardTitle className="text-3xl text-primary">Privacy Policy</CardTitle>
-                <p className="text-muted-foreground">Last updated: July 28, 2025</p>
+                <p className="text-muted-foreground">Last updated: April 28, 2025</p>
                 <div className="flex items-center mt-2">
                   <CheckCircle className="h-4 w-4 text-green-600 mr-2" />
                   <span className="text-sm text-green-600 font-medium">GDPR Compliant</span>
