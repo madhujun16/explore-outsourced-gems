@@ -10,10 +10,10 @@ Follow these steps:
 
 ```sh
 # Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+git clone https://github.com/your-username/explore-outsourced-gems.git
 
 # Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+cd explore-outsourced-gems
 
 # Step 3: Install the necessary dependencies.
 npm i
@@ -40,12 +40,59 @@ npm run dev
 
 This project is built with:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-- Supabase (Backend & Database)
+- **Vite** - Fast build tool and development server
+- **TypeScript** - Type-safe JavaScript
+- **React 18** - Modern React with hooks and concurrent features
+- **shadcn/ui** - Beautiful, accessible UI components
+- **Tailwind CSS** - Utility-first CSS framework
+- **Supabase** - Backend-as-a-Service (Database, Auth, Edge Functions)
+- **React Router** - Client-side routing
+- **i18next** - Internationalization support
+- **Lottie React** - Animation support
+- **React Hook Form** - Form handling with validation
+
+## Available Scripts
+
+### Development
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run build:dev    # Build in development mode
+npm run preview      # Preview production build
+npm run lint         # Run ESLint
+```
+
+### Supabase Integration
+```bash
+npm run supabase:setup                    # Initialize and link Supabase project
+npm run supabase:start                    # Start local Supabase instance
+npm run supabase:stop                     # Stop local Supabase instance
+npm run supabase:db:push                  # Push database changes to remote
+npm run supabase:functions:deploy:all     # Deploy all edge functions
+npm run supabase:deploy                   # Build and deploy everything
+```
+
+For detailed Supabase usage, see [SUPABASE_SCRIPTS.md](./SUPABASE_SCRIPTS.md).
+
+## Environment Setup
+
+### Prerequisites
+- Node.js 18+ and npm
+- Supabase CLI (for backend development)
+- Git
+
+### Environment Variables
+Create a `.env.local` file in the root directory:
+
+```env
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+### Supabase Setup
+1. Install Supabase CLI: `npm install -g supabase`
+2. Login: `supabase login`
+3. Initialize: `npm run supabase:setup`
 
 ## How can I deploy this project?
 

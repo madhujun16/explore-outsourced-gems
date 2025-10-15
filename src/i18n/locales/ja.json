@@ -1,0 +1,332 @@
+{
+  "navigation": {
+    "home": "ホーム",
+    "services": "サービス",
+    "industries": "業界",
+    "contact": "お問い合わせ"
+  },
+  "hero": {
+    "title": "あなたの成長パートナー　アウトソーシング&デジタルソリューション",
+    "subtitle": "あなたのチームの後ろにあるチーム。あなたをより良くするために構築",
+    "cta": "始める",
+    "trustSignals": {
+      "gdpr": "GDPR準拠",
+      "costEffective": "費用対効果",
+      "onboard": "5日で準備完了"
+    }
+  },
+  "services": {
+    "title": "私たちのサービス",
+    "subtitle": "必要なすべて。すべて1つのチームで。",
+    "items": {
+      "accounting": {
+        "title": "会計・財務",
+        "description": "完全な簿記、財務報告、買掛金/売掛金、および口座管理ソリューション。"
+      },
+      "backOffice": {
+        "title": "バックオフィス",
+        "description": "効率的な人事、管理、給与、コンプライアンス。"
+      },
+      "support": {
+        "title": "サポート",
+        "description": "世界中で24時間365日多言語カスタマーサポート。"
+      },
+      "virtualStaff": {
+        "title": "バーチャルスタッフ",
+        "description": "オンデマンドで訓練されたリモートチーム。"
+      },
+      "itHelpdesk": {
+        "title": "ITヘルプデスク",
+        "description": "安全でスケーラブルなインフラサポート。"
+      },
+      "virtualCISO": {
+        "title": "バーチャルCISO",
+        "description": "サイバーセキュリティのリーダーシップとコンプライアンス管理。"
+      },
+      "cloudServices": {
+        "title": "クラウドサービス",
+        "description": "移行、管理、最適化ソリューション。"
+      }
+    }
+  },
+  "digitalServices": {
+    "title": "デジタルサービス",
+    "subtitle": "ビジネスの成長を加速する最新のデジタルソリューション",
+    "items": {
+      "webDev": {
+        "title": "Web開発",
+        "description": "ランディングページ、CMS、Eコマース、グローバルホスティング。"
+      },
+      "marketing": {
+        "title": "マーケティング",
+        "description": "SEO、有料広告、多言語コンテンツ戦略。"
+      },
+      "dataCrm": {
+        "title": "データ/CRM",
+        "description": "GDPR対応のCRM設定、分析ダッシュボード。"
+      },
+      "aiChatbots": {
+        "title": "AIチャットボット",
+        "description": "自動化されたサポート＆セールスボット、多言語対応。"
+      }
+    }
+  },
+  "whyChooseUs": {
+    "title": "NovalSquad Outsourcingを選ぶ理由",
+    "subtitle": "24時間365日対応、GDPR準拠、オーバーヘッドなしでビジネスをスケールするために構築されたチームでよりスマートにアウトソースします。",
+    "items": {
+      "onboarding": {
+        "title": "3〜5日でオンボーディング",
+        "description": "迅速なセットアップと即座の生産性"
+      },
+      "operations": {
+        "title": "24時間365日稼働",
+        "description": "24時間サービス提供"
+      },
+      "gdpr": {
+        "title": "GDPRネイティブワークフロー",
+        "description": "組み込みのコンプライアンスとデータ保護"
+      },
+      "pricing": {
+        "title": "透明な価格設定",
+        "description": "隠れた料金のない明確なコスト"
+      },
+      "customSla": {
+        "title": "カスタムSLA & KPI",
+        "description": "あなたのビジネスに重要な指標を測定します"
+      },
+      "talent": {
+        "title": "ヨーロッパの人材プール",
+        "description": "ヨーロッパ全土からの熟練した専門家"
+      }
+    }
+  },
+  "testimonials": {
+    "title": "企業から信頼されています",
+    "subtitle": "NovalSquadとの協力についてお客様の声をご覧ください",
+    "acrossGlobe": "世界中で",
+    "items": [
+      {
+        "name": "スリヤナラヤナ N",
+        "role": "COO、SaaS企業（バンガロール）",
+        "initials": "SN",
+        "quote": "NovalSquad Outsourcingは、最初の月にチケットのバックログを60％削減するのに役立ちました。彼らのサポートチームは素晴らしいです。"
+      },
+      {
+        "name": "ラジャゴパラ A",
+        "role": "CEO、Eコマース（ラクナウ）",
+        "initials": "RA",
+        "quote": "彼らは40％のコスト削減を達成し、業務の効率を向上させるのに役立ちました。"
+      },
+      {
+        "name": "マリア S.",
+        "role": "オペレーションマネージャー（ハイデラバード）",
+        "initials": "MS",
+        "quote": "タイムゾーンの問題なしで24時間365日サポート。数週間で顧客満足度スコアが35％向上しました。"
+      }
+    ]
+  },
+  "industries": {
+    "title": "私たちが提供する業界",
+    "subtitle": "主要なグローバルビジネスセクターにわたる専門知識",
+    "items": {
+      "finance": {
+        "title": "金融",
+        "description": "照合、KYC、バーチャルアシスタンス。"
+      },
+      "healthcare": {
+        "title": "ヘルスケア",
+        "description": "請求処理、転写、RCM。"
+      },
+      "retail": {
+        "title": "小売",
+        "description": "返品、カタログサポート、ロジスティクスヘルプデスク。"
+      },
+      "travel": {
+        "title": "旅行",
+        "description": "コンシェルジュサポート、多言語予約。"
+      },
+      "education": {
+        "title": "教育",
+        "description": "学生サポート、コース管理、バーチャルアシスタンス。"
+      },
+      "automotive": {
+        "title": "自動車",
+        "description": "サービススケジューリング、部品管理、カスタマーケア。"
+      },
+      "realEstate": {
+        "title": "不動産",
+        "description": "物件管理、テナントサポート、文書化。"
+      },
+      "gaming": {
+        "title": "ゲーミング",
+        "description": "プレーヤーサポート、コミュニティ管理、QAテスト。"
+      },
+      "technology": {
+        "title": "テクノロジー",
+        "description": "技術サポート、アプリ開発、システム統合。"
+      },
+      "logistics": {
+        "title": "物流",
+        "description": "出荷追跡、在庫管理、配送サポート。"
+      }
+    }
+  },
+  "contact": {
+    "title": "ビジネスをスケールする準備はできていますか？",
+    "subtitle": "無料相談を受けて、品質を維持しながらコストを削減する方法をご覧ください。",
+    "form": {
+      "title": "無料相談を受ける",
+      "subtitle": "プロジェクトについてお聞かせください。24時間以内にご連絡いたします。",
+      "sections": {
+        "personalInfo": "個人情報",
+        "projectDetails": "プロジェクト詳細"
+      },
+      "fields": {
+        "fullName": "氏名",
+        "email": "メールアドレス",
+        "phone": "電話番号",
+        "company": "会社名",
+        "industry": "業界/セクター",
+        "projectDescription": "プロジェクトの説明",
+        "consent": "プライバシーポリシーと利用規約に同意します"
+      },
+      "placeholders": {
+        "fullName": "フルネームを入力してください",
+        "email": "your.email@company.com",
+        "phone": "+81 3-1234-5678",
+        "company": "会社名",
+        "industry": "業界またはセクターを選択してください",
+        "projectDescription": "プロジェクト、要件、どのようにお手伝いできるかについて教えてください..."
+      },
+      "helpText": {
+        "projectDescription": "最適なソリューションを提供するために、できるだけ詳しくご記入ください"
+      },
+      "buttons": {
+        "reviewSubmit": "確認して送信",
+        "processing": "処理中...",
+        "editInfo": "情報を編集",
+        "submitInfo": "情報を送信",
+        "sending": "送信中..."
+      },
+      "review": {
+        "title": "情報を確認",
+        "subtitle": "送信前に詳細を確認してください",
+        "sections": {
+          "personalInfo": "個人情報",
+          "projectInfo": "プロジェクト情報"
+        }
+      }
+    },
+    "info": {
+      "title": "サポートチーム",
+      "email": "admin@novalsquad.com",
+      "languages": "英語、フランス語、ドイツ語、スペイン語、イタリア語、日本語",
+      "responseTime": "24時間以内",
+      "labels": {
+        "email": "メール",
+        "emailUs": "メールでお問い合わせ",
+        "multilingualSupport": "多言語サポート",
+        "quickResponse": "迅速な対応",
+        "responseTime": "応答時間",
+        "weReplyWithin": "24時間以内に返信します",
+        "communicateInLanguage": "あなたの言語で通信",
+        "fastReliableSupport": "迅速で信頼性の高いサポート"
+      },
+      "gdpr": {
+        "title": "GDPR準拠",
+        "description": "お客様のデータは、欧州のプライバシー規制に従って安全に処理されます。",
+        "longDescription": "お客様のデータは、欧州のプライバシー規制に従って安全に処理されます。お客様のプライバシーを真剣に考えています。"
+      }
+    },
+    "success": {
+      "title": "ありがとうございます！",
+      "description": "メッセージがチームに送信されました。まもなくご連絡いたします。",
+      "expectResponse": "24時間以内に返信をお待ちください。",
+      "checkEmail": "確認のためメールをご確認ください。",
+      "sendAnother": "別のメッセージを送信"
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 NovalSquad Outsourcing. 全著作権所有。",
+    "tagline": "スケーラブルなビジネス成長のための信頼できるグローバルアウトソーシングパートナー。",
+    "links": {
+      "privacy": "プライバシーポリシー",
+      "terms": "利用規約",
+      "home": "ホーム"
+    }
+  },
+  "industriesList": {
+    "technology": "テクノロジー＆ソフトウェア",
+    "finance": "金融サービス＆銀行業",
+    "healthcare": "ヘルスケア＆製薬",
+    "retail": "小売＆Eコマース",
+    "manufacturing": "製造＆産業",
+    "logistics": "物流＆輸送",
+    "realEstate": "不動産＆物件",
+    "education": "教育＆トレーニング",
+    "automotive": "自動車＆モビリティ",
+    "energy": "エネルギー＆公益事業",
+    "media": "メディア＆エンターテインメント",
+    "gaming": "ゲーミング＆インタラクティブ",
+    "consulting": "コンサルティング＆プロフェッショナルサービス",
+    "legal": "法務＆コンプライアンス",
+    "insurance": "保険＆リスク管理",
+    "hospitality": "ホスピタリティ＆ツーリズム",
+    "foodBeverage": "食品＆飲料",
+    "fashion": "ファッション＆アパレル",
+    "construction": "建設＆エンジニアリング",
+    "aerospace": "航空宇宙＆防衛",
+    "telecommunications": "通信",
+    "nonProfit": "非営利団体＆NGO",
+    "government": "政府＆公共セクター",
+    "startup": "スタートアップ＆スケールアップ",
+    "other": "その他"
+  },
+  "common": {
+    "required": "必須",
+    "optional": "任意",
+    "loading": "読み込み中...",
+    "error": "エラー",
+    "success": "成功",
+    "back": "戻る",
+    "next": "次へ",
+    "submit": "送信",
+    "cancel": "キャンセル",
+    "save": "保存",
+    "edit": "編集",
+    "delete": "削除",
+    "close": "閉じる",
+    "open": "開く",
+    "yes": "はい",
+    "no": "いいえ"
+  },
+  "messages": {
+    "form": {
+      "fixErrors": {
+        "title": "エラーを修正してください",
+        "description": "ハイライトされたフィールドを修正して、もう一度お試しください。"
+      },
+      "success": {
+        "title": "メッセージが正常に送信されました！",
+        "description": "24時間以内にご連絡いたします。"
+      },
+      "error": {
+        "title": "エラー",
+        "description": "メッセージの送信に失敗しました。もう一度お試しください。"
+      }
+    },
+    "review": {
+      "title": "情報を確認",
+      "subtitle": "送信前に詳細を確認してください",
+      "fields": {
+        "name": "名前",
+        "email": "メール",
+        "company": "会社",
+        "industry": "業界",
+        "projectDescription": "プロジェクトの説明"
+      }
+    }
+  }
+}
+

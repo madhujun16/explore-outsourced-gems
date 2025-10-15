@@ -8,8 +8,12 @@
   "hero": {
     "title": "Your Growth Partner in Outsourcing & Digital Solutions — The squad behind your squad.",
     "subtitle": "GDPR-compliant. Cost-effective. Onboard in 5 days.",
-    "cta": "Get Started"
-
+    "cta": "Get Started",
+    "trustSignals": {
+      "gdpr": "GDPR-Compliant",
+      "costEffective": "Cost-Effective",
+      "onboard": "Onboard in 5 Days"
+    }
   },
   "services": {
     "title": "Our Services",
@@ -87,6 +91,10 @@
         "title": "Transparent Pricing",
         "description": "Clear costs with no hidden fees"
       },
+      "customSla": {
+        "title": "Custom SLAs & KPIs",
+        "description": "We measure what matters to your business"
+      },
       "talent": {
         "title": "European Talent Pool",
         "description": "Skilled professionals from across Europe"
@@ -96,6 +104,7 @@
   "testimonials": {
     "title": "Trusted by Businesses",
     "subtitle": "See what our clients say about working with NovalSquad",
+    "acrossGlobe": "across the globe",
     "items": [
       {
         "name": "Suryanaryana N",
@@ -210,21 +219,41 @@
       }
     },
     "info": {
-      "title": "European Support Team",
+      "title": "Support Team",
       "email": "admin@novalsquad.com",
-      "languages": "English",
+      "languages": "English, French, German, Spanish, Italian, Japanese",
       "responseTime": "Within 24 hours",
+      "labels": {
+        "email": "Email",
+        "emailUs": "Email Us",
+        "multilingualSupport": "Multilingual Support",
+        "quickResponse": "Quick Response",
+        "responseTime": "Response Time",
+        "weReplyWithin": "We reply within 24 hours",
+        "communicateInLanguage": "Communicate in your language",
+        "fastReliableSupport": "Fast and reliable support"
+      },
       "gdpr": {
         "title": "GDPR Compliant",
-        "description": "Your data is processed securely in accordance with European privacy regulations."
+        "description": "Your data is processed securely in accordance with European privacy regulations.",
+        "longDescription": "Your data is processed securely in accordance with European privacy regulations. We take your privacy seriously."
       }
+    },
+    "success": {
+      "title": "Thank You!",
+      "description": "Your message has been submitted to our team. We will get in touch with you soon.",
+      "expectResponse": "Expect a response within 24 hours.",
+      "checkEmail": "Check your email for confirmation.",
+      "sendAnother": "Send Another Message"
     }
   },
   "footer": {
     "copyright": "© 2024 NovalSquad Outsourcing. All rights reserved.",
+    "tagline": "Your trusted global outsourcing partner for scalable business growth.",
     "links": {
       "privacy": "Privacy Policy",
-      "terms": "Terms & Conditions"
+      "terms": "Terms & Conditions",
+      "home": "Home"
     }
   },
   "industriesList": {

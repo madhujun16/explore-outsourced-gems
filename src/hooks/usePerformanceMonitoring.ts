@@ -8,7 +8,6 @@ export const usePerformanceMonitoring = () => {
       const observer = new PerformanceObserver((list) => {
         for (const entry of list.getEntries()) {
           if (entry.entryType === 'largest-contentful-paint') {
-            console.log('LCP:', entry.startTime);
             // Send to analytics
             if (window.gtag) {
               window.gtag('event', 'web_vitals', {
@@ -25,7 +24,6 @@ export const usePerformanceMonitoring = () => {
         observer.observe({ entryTypes: ['largest-contentful-paint'] });
       } catch (e) {
         // Fallback for browsers that don't support LCP
-        console.log('LCP monitoring not supported');
       }
 
       // Monitor First Input Delay (FID)
@@ -33,7 +31,6 @@ export const usePerformanceMonitoring = () => {
         for (const entry of list.getEntries()) {
           if (entry.entryType === 'first-input') {
             const fid = entry.processingStart - entry.startTime;
-            console.log('FID:', fid);
             if (window.gtag) {
               window.gtag('event', 'web_vitals', {
                 name: 'FID',
@@ -48,7 +45,6 @@ export const usePerformanceMonitoring = () => {
       try {
         fidObserver.observe({ entryTypes: ['first-input'] });
       } catch (e) {
-        console.log('FID monitoring not supported');
       }
 
       // Monitor Cumulative Layout Shift (CLS)
@@ -59,7 +55,6 @@ export const usePerformanceMonitoring = () => {
             clsValue += (entry as any).value;
           }
         }
-        console.log('CLS:', clsValue);
         if (window.gtag) {
           window.gtag('event', 'web_vitals', {
             name: 'CLS',
@@ -72,7 +67,6 @@ export const usePerformanceMonitoring = () => {
       try {
         clsObserver.observe({ entryTypes: ['layout-shift'] });
       } catch (e) {
-        console.log('CLS monitoring not supported');
       }
 
       return () => {
@@ -88,7 +82,6 @@ export const usePerformanceMonitoring = () => {
     if (typeof window !== 'undefined') {
       window.addEventListener('load', () => {
         const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
-        console.log('Page load time:', loadTime);
         
         if (window.gtag) {
           window.gtag('event', 'page_load_time', {

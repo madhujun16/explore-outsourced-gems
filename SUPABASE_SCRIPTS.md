@@ -26,6 +26,8 @@ npm run supabase:setup
 npm run supabase:status
 ```
 
+**Note**: The `supabase:setup` script will initialize Supabase and automatically link to the project with ID `raqkxeahwupzhuyfnsew`.
+
 ### 🗄️ **Database Management**
 
 ```bash
@@ -174,6 +176,21 @@ Make sure you have these environment variables set in your Supabase project:
 - **Project ID**: `raqkxeahwupzhuyfnsew`
 - **Project URL**: `https://raqkxeahwupzhuyfnsew.supabase.co`
 - **Functions URL**: `https://raqkxeahwupzhuyfnsew.supabase.co/functions/v1/`
+
+## Project Structure
+
+```
+supabase/
+├── functions/
+│   └── send-contact-email/    # Contact form email function
+├── migrations/                # Database migration files
+└── config.toml               # Supabase configuration
+```
+
+The project includes:
+- **Contact Form Function**: Handles contact form submissions via email
+- **Database Migrations**: Manages database schema changes
+- **Local Development**: Full local Supabase instance for development
 
 ## Quick Commands Reference
 

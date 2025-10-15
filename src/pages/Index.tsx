@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -106,8 +106,8 @@ const Index = () => {
       icon: Database,
       title: "Data/CRM",
       description: "GDPR-ready CRM setups, analytics dashboards.",
-      color: "text-purple-600",
-      bgColor: "bg-purple-50 group-hover:bg-purple-100"
+      color: "text-indigo-600",
+      bgColor: "bg-indigo-50 group-hover:bg-indigo-100"
     },
     {
       icon: Bot,
@@ -144,8 +144,8 @@ const Index = () => {
       icon: Plane,
       title: "Travel",
       description: "Concierge support, multilingual bookings.",
-      color: "text-purple-600",
-      bgColor: "bg-purple-50 group-hover:bg-purple-100"
+      color: "text-indigo-600",
+      bgColor: "bg-indigo-50 group-hover:bg-indigo-100"
     },
     {
       icon: GraduationCap,
@@ -399,8 +399,8 @@ const Index = () => {
       icon: Headphones,
       title: "Support",
       description: "24/7 multilingual customer support worldwide with technical assistance, order processing, and customer relationship management.",
-      color: "text-purple-600",
-      bgColor: "bg-purple-50 group-hover:bg-purple-100"
+      color: "text-indigo-600",
+      bgColor: "bg-indigo-50 group-hover:bg-indigo-100"
     },
     {
       icon: Users,
@@ -437,7 +437,7 @@ const Index = () => {
       <SEOHead />
       <SkipNavigation />
       <ScrollProgress />
-      <div className="min-h-screen bg-gradient-to-br from-violet-50 to-purple-100">
+      <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-blue-50">
         {/* Enhanced Navigation */}
         <EnhancedNavigation 
           onContactClick={() => {
@@ -447,7 +447,7 @@ const Index = () => {
         />
 
       {/* Hero Section */}
-      <section id="main-content" className="relative overflow-hidden bg-gradient-to-br from-violet-50 to-purple-100 py-6 md:py-8" tabIndex={-1}>
+      <section id="main-content" className="relative overflow-hidden bg-gradient-to-br from-indigo-50 to-blue-50 py-6 md:py-8" tabIndex={-1}>
         <div className="container mx-auto px-4 relative">
           <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-8">
             {/* Left side - Lottie Animation */}
@@ -460,53 +460,53 @@ const Index = () => {
             {/* Right side - Text content */}
             <div className="flex-1 max-w-2xl text-left">
               <h1 className="mb-6 text-4xl md:text-5xl font-bold text-gray-900 hero-title leading-tight" id="heroTitle">
-                <span className="hero-line text-blue-900" style={{ animationDelay: '0.2s' }}>Your Growth Partner in</span><br />
-                <span className="hero-line text-purple-600" style={{ animationDelay: '0.4s' }}>Outsourcing & Digital Solutions</span>
+                <span className="hero-line text-blue-900" style={{ animationDelay: '0.2s' }}>{t('hero.title').split('—')[0]}</span><br />
+                <span className="hero-line bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-500 bg-clip-text text-transparent" style={{ animationDelay: '0.4s' }}>{t('hero.title').split('—')[1] || 'Outsourcing & Digital Solutions'}</span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-700 hero-subtitle">
-                The squad behind your squad. Built to make you better
+                {t('hero.subtitle')}
               </p>
               <div className="flex flex-wrap items-center gap-4 md:gap-6 mb-8 text-gray-700 hero-trust-signals">
                 <div className="flex items-center gap-2">
                   <Shield className="h-5 w-5 text-green-600" />
-                  <span className="text-base md:text-lg lg:text-xl font-medium">GDPR-compliant</span>
+                  <span className="text-base md:text-lg lg:text-xl font-medium">{t('hero.trustSignals.gdpr')}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Calculator className="h-5 w-5 text-blue-600" />
-                  <span className="text-base md:text-lg lg:text-xl font-medium">Cost-effective</span>
+                  <span className="text-base md:text-lg lg:text-xl font-medium">{t('hero.trustSignals.costEffective')}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Clock className="h-5 w-5 text-purple-600" />
-                  <span className="text-base md:text-lg lg:text-xl font-medium">Onboard in 5 days</span>
+                  <Clock className="h-5 w-5 text-cyan-500" />
+                  <span className="text-base md:text-lg lg:text-xl font-medium">{t('hero.trustSignals.onboard')}</span>
                 </div>
               </div>
               <button 
-                className="group relative bg-white border-2 border-purple-600 text-purple-600 px-6 md:px-8 py-3 md:py-4 font-semibold text-base md:text-lg rounded-full shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 w-full sm:w-auto overflow-hidden"
+                className="group relative bg-white border-2 border-indigo-600 text-indigo-600 px-6 md:px-8 py-3 md:py-4 font-semibold text-base md:text-lg rounded-full shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 w-full sm:w-auto overflow-hidden"
                 onClick={() => {
                   trackUserInteraction('cta_click', 'Hero', 'Get Free Consultation');
                   document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
                 }}
               >
                 {/* Animated background gradient */}
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-purple-500 to-purple-600 opacity-0 group-hover:opacity-100 scale-0 group-hover:scale-100 transition-all duration-500 rounded-full"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-500 opacity-0 group-hover:opacity-100 scale-0 group-hover:scale-100 transition-all duration-500 rounded-full"></div>
                 
                 {/* Shimmer effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out rounded-full"></div>
                 
                 {/* Pulsing ring effect */}
-                <div className="absolute inset-0 border-2 border-purple-400 rounded-full opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"></div>
+                <div className="absolute inset-0 border-2 border-indigo-400 rounded-full opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"></div>
                 
                 {/* Button content */}
                 <span className="relative z-10 group-hover:text-white transition-colors duration-300 flex items-center justify-center">
-                  <span>Get Your Free Consultation</span>
+                  <span>{t('hero.cta') || 'Get Your Free Consultation'}</span>
                   <span className="ml-2 group-hover:translate-x-1 transition-transform duration-300">→</span>
                 </span>
                 
                 {/* Floating particles effect */}
                 <div className="absolute inset-0 pointer-events-none">
-                  <div className="absolute top-2 left-4 w-1 h-1 bg-purple-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="absolute top-4 right-6 w-1 h-1 bg-purple-300 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100"></div>
-                  <div className="absolute bottom-3 left-8 w-1 h-1 bg-purple-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-600 delay-200"></div>
+                  <div className="absolute top-2 left-4 w-1 h-1 bg-indigo-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute top-4 right-6 w-1 h-1 bg-blue-300 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100"></div>
+                  <div className="absolute bottom-3 left-8 w-1 h-1 bg-cyan-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-600 delay-200"></div>
                 </div>
               </button>
             </div>
@@ -515,7 +515,7 @@ const Index = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section id="why-choose-us" className="py-16 bg-gradient-to-br from-violet-50 to-purple-100 border-t-2 border-gray-200 relative overflow-hidden">
+      <section id="why-choose-us" className="py-16 bg-gradient-to-br from-indigo-50 to-blue-50 border-t-2 border-indigo-200 relative overflow-hidden">
         {/* Ripple Animation Background */}
         <div className="absolute inset-0 opacity-10">
           <Lottie
@@ -528,39 +528,39 @@ const Index = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 animate-in slide-in-from-bottom-4">
-              Why Choose NovalSquad Outsourcing
+              {t('whyChooseUs.title')}
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto animate-in slide-in-from-bottom-4" style={{ animationDelay: '200ms' }}>
-              Outsource smarter with a squad that's available 24/7, GDPR-compliant, and built to scale your business without overheads.
+              {t('whyChooseUs.subtitle')}
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
               {
                 icon: Clock,
-                title: "Onboard in 3-5 Days",
-                description: "Quick setup and immediate productivity",
+                title: t('whyChooseUs.items.onboarding.title'),
+                description: t('whyChooseUs.items.onboarding.description'),
                 color: "text-green-600",
                 bgColor: "bg-green-50 group-hover:bg-green-100"
               },
               {
                 icon: Shield,
-                title: "24/7 Operations",
-                description: "Round-the-clock service delivery",
+                title: t('whyChooseUs.items.operations.title'),
+                description: t('whyChooseUs.items.operations.description'),
                 color: "text-purple-600",
                 bgColor: "bg-purple-50 group-hover:bg-purple-100"
               },
               {
                 icon: Calculator,
-                title: "Transparent Pricing",
-                description: "Clear costs with no hidden fees",
+                title: t('whyChooseUs.items.pricing.title'),
+                description: t('whyChooseUs.items.pricing.description'),
                 color: "text-teal-600",
                 bgColor: "bg-teal-50 group-hover:bg-teal-100"
               },
               {
                 icon: Settings,
-                title: "Custom SLAs & KPIs",
-                description: "We measure what matters to your business",
+                title: t('whyChooseUs.items.customSla.title'),
+                description: t('whyChooseUs.items.customSla.description'),
                 color: "text-orange-600",
                 bgColor: "bg-orange-50 group-hover:bg-orange-100"
               }
@@ -586,7 +586,7 @@ const Index = () => {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-16 bg-gradient-to-br from-violet-50 to-purple-100 relative overflow-hidden">
+      <section id="services" className="py-16 bg-gradient-to-br from-indigo-50 to-blue-50 relative overflow-hidden">
         {/* Ripple Animation Background */}
         <div className="absolute inset-0 opacity-15">
           <Lottie
@@ -599,10 +599,10 @@ const Index = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Our Services
+              {t('services.title')}
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Everything You Need. All in One Squad.
+              {t('services.subtitle')}
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -628,7 +628,7 @@ const Index = () => {
       </section>
 
       {/* Digital Services Section */}
-      <section id="digital" className="py-16 bg-gradient-to-br from-violet-50 to-purple-100 border-t-2 border-gray-200 relative overflow-hidden">
+      <section id="digital" className="py-16 bg-gradient-to-br from-indigo-50 to-blue-50 border-t-2 border-indigo-200 relative overflow-hidden">
         {/* Ripple Animation Background */}
         <div className="absolute inset-0 opacity-10">
           <Lottie
@@ -641,10 +641,10 @@ const Index = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Digital Services
+              {t('digitalServices.title')}
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Modern digital solutions to accelerate your business growth
+              {t('digitalServices.subtitle')}
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -670,7 +670,7 @@ const Index = () => {
       </section>
 
       {/* Industries Section */}
-      <section id="industries" className="py-20 bg-gradient-to-br from-violet-50 to-purple-100 border-t-2 border-gray-200 relative overflow-hidden">
+      <section id="industries" className="py-20 bg-gradient-to-br from-indigo-50 to-blue-50 border-t-2 border-indigo-200 relative overflow-hidden">
         {/* Ripple Animation Background */}
         <div className="absolute inset-0 opacity-15">
           <Lottie
@@ -686,14 +686,14 @@ const Index = () => {
             <div className="grid lg:grid-cols-2 gap-12 items-start">
               <div>
                 <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
-                  <span className="text-gray-900">Industries We Serve,</span>
+                  <span className="text-gray-900">{t('industries.title').split(',')[0]},</span>
                   <br />
-                  <span className="text-gray-600 text-3xl md:text-4xl font-normal">with specialized expertise</span>
+                  <span className="text-gray-600 text-3xl md:text-4xl font-normal">{t('industries.title').split(',')[1] || 'with specialized expertise'}</span>
                 </h2>
               </div>
               <div>
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  We provide tailored solutions across key global business sectors. Our specialized teams understand the unique challenges and requirements of each industry.
+                  {t('industries.subtitle')}
                 </p>
               </div>
             </div>
@@ -733,7 +733,7 @@ const Index = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="py-20 bg-gradient-to-br from-violet-50 to-purple-100 border-t-2 border-gray-200 relative overflow-hidden">
+      <section id="testimonials" className="py-20 bg-gradient-to-br from-indigo-50 to-blue-50 border-t-2 border-indigo-200 relative overflow-hidden">
         {/* Ripple Animation Background */}
         <div className="absolute inset-0 opacity-10">
           <Lottie
@@ -747,13 +747,13 @@ const Index = () => {
           <div className="max-w-4xl mx-auto text-center mb-16">
             <div>
               <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
-                <span className="text-gray-900">Trusted by Businesses</span>
+                <span className="text-gray-900">{t('testimonials.title')}</span>
                 <br />
-                <span className="text-gray-600 text-3xl md:text-4xl font-normal">across the globe</span>
+                <span className="text-gray-600 text-3xl md:text-4xl font-normal">{t('testimonials.acrossGlobe')}</span>
               </h2>
             </div>
             <p className="text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
-              See what our clients say about working with NovalSquad. Real feedback from real businesses we've helped grow.
+              {t('testimonials.subtitle')}
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -1046,7 +1046,7 @@ const Index = () => {
                                 <p className="text-base font-semibold">{formData.name}</p>
                               </div>
                               <div>
-                                <p className="text-sm font-medium text-muted-foreground">Email</p>
+                                <p className="text-sm font-medium text-muted-foreground">{t('messages.review.fields.email')}</p>
                                 <p className="text-base font-semibold">{formData.email}</p>
                               </div>
                             </div>
@@ -1087,7 +1087,7 @@ const Index = () => {
                             className="flex-1 h-12"
                           >
                             <ArrowLeft className="mr-2 h-4 w-4" />
-                            Edit Information
+                            {t('contact.form.buttons.editInfo')}
                           </Button>
                           <Button 
                             onClick={handleFinalSubmit}
@@ -1101,7 +1101,7 @@ const Index = () => {
                               </div>
                             ) : (
                               <>
-                                Submit Information
+                                {t('contact.form.buttons.submitInfo')}
                                 <ArrowRight className="ml-2 h-4 w-4" />
                               </>
                             )}
@@ -1118,17 +1118,17 @@ const Index = () => {
                       <CheckCircle className="h-8 w-8 text-green-600" />
                     </div>
                     <div>
-                      <CardTitle className="text-2xl mb-3">Thank You!</CardTitle>
+                      <CardTitle className="text-2xl mb-3">{t('contact.success.title')}</CardTitle>
                       <CardDescription className="text-lg">
-                        Your message has been submitted to our team. We will get in touch with you soon.
+                        {t('contact.success.description')}
                       </CardDescription>
                     </div>
                     <div className="space-y-2">
                       <p className="text-sm text-muted-foreground">
-                        Expect a response within 24 hours.
+                        {t('contact.success.expectResponse')}
                       </p>
                       <p className="text-sm text-muted-foreground">
-                        Check your email for confirmation.
+                        {t('contact.success.checkEmail')}
                       </p>
                     </div>
                     <Button 
@@ -1136,7 +1136,7 @@ const Index = () => {
                       onClick={() => setIsSubmitted(false)}
                       className="mt-4"
                     >
-                      Send Another Message
+                      {t('contact.success.sendAnother')}
                     </Button>
                   </div>
                 </Card>
@@ -1145,27 +1145,27 @@ const Index = () => {
               {/* Contact Info */}
               <div className="space-y-8">
                 <div>
-                  <h3 className="text-2xl font-semibold mb-6"> Support Team</h3>
+                  <h3 className="text-2xl font-semibold mb-6">{t('contact.info.title')}</h3>
                   <div className="space-y-4">
                     <div className="flex items-start space-x-4">
                       <Mail className="h-6 w-6 text-primary mt-1" />
                       <div>
-                        <p className="font-medium">Email</p>
-                        <p className="text-muted-foreground">admin@novalsquad.com</p>
+                        <p className="font-medium">{t('contact.info.labels.email')}</p>
+                        <p className="text-muted-foreground">{t('contact.info.email')}</p>
                       </div>
                     </div>
                     <div className="flex items-start space-x-4">
                       <Globe className="h-6 w-6 text-primary mt-1" />
                       <div>
-                        <p className="font-medium">Languages</p>
-                        <p className="text-muted-foreground">English, French and Japanese</p>
+                        <p className="font-medium">{t('contact.info.labels.multilingualSupport')}</p>
+                        <p className="text-muted-foreground">{t('contact.info.languages')}</p>
                       </div>
                     </div>
                     <div className="flex items-start space-x-4">
                       <Clock className="h-6 w-6 text-primary mt-1" />
                       <div>
-                        <p className="font-medium">Response Time</p>
-                        <p className="text-muted-foreground">Within 24 hours</p>
+                        <p className="font-medium">{t('contact.info.labels.responseTime')}</p>
+                        <p className="text-muted-foreground">{t('contact.info.responseTime')}</p>
                       </div>
                     </div>
                   </div>
@@ -1196,18 +1196,18 @@ const Index = () => {
               <NovalSquadLogo variant="dark" size="lg" />
             </div>
             <p className="text-muted-foreground mb-6">
-              Your trusted global outsourcing partner for scalable business growth.
+              {t('footer.tagline')}
             </p>
             <div className="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-6 mb-4">
               <Link to="/privacy-policy" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                Privacy Policy
+                {t('footer.links.privacy')}
               </Link>
               <Link to="/terms-conditions" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                Terms & Conditions
+                {t('footer.links.terms')}
               </Link>
             </div>
             <p className="text-sm text-muted-foreground">
-              © 2024 NovalSquad Outsourcing. All rights reserved.
+              {t('footer.copyright')}
             </p>
           </div>
         </div>

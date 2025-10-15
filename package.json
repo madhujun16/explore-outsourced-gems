@@ -1,5 +1,5 @@
 {
-  "name": "vite_react_shadcn_ts",
+  "name": "novalsquad-outsourcing",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,7 +8,22 @@
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "supabase:setup": "supabase init && supabase link --project-ref raqkxeahwupzhuyfnsew",
+    "supabase:status": "supabase status",
+    "supabase:start": "supabase start",
+    "supabase:stop": "supabase stop",
+    "supabase:db:push": "supabase db push",
+    "supabase:db:diff": "supabase db diff",
+    "supabase:reset": "supabase db reset",
+    "supabase:migration:new": "supabase migration new",
+    "supabase:functions:deploy:all": "supabase functions deploy",
+    "supabase:functions:deploy": "supabase functions deploy",
+    "supabase:functions:list": "supabase functions list",
+    "supabase:functions:logs": "supabase functions logs",
+    "supabase:functions:logs:contact": "supabase functions logs send-contact-email",
+    "supabase:deploy": "npm run build && supabase db push && supabase functions deploy",
+    "supabase:test:contact": "curl -X POST https://raqkxeahwupzhuyfnsew.supabase.co/functions/v1/send-contact-email -H 'Content-Type: application/json' -d '{\"name\":\"Test User\",\"email\":\"test@example.com\",\"message\":\"Test message\"}'"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

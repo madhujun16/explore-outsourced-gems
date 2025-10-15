@@ -91,6 +91,10 @@
         "title": "Tarification Transparente",
         "description": "Coûts clairs sans frais cachés"
       },
+      "customSla": {
+        "title": "SLA et KPI Personnalisés",
+        "description": "Nous mesurons ce qui compte pour votre entreprise"
+      },
       "talent": {
         "title": "Pool de Talents Européens",
         "description": "Professionnels qualifiés de toute l'Europe"
@@ -100,6 +104,7 @@
   "testimonials": {
     "title": "Approuvé par les Entreprises",
     "subtitle": "Découvrez ce que nos clients disent de travailler avec NovalSquad",
+    "acrossGlobe": "à travers le monde",
     "items": [
       {
         "name": "Suryanaryana N",
@@ -214,21 +219,41 @@
       }
     },
     "info": {
-      "title": "Équipe de Support Européenne",
+      "title": "Équipe de Support",
       "email": "admin@novalsquad.com",
-      "languages": "Français, Anglais, Allemand, Espagnol, Italien",
+      "languages": "Français, Anglais, Allemand, Espagnol, Italien, Japonais",
       "responseTime": "Sous 24 heures",
+      "labels": {
+        "email": "Email",
+        "emailUs": "Nous Contacter",
+        "multilingualSupport": "Support Multilingue",
+        "quickResponse": "Réponse Rapide",
+        "responseTime": "Temps de Réponse",
+        "weReplyWithin": "Nous répondons sous 24 heures",
+        "communicateInLanguage": "Communiquez dans votre langue",
+        "fastReliableSupport": "Support rapide et fiable"
+      },
       "gdpr": {
         "title": "Conforme RGPD",
-        "description": "Vos données sont traitées en toute sécurité conformément aux réglementations européennes sur la protection des données."
+        "description": "Vos données sont traitées en toute sécurité conformément aux réglementations européennes sur la protection des données.",
+        "longDescription": "Vos données sont traitées en toute sécurité conformément aux réglementations européennes sur la protection des données. Nous prenons votre vie privée au sérieux."
       }
+    },
+    "success": {
+      "title": "Merci !",
+      "description": "Votre message a été soumis à notre équipe. Nous vous contacterons bientôt.",
+      "expectResponse": "Attendez une réponse sous 24 heures.",
+      "checkEmail": "Vérifiez votre email pour confirmation.",
+      "sendAnother": "Envoyer un Autre Message"
     }
   },
   "footer": {
     "copyright": "© 2024 NovalSquad Outsourcing. Tous droits réservés.",
+    "tagline": "Votre partenaire mondial de confiance en externalisation pour une croissance évolutive.",
     "links": {
       "privacy": "Politique de Confidentialité",
-      "terms": "Conditions Générales"
+      "terms": "Conditions Générales",
+      "home": "Accueil"
     }
   },
   "industriesList": {

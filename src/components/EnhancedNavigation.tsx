@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { 
@@ -26,6 +27,8 @@ const EnhancedNavigation: React.FC<EnhancedNavigationProps> = ({ onContactClick 
   const { t } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { activeSection, isScrolled } = useNavigation();
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   const navigationItems = [
     {
@@ -63,30 +66,43 @@ const EnhancedNavigation: React.FC<EnhancedNavigationProps> = ({ onContactClick 
     trackUserInteraction('nav_click', 'Navigation', label);
     setIsMobileMenuOpen(false);
     
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (isHomePage) {
+      // If on home page, scroll to section
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // If on another page, navigate to home page with hash
+      window.location.href = `/${href}`;
     }
   };
 
   const handleContactClick = () => {
     trackUserInteraction('cta_click', 'Navigation', 'Contact CTA');
-    onContactClick();
     setIsMobileMenuOpen(false);
+    
+    if (location.pathname === '/contact') {
+      // If already on contact page, scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      // Call the provided onContactClick handler
+      onContactClick();
+    }
   };
 
   return (
     <nav className={`sticky top-0 z-50 transition-all duration-300 ${
       isScrolled 
-        ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200/50' 
+        ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-indigo-200/50' 
         : 'bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b'
     }`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center">
+          <Link to="/" className="flex items-center">
             <NovalSquadLogo variant="dark" size="sm" />
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1">
@@ -132,7 +148,7 @@ const EnhancedNavigation: React.FC<EnhancedNavigationProps> = ({ onContactClick 
 
             <Button 
               onClick={handleContactClick}
-              className="group relative bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 py-2 h-9 transition-all duration-300 hover:scale-105 shadow-md hover:shadow-xl overflow-hidden"
+              className="group relative bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-2 h-9 transition-all duration-300 hover:scale-105 shadow-md hover:shadow-xl overflow-hidden"
             >
               {/* Shimmer effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"></div>
@@ -161,7 +177,7 @@ const EnhancedNavigation: React.FC<EnhancedNavigationProps> = ({ onContactClick 
 
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden border-t border-gray-200/50 bg-white/95 backdrop-blur-md">
+          <div className="lg:hidden border-t border-indigo-200/50 bg-white/95 backdrop-blur-md">
             <div className="py-4 space-y-2">
               {navigationItems.map((item) => (
                 <button
@@ -197,7 +213,7 @@ const EnhancedNavigation: React.FC<EnhancedNavigationProps> = ({ onContactClick 
                 
                 <Button 
                   onClick={handleContactClick}
-                  className="group relative w-full mt-4 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold overflow-hidden transition-all duration-300 hover:scale-105"
+                  className="group relative w-full mt-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold overflow-hidden transition-all duration-300 hover:scale-105"
                 >
                   {/* Shimmer effect */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"></div>

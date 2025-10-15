@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import Lottie from 'lottie-react';
+import heroAnimationData from '../assets/hero-animation-new.json';
 
 interface LottieSideImageProps {
   className?: string;
@@ -19,22 +20,15 @@ const LottieSideImage: React.FC<LottieSideImageProps> = ({
 
   useEffect(() => {
     // Load animation data when component mounts
-    import('../assets/hero-animation-new.json')
-      .then(data => {
-        setAnimationData(data.default);
-        setIsLoading(false);
-      })
-      .catch(error => {
-        console.error('Failed to load animation:', error);
-        setIsLoading(false);
-      });
+    setAnimationData(heroAnimationData);
+    setIsLoading(false);
   }, []);
 
   if (isLoading) {
     return (
       <div className={`w-full h-full ${className} flex items-center justify-center`}>
-        <div className="animate-pulse bg-gradient-to-r from-violet-200 to-purple-200 rounded-lg w-full h-full flex items-center justify-center">
-          <div className="text-violet-600 font-medium">Loading animation...</div>
+        <div className="animate-pulse bg-gradient-to-r from-indigo-200 to-blue-200 rounded-lg w-full h-full flex items-center justify-center">
+          <div className="text-indigo-600 font-medium">Loading animation...</div>
         </div>
       </div>
     );

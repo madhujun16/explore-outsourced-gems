@@ -198,7 +198,7 @@ const ChatBot = () => {
               setShowNotification(false);
               setNotificationCount(0);
             }}
-            className={`group relative h-16 w-16 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 bg-gradient-to-br from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white border-2 border-purple-400/30 overflow-hidden ${
+            className={`group relative h-16 w-16 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 bg-gradient-to-br from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white border-2 border-indigo-400/30 overflow-hidden ${
               showNotification ? 'animate-bounce' : ''
             }`}
             size="icon"
@@ -217,7 +217,7 @@ const ChatBot = () => {
             )}
             
             {/* Pulsing ring */}
-            <div className="absolute inset-0 border-2 border-purple-300 rounded-full opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"></div>
+            <div className="absolute inset-0 border-2 border-indigo-300 rounded-full opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"></div>
           </Button>
         </div>
       )}
