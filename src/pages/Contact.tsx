@@ -195,7 +195,7 @@ const Contact = () => {
         />
 
         {/* Contact Hero Section */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-indigo-50 to-blue-50 py-12 md:py-16 border-b-2 border-indigo-200">
+        <section className="relative overflow-hidden bg-gradient-to-br from-indigo-50 to-blue-50 py-8 md:py-12 border-b-2 border-indigo-200">
           {/* Ripple Animation Background */}
           <div className="absolute inset-0 opacity-10">
             <Lottie
@@ -213,17 +213,17 @@ const Contact = () => {
                 <span className="text-sm font-semibold">Free Consultation Available</span>
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gray-900">
                 <span className="bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-500 bg-clip-text text-transparent">
                   Outsource Smarter. Build Faster. Spend Less.
                 </span>
               </h1>
               
-              <p className="text-xl md:text-2xl text-gray-700 mb-4 leading-relaxed">
+              <p className="text-lg md:text-xl text-gray-700 mb-4 leading-relaxed">
                 From back-office to internal tools and digital solutions — NovalSquad helps you scale efficiently, securely, and affordably.
               </p>
               
-              <p className="text-lg md:text-xl text-gray-600 mb-8">
+              <p className="text-base md:text-lg text-gray-600 mb-8 whitespace-nowrap">
                 Our team is here to answer your questions and discuss how we can support your business goals.
               </p>
               
@@ -246,7 +246,7 @@ const Contact = () => {
         </section>
 
         {/* Contact Form Section */}
-        <section id="main-content" className="py-12 md:py-16 relative overflow-hidden" tabIndex={-1}>
+        <section id="main-content" className="py-6 md:py-8 relative overflow-hidden" tabIndex={-1}>
           <LottieBackground className="opacity-10" />
           {/* Ripple Animation Background */}
           <div className="absolute inset-0 opacity-15">
