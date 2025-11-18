@@ -2,6 +2,8 @@
   "navigation": {
     "home": "Home",
     "services": "Services",
+    "aiServices": "AI Services",
+    "about": "About",
     "industries": "Industries",
     "contact": "Contact"
   },
@@ -326,6 +328,195 @@
         "industry": "Industry",
         "projectDescription": "Project Description"
       }
+    }
+  },
+  "aiServices": {
+    "hero": {
+      "badge": "AI-Powered Solutions",
+      "title": "Transform Your Business with AI & LLM Technology",
+      "subtitle": "Leverage cutting-edge AI solutions including RAG (Retrieval-Augmented Generation), LLM integration, intelligent automation, and AI-powered chatbots to revolutionize your business operations.",
+      "cta": "Get AI Solutions",
+      "features": [
+        "RAG Solutions",
+        "Enterprise Security",
+        "Multi-Language Support"
+      ]
+    },
+    "title": "Our AI & LLM Services",
+    "subtitle": "Comprehensive AI solutions designed to enhance efficiency, reduce costs, and scale your operations",
+    "items": {
+      "ragSolutions": {
+        "title": "RAG Solutions",
+        "description": "Retrieval-Augmented Generation systems that combine the power of large language models with your proprietary data for accurate, context-aware responses.",
+        "features": [
+          "Custom knowledge base integration",
+          "Real-time data retrieval and processing",
+          "Context-aware intelligent responses"
+        ]
+      },
+      "aiChatbots": {
+        "title": "AI Chatbots & Virtual Assistants",
+        "description": "Intelligent conversational AI powered by advanced LLMs for customer support, sales, and internal operations.",
+        "features": [
+          "24/7 multilingual customer support",
+          "Natural language understanding",
+          "Seamless CRM integration"
+        ]
+      },
+      "documentProcessing": {
+        "title": "Intelligent Document Processing",
+        "description": "Automated document analysis, extraction, and processing using advanced AI and NLP technologies.",
+        "features": [
+          "OCR and data extraction",
+          "Automated document classification",
+          "Intelligent data validation"
+        ]
+      },
+      "knowledgeBase": {
+        "title": "AI Knowledge Management",
+        "description": "Build intelligent knowledge bases that learn and adapt, making information retrieval faster and more accurate.",
+        "features": [
+          "Semantic search capabilities",
+          "Automated content categorization",
+          "Dynamic knowledge graph generation"
+        ]
+      },
+      "multilingualAI": {
+        "title": "Multilingual AI Solutions",
+        "description": "Break language barriers with AI-powered translation, localization, and multilingual content generation.",
+        "features": [
+          "Real-time language translation",
+          "Cultural context adaptation",
+          "Multi-language content generation"
+        ]
+      },
+      "processAutomation": {
+        "title": "AI Process Automation",
+        "description": "Streamline workflows and automate complex business processes using intelligent AI agents and decision-making systems.",
+        "features": [
+          "Workflow optimization",
+          "Predictive analytics",
+          "Intelligent decision support"
+        ]
+      }
+    },
+    "benefits": {
+      "title": "Why Choose Our AI Solutions",
+      "subtitle": "Experience the advantages of enterprise-grade AI technology tailored to your business needs",
+      "efficiency": {
+        "title": "Boost Efficiency",
+        "description": "Automate repetitive tasks and accelerate processes with intelligent AI systems"
+      },
+      "scalability": {
+        "title": "Scale Seamlessly",
+        "description": "Handle growing volumes of data and requests without proportional cost increases"
+      },
+      "security": {
+        "title": "Enterprise Security",
+        "description": "GDPR-compliant, secure AI solutions with data privacy at the core"
+      },
+      "availability": {
+        "title": "24/7 Availability",
+        "description": "Always-on AI systems that never sleep, ensuring continuous service delivery"
+      }
+    },
+    "useCases": {
+      "title": "Real-World Applications",
+      "subtitle": "See how our AI solutions are transforming businesses across industries",
+      "customerSupport": {
+        "title": "Customer Support Automation",
+        "description": "Deploy AI chatbots that handle customer inquiries with human-like understanding, reducing support costs by up to 70%"
+      },
+      "dataAnalysis": {
+        "title": "Intelligent Data Analysis",
+        "description": "Extract actionable insights from vast amounts of unstructured data using advanced NLP and machine learning"
+      },
+      "contentGeneration": {
+        "title": "AI Content Generation",
+        "description": "Generate high-quality, contextually relevant content at scale for marketing, documentation, and communication"
+      },
+      "codeAssistance": {
+        "title": "AI-Powered Development",
+        "description": "Accelerate software development with AI code assistants, automated testing, and intelligent code review"
+      }
+    },
+    "cta": {
+      "title": "Ready to Transform Your Business with AI?",
+      "subtitle": "Let's discuss how our AI solutions can help you achieve your business goals. Get a free consultation today.",
+      "button": "Schedule Consultation"
+    }
+  },
+  "about": {
+    "hero": {
+      "badge": "Meet Our Team",
+      "title": "Transforming Businesses with Expertise & Innovation",
+      "subtitle": "Led by experienced professionals with 10+ years in cybersecurity, operations, and IT infrastructure. We're dedicated to building software solutions and tools that drive business transformation.",
+      "features": [
+        "10+ Years Experience",
+        "Expert Team",
+        "Global Reach"
+      ]
+    },
+    "founder": {
+      "title": "Leadership",
+      "subtitle": "Visionary leadership driving innovation and excellence",
+      "description": "Pragathi V founded NovalSquad with a vision to transform how businesses approach outsourcing and digital transformation. With a strong background in business operations and technology, Pragathi leads a team of experienced professionals dedicated to delivering exceptional results.",
+      "achievements": [
+        "Built a team of 10+ year experienced professionals across cybersecurity, operations, and IT infrastructure",
+        "Pioneered innovative software development solutions for business transformation",
+        "Established partnerships with leading enterprises across multiple industries"
+      ]
+    },
+    "team": {
+      "title": "Our Expertise",
+      "subtitle": "A team of seasoned professionals with deep industry knowledge and technical excellence",
+      "transformation": {
+        "title": "Business Transformation Through Technology",
+        "description": "Our team specializes in developing custom software solutions and tools that transform business operations. We combine technical expertise with business acumen to deliver solutions that drive real results."
+      }
+    },
+    "expertise": {
+      "cybersecurity": {
+        "title": "Cybersecurity",
+        "description": "10+ years protecting businesses with advanced security solutions and compliance management"
+      },
+      "operations": {
+        "title": "Operational Management",
+        "description": "Expert operational strategies to optimize processes and drive efficiency"
+      },
+      "infrastructure": {
+        "title": "IT Infrastructure",
+        "description": "Robust infrastructure management for scalable and reliable systems"
+      },
+      "development": {
+        "title": "Software Development & AI",
+        "description": "Custom software, AI solutions, and intelligent tools development for business transformation"
+      }
+    },
+    "values": {
+      "title": "Our Core Values",
+      "subtitle": "The principles that guide everything we do",
+      "excellence": {
+        "title": "Excellence",
+        "description": "We maintain the highest standards in everything we deliver, ensuring quality and reliability"
+      },
+      "partnership": {
+        "title": "Partnership",
+        "description": "We work as an extension of your team, committed to your success as if it were our own"
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "We continuously explore new technologies and methodologies to keep you ahead of the curve"
+      },
+      "security": {
+        "title": "Security First",
+        "description": "With deep cybersecurity expertise, we build security into every solution from the ground up"
+      }
+    },
+    "cta": {
+      "title": "Ready to Transform Your Business?",
+      "subtitle": "Let's discuss how our experienced team can help you achieve your business goals",
+      "button": "Get Started"
     }
   }
 } 

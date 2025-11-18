@@ -2,6 +2,8 @@
   "navigation": {
     "home": "Startseite",
     "services": "Dienstleistungen",
+    "aiServices": "KI-Dienste",
+    "about": "Über Uns",
     "industries": "Branchen",
     "contact": "Kontakt"
   },
@@ -326,6 +328,163 @@
         "industry": "Branche",
         "projectDescription": "Projektbeschreibung"
       }
+    }
+  },
+  "aiServices": {
+    "hero": {
+      "badge": "KI-gestützte Lösungen",
+      "title": "Transformieren Sie Ihr Unternehmen mit KI & LLM-Technologie",
+      "subtitle": "Nutzen Sie modernste KI-Lösungen einschließlich RAG (Retrieval-Augmented Generation), LLM-Integration, intelligente Automatisierung und KI-gestützte Chatbots zur Revolution Ihrer Geschäftsabläufe.",
+      "cta": "KI-Lösungen Erhalten",
+      "features": [
+        "RAG-Lösungen",
+        "Unternehmenssicherheit",
+        "Mehrsprachiger Support"
+      ]
+    },
+    "title": "Unsere KI & LLM Dienstleistungen",
+    "subtitle": "Umfassende KI-Lösungen zur Steigerung der Effizienz, Kostensenkung und Skalierung Ihrer Abläufe",
+    "items": {
+      "ragSolutions": {
+        "title": "RAG-Lösungen",
+        "description": "Retrieval-Augmented Generation-Systeme, die die Kraft großer Sprachmodelle mit Ihren proprietären Daten kombinieren für präzise, kontextbewusste Antworten.",
+        "features": [
+          "Individuelle Wissensdatenbank-Integration",
+          "Echtzeit-Datenabruf und -verarbeitung",
+          "Kontextbewusste intelligente Antworten"
+        ]
+      },
+      "aiChatbots": {
+        "title": "KI-Chatbots & Virtuelle Assistenten",
+        "description": "Intelligente Konversations-KI auf Basis fortschrittlicher LLMs für Kundenservice, Vertrieb und interne Abläufe.",
+        "features": [
+          "24/7 mehrsprachiger Kundensupport",
+          "Verständnis natürlicher Sprache",
+          "Nahtlose CRM-Integration"
+        ]
+      },
+      "documentProcessing": {
+        "title": "Intelligente Dokumentenverarbeitung",
+        "description": "Automatisierte Dokumentenanalyse, -extraktion und -verarbeitung mit fortgeschrittenen KI- und NLP-Technologien.",
+        "features": [
+          "OCR und Datenextraktion",
+          "Automatisierte Dokumentenklassifizierung",
+          "Intelligente Datenvalidierung"
+        ]
+      },
+      "knowledgeBase": {
+        "title": "KI-Wissensmanagement",
+        "description": "Erstellen Sie intelligente Wissensdatenbanken, die lernen und sich anpassen, um die Informationsbeschaffung schneller und präziser zu machen.",
+        "features": [
+          "Semantische Suchfunktionen",
+          "Automatisierte Inhaltskategorisierung",
+          "Dynamische Wissensgraph-Generierung"
+        ]
+      },
+      "multilingualAI": {
+        "title": "Mehrsprachige KI-Lösungen",
+        "description": "Überwinden Sie Sprachbarrieren mit KI-gestützter Übersetzung, Lokalisierung und mehrsprachiger Content-Generierung.",
+        "features": [
+          "Echtzeit-Sprachübersetzung",
+          "Kulturelle Kontextanpassung",
+          "Mehrsprachige Content-Generierung"
+        ]
+      },
+      "processAutomation": {
+        "title": "KI-Prozessautomatisierung",
+        "description": "Optimieren Sie Workflows und automatisieren Sie komplexe Geschäftsprozesse mit intelligenten KI-Agenten und Entscheidungssystemen.",
+        "features": [
+          "Workflow-Optimierung",
+          "Prädiktive Analytik",
+          "Intelligente Entscheidungsunterstützung"
+        ]
+      }
+    },
+    "benefits": {
+      "title": "Warum Unsere KI-Lösungen Wählen",
+      "subtitle": "Erleben Sie die Vorteile von Unternehmens-KI-Technologie, die auf Ihre Geschäftsbedürfnisse zugeschnitten ist",
+      "efficiency": {
+        "title": "Effizienz Steigern",
+        "description": "Automatisieren Sie wiederkehrende Aufgaben und beschleunigen Sie Prozesse mit intelligenten KI-Systemen"
+      },
+      "scalability": {
+        "title": "Nahtlos Skalieren",
+        "description": "Bewältigen Sie wachsende Daten- und Anfragevolumen ohne proportionale Kostenerhöhungen"
+      },
+      "security": {
+        "title": "Unternehmenssicherheit",
+        "description": "DSGVO-konforme, sichere KI-Lösungen mit Datenschutz im Kern"
+      },
+      "availability": {
+        "title": "24/7 Verfügbarkeit",
+        "description": "Immer aktive KI-Systeme, die niemals schlafen und kontinuierliche Serviceleistung sicherstellen"
+      }
+    },
+    "useCases": {
+      "title": "Reale Anwendungen",
+      "subtitle": "Sehen Sie, wie unsere KI-Lösungen Unternehmen in allen Branchen transformieren",
+      "customerSupport": {
+        "title": "Kundensupport-Automatisierung",
+        "description": "Setzen Sie KI-Chatbots ein, die Kundenanfragen mit menschenähnlichem Verständnis bearbeiten und Support-Kosten um bis zu 70% reduzieren"
+      },
+      "dataAnalysis": {
+        "title": "Intelligente Datenanalyse",
+        "description": "Extrahieren Sie verwertbare Erkenntnisse aus großen Mengen unstrukturierter Daten mit fortgeschrittenem NLP und Machine Learning"
+      },
+      "contentGeneration": {
+        "title": "KI-Content-Generierung",
+        "description": "Generieren Sie hochwertigen, kontextuell relevanten Content in großem Maßstab für Marketing, Dokumentation und Kommunikation"
+      },
+      "codeAssistance": {
+        "title": "KI-gestützte Entwicklung",
+        "description": "Beschleunigen Sie die Softwareentwicklung mit KI-Code-Assistenten, automatisierten Tests und intelligenter Code-Prüfung"
+      }
+    },
+    "cta": {
+      "title": "Bereit, Ihr Unternehmen mit KI zu Transformieren?",
+      "subtitle": "Lassen Sie uns besprechen, wie unsere KI-Lösungen Ihnen helfen können, Ihre Geschäftsziele zu erreichen. Holen Sie sich noch heute eine kostenlose Beratung.",
+      "button": "Beratung Planen"
+    }
+  },
+  "about": {
+    "hero": {
+      "badge": "Unser Team Kennenlernen",
+      "title": "Unternehmen mit Expertise und Innovation Transformieren",
+      "subtitle": "Geleitet von erfahrenen Fachleuten mit über 10 Jahren Erfahrung in Cybersicherheit, Betrieb und IT-Infrastruktur. Wir widmen uns dem Aufbau von Softwarelösungen und Tools, die Unternehmenstransformation vorantreiben.",
+      "features": ["10+ Jahre Erfahrung", "Experten-Team", "Globale Reichweite"]
+    },
+    "founder": {
+      "title": "Führung",
+      "subtitle": "Visionäre Führung treibt Innovation und Exzellenz voran",
+      "description": "Pragathi V gründete NovalSquad mit der Vision, die Art und Weise zu transformieren, wie Unternehmen Outsourcing und digitale Transformation angehen. Mit einem starken Hintergrund in Geschäftsbetrieb und Technologie leitet Pragathi ein Team erfahrener Fachleute, die sich der Lieferung außergewöhnlicher Ergebnisse widmen.",
+      "achievements": ["Ein Team von über 10 Jahre erfahrenen Fachleuten in Cybersicherheit, Betrieb und IT-Infrastruktur aufgebaut", "Innovative Softwareentwicklungslösungen für Unternehmenstransformation pioniert", "Partnerschaften mit führenden Unternehmen in mehreren Branchen etabliert"]
+    },
+    "team": {
+      "title": "Unsere Expertise",
+      "subtitle": "Ein Team erfahrener Fachleute mit tiefem Branchenwissen und technischer Exzellenz",
+      "transformation": {
+        "title": "Unternehmenstransformation durch Technologie",
+        "description": "Unser Team spezialisiert sich auf die Entwicklung maßgeschneiderter Softwarelösungen und Tools, die Geschäftsbetriebe transformieren. Wir kombinieren technische Expertise mit Geschäftssinn, um Lösungen zu liefern, die echte Ergebnisse erzielen."
+      }
+    },
+    "expertise": {
+      "cybersecurity": {"title": "Cybersicherheit", "description": "Über 10 Jahre Unternehmen mit fortschrittlichen Sicherheitslösungen und Compliance-Management schützen"},
+      "operations": {"title": "Betriebsführung", "description": "Expertenbetriebsstrategien zur Prozessoptimierung und Effizienzsteigerung"},
+      "infrastructure": {"title": "IT-Infrastruktur", "description": "Robustes Infrastrukturmanagement für skalierbare und zuverlässige Systeme"},
+      "development": {"title": "Softwareentwicklung & KI", "description": "Maßgeschneiderte Software, KI-Lösungen und intelligente Tools für Unternehmenstransformation"}
+    },
+    "values": {
+      "title": "Unsere Kernwerte",
+      "subtitle": "Die Prinzipien, die alles leiten, was wir tun",
+      "excellence": {"title": "Exzellenz", "description": "Wir halten die höchsten Standards in allem, was wir liefern, und gewährleisten Qualität und Zuverlässigkeit"},
+      "partnership": {"title": "Partnerschaft", "description": "Wir arbeiten als Erweiterung Ihres Teams, engagiert für Ihren Erfolg, als wäre es unser eigener"},
+      "innovation": {"title": "Innovation", "description": "Wir erkunden kontinuierlich neue Technologien und Methodologien, um Sie vorne zu halten"},
+      "security": {"title": "Sicherheit Zuerst", "description": "Mit tiefer Cybersicherheitsexpertise bauen wir Sicherheit von Anfang an in jede Lösung ein"}
+    },
+    "cta": {
+      "title": "Bereit, Ihr Unternehmen zu Transformieren?",
+      "subtitle": "Lassen Sie uns besprechen, wie unser erfahrenes Team Ihnen helfen kann, Ihre Geschäftsziele zu erreichen",
+      "button": "Loslegen"
     }
   }
 } 

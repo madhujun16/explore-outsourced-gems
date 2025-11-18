@@ -18,6 +18,8 @@ import SEOHead from "@/components/SEOHead";
 import ChatBot from "@/components/ChatBot";
 import EnhancedNavigation from "@/components/EnhancedNavigation";
 import ScrollProgress from "@/components/ScrollProgress";
+import Footer from "@/components/Footer";
+import { generateOrganizationSchema, generateServiceSchema, generateItemListSchema } from "@/lib/structuredData";
 import { useFormValidation } from "@/hooks/useFormValidation";
 import { usePerformanceMonitoring, trackUserInteraction, trackFormSubmission } from "@/hooks/usePerformanceMonitoring";
 import Lottie from "lottie-react";
@@ -52,7 +54,9 @@ import {
   Globe,
   Shield,
   Lock,
-  ArrowLeft
+  ArrowLeft,
+  PenTool,
+  Brain
 } from "lucide-react";
 
 const Index = () => {
@@ -403,38 +407,91 @@ const Index = () => {
       bgColor: "bg-indigo-50 group-hover:bg-indigo-100"
     },
     {
-      icon: Users,
-      title: "Virtual Staff",
-      description: "On-demand trained remote teams with specialized skills, project management, and dedicated account support for your business needs.",
-      color: "text-orange-600",
-      bgColor: "bg-orange-50 group-hover:bg-orange-100"
+      icon: PenTool,
+      title: "Architect",
+      description: "Expert architecture and design services including system architecture, solution design, technical blueprints, and infrastructure planning.",
+      color: "text-purple-600",
+      bgColor: "bg-purple-50 group-hover:bg-purple-100"
     },
     {
       icon: HardDrive,
       title: "IT Helpdesk",
-      description: "Secure and scalable infrastructure support.",
+      description: "Comprehensive IT support including infrastructure management, system monitoring, troubleshooting, user support, and secure scalable solutions for seamless operations.",
       color: "text-red-600",
       bgColor: "bg-red-50 group-hover:bg-red-100"
     },
     {
       icon: CheckCircle,
       title: "Virtual CISO",
-      description: "Cybersecurity leadership and compliance management.",
+      description: "Strategic cybersecurity leadership providing security governance, risk assessment, compliance management, incident response, and regulatory adherence guidance.",
       color: "text-teal-600",
       bgColor: "bg-teal-50 group-hover:bg-teal-100"
     },
     {
       icon: Database,
       title: "Cloud Services",
-      description: "Migration, management, and optimization solutions.",
+      description: "End-to-end cloud solutions including migration planning, infrastructure management, cost optimization, security implementation, and performance monitoring.",
       color: "text-indigo-600",
       bgColor: "bg-indigo-50 group-hover:bg-indigo-100"
+    },
+    {
+      icon: Brain,
+      title: "AI Solutions",
+      description: "Advanced AI and machine learning solutions including RAG, LLM integration, intelligent automation, and custom AI development.",
+      color: "text-orange-600",
+      bgColor: "bg-orange-50 group-hover:bg-orange-100"
     }
   ];
 
+  // FAQ data for AEO optimization
+  const faqs = [
+    {
+      question: "What is GDPR-compliant outsourcing and why is it important?",
+      answer: "GDPR-compliant outsourcing means that all data processing activities adhere to the European Union's General Data Protection Regulation. This is crucial for businesses operating in or serving customers in the EU. At NovalSquad, we ensure all our processes, systems, and staff training meet GDPR standards, protecting your business from potential fines and maintaining customer trust."
+    },
+    {
+      question: "How quickly can NovalSquad deploy virtual assistants for my business?",
+      answer: "We can deploy fully-trained virtual assistants within 5 business days. Our rapid onboarding process includes skills assessment, cultural fit evaluation, and comprehensive training on your specific requirements. This means you can scale your team quickly without the typical hiring delays."
+    },
+    {
+      question: "What industries does NovalSquad specialize in?",
+      answer: "NovalSquad serves diverse industries including Finance, Healthcare, Retail, Travel, Education, Automotive, Real Estate, Gaming, Technology, and Logistics. Our team has specialized expertise in each sector, understanding industry-specific compliance requirements, workflows, and best practices to deliver tailored solutions."
+    },
+    {
+      question: "How does NovalSquad ensure 24/7 customer support availability?",
+      answer: "We operate across multiple time zones with dedicated teams ensuring round-the-clock coverage. Our support infrastructure includes redundant systems, multilingual staff, and escalation protocols to guarantee uninterrupted service delivery. We maintain SLA compliance through sophisticated monitoring and real-time reporting."
+    },
+    {
+      question: "What makes NovalSquad different from other BPO providers?",
+      answer: "NovalSquad combines GDPR compliance, rapid deployment (5 days), cost-effectiveness (up to 70% savings), and specialized industry expertise. We offer custom SLAs, multilingual support in 6+ languages, and cutting-edge AI integration. Our focus on quality, security, and transparent communication sets us apart in the outsourcing industry."
+    },
+    {
+      question: "Can NovalSquad integrate with our existing business tools and systems?",
+      answer: "Yes, we seamlessly integrate with popular business tools including CRM systems (Salesforce, HubSpot), project management platforms (Jira, Asana), communication tools (Slack, Microsoft Teams), and custom enterprise software. Our technical team ensures smooth integration with minimal disruption to your operations."
+    }
+  ];
+
+  // Generate structured data for SEO/AEO/GEO
+  const organizationSchema = generateOrganizationSchema();
+  
+  const servicesListSchema = generateItemListSchema(
+    "Business Process Outsourcing Services",
+    services.map(service => ({
+      name: service.title,
+      url: "https://novalsquad.com#services",
+      description: service.description
+    }))
+  );
+
   return (
     <>
-      <SEOHead />
+      <SEOHead 
+        structuredData={[organizationSchema, servicesListSchema]}
+        faqData={faqs}
+        breadcrumbs={[
+          { name: "Home", url: "https://novalsquad.com" }
+        ]}
+      />
       <SkipNavigation />
       <ScrollProgress />
       <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-blue-50">
@@ -608,16 +665,16 @@ const Index = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, index) => (
               <Card key={index} className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group hover:scale-105">
-                <CardHeader className="text-center">
+                <CardHeader className="text-center pb-2">
                   <div className={`mx-auto mb-4 p-3 rounded-full w-16 h-16 flex items-center justify-center transition-colors ${service.bgColor}`}>
                     <service.icon className={`h-8 w-8 ${service.color}`} />
                   </div>
-                  <CardTitle className="text-xl">
+                  <CardTitle className="text-xl mb-4">
                     {service.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-center text-base">
+                <CardContent className="pt-0">
+                  <CardDescription className="text-center text-base leading-relaxed">
                     {service.description}
                   </CardDescription>
                 </CardContent>
@@ -1189,29 +1246,7 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-white/60 border-t py-8">
-        <div className="container mx-auto px-4">
-          <div className="text-center">
-            <div className="flex justify-center mb-4">
-              <NovalSquadLogo variant="dark" size="lg" />
-            </div>
-            <p className="text-muted-foreground mb-6">
-              {t('footer.tagline')}
-            </p>
-            <div className="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-6 mb-4">
-              <Link to="/privacy-policy" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                {t('footer.links.privacy')}
-              </Link>
-              <Link to="/terms-conditions" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                {t('footer.links.terms')}
-              </Link>
-            </div>
-            <p className="text-sm text-muted-foreground">
-              {t('footer.copyright')}
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
       
       {/* ChatBot */}
       <ChatBot />

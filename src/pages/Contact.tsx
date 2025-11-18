@@ -16,6 +16,7 @@ import SEOHead from "@/components/SEOHead";
 import ChatBot from "@/components/ChatBot";
 import EnhancedNavigation from "@/components/EnhancedNavigation";
 import ScrollProgress from "@/components/ScrollProgress";
+import Footer from "@/components/Footer";
 import { useFormValidation } from "@/hooks/useFormValidation";
 import { usePerformanceMonitoring, trackFormSubmission } from "@/hooks/usePerformanceMonitoring";
 import Lottie from "lottie-react";
@@ -685,32 +686,7 @@ const Contact = () => {
         </section>
 
         {/* Footer */}
-        <footer className="bg-white/60 border-t py-8">
-          <div className="container mx-auto px-4">
-            <div className="text-center">
-              <div className="flex justify-center mb-4">
-                <NovalSquadLogo variant="dark" size="lg" />
-              </div>
-            <p className="text-muted-foreground mb-6">
-              {t('footer.tagline')}
-            </p>
-            <div className="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-6 mb-4">
-              <Link to="/privacy-policy" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                {t('footer.links.privacy')}
-              </Link>
-              <Link to="/terms-conditions" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                {t('footer.links.terms')}
-              </Link>
-              <Link to="/" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                {t('footer.links.home')}
-              </Link>
-            </div>
-            <p className="text-sm text-muted-foreground">
-              {t('footer.copyright')}
-            </p>
-            </div>
-          </div>
-        </footer>
+        <Footer />
         
         {/* ChatBot */}
         <ChatBot />

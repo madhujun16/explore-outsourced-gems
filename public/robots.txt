@@ -1,8 +1,56 @@
+# robots.txt for https://novalsquad.com
+# Optimized for SEO, AEO, and GEO
+
+# Allow all search engines to crawl
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /*.json$
+Disallow: /*?*sort=
+Disallow: /*?*filter=
 
-# Sitemap
+# Google Bot specific rules
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Google Image Bot
+User-agent: Googlebot-Image
+Allow: /
+
+# Bing Bot
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+# ChatGPT/OpenAI Bot (for GEO optimization)
+User-agent: GPTBot
+Allow: /
+
+# Claude/Anthropic Bot (for GEO optimization)
+User-agent: ClaudeBot
+Allow: /
+
+# Google Bard/Gemini Bot (for GEO optimization)
+User-agent: Google-Extended
+Allow: /
+
+# Other AI/LLM Bots
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# Sitemap locations
 Sitemap: https://novalsquad.com/sitemap.xml
 
-# Crawl-delay
+# Crawl-delay for general bots
 Crawl-delay: 1
+
+# Host
+Host: https://novalsquad.com

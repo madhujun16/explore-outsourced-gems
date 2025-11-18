@@ -2,6 +2,8 @@
   "navigation": {
     "home": "Home",
     "services": "Servizi",
+    "aiServices": "Servizi IA",
+    "about": "Chi Siamo",
     "industries": "Settori",
     "contact": "Contatto"
   },
@@ -326,6 +328,163 @@
         "industry": "Settore",
         "projectDescription": "Descrizione del Progetto"
       }
+    }
+  },
+  "aiServices": {
+    "hero": {
+      "badge": "Soluzioni Basate su IA",
+      "title": "Trasforma il Tuo Business con l'IA e la Tecnologia LLM",
+      "subtitle": "Sfrutta soluzioni di IA all'avanguardia incluse RAG (Retrieval-Augmented Generation), integrazione LLM, automazione intelligente e chatbot basati su IA per rivoluzionare le tue operazioni aziendali.",
+      "cta": "Ottieni Soluzioni IA",
+      "features": [
+        "Soluzioni RAG",
+        "Sicurezza Aziendale",
+        "Supporto Multilingue"
+      ]
+    },
+    "title": "I Nostri Servizi di IA e LLM",
+    "subtitle": "Soluzioni di IA complete progettate per migliorare l'efficienza, ridurre i costi e scalare le tue operazioni",
+    "items": {
+      "ragSolutions": {
+        "title": "Soluzioni RAG",
+        "description": "Sistemi di Retrieval-Augmented Generation che combinano la potenza dei grandi modelli linguistici con i tuoi dati proprietari per risposte precise e consapevoli del contesto.",
+        "features": [
+          "Integrazione personalizzata di knowledge base",
+          "Recupero e elaborazione dati in tempo reale",
+          "Risposte intelligenti consapevoli del contesto"
+        ]
+      },
+      "aiChatbots": {
+        "title": "Chatbot IA e Assistenti Virtuali",
+        "description": "IA conversazionale intelligente alimentata da LLM avanzati per supporto clienti, vendite e operazioni interne.",
+        "features": [
+          "Supporto clienti multilingue 24/7",
+          "Comprensione del linguaggio naturale",
+          "Integrazione CRM senza soluzione di continuità"
+        ]
+      },
+      "documentProcessing": {
+        "title": "Elaborazione Intelligente dei Documenti",
+        "description": "Analisi, estrazione e elaborazione automatizzata dei documenti utilizzando tecnologie avanzate di IA e NLP.",
+        "features": [
+          "OCR ed estrazione dati",
+          "Classificazione automatizzata dei documenti",
+          "Validazione intelligente dei dati"
+        ]
+      },
+      "knowledgeBase": {
+        "title": "Gestione della Conoscenza con IA",
+        "description": "Costruisci basi di conoscenza intelligenti che imparano e si adattano, rendendo il recupero delle informazioni più veloce e accurato.",
+        "features": [
+          "Capacità di ricerca semantica",
+          "Categorizzazione automatizzata dei contenuti",
+          "Generazione dinamica di grafi di conoscenza"
+        ]
+      },
+      "multilingualAI": {
+        "title": "Soluzioni IA Multilingue",
+        "description": "Supera le barriere linguistiche con traduzione, localizzazione e generazione di contenuti multilingue alimentati da IA.",
+        "features": [
+          "Traduzione linguistica in tempo reale",
+          "Adattamento del contesto culturale",
+          "Generazione di contenuti multilingue"
+        ]
+      },
+      "processAutomation": {
+        "title": "Automazione dei Processi con IA",
+        "description": "Semplifica i flussi di lavoro e automatizza processi aziendali complessi utilizzando agenti IA intelligenti e sistemi decisionali.",
+        "features": [
+          "Ottimizzazione del flusso di lavoro",
+          "Analisi predittiva",
+          "Supporto decisionale intelligente"
+        ]
+      }
+    },
+    "benefits": {
+      "title": "Perché Scegliere le Nostre Soluzioni IA",
+      "subtitle": "Sperimenta i vantaggi della tecnologia IA di livello enterprise personalizzata per le tue esigenze aziendali",
+      "efficiency": {
+        "title": "Aumenta l'Efficienza",
+        "description": "Automatizza compiti ripetitivi e accelera i processi con sistemi IA intelligenti"
+      },
+      "scalability": {
+        "title": "Scala Senza Sforzo",
+        "description": "Gestisci volumi crescenti di dati e richieste senza aumenti proporzionali dei costi"
+      },
+      "security": {
+        "title": "Sicurezza Aziendale",
+        "description": "Soluzioni IA sicure e conformi al GDPR con privacy dei dati al centro"
+      },
+      "availability": {
+        "title": "Disponibilità 24/7",
+        "description": "Sistemi IA sempre attivi che non dormono mai, garantendo l'erogazione continua del servizio"
+      }
+    },
+    "useCases": {
+      "title": "Applicazioni nel Mondo Reale",
+      "subtitle": "Scopri come le nostre soluzioni IA stanno trasformando le aziende in tutti i settori",
+      "customerSupport": {
+        "title": "Automazione del Supporto Clienti",
+        "description": "Implementa chatbot IA che gestiscono le richieste dei clienti con comprensione simile a quella umana, riducendo i costi di supporto fino al 70%"
+      },
+      "dataAnalysis": {
+        "title": "Analisi dei Dati Intelligente",
+        "description": "Estrai informazioni utilizzabili da grandi quantità di dati non strutturati utilizzando NLP avanzato e machine learning"
+      },
+      "contentGeneration": {
+        "title": "Generazione di Contenuti con IA",
+        "description": "Genera contenuti di alta qualità e contestualmente rilevanti su scala per marketing, documentazione e comunicazione"
+      },
+      "codeAssistance": {
+        "title": "Sviluppo Alimentato da IA",
+        "description": "Accelera lo sviluppo software con assistenti di codice IA, test automatizzati e revisione intelligente del codice"
+      }
+    },
+    "cta": {
+      "title": "Pronto a Trasformare il Tuo Business con l'IA?",
+      "subtitle": "Parliamo di come le nostre soluzioni IA possono aiutarti a raggiungere i tuoi obiettivi aziendali. Ottieni una consulenza gratuita oggi.",
+      "button": "Pianifica una Consulenza"
+    }
+  },
+  "about": {
+    "hero": {
+      "badge": "Incontra il Nostro Team",
+      "title": "Trasformare le Aziende con Esperienza e Innovazione",
+      "subtitle": "Guidati da professionisti esperti con oltre 10 anni di esperienza in cybersecurity, operazioni e infrastruttura IT. Siamo dedicati alla creazione di soluzioni software e strumenti che guidano la trasformazione aziendale.",
+      "features": ["10+ Anni di Esperienza", "Team Esperto", "Portata Globale"]
+    },
+    "founder": {
+      "title": "Leadership",
+      "subtitle": "Leadership visionaria che guida innovazione ed eccellenza",
+      "description": "Pragathi V ha fondato NovalSquad con la visione di trasformare il modo in cui le aziende affrontano l'outsourcing e la trasformazione digitale. Con una solida formazione in operazioni aziendali e tecnologia, Pragathi guida un team di professionisti esperti dedicati a fornire risultati eccezionali.",
+      "achievements": ["Ha costruito un team di professionisti con oltre 10 anni di esperienza in cybersecurity, operazioni e infrastruttura IT", "Ha  pioneristicamente sviluppato soluzioni software innovative per la trasformazione aziendale", "Ha stabilito partnership con aziende leader in molteplici settori"]
+    },
+    "team": {
+      "title": "La Nostra Esperienza",
+      "subtitle": "Un team di professionisti esperti con profonda conoscenza del settore ed eccellenza tecnica",
+      "transformation": {
+        "title": "Trasformazione Aziendale Attraverso la Tecnologia",
+        "description": "Il nostro team è specializzato nello sviluppo di soluzioni software personalizzate e strumenti che trasformano le operazioni aziendali. Combiniamo competenza tecnica con acume imprenditoriale per fornire soluzioni che generano risultati reali."
+      }
+    },
+    "expertise": {
+      "cybersecurity": {"title": "Cybersecurity", "description": "Oltre 10 anni di protezione delle aziende con soluzioni di sicurezza avanzate e gestione della conformità"},
+      "operations": {"title": "Gestione Operativa", "description": "Strategie operative esperte per ottimizzare i processi e guidare l'efficienza"},
+      "infrastructure": {"title": "Infrastruttura IT", "description": "Gestione dell'infrastruttura robusta per sistemi scalabili e affidabili"},
+      "development": {"title": "Sviluppo Software e IA", "description": "Sviluppo di software personalizzato, soluzioni IA e strumenti intelligenti per la trasformazione aziendale"}
+    },
+    "values": {
+      "title": "I Nostri Valori Fondamentali",
+      "subtitle": "I principi che guidano tutto ciò che facciamo",
+      "excellence": {"title": "Eccellenza", "description": "Manteniamo i più alti standard in tutto ciò che consegniamo, garantendo qualità e affidabilità"},
+      "partnership": {"title": "Partnership", "description": "Lavoriamo come un'estensione del vostro team, impegnati per il vostro successo come se fosse il nostro"},
+      "innovation": {"title": "Innovazione", "description": "Esploriamo continuamente nuove tecnologie e metodologie per tenervi all'avanguardia"},
+      "security": {"title": "Sicurezza Prima di Tutto", "description": "Con profonda esperienza in cybersecurity, integriamo la sicurezza in ogni soluzione fin dall'inizio"}
+    },
+    "cta": {
+      "title": "Pronti a Trasformare il Vostro Business?",
+      "subtitle": "Parliamo di come il nostro team esperto può aiutarvi a raggiungere i vostri obiettivi aziendali",
+      "button": "Inizia"
     }
   }
 } 

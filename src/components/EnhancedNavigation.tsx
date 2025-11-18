@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { 
@@ -12,7 +12,13 @@ import {
   ArrowRight,
   Star,
   Users,
-  Award
+  Award,
+  Brain,
+  Code2,
+  Megaphone,
+  Database,
+  Home,
+  LucideIcon
 } from 'lucide-react';
 import NovalSquadLogo from './NovalSquadLogo';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -23,35 +29,103 @@ interface EnhancedNavigationProps {
   onContactClick: () => void;
 }
 
+interface DropdownItem {
+  id: string;
+  label: string;
+  href: string;
+  icon: LucideIcon;
+  description: string;
+  badge?: string;
+}
+
+interface NavigationItem {
+  id: string;
+  label: string;
+  href: string;
+  icon: LucideIcon;
+  description: string;
+  hasDropdown?: boolean;
+  dropdownItems?: DropdownItem[];
+  badge?: string;
+}
+
 const EnhancedNavigation: React.FC<EnhancedNavigationProps> = ({ onContactClick }) => {
   const { t } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
+  const [digitalDropdownOpen, setDigitalDropdownOpen] = useState(false);
   const { activeSection, isScrolled } = useNavigation();
   const location = useLocation();
+  const navigate = useNavigate();
   const isHomePage = location.pathname === '/';
 
-  const navigationItems = [
+  const servicesDropdownItems: DropdownItem[] = [
+    {
+      id: 'dedicated-staff',
+      label: 'Dedicated Staff',
+      href: '/dedicated-staff',
+      icon: Users,
+      description: 'All outsourcing services in detail'
+    },
+    {
+      id: 'ai-services',
+      label: 'AI Services',
+      href: '/ai-services',
+      icon: Brain,
+      description: 'AI & LLM solutions',
+      badge: 'New'
+    }
+  ];
+
+  const digitalDropdownItems: DropdownItem[] = [
+    {
+      id: 'software-development',
+      label: 'Software & Tools Development',
+      href: '#digital',
+      icon: Code2,
+      description: 'Custom software & tool development'
+    },
+    {
+      id: 'marketing',
+      label: 'Marketing',
+      href: '#digital',
+      icon: Megaphone,
+      description: 'SEO, ads & content strategy'
+    },
+    {
+      id: 'data-crm',
+      label: 'Data/CRM',
+      href: '#digital',
+      icon: Database,
+      description: 'GDPR-ready CRM & analytics'
+    }
+  ];
+
+  const navigationItems: NavigationItem[] = [
+    {
+      id: 'home',
+      label: t('navigation.home'),
+      href: '/',
+      icon: Home,
+      description: 'Home page'
+    },
     {
       id: 'services',
       label: t('navigation.services'),
       href: '#services',
       icon: Users,
-      description: 'Our core services'
+      description: 'Our services',
+      hasDropdown: true,
+      dropdownItems: servicesDropdownItems
     },
     {
       id: 'digital',
       label: 'Digital',
       href: '#digital',
       icon: Star,
-      description: 'Digital solutions',
-      badge: 'New'
-    },
-    {
-      id: 'industries',
-      label: t('navigation.industries'),
-      href: '#industries',
-      icon: Award,
-      description: 'Industries we serve'
+      description: 'Digital services',
+      hasDropdown: true,
+      dropdownItems: digitalDropdownItems
     },
     {
       id: 'contact',
@@ -59,14 +133,26 @@ const EnhancedNavigation: React.FC<EnhancedNavigationProps> = ({ onContactClick 
       href: '#contact',
       icon: MessageCircle,
       description: 'Get in touch'
+    },
+    {
+      id: 'about',
+      label: t('navigation.about'),
+      href: '/about',
+      icon: Award,
+      description: 'About our team'
     }
   ];
 
   const handleNavClick = (href: string, label: string) => {
     trackUserInteraction('nav_click', 'Navigation', label);
     setIsMobileMenuOpen(false);
+    setServicesDropdownOpen(false);
+    setDigitalDropdownOpen(false);
     
-    if (isHomePage) {
+    // Check if it's a page route (starts with /)
+    if (href.startsWith('/') && !href.startsWith('/#')) {
+      navigate(href);
+    } else if (isHomePage) {
       // If on home page, scroll to section
       const element = document.querySelector(href);
       if (element) {
@@ -97,20 +183,35 @@ const EnhancedNavigation: React.FC<EnhancedNavigationProps> = ({ onContactClick 
         ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-indigo-200/50' 
         : 'bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b'
     }`}>
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+      <div className="container mx-auto px-6">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <NovalSquadLogo variant="dark" size="sm" />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1">
+          <div className="hidden lg:flex items-center space-x-2">
             {navigationItems.map((item) => (
-              <div key={item.id} className="relative group">
+              <div 
+                key={item.id} 
+                className="relative"
+                onMouseEnter={() => {
+                  if (item.hasDropdown) {
+                    if (item.id === 'services') setServicesDropdownOpen(true);
+                    if (item.id === 'digital') setDigitalDropdownOpen(true);
+                  }
+                }}
+                onMouseLeave={() => {
+                  if (item.hasDropdown) {
+                    if (item.id === 'services') setServicesDropdownOpen(false);
+                    if (item.id === 'digital') setDigitalDropdownOpen(false);
+                  }
+                }}
+              >
                 <button
-                  onClick={() => handleNavClick(item.href, item.label)}
-                  className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 ${
+                  onClick={() => !item.hasDropdown && handleNavClick(item.href, item.label)}
+                  className={`flex items-center space-x-2 px-5 py-2 rounded-lg transition-all duration-200 ${
                     activeSection === item.id
                       ? 'text-primary bg-primary/10'
                       : 'text-muted-foreground hover:text-primary hover:bg-primary/5'
@@ -118,6 +219,11 @@ const EnhancedNavigation: React.FC<EnhancedNavigationProps> = ({ onContactClick 
                 >
                   <item.icon className="h-4 w-4" />
                   <span className="font-medium">{item.label}</span>
+                  {item.hasDropdown && (
+                    <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${
+                      ((servicesDropdownOpen && item.id === 'services') || (digitalDropdownOpen && item.id === 'digital')) ? 'rotate-180' : ''
+                    }`} />
+                  )}
                   {item.badge && (
                     <Badge variant="secondary" className="text-xs px-1.5 py-0.5">
                       {item.badge}
@@ -125,17 +231,51 @@ const EnhancedNavigation: React.FC<EnhancedNavigationProps> = ({ onContactClick 
                   )}
                 </button>
                 
-                {/* Tooltip */}
-                <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-1 bg-gray-900 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
-                  {item.description}
-                  <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-900 rotate-45"></div>
-                </div>
+                {/* Dropdown Menu */}
+                {item.hasDropdown && ((servicesDropdownOpen && item.id === 'services') || (digitalDropdownOpen && item.id === 'digital')) && (
+                  <div className="absolute top-full left-0 pt-2 z-50">
+                    <div className="w-[400px] bg-white rounded-lg shadow-xl border border-gray-200 p-4">
+                      <div className="grid grid-cols-1 gap-2">
+                        {item.dropdownItems?.map((dropdownItem: DropdownItem) => (
+                          <button
+                            key={dropdownItem.id}
+                            onClick={() => handleNavClick(dropdownItem.href, dropdownItem.label)}
+                            className="flex items-start space-x-3 px-3 py-2.5 hover:bg-primary/5 rounded-lg transition-colors text-left"
+                          >
+                            <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                              <dropdownItem.icon className="h-4 w-4 text-primary" />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center space-x-2">
+                                <span className="font-medium text-gray-900 text-sm">{dropdownItem.label}</span>
+                                {dropdownItem.badge && (
+                                  <Badge variant="secondary" className="text-xs px-1.5 py-0.5">
+                                    {dropdownItem.badge}
+                                  </Badge>
+                                )}
+                              </div>
+                              <p className="text-xs text-muted-foreground mt-0.5 line-clamp-1">{dropdownItem.description}</p>
+                            </div>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
+                
+                {/* Tooltip - only show if no dropdown */}
+                {!item.hasDropdown && (
+                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-1 bg-gray-900 text-white text-sm rounded-lg opacity-0 hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap group-hover:opacity-100">
+                    {item.description}
+                    <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-900 rotate-45"></div>
+                  </div>
+                )}
               </div>
             ))}
           </div>
 
           {/* Desktop Actions */}
-          <div className="hidden lg:flex items-center space-x-3">
+          <div className="hidden lg:flex items-center space-x-4">
             <LanguageSwitcher />
             
             {/* Contact Info */}
@@ -180,26 +320,73 @@ const EnhancedNavigation: React.FC<EnhancedNavigationProps> = ({ onContactClick 
           <div className="lg:hidden border-t border-indigo-200/50 bg-white/95 backdrop-blur-md">
             <div className="py-4 space-y-2">
               {navigationItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => handleNavClick(item.href, item.label)}
-                  className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-all duration-200 ${
-                    activeSection === item.id
-                      ? 'text-primary bg-primary/10'
-                      : 'text-muted-foreground hover:text-primary hover:bg-primary/5'
-                  }`}
-                >
-                  <div className="flex items-center space-x-3">
-                    <item.icon className="h-5 w-5" />
-                    <span className="font-medium">{item.label}</span>
-                    {item.badge && (
-                      <Badge variant="secondary" className="text-xs">
-                        {item.badge}
-                      </Badge>
-                    )}
-                  </div>
-                  <ChevronDown className="h-4 w-4" />
-                </button>
+                <div key={item.id}>
+                  {!item.hasDropdown ? (
+                    <button
+                      onClick={() => handleNavClick(item.href, item.label)}
+                      className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-all duration-200 ${
+                        activeSection === item.id
+                          ? 'text-primary bg-primary/10'
+                          : 'text-muted-foreground hover:text-primary hover:bg-primary/5'
+                      }`}
+                    >
+                      <div className="flex items-center space-x-3">
+                        <item.icon className="h-5 w-5" />
+                        <span className="font-medium">{item.label}</span>
+                        {item.badge && (
+                          <Badge variant="secondary" className="text-xs">
+                            {item.badge}
+                          </Badge>
+                        )}
+                      </div>
+                      <ChevronDown className="h-4 w-4" />
+                    </button>
+                  ) : (
+                    <div>
+                      <button
+                        onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)}
+                        className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-all duration-200 ${
+                          activeSection === item.id
+                            ? 'text-primary bg-primary/10'
+                            : 'text-muted-foreground hover:text-primary hover:bg-primary/5'
+                        }`}
+                      >
+                        <div className="flex items-center space-x-3">
+                          <item.icon className="h-5 w-5" />
+                          <span className="font-medium">{item.label}</span>
+                        </div>
+                        <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${servicesDropdownOpen ? 'rotate-180' : ''}`} />
+                      </button>
+                      
+                      {servicesDropdownOpen && (
+                        <div className="ml-4 mt-2 space-y-1">
+                          {item.dropdownItems?.map((dropdownItem: DropdownItem) => (
+                            <button
+                              key={dropdownItem.id}
+                              onClick={() => handleNavClick(dropdownItem.href, dropdownItem.label)}
+                              className="w-full flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-primary/5 transition-colors text-left"
+                            >
+                              <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                                <dropdownItem.icon className="h-4 w-4 text-primary" />
+                              </div>
+                              <div className="flex-1">
+                                <div className="flex items-center space-x-2">
+                                  <span className="font-medium text-gray-900 text-sm">{dropdownItem.label}</span>
+                                  {dropdownItem.badge && (
+                                    <Badge variant="secondary" className="text-xs px-1.5 py-0.5">
+                                      {dropdownItem.badge}
+                                    </Badge>
+                                  )}
+                                </div>
+                                <p className="text-xs text-muted-foreground mt-0.5">{dropdownItem.description}</p>
+                              </div>
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
               ))}
               
               {/* Mobile Contact Info */}

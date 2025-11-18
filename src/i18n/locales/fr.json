@@ -2,6 +2,8 @@
   "navigation": {
     "home": "Accueil",
     "services": "Services",
+    "aiServices": "Services d'IA",
+    "about": "À Propos",
     "industries": "Secteurs",
     "contact": "Contact"
   },
@@ -326,6 +328,163 @@
         "industry": "Secteur",
         "projectDescription": "Description du Projet"
       }
+    }
+  },
+  "aiServices": {
+    "hero": {
+      "badge": "Solutions Alimentées par l'IA",
+      "title": "Transformez Votre Entreprise avec l'IA et la Technologie LLM",
+      "subtitle": "Exploitez des solutions d'IA de pointe incluant RAG (Génération Augmentée par Récupération), intégration LLM, automatisation intelligente et chatbots alimentés par l'IA pour révolutionner vos opérations commerciales.",
+      "cta": "Obtenir des Solutions d'IA",
+      "features": [
+        "Solutions RAG",
+        "Sécurité d'Entreprise",
+        "Support Multilingue"
+      ]
+    },
+    "title": "Nos Services d'IA et LLM",
+    "subtitle": "Solutions d'IA complètes conçues pour améliorer l'efficacité, réduire les coûts et développer vos opérations",
+    "items": {
+      "ragSolutions": {
+        "title": "Solutions RAG",
+        "description": "Systèmes de Génération Augmentée par Récupération qui combinent la puissance des grands modèles de langage avec vos données propriétaires pour des réponses précises et contextuelles.",
+        "features": [
+          "Intégration de base de connaissances personnalisée",
+          "Récupération et traitement de données en temps réel",
+          "Réponses intelligentes contextuelles"
+        ]
+      },
+      "aiChatbots": {
+        "title": "Chatbots IA et Assistants Virtuels",
+        "description": "IA conversationnelle intelligente alimentée par des LLM avancés pour le support client, les ventes et les opérations internes.",
+        "features": [
+          "Support client multilingue 24/7",
+          "Compréhension du langage naturel",
+          "Intégration CRM transparente"
+        ]
+      },
+      "documentProcessing": {
+        "title": "Traitement Intelligent de Documents",
+        "description": "Analyse, extraction et traitement automatisés de documents utilisant des technologies avancées d'IA et de TAL.",
+        "features": [
+          "OCR et extraction de données",
+          "Classification automatisée de documents",
+          "Validation intelligente des données"
+        ]
+      },
+      "knowledgeBase": {
+        "title": "Gestion des Connaissances par IA",
+        "description": "Construisez des bases de connaissances intelligentes qui apprennent et s'adaptent, rendant la récupération d'informations plus rapide et plus précise.",
+        "features": [
+          "Capacités de recherche sémantique",
+          "Catégorisation automatisée du contenu",
+          "Génération dynamique de graphes de connaissances"
+        ]
+      },
+      "multilingualAI": {
+        "title": "Solutions d'IA Multilingues",
+        "description": "Brisez les barrières linguistiques avec la traduction, la localisation et la génération de contenu multilingue alimentées par l'IA.",
+        "features": [
+          "Traduction linguistique en temps réel",
+          "Adaptation du contexte culturel",
+          "Génération de contenu multilingue"
+        ]
+      },
+      "processAutomation": {
+        "title": "Automatisation des Processus par IA",
+        "description": "Rationalisez les flux de travail et automatisez les processus commerciaux complexes en utilisant des agents IA intelligents et des systèmes de prise de décision.",
+        "features": [
+          "Optimisation du flux de travail",
+          "Analytique prédictive",
+          "Support de décision intelligent"
+        ]
+      }
+    },
+    "benefits": {
+      "title": "Pourquoi Choisir Nos Solutions d'IA",
+      "subtitle": "Découvrez les avantages de la technologie d'IA de niveau entreprise adaptée à vos besoins commerciaux",
+      "efficiency": {
+        "title": "Augmentez l'Efficacité",
+        "description": "Automatisez les tâches répétitives et accélérez les processus avec des systèmes d'IA intelligents"
+      },
+      "scalability": {
+        "title": "Évoluez Sans Effort",
+        "description": "Gérez des volumes croissants de données et de demandes sans augmentation proportionnelle des coûts"
+      },
+      "security": {
+        "title": "Sécurité d'Entreprise",
+        "description": "Solutions d'IA sécurisées et conformes au RGPD avec la confidentialité des données au cœur"
+      },
+      "availability": {
+        "title": "Disponibilité 24/7",
+        "description": "Systèmes d'IA toujours actifs qui ne dorment jamais, assurant une livraison de service continue"
+      }
+    },
+    "useCases": {
+      "title": "Applications Réelles",
+      "subtitle": "Découvrez comment nos solutions d'IA transforment les entreprises dans tous les secteurs",
+      "customerSupport": {
+        "title": "Automatisation du Support Client",
+        "description": "Déployez des chatbots IA qui gèrent les demandes des clients avec une compréhension humaine, réduisant les coûts de support jusqu'à 70%"
+      },
+      "dataAnalysis": {
+        "title": "Analyse de Données Intelligente",
+        "description": "Extrayez des informations exploitables de grandes quantités de données non structurées en utilisant le TAL avancé et l'apprentissage automatique"
+      },
+      "contentGeneration": {
+        "title": "Génération de Contenu par IA",
+        "description": "Générez du contenu de haute qualité et contextuellement pertinent à grande échelle pour le marketing, la documentation et la communication"
+      },
+      "codeAssistance": {
+        "title": "Développement Alimenté par l'IA",
+        "description": "Accélérez le développement logiciel avec des assistants de code IA, des tests automatisés et une révision de code intelligente"
+      }
+    },
+    "cta": {
+      "title": "Prêt à Transformer Votre Entreprise avec l'IA ?",
+      "subtitle": "Discutons de la manière dont nos solutions d'IA peuvent vous aider à atteindre vos objectifs commerciaux. Obtenez une consultation gratuite aujourd'hui.",
+      "button": "Planifier une Consultation"
+    }
+  },
+  "about": {
+    "hero": {
+      "badge": "Rencontrez Notre Équipe",
+      "title": "Transformer les Entreprises avec Expertise et Innovation",
+      "subtitle": "Dirigés par des professionnels expérimentés avec plus de 10 ans d'expérience en cybersécurité, opérations et infrastructure IT. Nous nous consacrons à la création de solutions logicielles et d'outils qui stimulent la transformation des entreprises.",
+      "features": ["10+ Ans d'Expérience", "Équipe Experte", "Portée Mondiale"]
+    },
+    "founder": {
+      "title": "Leadership",
+      "subtitle": "Leadership visionnaire stimulant l'innovation et l'excellence",
+      "description": "Pragathi V a fondé NovalSquad avec la vision de transformer la façon dont les entreprises abordent l'externalisation et la transformation numérique. Avec une solide formation en opérations commerciales et en technologie, Pragathi dirige une équipe de professionnels expérimentés dédiés à fournir des résultats exceptionnels.",
+      "achievements": ["A constitué une équipe de professionnels avec plus de 10 ans d'expérience en cybersécurité, opérations et infrastructure IT", "A été pionnier dans des solutions innovatives de développement logiciel pour la transformation des entreprises", "A établi des partenariats avec des entreprises leaders dans plusieurs secteurs"]
+    },
+    "team": {
+      "title": "Notre Expertise",
+      "subtitle": "Une équipe de professionnels chevronnés avec une connaissance approfondie de l'industrie et une excellence technique",
+      "transformation": {
+        "title": "Transformation des Entreprises par la Technologie",
+        "description": "Notre équipe se spécialise dans le développement de solutions logicielles personnalisées et d'outils qui transforment les opérations commerciales. Nous combinons expertise technique et sens des affaires pour fournir des solutions qui génèrent de vrais résultats."
+      }
+    },
+    "expertise": {
+      "cybersecurity": {"title": "Cybersécurité", "description": "Plus de 10 ans à protéger les entreprises avec des solutions de sécurité avancées et la gestion de la conformité"},
+      "operations": {"title": "Gestion des Opérations", "description": "Stratégies opérationnelles expertes pour optimiser les processus et stimuler l'efficacité"},
+      "infrastructure": {"title": "Infrastructure IT", "description": "Gestion d'infrastructure robuste pour des systèmes évolutifs et fiables"},
+      "development": {"title": "Développement Logiciel et IA", "description": "Développement de logiciels personnalisés, solutions IA et outils intelligents pour la transformation des entreprises"}
+    },
+    "values": {
+      "title": "Nos Valeurs Fondamentales",
+      "subtitle": "Les principes qui guident tout ce que nous faisons",
+      "excellence": {"title": "Excellence", "description": "Nous maintenons les normes les plus élevées dans tout ce que nous livrons, garantissant qualité et fiabilité"},
+      "partnership": {"title": "Partenariat", "description": "Nous travaillons comme une extension de votre équipe, engagés envers votre succès comme s'il s'agissait du nôtre"},
+      "innovation": {"title": "Innovation", "description": "Nous explorons continuellement de nouvelles technologies et méthodologies pour vous garder en avance"},
+      "security": {"title": "Sécurité d'Abord", "description": "Avec une expertise approfondie en cybersécurité, nous intégrons la sécurité dans chaque solution dès le départ"}
+    },
+    "cta": {
+      "title": "Prêt à Transformer Votre Entreprise ?",
+      "subtitle": "Discutons de la façon dont notre équipe expérimentée peut vous aider à atteindre vos objectifs commerciaux",
+      "button": "Commencer"
     }
   }
 } 

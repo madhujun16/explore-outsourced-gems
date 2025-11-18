@@ -12,6 +12,9 @@ import { NavigationProvider } from "@/contexts/NavigationContext";
 // Lazy load pages for better performance
 const Index = lazy(() => import("./pages/Index"));
 const Contact = lazy(() => import("./pages/Contact"));
+const AIServices = lazy(() => import("./pages/AIServices"));
+const About = lazy(() => import("./pages/About"));
+const DedicatedStaff = lazy(() => import("./pages/DedicatedStaff"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsConditions = lazy(() => import("./pages/TermsConditions"));
@@ -43,6 +46,9 @@ const App = () => (
                 <Routes>
                   <Route path="/" element={<Index />} />
                   <Route path="/contact" element={<Contact />} />
+                  <Route path="/ai-services" element={<AIServices />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/dedicated-staff" element={<DedicatedStaff />} />
                   <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                   <Route path="/terms-conditions" element={<TermsConditions />} />
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
