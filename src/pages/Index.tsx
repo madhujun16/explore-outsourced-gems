@@ -463,7 +463,7 @@ const Index = () => {
     },
     {
       question: "What makes NovalSquad different from other BPO providers?",
-      answer: "NovalSquad combines GDPR compliance, rapid deployment (5 days), cost-effectiveness (up to 70% savings), and specialized industry expertise. We offer custom SLAs, multilingual support in 6+ languages, and cutting-edge AI integration. Our focus on quality, security, and transparent communication sets us apart in the outsourcing industry."
+      answer: "NovalSquad combines GDPR compliance, rapid deployment (5 days), cost-effectiveness (up to 40~50% savings), and specialized industry expertise. We offer custom SLAs, multilingual support in 6+ languages, and cutting-edge AI integration. Our focus on quality, security, and transparent communication sets us apart in the outsourcing industry."
     },
     {
       question: "Can NovalSquad integrate with our existing business tools and systems?",
