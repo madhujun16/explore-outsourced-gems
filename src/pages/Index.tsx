@@ -538,8 +538,10 @@ const Index = () => {
                 </div>
               </div>
               <button 
+                type="button"
                 className="group relative bg-white border-2 border-indigo-600 text-indigo-600 px-6 md:px-8 py-3 md:py-4 font-semibold text-base md:text-lg rounded-full shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 w-full sm:w-auto overflow-hidden"
-                onClick={() => {
+                onClick={(e) => {
+                  e.preventDefault();
                   trackUserInteraction('cta_click', 'Hero', 'Get Free Consultation');
                   document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
                 }}
@@ -1139,15 +1141,23 @@ const Index = () => {
                         
                         <div className="flex space-x-3">
                           <Button 
+                            type="button"
                             variant="outline" 
-                            onClick={() => setShowReview(false)}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              setShowReview(false);
+                            }}
                             className="flex-1 h-12"
                           >
                             <ArrowLeft className="mr-2 h-4 w-4" />
                             {t('contact.form.buttons.editInfo')}
                           </Button>
                           <Button 
-                            onClick={handleFinalSubmit}
+                            type="button"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              handleFinalSubmit();
+                            }}
                             className="flex-1 h-12 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
                             disabled={isSubmitting}
                           >
@@ -1189,8 +1199,12 @@ const Index = () => {
                       </p>
                     </div>
                     <Button 
+                      type="button"
                       variant="outline" 
-                      onClick={() => setIsSubmitted(false)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setIsSubmitted(false);
+                      }}
                       className="mt-4"
                     >
                       {t('contact.success.sendAnother')}

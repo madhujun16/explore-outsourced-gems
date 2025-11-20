@@ -556,15 +556,23 @@ const Contact = () => {
                           
                           <div className="flex space-x-3">
                             <Button 
+                              type="button"
                               variant="outline" 
-                              onClick={() => setShowReview(false)}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                setShowReview(false);
+                              }}
                               className="flex-1 h-12"
                             >
                               <ArrowLeft className="mr-2 h-4 w-4" />
                               Edit Information
                             </Button>
                             <Button 
-                              onClick={handleFinalSubmit}
+                              type="button"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                handleFinalSubmit();
+                              }}
                               className="flex-1 h-12 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
                               disabled={isSubmitting}
                             >
@@ -612,8 +620,12 @@ const Contact = () => {
                         </div>
                       </div>
                       <Button 
+                        type="button"
                         variant="outline" 
-                        onClick={() => setIsSubmitted(false)}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setIsSubmitted(false);
+                        }}
                         className="mt-4"
                       >
                         Send Another Message
