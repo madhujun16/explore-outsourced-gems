@@ -363,7 +363,11 @@ const About = () => {
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Button 
-                  onClick={() => navigate('/contact')}
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/contact');
+                  }}
                   size="lg"
                   variant="secondary"
                   className="font-semibold px-8 py-6 h-auto hover:scale-105 transition-all duration-300"

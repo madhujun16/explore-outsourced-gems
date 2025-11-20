@@ -280,14 +280,16 @@ const AIServices = () => {
               
               <div className="flex flex-wrap justify-center gap-4 mb-8">
                 <Button 
-                  onClick={() => navigate('/contact')}
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/contact');
+                  }}
                   size="lg"
                   className="group relative bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold px-8 py-6 h-auto transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
                 >
-                  <span className="relative z-10 flex items-center">
-                    <span>{t('aiServices.hero.cta')}</span>
-                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-                  </span>
+                  {t('aiServices.hero.cta')}
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </Button>
               </div>
               
@@ -446,7 +448,11 @@ const AIServices = () => {
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Button 
-                  onClick={() => navigate('/contact')}
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/contact');
+                  }}
                   size="lg"
                   variant="secondary"
                   className="font-semibold px-8 py-6 h-auto hover:scale-105 transition-all duration-300"
