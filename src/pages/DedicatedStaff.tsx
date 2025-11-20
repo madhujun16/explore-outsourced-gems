@@ -171,7 +171,7 @@ const DedicatedStaff = () => {
     {
       icon: TrendingUp,
       title: "Cost-Effective",
-      description: "Save up to 70% on operational costs compared to in-house teams",
+      description: "Save up to 40~50% on operational costs compared to in-house teams",
       color: "text-blue-600"
     },
     {
@@ -239,7 +239,7 @@ const DedicatedStaff = () => {
     <>
       <SEOHead
         title="Dedicated Staff Services - Virtual Teams & Remote Professionals | NovalSquad"
-        description="Hire dedicated staff and virtual teams in 5 days. GDPR-compliant professionals for accounting, customer support, IT, back office, and more. Save up to 70% on costs."
+        description="Hire dedicated staff and virtual teams in 5 days. GDPR-compliant professionals for accounting, customer support, IT, back office, and more. Save up to 40~50% on costs."
         keywords="dedicated staff, virtual staffing, remote teams, virtual assistants, outsourced staff, offshore teams, BPO services, dedicated resources, GDPR compliant staffing"
         url="https://novalsquad.com/dedicated-staff"
         structuredData={[organizationSchema, dedicatedStaffSchema, servicesListSchema]}
@@ -284,7 +284,7 @@ const DedicatedStaff = () => {
               </h1>
               
               <p className="text-lg md:text-xl text-gray-700 mb-8 leading-relaxed">
-                Scale your business with dedicated professionals. Get GDPR-compliant, fully-trained remote staff in 5 days. Save up to 70% on operational costs.
+                Scale your business with dedicated professionals. Get GDPR-compliant, fully-trained remote staff in 5 days. Save up to 40~50% on operational costs.
               </p>
               
               <div className="flex flex-wrap justify-center gap-4 mb-8">
@@ -311,7 +311,7 @@ const DedicatedStaff = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <TrendingUp className="h-5 w-5 text-cyan-500" />
-                  <span className="font-medium">70% Cost Savings</span>
+                  <span className="font-medium">40~50% Cost Savings</span>
                 </div>
               </div>
             </div>
