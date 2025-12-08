@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChevronDown, ChevronUp, HelpCircle } from "lucide-react";
 
@@ -97,12 +98,12 @@ const FAQSection: React.FC<FAQSectionProps> = ({
           <p className="text-gray-600 mb-4">
             Still have questions? We're here to help!
           </p>
-          <a 
-            href="#contact" 
+          <Link 
+            to="/contact" 
             className="inline-flex items-center justify-center px-6 py-3 border-2 border-primary text-primary rounded-full hover:bg-primary hover:text-white transition-all duration-300 font-semibold"
           >
             Contact Us
-          </a>
+          </Link>
         </div>
       </div>
     </section>

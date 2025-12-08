@@ -10,7 +10,6 @@ import {
   Mail, 
   MessageCircle,
   ArrowRight,
-  Star,
   Users,
   Award,
   Brain,
@@ -18,7 +17,12 @@ import {
   Megaphone,
   Database,
   Home,
-  LucideIcon
+  LucideIcon,
+  Wrench,
+  ClipboardList,
+  Monitor,
+  Shield,
+  Package
 } from 'lucide-react';
 import NovalSquadLogo from './NovalSquadLogo';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -53,7 +57,7 @@ const EnhancedNavigation: React.FC<EnhancedNavigationProps> = ({ onContactClick 
   const { t } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
-  const [digitalDropdownOpen, setDigitalDropdownOpen] = useState(false);
+  const [toolsDropdownOpen, setToolsDropdownOpen] = useState<boolean>(false);
   const { activeSection, isScrolled } = useNavigation();
   const location = useLocation();
   const navigate = useNavigate();
@@ -74,10 +78,7 @@ const EnhancedNavigation: React.FC<EnhancedNavigationProps> = ({ onContactClick 
       icon: Brain,
       description: 'AI & LLM solutions',
       badge: 'New'
-    }
-  ];
-
-  const digitalDropdownItems: DropdownItem[] = [
+    },
     {
       id: 'software-development',
       label: 'Software & Tools Development',
@@ -101,6 +102,41 @@ const EnhancedNavigation: React.FC<EnhancedNavigationProps> = ({ onContactClick 
     }
   ];
 
+  const toolsDropdownItems: DropdownItem[] = [
+    {
+      id: 'vendor-management',
+      label: 'VMtool - Vendor Management',
+      href: '/vendor-management',
+      icon: ClipboardList,
+      description: 'Centralise vendors, compliance & payments',
+      badge: 'New'
+    },
+    {
+      id: 'asset-management',
+      label: 'Asset Management',
+      href: '#',
+      icon: Package,
+      description: 'Track & manage company assets',
+      badge: 'Coming Soon'
+    },
+    {
+      id: 'it-software-tools',
+      label: 'IT Software & Tools Management',
+      href: '#',
+      icon: Monitor,
+      description: 'Manage software licenses & IT tools',
+      badge: 'Coming Soon'
+    },
+    {
+      id: 'compliance-grc',
+      label: 'Compliance GRC Tools',
+      href: '#',
+      icon: Shield,
+      description: 'Governance, Risk & Compliance management',
+      badge: 'Coming Soon'
+    }
+  ];
+
   const navigationItems: NavigationItem[] = [
     {
       id: 'home',
@@ -119,13 +155,14 @@ const EnhancedNavigation: React.FC<EnhancedNavigationProps> = ({ onContactClick 
       dropdownItems: servicesDropdownItems
     },
     {
-      id: 'digital',
-      label: 'Digital',
-      href: '#digital',
-      icon: Star,
-      description: 'Digital services',
+      id: 'tools',
+      label: 'Tools',
+      href: '#tools',
+      icon: Wrench,
+      description: 'Business management tools',
       hasDropdown: true,
-      dropdownItems: digitalDropdownItems
+      dropdownItems: toolsDropdownItems,
+      badge: 'New'
     },
     {
       id: 'contact',
@@ -147,7 +184,7 @@ const EnhancedNavigation: React.FC<EnhancedNavigationProps> = ({ onContactClick 
     trackUserInteraction('nav_click', 'Navigation', label);
     setIsMobileMenuOpen(false);
     setServicesDropdownOpen(false);
-    setDigitalDropdownOpen(false);
+    setToolsDropdownOpen(false);
     
     // Check if it's a page route (starts with /)
     if (href.startsWith('/') && !href.startsWith('/#')) {
@@ -199,13 +236,13 @@ const EnhancedNavigation: React.FC<EnhancedNavigationProps> = ({ onContactClick 
                 onMouseEnter={() => {
                   if (item.hasDropdown) {
                     if (item.id === 'services') setServicesDropdownOpen(true);
-                    if (item.id === 'digital') setDigitalDropdownOpen(true);
+                    if (item.id === 'tools') setToolsDropdownOpen(true);
                   }
                 }}
                 onMouseLeave={() => {
                   if (item.hasDropdown) {
                     if (item.id === 'services') setServicesDropdownOpen(false);
-                    if (item.id === 'digital') setDigitalDropdownOpen(false);
+                    if (item.id === 'tools') setToolsDropdownOpen(false);
                   }
                 }}
               >
@@ -221,7 +258,7 @@ const EnhancedNavigation: React.FC<EnhancedNavigationProps> = ({ onContactClick 
                   <span className="font-medium">{item.label}</span>
                   {item.hasDropdown && (
                     <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${
-                      ((servicesDropdownOpen && item.id === 'services') || (digitalDropdownOpen && item.id === 'digital')) ? 'rotate-180' : ''
+                      ((servicesDropdownOpen && item.id === 'services') || (toolsDropdownOpen && item.id === 'tools')) ? 'rotate-180' : ''
                     }`} />
                   )}
                   {item.badge && (
@@ -232,15 +269,20 @@ const EnhancedNavigation: React.FC<EnhancedNavigationProps> = ({ onContactClick 
                 </button>
                 
                 {/* Dropdown Menu */}
-                {item.hasDropdown && ((servicesDropdownOpen && item.id === 'services') || (digitalDropdownOpen && item.id === 'digital')) && (
+                {item.hasDropdown && ((servicesDropdownOpen && item.id === 'services') || (toolsDropdownOpen && item.id === 'tools')) && (
                   <div className="absolute top-full left-0 pt-2 z-50">
                     <div className="w-[400px] bg-white rounded-lg shadow-xl border border-gray-200 p-4">
                       <div className="grid grid-cols-1 gap-2">
                         {item.dropdownItems?.map((dropdownItem: DropdownItem) => (
                           <button
                             key={dropdownItem.id}
-                            onClick={() => handleNavClick(dropdownItem.href, dropdownItem.label)}
-                            className="flex items-start space-x-3 px-3 py-2.5 hover:bg-primary/5 rounded-lg transition-colors text-left"
+                            onClick={() => dropdownItem.badge !== 'Coming Soon' && handleNavClick(dropdownItem.href, dropdownItem.label)}
+                            disabled={dropdownItem.badge === 'Coming Soon'}
+                            className={`flex items-start space-x-3 px-3 py-2.5 rounded-lg transition-colors text-left ${
+                              dropdownItem.badge === 'Coming Soon' 
+                                ? 'opacity-60 cursor-not-allowed' 
+                                : 'hover:bg-primary/5'
+                            }`}
                           >
                             <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                               <dropdownItem.icon className="h-4 w-4 text-primary" />
@@ -249,7 +291,14 @@ const EnhancedNavigation: React.FC<EnhancedNavigationProps> = ({ onContactClick 
                               <div className="flex items-center space-x-2">
                                 <span className="font-medium text-gray-900 text-sm">{dropdownItem.label}</span>
                                 {dropdownItem.badge && (
-                                  <Badge variant="secondary" className="text-xs px-1.5 py-0.5">
+                                  <Badge 
+                                    variant="secondary" 
+                                    className={`text-xs px-1.5 py-0.5 ${
+                                      dropdownItem.badge === 'Coming Soon' 
+                                        ? 'bg-amber-100 text-amber-700 border-amber-200' 
+                                        : ''
+                                    }`}
+                                  >
                                     {dropdownItem.badge}
                                   </Badge>
                                 )}
@@ -344,7 +393,10 @@ const EnhancedNavigation: React.FC<EnhancedNavigationProps> = ({ onContactClick 
                   ) : (
                     <div>
                       <button
-                        onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)}
+                        onClick={() => {
+                          if (item.id === 'services') setServicesDropdownOpen(!servicesDropdownOpen);
+                          if (item.id === 'tools') setToolsDropdownOpen(!toolsDropdownOpen);
+                        }}
                         className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-all duration-200 ${
                           activeSection === item.id
                             ? 'text-primary bg-primary/10'
@@ -354,17 +406,29 @@ const EnhancedNavigation: React.FC<EnhancedNavigationProps> = ({ onContactClick 
                         <div className="flex items-center space-x-3">
                           <item.icon className="h-5 w-5" />
                           <span className="font-medium">{item.label}</span>
+                          {item.badge && (
+                            <Badge variant="secondary" className="text-xs">
+                              {item.badge}
+                            </Badge>
+                          )}
                         </div>
-                        <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${servicesDropdownOpen ? 'rotate-180' : ''}`} />
+                        <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${
+                          (item.id === 'services' && servicesDropdownOpen) || (item.id === 'tools' && toolsDropdownOpen) ? 'rotate-180' : ''
+                        }`} />
                       </button>
                       
-                      {servicesDropdownOpen && (
+                      {((item.id === 'services' && servicesDropdownOpen) || (item.id === 'tools' && toolsDropdownOpen)) && (
                         <div className="ml-4 mt-2 space-y-1">
                           {item.dropdownItems?.map((dropdownItem: DropdownItem) => (
                             <button
                               key={dropdownItem.id}
-                              onClick={() => handleNavClick(dropdownItem.href, dropdownItem.label)}
-                              className="w-full flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-primary/5 transition-colors text-left"
+                              onClick={() => dropdownItem.badge !== 'Coming Soon' && handleNavClick(dropdownItem.href, dropdownItem.label)}
+                              disabled={dropdownItem.badge === 'Coming Soon'}
+                              className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors text-left ${
+                                dropdownItem.badge === 'Coming Soon' 
+                                  ? 'opacity-60 cursor-not-allowed' 
+                                  : 'hover:bg-primary/5'
+                              }`}
                             >
                               <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                                 <dropdownItem.icon className="h-4 w-4 text-primary" />
@@ -373,7 +437,14 @@ const EnhancedNavigation: React.FC<EnhancedNavigationProps> = ({ onContactClick 
                                 <div className="flex items-center space-x-2">
                                   <span className="font-medium text-gray-900 text-sm">{dropdownItem.label}</span>
                                   {dropdownItem.badge && (
-                                    <Badge variant="secondary" className="text-xs px-1.5 py-0.5">
+                                    <Badge 
+                                      variant="secondary" 
+                                      className={`text-xs px-1.5 py-0.5 ${
+                                        dropdownItem.badge === 'Coming Soon' 
+                                          ? 'bg-amber-100 text-amber-700 border-amber-200' 
+                                          : ''
+                                      }`}
+                                    >
                                       {dropdownItem.badge}
                                     </Badge>
                                   )}

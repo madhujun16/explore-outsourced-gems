@@ -31,6 +31,7 @@ interface SocialLinkItem {
 const SERVICE_LINKS: LinkItem[] = [
   { name: 'Dedicated Staff', href: '/dedicated-staff' },
   { name: 'AI Services', href: '/ai-services' },
+  { name: 'Vendor Management', href: '/vendor-management' },
   { name: 'Accounting & Finance', href: '/dedicated-staff#services' },
   { name: 'IT Helpdesk', href: '/dedicated-staff#services' }
 ];

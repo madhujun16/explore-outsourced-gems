@@ -8,6 +8,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { HelmetProvider } from "react-helmet-async";
 import { NavigationProvider } from "@/contexts/NavigationContext";
+import ScrollToTop from "@/components/ScrollToTop";
 
 // Lazy load pages for better performance
 const Index = lazy(() => import("./pages/Index"));
@@ -15,6 +16,7 @@ const Contact = lazy(() => import("./pages/Contact"));
 const AIServices = lazy(() => import("./pages/AIServices"));
 const About = lazy(() => import("./pages/About"));
 const DedicatedStaff = lazy(() => import("./pages/DedicatedStaff"));
+const VendorManagement = lazy(() => import("./pages/VendorManagement"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsConditions = lazy(() => import("./pages/TermsConditions"));
@@ -42,6 +44,7 @@ const App = () => (
             <Toaster />
             <Sonner />
             <BrowserRouter>
+              <ScrollToTop />
               <Suspense fallback={<PageLoader />}>
                 <Routes>
                   <Route path="/" element={<Index />} />
@@ -49,6 +52,7 @@ const App = () => (
                   <Route path="/ai-services" element={<AIServices />} />
                   <Route path="/about" element={<About />} />
                   <Route path="/dedicated-staff" element={<DedicatedStaff />} />
+                  <Route path="/vendor-management" element={<VendorManagement />} />
                   <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                   <Route path="/terms-conditions" element={<TermsConditions />} />
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
