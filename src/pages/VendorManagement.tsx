@@ -383,6 +383,14 @@ const VendorManagement = () => {
                 {/* CTA buttons */}
                 <div className="flex flex-wrap gap-4 pt-4">
                   <Button 
+                    onClick={() => window.open('https://vendor.novalsquad.com/signup', '_blank')}
+                    size="lg"
+                    className="group relative px-8 py-6 h-auto bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-semibold rounded-xl shadow-lg shadow-green-500/25 hover:shadow-green-500/40 transition-all duration-300 hover:scale-105"
+                  >
+                    Sign Up Free
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                  <Button 
                     onClick={() => navigate('/contact')}
                     size="lg"
                     className="group relative px-8 py-6 h-auto bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white font-semibold rounded-xl shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 transition-all duration-300 hover:scale-105"
@@ -398,6 +406,14 @@ const VendorManagement = () => {
                     className="px-8 py-6 h-auto border-2 border-indigo-200 text-indigo-700 hover:bg-indigo-50 rounded-xl"
                   >
                     Explore Platform
+                  </Button>
+                  <Button 
+                    onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
+                    size="lg"
+                    variant="ghost"
+                    className="px-6 py-6 h-auto text-indigo-600 hover:bg-indigo-50 rounded-xl"
+                  >
+                    View Pricing
                   </Button>
                 </div>
 
@@ -790,7 +806,7 @@ const VendorManagement = () => {
         </section>
 
         {/* SECTION 6 - PRICING */}
-        <section className="relative py-12 lg:py-16 bg-white">
+        <section id="pricing" className="relative py-12 lg:py-16 bg-white scroll-mt-20">
           <div className="relative z-10 max-w-6xl mx-auto px-6">
             <div className="text-center mb-8">
               <Badge className="mb-4 bg-indigo-100 text-indigo-700 border-indigo-200 px-4 py-1.5">
@@ -928,6 +944,14 @@ const VendorManagement = () => {
             </p>
 
             <div className="flex flex-wrap justify-center gap-4 mb-8">
+              <Button 
+                onClick={() => window.open('https://vendor.novalsquad.com/signup', '_blank')}
+                size="lg"
+                className="group px-10 py-7 h-auto bg-gradient-to-r from-green-400 to-emerald-500 text-white hover:from-green-500 hover:to-emerald-600 font-bold text-lg rounded-2xl shadow-2xl transition-all duration-300 hover:scale-105"
+              >
+                Sign Up Free
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
               <Button 
                 onClick={() => navigate('/contact')}
                 size="lg"
