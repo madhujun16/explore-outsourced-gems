@@ -10,7 +10,6 @@ import ChatBot from "@/components/ChatBot";
 import SEOHead from "@/components/SEOHead";
 import Footer from "@/components/Footer";
 import { generateServiceSchema, generateOrganizationSchema } from "@/lib/structuredData";
-import { useGeolocationPricing } from "@/hooks/useGeolocationPricing";
 import { 
   Shield,
   BarChart3,
@@ -49,9 +48,6 @@ const VendorManagement = () => {
   const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
   const [visibleSteps, setVisibleSteps] = useState<Set<number>>(new Set());
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  
-  // Geolocation-based pricing
-  const { location, pricing, isLoading: isPricingLoading, formatPrice } = useGeolocationPricing();
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -222,10 +218,10 @@ const VendorManagement = () => {
   const pricingPlans = [
     {
       name: "Starter",
-      price: formatPrice(pricing.starter),
-      originalPrice: formatPrice(pricing.starterOriginal),
+      price: "$99.28",
+      originalPrice: "$149",
       priceLabel: "/month",
-      description: "For teams managing up to 100 vendors",
+      description: "For teams managing up to 10 vendors",
       features: [
         "Vendor master directory",
         "Basic compliance tracking",
@@ -236,8 +232,8 @@ const VendorManagement = () => {
     },
     {
       name: "Growth",
-      price: formatPrice(pricing.growth),
-      originalPrice: formatPrice(pricing.growthOriginal),
+      price: "$399.28",
+      originalPrice: "$479",
       priceLabel: "/month",
       description: "For scaling operations across locations",
       features: [
@@ -252,7 +248,7 @@ const VendorManagement = () => {
     },
     {
       name: "Enterprise",
-      price: pricing.enterprise,
+      price: "Custom",
       originalPrice: null,
       priceLabel: "",
       description: "For organizations with strict governance",
@@ -817,19 +813,6 @@ const VendorManagement = () => {
                 <br />
                 <span className="text-gray-400">Pricing for Every Scale</span>
               </h2>
-              {/* Location indicator */}
-              {location && (
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 border border-green-200 text-sm text-green-700">
-                  <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                  Prices shown in {location.currency} for {location.country}
-                </div>
-              )}
-              {isPricingLoading && (
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-50 border border-gray-200 text-sm text-gray-500">
-                  <span className="w-4 h-4 border-2 border-gray-300 border-t-indigo-500 rounded-full animate-spin"></span>
-                  Detecting your location...
-                </div>
-              )}
             </div>
 
             <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -854,28 +837,24 @@ const VendorManagement = () => {
                     </CardHeader>
                     <CardContent>
                       <div className="text-center mb-8">
-                        {isPricingLoading ? (
-                          <div className="h-10 w-32 mx-auto bg-gray-200 rounded animate-pulse"></div>
-                        ) : (
-                          <div className="space-y-1">
-                            {plan.originalPrice && (
-                              <div className="text-lg text-gray-400 line-through">
-                                {plan.originalPrice}
-                              </div>
-                            )}
-                            <div>
-                              <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
-                              {plan.priceLabel && (
-                                <span className="text-lg text-gray-500">{plan.priceLabel}</span>
-                              )}
+                        <div className="space-y-1">
+                          {plan.originalPrice && (
+                            <div className="text-lg text-gray-400 line-through">
+                              {plan.originalPrice}
                             </div>
-                            {plan.originalPrice && (
-                              <Badge className="bg-green-100 text-green-700 border-green-200 text-xs">
-                                Save {Math.round((1 - (parseFloat(plan.price.replace(/[^0-9.]/g, '')) / parseFloat(plan.originalPrice.replace(/[^0-9.]/g, '')))) * 100)}%
-                              </Badge>
+                          )}
+                          <div>
+                            <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
+                            {plan.priceLabel && (
+                              <span className="text-lg text-gray-500">{plan.priceLabel}</span>
                             )}
                           </div>
-                        )}
+                          {plan.originalPrice && (
+                            <Badge className="bg-green-100 text-green-700 border-green-200 text-xs">
+                              Save {Math.round((1 - (parseFloat(plan.price.replace(/[^0-9.]/g, '')) / parseFloat(plan.originalPrice.replace(/[^0-9.]/g, '')))) * 100)}%
+                            </Badge>
+                          )}
+                        </div>
                       </div>
 
                       <ul className="space-y-4 mb-8">
