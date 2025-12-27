@@ -77,7 +77,7 @@ const Footer: React.FC = () => {
     { name: t('navigation.about'), href: '/about' },
     { name: t('navigation.contact'), href: '/#contact' },
     { name: 'Careers', href: '/#contact' },
-    { name: 'Blog', href: '/#contact' }
+    { name: 'Blog', href: '/blog' }
   ], [t]);
 
   const legalLinks = useMemo<LinkItem[]>(() => [

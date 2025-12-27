@@ -17,6 +17,15 @@ const AIServices = lazy(() => import("./pages/AIServices"));
 const About = lazy(() => import("./pages/About"));
 const DedicatedStaff = lazy(() => import("./pages/DedicatedStaff"));
 const VendorManagement = lazy(() => import("./pages/VendorManagement"));
+const VendorManagementBlog = lazy(() => import("./pages/VendorManagementBlog"));
+const VendorComplianceTrackingBlog = lazy(() => import("./pages/VendorComplianceTrackingBlog"));
+const VendorRiskManagementBlog = lazy(() => import("./pages/VendorRiskManagementBlog"));
+const VendorLifecycleManagementBlog = lazy(() => import("./pages/VendorLifecycleManagementBlog"));
+const VendorComplianceMistakesBlog = lazy(() => import("./pages/VendorComplianceMistakesBlog"));
+const VendorOwnershipBlog = lazy(() => import("./pages/VendorOwnershipBlog"));
+const VendorDataManagementBlog = lazy(() => import("./pages/VendorDataManagementBlog"));
+const VendorAuditRequirementsBlog = lazy(() => import("./pages/VendorAuditRequirementsBlog"));
+const Blog = lazy(() => import("./pages/Blog"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsConditions = lazy(() => import("./pages/TermsConditions"));
@@ -53,6 +62,15 @@ const App = () => (
                   <Route path="/about" element={<About />} />
                   <Route path="/dedicated-staff" element={<DedicatedStaff />} />
                   <Route path="/vendor-management" element={<VendorManagement />} />
+                  <Route path="/blog" element={<Blog />} />
+                  <Route path="/blog/vendor-management-excel" element={<VendorManagementBlog />} />
+                  <Route path="/blog/vendor-compliance-tracking" element={<VendorComplianceTrackingBlog />} />
+                  <Route path="/blog/vendor-risk-management" element={<VendorRiskManagementBlog />} />
+                  <Route path="/blog/vendor-lifecycle-management" element={<VendorLifecycleManagementBlog />} />
+                  <Route path="/blog/vendor-compliance-mistakes" element={<VendorComplianceMistakesBlog />} />
+                  <Route path="/blog/vendor-management-ownership" element={<VendorOwnershipBlog />} />
+                  <Route path="/blog/vendor-data-management" element={<VendorDataManagementBlog />} />
+                  <Route path="/blog/vendor-audit-requirements" element={<VendorAuditRequirementsBlog />} />
                   <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                   <Route path="/terms-conditions" element={<TermsConditions />} />
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

@@ -967,6 +967,58 @@ const VendorManagement = () => {
           </div>
         </section>
 
+        {/* SECTION 8 - BLOG */}
+        <section className="relative py-12 lg:py-16 bg-white">
+          <div className="relative z-10 max-w-6xl mx-auto px-6">
+            <div className="text-center mb-8">
+              <Badge className="mb-4 bg-indigo-100 text-indigo-700 border-indigo-200 px-4 py-1.5">
+                Learn More
+              </Badge>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Related Resources
+              </h2>
+              <p className="text-lg text-gray-600 mb-6">
+                Explore our blog for insights on vendor management, procurement, and business operations.
+              </p>
+            </div>
+            <Card className="border-2 border-indigo-100 hover:border-indigo-200 transition-colors mb-6">
+              <CardContent className="p-6">
+                <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
+                  <div className="flex-1">
+                    <h3 className="text-xl font-semibold mb-2 text-gray-900">
+                      Why Excel Fails for Vendor Management at Scale
+                    </h3>
+                    <p className="text-gray-600 mb-2">
+                      Discover why Excel spreadsheets break down when managing vendors at scale. Learn about vendor tracking challenges, manual vendor management limitations, and why you need a dedicated vendor management platform.
+                    </p>
+                    <div className="flex items-center gap-2 text-sm text-gray-500">
+                      <FileText className="w-4 h-4" />
+                      <span>8 min read</span>
+                    </div>
+                  </div>
+                  <Button
+                    onClick={() => navigate('/blog/vendor-management-excel')}
+                    className="bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white"
+                  >
+                    Read Article
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+            <div className="text-center">
+              <Button
+                onClick={() => navigate('/blog')}
+                variant="outline"
+                className="border-2 border-indigo-200 text-indigo-700 hover:bg-indigo-50"
+              >
+                View All Blog Articles
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </div>
+          </div>
+        </section>
+
         {/* Footer */}
         <Footer />
         
