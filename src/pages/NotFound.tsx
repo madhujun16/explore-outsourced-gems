@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -7,13 +7,34 @@ import NovalSquadLogo from "@/components/NovalSquadLogo";
 
 const NotFound = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     console.error(
       "404 Error: User attempted to access non-existent route:",
       location.pathname
     );
+    
+    // Log to analytics if available
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'page_view', {
+        page_path: location.pathname,
+        page_title: '404 Not Found'
+      });
+    }
   }, [location.pathname]);
+
+  const handleGoBack = () => {
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      navigate('/');
+    }
+  };
+
+  const handleGoHome = () => {
+    navigate('/');
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-blue-50 flex items-center justify-center p-4">
@@ -31,7 +52,7 @@ const NotFound = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Button 
-              onClick={() => window.history.back()}
+              onClick={handleGoBack}
               variant="outline"
               className="flex items-center gap-2"
             >
@@ -39,7 +60,7 @@ const NotFound = () => {
               Go Back
             </Button>
             <Button 
-              onClick={() => window.location.href = '/'}
+              onClick={handleGoHome}
               className="flex items-center gap-2"
             >
               <Home className="h-4 w-4" />

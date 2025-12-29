@@ -14,21 +14,22 @@ const LottieBackground: React.FC<LottieBackgroundProps> = ({
   autoplay = true 
 }) => {
   return (
-    <div className={`absolute inset-0 w-full h-full ${className}`}>
+    <div className={`absolute inset-0 w-full h-full pointer-events-none bg-gradient-to-br from-indigo-50/30 to-blue-50/30 overflow-visible ${className}`}>
       <Lottie
         animationData={rippleAnimation}
         loop={loop}
         autoplay={autoplay}
-        className="w-full h-full object-cover"
+        className="w-full h-full"
         style={{
           width: '100%',
           height: '100%',
-          objectFit: 'cover',
-          willChange: 'transform',
-          transform: 'translateZ(0)'
+          willChange: 'auto',
+          transform: 'translateZ(0)',
+          filter: 'brightness(1.2) saturate(1.5) opacity(1) contrast(1.3)',
+          mixBlendMode: 'normal'
         }}
         rendererSettings={{
-          preserveAspectRatio: 'xMidYMid slice'
+          preserveAspectRatio: 'xMidYMid meet'
         }}
       />
     </div>

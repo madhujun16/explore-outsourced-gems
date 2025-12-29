@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -79,6 +79,12 @@ const Index = () => {
   const [visibleIndustryCards, setVisibleIndustryCards] = useState<Set<number>>(new Set());
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
+  const digitalCardsInitialized = useRef(false);
+  const whyChooseCardsInitialized = useRef(false);
+  const industryCardsInitialized = useRef(false);
+  const digitalCardsTimeouts = useRef<NodeJS.Timeout[]>([]);
+  const whyChooseCardsTimeouts = useRef<NodeJS.Timeout[]>([]);
+  const industryCardsTimeouts = useRef<NodeJS.Timeout[]>([]);
   const { 
     validateForm, 
     validateSingleField, 
@@ -195,95 +201,322 @@ const Index = () => {
     }
   ], []);
 
-  // Scroll animation observer
+  // Scroll animation observer - Improved configuration
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setVisibleSections(prev => new Set([...prev, entry.target.id]));
+            setVisibleSections(prev => {
+              // Use functional update to avoid stale closures
+              const newSet = new Set(prev);
+              if (entry.target.id) {
+                newSet.add(entry.target.id);
+              }
+              return newSet;
+            });
           }
         });
       },
-      { threshold: 0.1, rootMargin: '-50px' }
+      { 
+        threshold: 0.05, // Lower threshold for earlier detection
+        rootMargin: '100px' // Larger margin to trigger earlier
+      }
     );
 
-    // Observe all sections
-    const sections = document.querySelectorAll('section[id], .scroll-animate');
-    sections.forEach((section) => observer.observe(section));
+    // Observe all sections - use multiple attempts to ensure DOM is ready
+    const observeSections = () => {
+      const sections = document.querySelectorAll('section[id]');
+      sections.forEach((section) => {
+        if (section.id && (section.id === 'digital' || section.id === 'industries')) {
+          observer.observe(section);
+        }
+      });
+      
+      // Also observe all sections for other animations
+      sections.forEach((section) => {
+        if (section.id) {
+          observer.observe(section);
+        }
+      });
+    };
+
+    // Try multiple times to catch sections
+    observeSections();
+    const timeout1 = setTimeout(observeSections, 200);
+    const timeout2 = setTimeout(observeSections, 500);
 
     // Set loading to false after initial render
     setIsLoading(false);
 
-    return () => observer.disconnect();
+    return () => {
+      clearTimeout(timeout1);
+      clearTimeout(timeout2);
+      observer.disconnect();
+    };
   }, []);
 
-  // Sequential animation for digital cards
+  // Cleanup timeouts on unmount
   useEffect(() => {
-    if (visibleSections.has('digital')) {
-      const timeouts: NodeJS.Timeout[] = [];
+    return () => {
+      digitalCardsTimeouts.current.forEach(timeout => clearTimeout(timeout));
+      whyChooseCardsTimeouts.current.forEach(timeout => clearTimeout(timeout));
+      industryCardsTimeouts.current.forEach(timeout => clearTimeout(timeout));
+    };
+  }, []);
+
+  // Sequential animation for digital cards - Rebuilt with robust logic
+  useEffect(() => {
+    const initializeDigitalCards = () => {
+      if (digitalCardsInitialized.current) return;
       
-      // Clear any existing cards first
-      setVisibleDigitalCards(new Set());
+      digitalCardsInitialized.current = true;
       
-      // Show cards one by one with 300ms intervals
+      // Clear any existing timeouts
+      digitalCardsTimeouts.current.forEach(timeout => clearTimeout(timeout));
+      digitalCardsTimeouts.current = [];
+      
+      // Show cards one by one with 200ms intervals, starting after 200ms initial delay
+      const initialDelay = 200;
+      const intervalDelay = 200;
       digitalServices.forEach((_, index) => {
         const timeout = setTimeout(() => {
-          setVisibleDigitalCards(prev => new Set([...prev, index]));
-        }, (index + 1) * 300);
-        timeouts.push(timeout);
+          setVisibleDigitalCards(prev => {
+            const newSet = new Set(prev);
+            newSet.add(index);
+            return newSet;
+          });
+        }, initialDelay + (index * intervalDelay));
+        digitalCardsTimeouts.current.push(timeout);
       });
+      
+      // Safety: Ensure all cards are shown after animation completes
+      const safetyTimeout = setTimeout(() => {
+        digitalServices.forEach((_, index) => {
+          setVisibleDigitalCards(prev => {
+            const newSet = new Set(prev);
+            newSet.add(index);
+            return newSet;
+          });
+        });
+      }, initialDelay + (digitalServices.length * intervalDelay) + 500);
+      digitalCardsTimeouts.current.push(safetyTimeout);
+    };
 
-      return () => {
-        timeouts.forEach(timeout => clearTimeout(timeout));
-      };
+    // Trigger if section is visible
+    if (visibleSections.has('digital')) {
+      initializeDigitalCards();
     }
   }, [visibleSections, digitalServices]);
 
-  // Sequential animation for why choose us cards
+  // Fallback: Check and trigger digital section animation
   useEffect(() => {
-    if (visibleSections.has('why-choose-us')) {
-      const timeouts: NodeJS.Timeout[] = [];
+    const checkDigitalSection = () => {
+      const digitalSection = document.getElementById('digital');
+      if (digitalSection && !digitalCardsInitialized.current) {
+        const rect = digitalSection.getBoundingClientRect();
+        const isInViewport = rect.top < window.innerHeight * 1.5 && rect.bottom > -window.innerHeight * 0.5;
+        if (isInViewport) {
+          setVisibleSections(prev => {
+            if (!prev.has('digital')) {
+              return new Set([...prev, 'digital']);
+            }
+            return prev;
+          });
+        }
+      }
+    };
+
+    // Check multiple times to catch the section
+    checkDigitalSection();
+    const timeout1 = setTimeout(checkDigitalSection, 300);
+    const timeout2 = setTimeout(checkDigitalSection, 800);
+    const timeout3 = setTimeout(checkDigitalSection, 1500);
+    
+    // Final safety check
+    const safetyTimeout = setTimeout(() => {
+      const digitalSection = document.getElementById('digital');
+      if (digitalSection && !digitalCardsInitialized.current) {
+        setVisibleSections(prev => new Set([...prev, 'digital']));
+      }
+    }, 2500);
+    
+    return () => {
+      clearTimeout(timeout1);
+      clearTimeout(timeout2);
+      clearTimeout(timeout3);
+      clearTimeout(safetyTimeout);
+    };
+  }, []);
+
+  // Sequential animation for why choose us cards - Rebuilt with robust logic
+  useEffect(() => {
+    const initializeWhyChooseCards = () => {
+      if (whyChooseCardsInitialized.current) return;
       
-      // Clear any existing cards first
-      setVisibleWhyChooseCards(new Set());
+      whyChooseCardsInitialized.current = true;
       
-      // Show cards one by one with 300ms intervals
+      // Clear any existing timeouts
+      whyChooseCardsTimeouts.current.forEach(timeout => clearTimeout(timeout));
+      whyChooseCardsTimeouts.current = [];
+      
+      // Show cards one by one with 200ms intervals, starting after 200ms initial delay
+      const initialDelay = 200;
+      const intervalDelay = 200;
       const whyChooseCards = [0, 1, 2, 3]; // 4 cards
       whyChooseCards.forEach((_, index) => {
         const timeout = setTimeout(() => {
-          setVisibleWhyChooseCards(prev => new Set([...prev, index]));
-        }, (index + 1) * 300);
-        timeouts.push(timeout);
+          setVisibleWhyChooseCards(prev => {
+            const newSet = new Set(prev);
+            newSet.add(index);
+            return newSet;
+          });
+        }, initialDelay + (index * intervalDelay));
+        whyChooseCardsTimeouts.current.push(timeout);
       });
+      
+      // Safety: Ensure all cards are shown after animation completes
+      const safetyTimeout = setTimeout(() => {
+        whyChooseCards.forEach((index) => {
+          setVisibleWhyChooseCards(prev => {
+            const newSet = new Set(prev);
+            newSet.add(index);
+            return newSet;
+          });
+        });
+      }, initialDelay + (whyChooseCards.length * intervalDelay) + 500);
+      whyChooseCardsTimeouts.current.push(safetyTimeout);
+    };
 
-      return () => {
-        timeouts.forEach(timeout => clearTimeout(timeout));
-      };
+    // Trigger if section is visible
+    if (visibleSections.has('why-choose-us')) {
+      initializeWhyChooseCards();
     }
   }, [visibleSections]);
 
-  // Sequential animation for industry cards
+  // Fallback: Check and trigger why choose us section animation
   useEffect(() => {
-    if (visibleSections.has('industries')) {
-      const timeouts: NodeJS.Timeout[] = [];
+    const checkWhyChooseSection = () => {
+      const whyChooseSection = document.getElementById('why-choose-us');
+      if (whyChooseSection && !whyChooseCardsInitialized.current) {
+        const rect = whyChooseSection.getBoundingClientRect();
+        const isInViewport = rect.top < window.innerHeight * 1.5 && rect.bottom > -window.innerHeight * 0.5;
+        if (isInViewport) {
+          setVisibleSections(prev => {
+            if (!prev.has('why-choose-us')) {
+              return new Set([...prev, 'why-choose-us']);
+            }
+            return prev;
+          });
+        }
+      }
+    };
+
+    // Check multiple times to catch the section
+    checkWhyChooseSection();
+    const timeout1 = setTimeout(checkWhyChooseSection, 300);
+    const timeout2 = setTimeout(checkWhyChooseSection, 800);
+    const timeout3 = setTimeout(checkWhyChooseSection, 1500);
+    
+    // Final safety check
+    const safetyTimeout = setTimeout(() => {
+      const whyChooseSection = document.getElementById('why-choose-us');
+      if (whyChooseSection && !whyChooseCardsInitialized.current) {
+        setVisibleSections(prev => new Set([...prev, 'why-choose-us']));
+      }
+    }, 2500);
+    
+    return () => {
+      clearTimeout(timeout1);
+      clearTimeout(timeout2);
+      clearTimeout(timeout3);
+      clearTimeout(safetyTimeout);
+    };
+  }, []);
+
+  // Sequential animation for industry cards - Rebuilt with robust logic
+  useEffect(() => {
+    const initializeIndustryCards = () => {
+      if (industryCardsInitialized.current) return;
       
-      // Clear any existing cards first
-      setVisibleIndustryCards(new Set());
+      industryCardsInitialized.current = true;
       
-      // Show cards one by one with 200ms intervals (faster than other sections)
+      // Clear any existing timeouts
+      industryCardsTimeouts.current.forEach(timeout => clearTimeout(timeout));
+      industryCardsTimeouts.current = [];
+      
+      // Show cards one by one with 150ms intervals, starting after 200ms initial delay
+      const initialDelay = 200;
+      const intervalDelay = 150;
       industries.forEach((_, index) => {
         const timeout = setTimeout(() => {
-          setVisibleIndustryCards(prev => new Set([...prev, index]));
-        }, (index + 1) * 200);
-        timeouts.push(timeout);
+          setVisibleIndustryCards(prev => {
+            const newSet = new Set(prev);
+            newSet.add(index);
+            return newSet;
+          });
+        }, initialDelay + (index * intervalDelay));
+        industryCardsTimeouts.current.push(timeout);
       });
+      
+      // Safety: Ensure all cards are shown after animation completes
+      const safetyTimeout = setTimeout(() => {
+        industries.forEach((_, index) => {
+          setVisibleIndustryCards(prev => {
+            const newSet = new Set(prev);
+            newSet.add(index);
+            return newSet;
+          });
+        });
+      }, initialDelay + (industries.length * intervalDelay) + 500);
+      industryCardsTimeouts.current.push(safetyTimeout);
+    };
 
-      return () => {
-        timeouts.forEach(timeout => clearTimeout(timeout));
-      };
+    // Trigger if section is visible
+    if (visibleSections.has('industries')) {
+      initializeIndustryCards();
     }
   }, [visibleSections, industries]);
+
+  // Fallback: Check and trigger industries section animation
+  useEffect(() => {
+    const checkIndustriesSection = () => {
+      const industriesSection = document.getElementById('industries');
+      if (industriesSection && !industryCardsInitialized.current) {
+        const rect = industriesSection.getBoundingClientRect();
+        const isInViewport = rect.top < window.innerHeight * 1.5 && rect.bottom > -window.innerHeight * 0.5;
+        if (isInViewport) {
+          setVisibleSections(prev => {
+            if (!prev.has('industries')) {
+              return new Set([...prev, 'industries']);
+            }
+            return prev;
+          });
+        }
+      }
+    };
+
+    // Check multiple times to catch the section
+    checkIndustriesSection();
+    const timeout1 = setTimeout(checkIndustriesSection, 300);
+    const timeout2 = setTimeout(checkIndustriesSection, 800);
+    const timeout3 = setTimeout(checkIndustriesSection, 1500);
+    
+    // Final safety check
+    const safetyTimeout = setTimeout(() => {
+      const industriesSection = document.getElementById('industries');
+      if (industriesSection && !industryCardsInitialized.current) {
+        setVisibleSections(prev => new Set([...prev, 'industries']));
+      }
+    }, 2500);
+    
+    return () => {
+      clearTimeout(timeout1);
+      clearTimeout(timeout2);
+      clearTimeout(timeout3);
+      clearTimeout(safetyTimeout);
+    };
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -335,11 +568,29 @@ const Index = () => {
         consent: false 
       });
     } catch (error) {
+      console.error('Form submission error:', error);
+      
+      // Extract more detailed error message
+      let errorMessage = "Failed to send message. Please try again.";
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      } else if (error && typeof error === 'object' && 'message' in error) {
+        errorMessage = String(error.message);
+      }
+      
+      // Check if it's a network error
+      if (error instanceof TypeError && error.message.includes('fetch')) {
+        errorMessage = "Network error. Please check your internet connection and try again.";
+      }
+      
       toast({
         title: "Error",
-        description: "Failed to send message. Please try again.",
+        description: errorMessage,
         variant: "destructive",
       });
+      
+      // Track failed form submission
+      trackFormSubmission('contact_form', false);
     } finally {
       setIsSubmitting(false);
     }
@@ -358,11 +609,20 @@ const Index = () => {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to send message");
+        const errorText = await response.text().catch(() => 'Unknown error');
+        throw new Error(`Failed to send message: ${response.status} ${response.statusText}. ${errorText}`);
       }
       
       setIsSubmitted(true);
       setShowReview(false);
+      
+      // Track successful form submission
+      trackFormSubmission('contact_form', true);
+      
+      toast({
+        title: "Message sent successfully!",
+        description: "We'll get back to you within 24 hours.",
+      });
       
       setFormData({ 
         name: "", 
@@ -374,11 +634,29 @@ const Index = () => {
         consent: false 
       });
     } catch (error) {
+      console.error('Form submission error:', error);
+      
+      // Extract more detailed error message
+      let errorMessage = "Failed to send message. Please try again.";
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      } else if (error && typeof error === 'object' && 'message' in error) {
+        errorMessage = String(error.message);
+      }
+      
+      // Check if it's a network error
+      if (error instanceof TypeError && error.message.includes('fetch')) {
+        errorMessage = "Network error. Please check your internet connection and try again.";
+      }
+      
       toast({
         title: "Error",
-        description: "Failed to send message. Please try again.",
+        description: errorMessage,
         variant: "destructive",
       });
+      
+      // Track failed form submission
+      trackFormSubmission('contact_form', false);
     } finally {
       setIsSubmitting(false);
     }
@@ -504,42 +782,42 @@ const Index = () => {
         />
 
       {/* Hero Section */}
-      <section id="main-content" className="relative overflow-hidden bg-gradient-to-br from-indigo-50 to-blue-50 py-6 md:py-8" tabIndex={-1}>
-        <div className="container mx-auto px-4 relative">
-          <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-8">
+      <section id="main-content" className="relative overflow-hidden bg-gradient-to-br from-indigo-50 to-blue-50 py-8 sm:py-10 md:py-12 lg:py-8" tabIndex={-1}>
+        <div className="container mx-auto px-4 sm:px-6 relative">
+          <div className="flex flex-col lg:flex-row items-center gap-6 sm:gap-8 lg:gap-8">
             {/* Left side - Lottie Animation */}
-            <div className="w-full lg:w-2/5">
-              <div className="w-full h-[400px] lg:h-[500px]">
+            <div className="w-full lg:w-2/5 order-2 lg:order-1">
+              <div className="w-full h-[300px] sm:h-[350px] md:h-[400px] lg:h-[500px]">
                 <LottieSideImage />
               </div>
             </div>
             
             {/* Right side - Text content */}
-            <div className="flex-1 max-w-2xl text-left">
-              <h1 className="mb-6 text-4xl md:text-5xl font-bold text-gray-900 hero-title leading-tight" id="heroTitle">
+            <div className="flex-1 max-w-2xl text-left order-1 lg:order-2 px-2 sm:px-0">
+              <h1 className="mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 hero-title leading-tight" id="heroTitle">
                 <span className="hero-line text-blue-900" style={{ animationDelay: '0.2s' }}>{t('hero.title').split('—')[0]}</span><br />
                 <span className="hero-line bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-500 bg-clip-text text-transparent" style={{ animationDelay: '0.4s' }}>{t('hero.title').split('—')[1] || 'Outsourcing & Digital Solutions'}</span>
               </h1>
-              <p className="text-xl md:text-2xl text-gray-700 hero-subtitle mb-6">
+              <p className="text-lg sm:text-xl md:text-2xl text-gray-700 hero-subtitle mb-4 sm:mb-6">
                 {t('hero.subtitle')}
               </p>
-              <div className="flex flex-wrap items-center gap-4 md:gap-6 mb-8 text-gray-700 hero-trust-signals">
+              <div className="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-3 sm:gap-4 md:gap-6 mb-6 sm:mb-8 text-gray-700 hero-trust-signals">
                 <div className="flex items-center gap-2">
-                  <Shield className="h-5 w-5 text-green-600" />
-                  <span className="text-base md:text-lg lg:text-xl font-medium">{t('hero.trustSignals.gdpr')}</span>
+                  <Shield className="h-4 w-4 sm:h-5 sm:w-5 text-green-600 flex-shrink-0" />
+                  <span className="text-sm sm:text-base md:text-lg lg:text-xl font-medium">{t('hero.trustSignals.gdpr')}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Calculator className="h-5 w-5 text-blue-600" />
-                  <span className="text-base md:text-lg lg:text-xl font-medium">{t('hero.trustSignals.costEffective')}</span>
+                  <Calculator className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600 flex-shrink-0" />
+                  <span className="text-sm sm:text-base md:text-lg lg:text-xl font-medium">{t('hero.trustSignals.costEffective')}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Clock className="h-5 w-5 text-cyan-500" />
-                  <span className="text-base md:text-lg lg:text-xl font-medium">{t('hero.trustSignals.onboard')}</span>
+                  <Clock className="h-4 w-4 sm:h-5 sm:w-5 text-cyan-500 flex-shrink-0" />
+                  <span className="text-sm sm:text-base md:text-lg lg:text-xl font-medium">{t('hero.trustSignals.onboard')}</span>
                 </div>
               </div>
               <button 
                 type="button"
-                className="group relative bg-white border-2 border-indigo-600 text-indigo-600 px-6 md:px-8 py-3 md:py-4 font-semibold text-base md:text-lg rounded-full shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 w-full sm:w-auto overflow-hidden"
+                className="group relative bg-white border-2 border-indigo-600 text-indigo-600 px-6 sm:px-8 py-3 sm:py-4 font-semibold text-base sm:text-lg rounded-full shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 w-full sm:w-auto overflow-hidden"
                 onClick={(e) => {
                   e.preventDefault();
                   trackUserInteraction('cta_click', 'Hero', 'Get Free Consultation');
@@ -574,26 +852,36 @@ const Index = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section id="why-choose-us" className="py-16 bg-gradient-to-br from-indigo-50 to-blue-50 border-t-2 border-indigo-200 relative overflow-hidden">
-        {/* Ripple Animation Background */}
-        <div className="absolute inset-0 opacity-10">
+      <section id="why-choose-us" className="py-12 sm:py-16 bg-gradient-to-br from-indigo-50 to-blue-50 border-t-2 border-indigo-200 relative overflow-hidden">
+        {/* Ripple Animation Background - Reduced opacity and optimized */}
+        <div className="absolute inset-0 opacity-15 pointer-events-none bg-gradient-to-br from-indigo-50/20 to-blue-50/20 overflow-visible">
           <Lottie
             animationData={rippleAnimation}
             loop={true}
             autoplay={true}
-            style={{ width: '100%', height: '100%' }}
+            style={{ 
+              width: '100%', 
+              height: '100%',
+              willChange: 'auto',
+              transform: 'translateZ(0)',
+              filter: 'brightness(1.2) saturate(1.5) opacity(1) contrast(1.3)',
+              mixBlendMode: 'normal'
+            }}
+            rendererSettings={{
+              preserveAspectRatio: 'xMidYMid meet'
+            }}
           />
         </div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 animate-in slide-in-from-bottom-4">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
+          <div className="text-center mb-8 sm:mb-10">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 px-2 animate-in slide-in-from-bottom-4">
               {t('whyChooseUs.title')}
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto animate-in slide-in-from-bottom-4" style={{ animationDelay: '200ms' }}>
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4 animate-in slide-in-from-bottom-4" style={{ animationDelay: '200ms' }}>
               {t('whyChooseUs.subtitle')}
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {[
               {
                 icon: Clock,
@@ -624,17 +912,24 @@ const Index = () => {
                 bgColor: "bg-orange-50 group-hover:bg-orange-100"
               }
             ].map((item, index) => (
-              <Card key={index} className={`border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group hover:scale-105 rounded-full aspect-[2/1] flex flex-col justify-center w-full max-w-[280px] mx-auto ${visibleWhyChooseCards.has(index) ? 'animate-in slide-in-from-bottom-4' : 'opacity-0 translate-y-4'}`} style={{ animationDelay: `${index * 150}ms` }}>
-                <CardHeader className="text-center pb-1">
-                  <div className={`mx-auto mb-2 p-2 rounded-full w-12 h-12 flex items-center justify-center transition-colors group-hover:scale-110 duration-300 ${item.bgColor}`}>
-                    <item.icon className={`h-5 w-5 ${item.color}`} />
+              <Card 
+                key={index} 
+                className={`border-2 hover:border-primary/50 transition-all duration-500 ease-out hover:shadow-lg group hover:scale-105 rounded-2xl sm:rounded-full sm:aspect-[2/1] flex flex-col justify-center w-full ${visibleWhyChooseCards.has(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                style={{ 
+                  transitionDelay: visibleWhyChooseCards.has(index) ? `${200 + (index * 200)}ms` : '0ms',
+                  willChange: 'transform, opacity'
+                }}
+              >
+                <CardHeader className="text-center pb-1 px-4 sm:px-6 pt-6 sm:pt-4">
+                  <div className={`mx-auto mb-3 sm:mb-2 p-2.5 sm:p-2 rounded-full w-14 h-14 sm:w-12 sm:h-12 flex items-center justify-center transition-colors group-hover:scale-110 duration-300 ${item.bgColor}`}>
+                    <item.icon className={`h-6 w-6 sm:h-5 sm:w-5 ${item.color}`} />
                   </div>
-                  <CardTitle className="text-lg font-semibold">
+                  <CardTitle className="text-lg sm:text-base md:text-lg font-semibold px-2">
                     {item.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="pt-0 pb-4">
-                  <CardDescription className="text-center text-sm leading-relaxed">
+                <CardContent className="pt-0 pb-6 sm:pb-4 px-4 sm:px-6">
+                  <CardDescription className="text-center text-sm sm:text-xs md:text-sm leading-relaxed">
                     {item.description}
                   </CardDescription>
                 </CardContent>
@@ -645,38 +940,48 @@ const Index = () => {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-16 bg-gradient-to-br from-indigo-50 to-blue-50 relative overflow-hidden">
-        {/* Ripple Animation Background */}
-        <div className="absolute inset-0 opacity-15">
+      <section id="services" className="py-12 sm:py-16 bg-gradient-to-br from-indigo-50 to-blue-50 relative overflow-hidden">
+        {/* Ripple Animation Background - Reduced opacity and optimized */}
+        <div className="absolute inset-0 opacity-18 pointer-events-none bg-gradient-to-br from-indigo-50/25 to-blue-50/25 overflow-visible">
           <Lottie
             animationData={rippleAnimation}
             loop={true}
             autoplay={true}
-            style={{ width: '100%', height: '100%' }}
+            style={{ 
+              width: '100%', 
+              height: '100%',
+              willChange: 'auto',
+              transform: 'translateZ(0)',
+              filter: 'brightness(1.2) saturate(1.5) opacity(1) contrast(1.3)',
+              mixBlendMode: 'normal'
+            }}
+            rendererSettings={{
+              preserveAspectRatio: 'xMidYMid meet'
+            }}
           />
         </div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
+          <div className="text-center mb-8 sm:mb-10">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 px-2">
               {t('services.title')}
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
               {t('services.subtitle')}
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {services.map((service, index) => (
-              <Card key={index} className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group hover:scale-105">
-                <CardHeader className="text-center pb-2">
-                  <div className={`mx-auto mb-4 p-3 rounded-full w-16 h-16 flex items-center justify-center transition-colors ${service.bgColor}`}>
-                    <service.icon className={`h-8 w-8 ${service.color}`} />
+              <Card key={index} className="border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group hover:scale-105 flex flex-col h-full">
+                <CardHeader className="text-center pb-2 px-4 sm:px-6 pt-6 sm:pt-4 flex-shrink-0">
+                  <div className={`mx-auto mb-4 p-3 rounded-full w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center transition-colors ${service.bgColor}`}>
+                    <service.icon className={`h-7 w-7 sm:h-8 sm:w-8 ${service.color}`} />
                   </div>
-                  <CardTitle className="text-xl mb-4">
+                  <CardTitle className="text-lg sm:text-xl mb-3 sm:mb-4 px-2">
                     {service.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="pt-0">
-                  <CardDescription className="text-center text-base leading-relaxed">
+                <CardContent className="pt-0 px-4 sm:px-6 pb-6 sm:pb-4 flex-1 flex flex-col justify-center">
+                  <CardDescription className="text-center text-sm sm:text-base leading-relaxed break-words overflow-visible whitespace-normal w-full">
                     {service.description}
                   </CardDescription>
                 </CardContent>
@@ -687,38 +992,55 @@ const Index = () => {
       </section>
 
       {/* Digital Services Section */}
-      <section id="digital" className="py-16 bg-gradient-to-br from-indigo-50 to-blue-50 border-t-2 border-indigo-200 relative overflow-hidden">
-        {/* Ripple Animation Background */}
-        <div className="absolute inset-0 opacity-10">
+      <section id="digital" className="py-12 sm:py-16 bg-gradient-to-br from-indigo-50 to-blue-50 border-t-2 border-indigo-200 relative overflow-hidden">
+        {/* Ripple Animation Background - Reduced opacity and optimized */}
+        <div className="absolute inset-0 opacity-15 pointer-events-none bg-gradient-to-br from-indigo-50/20 to-blue-50/20 overflow-visible">
           <Lottie
             animationData={rippleAnimation}
             loop={true}
             autoplay={true}
-            style={{ width: '100%', height: '100%' }}
+            style={{ 
+              width: '100%', 
+              height: '100%',
+              willChange: 'auto',
+              transform: 'translateZ(0)',
+              filter: 'brightness(1.2) saturate(1.5) opacity(1) contrast(1.3)',
+              mixBlendMode: 'normal'
+            }}
+            rendererSettings={{
+              preserveAspectRatio: 'xMidYMid meet'
+            }}
           />
         </div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
+          <div className="text-center mb-8 sm:mb-10">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 px-2">
               {t('digitalServices.title')}
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
               {t('digitalServices.subtitle')}
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {digitalServices.map((service, index) => (
-              <Card key={index} className={`border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg group hover:scale-105 ${visibleDigitalCards.has(index) ? 'animate-in slide-in-from-bottom-4' : 'opacity-0 translate-y-4'}`} style={{ animationDelay: `${index * 150}ms` }}>
-                <CardHeader className="text-center">
-                  <div className={`mx-auto mb-4 p-3 rounded-full w-16 h-16 flex items-center justify-center transition-colors ${service.bgColor}`}>
-                    <service.icon className={`h-8 w-8 ${service.color}`} />
+              <Card 
+                key={index} 
+                className={`border-2 hover:border-primary/50 transition-all duration-500 ease-out hover:shadow-lg group hover:scale-105 flex flex-col h-full ${visibleDigitalCards.has(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                style={{ 
+                  transitionDelay: visibleDigitalCards.has(index) ? `${200 + (index * 200)}ms` : '0ms',
+                  willChange: 'transform, opacity'
+                }}
+              >
+                <CardHeader className="text-center px-4 sm:px-6 pt-6 sm:pt-4 flex-shrink-0">
+                  <div className={`mx-auto mb-4 p-3 rounded-full w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center transition-colors ${service.bgColor}`}>
+                    <service.icon className={`h-7 w-7 sm:h-8 sm:w-8 ${service.color}`} />
                   </div>
-                  <CardTitle className="text-xl">
+                  <CardTitle className="text-lg sm:text-xl px-2">
                     {service.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-center text-base">
+                <CardContent className="px-4 sm:px-6 pb-6 sm:pb-4 flex-1 flex flex-col justify-center">
+                  <CardDescription className="text-center text-sm sm:text-base leading-relaxed break-words overflow-visible whitespace-normal w-full">
                     {service.description}
                   </CardDescription>
                 </CardContent>
@@ -729,29 +1051,39 @@ const Index = () => {
       </section>
 
       {/* Industries Section */}
-      <section id="industries" className="py-20 bg-gradient-to-br from-indigo-50 to-blue-50 border-t-2 border-indigo-200 relative overflow-hidden">
-        {/* Ripple Animation Background */}
-        <div className="absolute inset-0 opacity-15">
+      <section id="industries" className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-indigo-50 to-blue-50 border-t-2 border-indigo-200 relative overflow-hidden">
+        {/* Ripple Animation Background - Reduced opacity and optimized */}
+        <div className="absolute inset-0 opacity-8 pointer-events-none bg-gradient-to-br from-indigo-50/25 to-blue-50/25 overflow-visible">
           <Lottie
             animationData={rippleAnimation}
             loop={true}
             autoplay={true}
-            style={{ width: '100%', height: '100%' }}
+            style={{ 
+              width: '100%', 
+              height: '100%',
+              willChange: 'auto',
+              transform: 'translateZ(0)',
+              filter: 'brightness(1.5) saturate(1.2) opacity(0.5) contrast(1.1)',
+              mixBlendMode: 'normal'
+            }}
+            rendererSettings={{
+              preserveAspectRatio: 'xMidYMid meet'
+            }}
           />
         </div>
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
           {/* Quality Focus Header */}
-          <div className="max-w-6xl mx-auto mb-16">
-            <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div className="max-w-6xl mx-auto mb-10 sm:mb-12 md:mb-16">
+            <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-start">
               <div>
-                <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4 sm:mb-6 px-2">
                   <span className="text-gray-900">{t('industries.title').split(',')[0]},</span>
                   <br />
-                  <span className="text-gray-600 text-3xl md:text-4xl font-normal">{t('industries.title').split(',')[1] || 'with specialized expertise'}</span>
+                  <span className="text-gray-600 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal">{t('industries.title').split(',')[1] || 'with specialized expertise'}</span>
                 </h2>
               </div>
               <div>
-                <p className="text-lg text-gray-600 leading-relaxed">
+                <p className="text-base sm:text-lg text-gray-600 leading-relaxed px-2">
                   {t('industries.subtitle')}
                 </p>
               </div>
@@ -760,26 +1092,29 @@ const Index = () => {
 
           {/* Circular Industries Grid */}
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 md:gap-12">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-8 lg:gap-10">
               {industries.map((industry, index) => (
                 <div 
                   key={index} 
-                  className={`group cursor-pointer transition-all duration-700 ${visibleIndustryCards.has(index) ? 'animate-in slide-in-from-bottom-4' : 'opacity-0 translate-y-4'}`}
-                  style={{ animationDelay: `${index * 100}ms` }}
+                  className={`group cursor-pointer transition-all duration-500 ease-out ${visibleIndustryCards.has(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                  style={{ 
+                    transitionDelay: visibleIndustryCards.has(index) ? `${200 + (index * 150)}ms` : '0ms',
+                    willChange: 'transform, opacity'
+                  }}
                 >
-                  <div className="text-center">
+                  <div className="text-center w-full flex flex-col items-center">
                     {/* Circular Industry Card */}
-                    <div className="w-32 h-32 md:w-36 md:h-36 mx-auto bg-gray-50 rounded-full flex flex-col items-center justify-center p-4 group-hover:bg-gray-100 transition-all duration-300 group-hover:scale-105 shadow-sm group-hover:shadow-md mb-4">
-                      <div className={`w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center mb-3 transition-colors ${industry.bgColor}`}>
-                        <industry.icon className={`h-6 w-6 md:h-7 md:w-7 ${industry.color}`} />
+                    <div className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 mx-auto bg-gray-50 rounded-full flex flex-col items-center justify-center p-3 sm:p-4 group-hover:bg-gray-100 transition-all duration-300 group-hover:scale-105 shadow-sm group-hover:shadow-md mb-3 sm:mb-4 flex-shrink-0">
+                      <div className={`w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center mb-2 sm:mb-3 transition-colors ${industry.bgColor}`}>
+                        <industry.icon className={`h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 ${industry.color}`} />
                       </div>
-                      <h3 className="text-sm md:text-base font-semibold text-gray-900 text-center leading-tight">
+                      <h3 className="text-xs sm:text-sm md:text-base font-semibold text-gray-900 text-center leading-tight px-1">
                         {industry.title}
                       </h3>
                     </div>
                     
                     {/* Description Below Circle */}
-                    <p className="text-xs md:text-sm text-gray-600 text-center leading-relaxed px-2">
+                    <p className="text-xs sm:text-xs md:text-sm text-gray-600 text-center leading-relaxed px-1 w-full break-words overflow-visible whitespace-normal">
                       {industry.description}
                     </p>
                   </div>
@@ -792,30 +1127,40 @@ const Index = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="py-20 bg-gradient-to-br from-indigo-50 to-blue-50 border-t-2 border-indigo-200 relative overflow-hidden">
-        {/* Ripple Animation Background */}
-        <div className="absolute inset-0 opacity-10">
+      <section id="testimonials" className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-indigo-50 to-blue-50 border-t-2 border-indigo-200 relative overflow-hidden">
+        {/* Ripple Animation Background - Reduced opacity and optimized */}
+        <div className="absolute inset-0 opacity-8 pointer-events-none bg-gradient-to-br from-indigo-50/20 to-blue-50/20 overflow-visible">
           <Lottie
             animationData={rippleAnimation}
             loop={true}
             autoplay={true}
-            style={{ width: '100%', height: '100%' }}
+            style={{ 
+              width: '100%', 
+              height: '100%',
+              willChange: 'auto',
+              transform: 'translateZ(0)',
+              filter: 'brightness(1.5) saturate(1.2) opacity(0.5) contrast(1.1)',
+              mixBlendMode: 'normal'
+            }}
+            rendererSettings={{
+              preserveAspectRatio: 'xMidYMid meet'
+            }}
           />
         </div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center mb-16">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
+          <div className="max-w-4xl mx-auto text-center mb-10 sm:mb-12 md:mb-16">
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4 sm:mb-6 px-2">
                 <span className="text-gray-900">{t('testimonials.title')}</span>
                 <br />
-                <span className="text-gray-600 text-3xl md:text-4xl font-normal">{t('testimonials.acrossGlobe')}</span>
+                <span className="text-gray-600 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal">{t('testimonials.acrossGlobe')}</span>
               </h2>
             </div>
-            <p className="text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto px-4">
               {t('testimonials.subtitle')}
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {(t('testimonials.items', { returnObjects: true }) as Array<{
               initials: string;
               name: string;
@@ -844,27 +1189,37 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-8 relative overflow-hidden">
-        <LottieBackground className="opacity-10" />
-        {/* Ripple Animation Background */}
-        <div className="absolute inset-0 opacity-15">
+      <section id="contact" className="py-8 sm:py-12 md:py-16 relative overflow-hidden">
+        <LottieBackground className="opacity-5 pointer-events-none" />
+        {/* Ripple Animation Background - Reduced opacity and optimized */}
+        <div className="absolute inset-0 opacity-6 pointer-events-none bg-gradient-to-br from-indigo-50/25 to-blue-50/25 overflow-visible">
           <Lottie
             animationData={rippleAnimation}
             loop={true}
             autoplay={true}
-            style={{ width: '100%', height: '100%' }}
+            style={{ 
+              width: '100%', 
+              height: '100%',
+              willChange: 'auto',
+              transform: 'translateZ(0)',
+              filter: 'brightness(1.5) saturate(1.2) opacity(0.5) contrast(1.1)',
+              mixBlendMode: 'normal'
+            }}
+            rendererSettings={{
+              preserveAspectRatio: 'xMidYMid meet'
+            }}
           />
         </div>
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-10">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('contact.title')}</h2>
-               <p className="text-xl text-muted-foreground">
+            <div className="text-center mb-8 sm:mb-10">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 px-2">{t('contact.title')}</h2>
+               <p className="text-base sm:text-lg md:text-xl text-muted-foreground px-4">
                  {t('contact.subtitle')}
                </p>
             </div>
             
-            <div className="grid lg:grid-cols-2 gap-12 items-start">
+            <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-start">
               {/* Contact Form or Thank You Card */}
               {!isSubmitted ? (
                 <Card className="p-8 border-2 border-primary/20 shadow-xl bg-gradient-to-br from-background to-muted/30 relative overflow-hidden">

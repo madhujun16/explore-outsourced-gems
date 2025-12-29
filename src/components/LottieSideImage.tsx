@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense } from 'react';
+import React from 'react';
 import Lottie from 'lottie-react';
 import heroAnimationData from '../assets/hero-animation-new.json';
 
@@ -15,24 +15,8 @@ const LottieSideImage: React.FC<LottieSideImageProps> = ({
   loop = true, 
   autoplay = true 
 }) => {
-  const [animationData, setAnimationData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // Load animation data when component mounts
-    setAnimationData(heroAnimationData);
-    setIsLoading(false);
-  }, []);
-
-  if (isLoading) {
-    return (
-      <div className={`w-full h-full ${className} flex items-center justify-center`}>
-        <div className="animate-pulse bg-gradient-to-r from-indigo-200 to-blue-200 rounded-lg w-full h-full flex items-center justify-center">
-          <div className="text-indigo-600 font-medium">Loading animation...</div>
-        </div>
-      </div>
-    );
-  }
+  // Use the animation data directly to avoid loading state flickering
+  const animationData = heroAnimationData;
 
   if (!animationData) {
     return (
@@ -43,7 +27,7 @@ const LottieSideImage: React.FC<LottieSideImageProps> = ({
   }
 
   return (
-    <div className={`w-full h-full ${className}`}>
+    <div className={`w-full h-full bg-gradient-to-br from-indigo-50/40 to-blue-50/40 rounded-lg ${className}`}>
       <Lottie
         animationData={animationData}
         loop={loop}

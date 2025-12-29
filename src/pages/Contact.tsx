@@ -84,7 +84,8 @@ const Contact = () => {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to send message");
+        const errorText = await response.text().catch(() => 'Unknown error');
+        throw new Error(`Failed to send message: ${response.status} ${response.statusText}. ${errorText}`);
       }
       
       setIsSubmitted(true);
@@ -109,9 +110,24 @@ const Contact = () => {
         consent: false 
       });
     } catch (error) {
+      console.error('Form submission error:', error);
+      
+      // Extract more detailed error message
+      let errorMessage = "Failed to send message. Please try again.";
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      } else if (error && typeof error === 'object' && 'message' in error) {
+        errorMessage = String(error.message);
+      }
+      
+      // Check if it's a network error
+      if (error instanceof TypeError && error.message.includes('fetch')) {
+        errorMessage = "Network error. Please check your internet connection and try again.";
+      }
+      
       toast({
         title: "Error",
-        description: "Failed to send message. Please try again.",
+        description: errorMessage,
         variant: "destructive",
       });
       trackFormSubmission('contact_form', false);
@@ -133,11 +149,20 @@ const Contact = () => {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to send message");
+        const errorText = await response.text().catch(() => 'Unknown error');
+        throw new Error(`Failed to send message: ${response.status} ${response.statusText}. ${errorText}`);
       }
       
       setIsSubmitted(true);
       setShowReview(false);
+      
+      // Track successful form submission
+      trackFormSubmission('contact_form', true);
+      
+      toast({
+        title: "Message sent successfully!",
+        description: "We'll get back to you within 24 hours.",
+      });
       
       setFormData({ 
         name: "", 
@@ -149,11 +174,29 @@ const Contact = () => {
         consent: false 
       });
     } catch (error) {
+      console.error('Form submission error:', error);
+      
+      // Extract more detailed error message
+      let errorMessage = "Failed to send message. Please try again.";
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      } else if (error && typeof error === 'object' && 'message' in error) {
+        errorMessage = String(error.message);
+      }
+      
+      // Check if it's a network error
+      if (error instanceof TypeError && error.message.includes('fetch')) {
+        errorMessage = "Network error. Please check your internet connection and try again.";
+      }
+      
       toast({
         title: "Error",
-        description: "Failed to send message. Please try again.",
+        description: errorMessage,
         variant: "destructive",
       });
+      
+      // Track failed form submission
+      trackFormSubmission('contact_form', false);
     } finally {
       setIsSubmitting(false);
     }
