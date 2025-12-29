@@ -29,7 +29,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({
   };
 
   return (
-    <section className={`py-16 md:py-24 ${className}`} itemScope itemType="https://schema.org/FAQPage">
+    <section className={`py-16 md:py-24 ${className}`}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-2 mb-4">
@@ -48,9 +48,6 @@ const FAQSection: React.FC<FAQSectionProps> = ({
             <Card 
               key={index} 
               className="border-2 hover:border-primary/30 transition-all duration-300"
-              itemScope 
-              itemProp="mainEntity" 
-              itemType="https://schema.org/Question"
             >
               <CardHeader 
                 className="cursor-pointer hover:bg-gray-50 transition-colors"
@@ -60,7 +57,6 @@ const FAQSection: React.FC<FAQSectionProps> = ({
                   <div className="flex-1">
                     <CardTitle 
                       className="text-lg md:text-xl font-semibold text-left"
-                      itemProp="name"
                     >
                       {faq.question}
                     </CardTitle>
@@ -78,13 +74,9 @@ const FAQSection: React.FC<FAQSectionProps> = ({
               {openIndex === index && (
                 <CardContent 
                   className="pt-0 animate-in slide-in-from-top-2 duration-300"
-                  itemScope 
-                  itemProp="acceptedAnswer" 
-                  itemType="https://schema.org/Answer"
                 >
                   <div 
                     className="text-gray-600 leading-relaxed border-t pt-4"
-                    itemProp="text"
                     dangerouslySetInnerHTML={{ __html: faq.answer }}
                   />
                 </CardContent>
