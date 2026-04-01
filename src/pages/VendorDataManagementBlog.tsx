@@ -257,7 +257,7 @@ const VendorDataManagementBlog = () => {
         publishedTime={publishedDate}
         modifiedTime={modifiedDate}
         article={{
-          section: "Vendor Management",
+          section: "Vendor Intelligence & Ops",
           tags: ["vendor data management", "data quality issues", "vendor master data", "payment errors", "audit data gaps", "vendor data quality"]
         }}
         breadcrumbs={[
@@ -296,7 +296,7 @@ const VendorDataManagementBlog = () => {
                 className="text-indigo-600 hover:text-indigo-700"
               >
                 <ArrowLeft className="w-4 h-4 mr-2" />
-                Vendor Management
+                Vendor Intelligence & Ops
               </Button>
             </div>
 
@@ -816,7 +816,7 @@ const VendorDataManagementBlog = () => {
                 className="text-indigo-600 hover:text-indigo-700 p-0 h-auto"
               >
                 <Database className="w-4 h-4 mr-2" />
-                VMtool - Vendor Management Platform
+                VMtool — Vendor Intelligence & Operations Platform
               </Button>
               <br />
               <Button

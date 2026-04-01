@@ -6,6 +6,8 @@
   },
   "imports": {
     "std/": "https://deno.land/std@0.190.0/",
-    "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@2"
+    "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@2",
+    "nodemailer": "npm:nodemailer@6.9.16",
+    "resend": "npm:resend@2.0.0"
   }
 }

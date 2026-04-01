@@ -11,6 +11,7 @@ import { HelmetProvider } from "react-helmet-async";
 import { NavigationProvider } from "@/contexts/NavigationContext";
 import ScrollToTop from "@/components/ScrollToTop";
 import PageTransition from "@/components/PageTransition";
+import { GoogleAnalyticsProvider } from "@/components/GoogleAnalyticsProvider";
 
 // Lazy load pages for better performance
 const Index = lazy(() => import("./pages/Index"));
@@ -109,34 +110,36 @@ const App = () => (
             <Toaster />
             <Sonner />
             <BrowserRouter>
-              <ScrollToTop />
-              <PageTransition>
-                <Suspense fallback={<PageLoader />}>
-                  <RouterErrorBoundary>
-                    <Routes>
-                      <Route path="/" element={<Index />} />
-                      <Route path="/contact" element={<Contact />} />
-                      <Route path="/ai-services" element={<AIServices />} />
-                      <Route path="/about" element={<About />} />
-                      <Route path="/dedicated-staff" element={<DedicatedStaff />} />
-                      <Route path="/vendor-management" element={<VendorManagement />} />
-                      <Route path="/blog" element={<Blog />} />
-                      <Route path="/blog/vendor-management-excel" element={<VendorManagementBlog />} />
-                      <Route path="/blog/vendor-compliance-tracking" element={<VendorComplianceTrackingBlog />} />
-                      <Route path="/blog/vendor-risk-management" element={<VendorRiskManagementBlog />} />
-                      <Route path="/blog/vendor-lifecycle-management" element={<VendorLifecycleManagementBlog />} />
-                      <Route path="/blog/vendor-compliance-mistakes" element={<VendorComplianceMistakesBlog />} />
-                      <Route path="/blog/vendor-management-ownership" element={<VendorOwnershipBlog />} />
-                      <Route path="/blog/vendor-data-management" element={<VendorDataManagementBlog />} />
-                      <Route path="/blog/vendor-audit-requirements" element={<VendorAuditRequirementsBlog />} />
-                      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                      <Route path="/terms-conditions" element={<TermsConditions />} />
-                      {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                      <Route path="*" element={<NotFound />} />
-                    </Routes>
-                  </RouterErrorBoundary>
-                </Suspense>
-              </PageTransition>
+              <GoogleAnalyticsProvider>
+                <ScrollToTop />
+                <PageTransition>
+                  <Suspense fallback={<PageLoader />}>
+                    <RouterErrorBoundary>
+                      <Routes>
+                        <Route path="/" element={<Index />} />
+                        <Route path="/contact" element={<Contact />} />
+                        <Route path="/ai-services" element={<AIServices />} />
+                        <Route path="/about" element={<About />} />
+                        <Route path="/dedicated-staff" element={<DedicatedStaff />} />
+                        <Route path="/vendor-management" element={<VendorManagement />} />
+                        <Route path="/blog" element={<Blog />} />
+                        <Route path="/blog/vendor-management-excel" element={<VendorManagementBlog />} />
+                        <Route path="/blog/vendor-compliance-tracking" element={<VendorComplianceTrackingBlog />} />
+                        <Route path="/blog/vendor-risk-management" element={<VendorRiskManagementBlog />} />
+                        <Route path="/blog/vendor-lifecycle-management" element={<VendorLifecycleManagementBlog />} />
+                        <Route path="/blog/vendor-compliance-mistakes" element={<VendorComplianceMistakesBlog />} />
+                        <Route path="/blog/vendor-management-ownership" element={<VendorOwnershipBlog />} />
+                        <Route path="/blog/vendor-data-management" element={<VendorDataManagementBlog />} />
+                        <Route path="/blog/vendor-audit-requirements" element={<VendorAuditRequirementsBlog />} />
+                        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                        <Route path="/terms-conditions" element={<TermsConditions />} />
+                        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                        <Route path="*" element={<NotFound />} />
+                      </Routes>
+                    </RouterErrorBoundary>
+                  </Suspense>
+                </PageTransition>
+              </GoogleAnalyticsProvider>
             </BrowserRouter>
           </NavigationProvider>
         </TooltipProvider>

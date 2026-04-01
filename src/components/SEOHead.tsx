@@ -21,9 +21,9 @@ interface SEOHeadProps {
 }
 
 const SEOHead: React.FC<SEOHeadProps> = ({
-  title = "Outsource Smarter | GDPR-Compliant BPO & Virtual Assistant Services – NovalSquad",
-  description = "Scale faster with NovalSquad's GDPR-compliant outsourcing. Get 24/7 virtual assistants, IT helpdesk, and back-office support — ready in 5 days, cost-effective, and audit-ready.",
-  keywords = "outsourcing, BPO, virtual assistants, GDPR compliant outsourcing, IT helpdesk, customer support outsourcing, back office support, 24/7 operations, startup outsourcing, NovalSquad",
+  title = "NovalSquad | Premium Outsourcing & Remote Teams — Tools Coming Soon",
+  description = "Outsourcing, elevated: NovalSquad delivers GDPR-ready remote teams, meticulous ops, and white-glove BPO—without the bloat. New productivity tools are on the way. Book a consult.",
+  keywords = "NovalSquad, Noval Squad, premium outsourcing, BPO, remote teams, virtual assistants, GDPR compliant outsourcing, IT helpdesk, customer support outsourcing, back office, business tools, startup scaling",
   image = "https://novalsquad.com/novalsquad-thumbnail.png",
   url = "https://novalsquad.com",
   type = "website",
@@ -131,7 +131,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <meta property="og:image" content={image} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:image:alt" content="NovalSquad - Your Growth Partner in Outsourcing & Digital Solutions" />
+      <meta property="og:image:alt" content="NovalSquad — premium outsourcing, remote teams, and upcoming productivity tools" />
       <meta property="og:site_name" content="NovalSquad Outsourcing" />
       <meta property="og:locale" content="en_US" />
       {article && (
@@ -152,7 +152,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
-      <meta name="twitter:image:alt" content="NovalSquad - Your Growth Partner in Outsourcing & Digital Solutions" />
+      <meta name="twitter:image:alt" content="NovalSquad — premium outsourcing, remote teams, and upcoming productivity tools" />
       <meta name="twitter:site" content="@novalsquad" />
       <meta name="twitter:creator" content="@novalsquad" />
       

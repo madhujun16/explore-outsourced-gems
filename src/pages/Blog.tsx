@@ -44,7 +44,7 @@ const Blog = () => {
       id: "vendor-management-excel",
       title: "Why Excel Fails for Vendor Management at Scale",
       excerpt: "Discover why Excel spreadsheets break down when managing vendors at scale. Learn about vendor tracking challenges, manual vendor management limitations, and why you need a dedicated vendor management platform.",
-      category: "Vendor Management",
+      category: "Vendor Intelligence & Ops",
       readTime: "8 min read",
       publishedDate: "2025-01-15",
       tags: ["vendor management", "excel", "vendor tracking", "procurement"],
@@ -77,7 +77,7 @@ const Blog = () => {
       id: "vendor-lifecycle-management",
       title: "From Onboarding to Payments: The Complete Vendor Lifecycle Explained",
       excerpt: "Master vendor lifecycle management from onboarding to payments. Learn about vendor onboarding process, vendor approval process, vendor payments process, and vendor management workflow best practices.",
-      category: "Vendor Management",
+      category: "Vendor Intelligence & Ops",
       readTime: "15 min read",
       publishedDate: "2025-01-30",
       tags: ["vendor lifecycle management", "vendor onboarding process", "vendor payments process", "vendor management workflow", "vendor approval process"],
@@ -177,7 +177,7 @@ const Blog = () => {
   return (
     <>
       <SEOHead
-        title="Blog | Vendor Management & Business Operations Insights | NovalSquad"
+        title="Blog | Vendor Intelligence, Operations & Business Insights | NovalSquad"
         description="Read expert insights on vendor management, procurement, compliance tracking, and business operations. Learn why Excel fails for vendor management at scale and discover best practices."
         keywords="vendor management blog, procurement blog, vendor tracking, compliance management, business operations, vendor management excel, vendor management software"
         url="https://novalsquad.com/blog"
@@ -392,7 +392,7 @@ const Blog = () => {
           <section className="mt-16 pt-12 border-t border-gray-200">
             <h2 className="text-2xl font-bold mb-6 text-gray-900">Browse by Category</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
-              {["Vendor Management", "Procurement", "Compliance", "Risk Management", "Data Management"].map((category) => {
+              {["Vendor Intelligence & Ops", "Procurement", "Compliance", "Risk Management", "Data Management"].map((category) => {
                 const categoryPosts = blogPosts.filter(post => 
                   post.category.toLowerCase() === category.toLowerCase()
                 );

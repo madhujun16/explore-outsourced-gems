@@ -22,7 +22,8 @@ import {
   ClipboardList,
   Monitor,
   Shield,
-  Package
+  Package,
+  FolderKanban
 } from 'lucide-react';
 import NovalSquadLogo from './NovalSquadLogo';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -105,11 +106,19 @@ const EnhancedNavigation: React.FC<EnhancedNavigationProps> = ({ onContactClick 
   const toolsDropdownItems: DropdownItem[] = [
     {
       id: 'vendor-management',
-      label: 'VMtool - Vendor Management',
+      label: 'VMtool — Intelligence & Ops',
       href: '/vendor-management',
       icon: ClipboardList,
-      description: 'Centralise vendors, compliance & payments',
+      description: 'Vendor intelligence, compliance & payments',
       badge: 'New'
+    },
+    {
+      id: 'project-management',
+      label: 'Project Management',
+      href: '#',
+      icon: FolderKanban,
+      description: 'Projects, scope, stakeholders & delivery dashboards',
+      badge: 'Coming Soon'
     },
     {
       id: 'asset-management',

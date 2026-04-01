@@ -2,14 +2,32 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://checkout.razorpay.com;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      font-src 'self' https://fonts.gstatic.com;
+      img-src 'self' data: blob: https: http:;
+      media-src 'self' https://nryqoxhkvmsgxxokhdop.supabase.co;
+      connect-src 'self' https://raqkxeahwupzhuyfnsew.supabase.co https://api.razorpay.com https://www.google-analytics.com https://www.facebook.com;
+      frame-src 'self' https://checkout.razorpay.com https://api.razorpay.com;
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self';
+      upgrade-insecure-requests;
+    ">
+    
     <!-- Primary Meta Tags -->
-    <title>Outsource Smarter | GDPR-Compliant BPO & Virtual Assistant Services – NovalSquad</title>
-    <meta name="description" content="Scale faster with NovalSquad's GDPR-compliant outsourcing. Get 24/7 virtual assistants, IT helpdesk, and back-office support — ready in 5 days, cost-effective, and audit-ready." />
-    <meta name="keywords" content="outsourcing, BPO, virtual assistants, GDPR compliant outsourcing, IT helpdesk, customer support outsourcing, back office support, 24/7 operations, startup outsourcing, NovalSquad" />
+    <title>NovalSquad | Premium Outsourcing & Remote Teams — Tools Coming Soon</title>
+    <meta name="description" content="Outsourcing, elevated: NovalSquad delivers GDPR-ready remote teams, meticulous ops, and white-glove BPO—without the bloat. New productivity tools are on the way. Book a consult." />
+    <meta name="keywords" content="NovalSquad, Noval Squad, premium outsourcing, BPO, remote teams, virtual assistants, GDPR compliant outsourcing, IT helpdesk, customer support outsourcing, back office, business tools, startup scaling" />
     <meta name="author" content="NovalSquad" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
@@ -25,12 +43,12 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://novalsquad.com" />
-    <meta property="og:title" content="Outsource Smarter | GDPR-Compliant BPO & Virtual Assistant Services – NovalSquad" />
-    <meta property="og:description" content="Scale faster with NovalSquad's GDPR-compliant outsourcing. Get 24/7 virtual assistants, IT helpdesk, and back-office support — ready in 5 days, cost-effective, and audit-ready." />
+    <meta property="og:title" content="NovalSquad | Premium Outsourcing & Remote Teams — Tools Coming Soon" />
+    <meta property="og:description" content="Outsourcing, elevated: NovalSquad delivers GDPR-ready remote teams, meticulous ops, and white-glove BPO—without the bloat. New productivity tools are on the way. Book a consult." />
     <meta property="og:image" content="https://novalsquad.com/novalsquad-thumbnail.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="NovalSquad - Your Growth Partner in Outsourcing & Digital Solutions" />
+    <meta property="og:image:alt" content="NovalSquad — premium outsourcing, remote teams, and upcoming productivity tools" />
     <meta property="og:site_name" content="NovalSquad Outsourcing" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:locale:alternate" content="es_ES" />
@@ -39,10 +57,10 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://novalsquad.com" />
-    <meta name="twitter:title" content="Outsource Smarter | GDPR-Compliant BPO & Virtual Assistant Services – NovalSquad" />
-    <meta name="twitter:description" content="Scale faster with NovalSquad's GDPR-compliant outsourcing. Get 24/7 virtual assistants, IT helpdesk, and back-office support — ready in 5 days, cost-effective, and audit-ready." />
+    <meta name="twitter:title" content="NovalSquad | Premium Outsourcing & Remote Teams — Tools Coming Soon" />
+    <meta name="twitter:description" content="Outsourcing, elevated: NovalSquad delivers GDPR-ready remote teams, meticulous ops, and white-glove BPO—without the bloat. New productivity tools are on the way. Book a consult." />
     <meta name="twitter:image" content="https://novalsquad.com/novalsquad-thumbnail.png" />
-    <meta name="twitter:image:alt" content="NovalSquad - Your Growth Partner in Outsourcing & Digital Solutions" />
+    <meta name="twitter:image:alt" content="NovalSquad — premium outsourcing, remote teams, and upcoming productivity tools" />
     <meta name="twitter:site" content="@novalsquad" />
     <meta name="twitter:creator" content="@novalsquad" />
     
@@ -68,10 +86,10 @@
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "NovalSquad Outsourcing",
-      "alternateName": "NovalSquad",
+      "alternateName": ["NovalSquad", "Noval Squad"],
       "url": "https://novalsquad.com",
-      "logo": "https://novalsquad.com/src/assets/novalsquad-logo.svg",
-      "description": "GDPR-compliant business process outsourcing services. Virtual assistants, 24/7 customer support, IT helpdesk, and back office solutions for startups and enterprises.",
+      "logo": "https://novalsquad.com/novalsquad-logo.png",
+      "description": "Premium GDPR-ready outsourcing and dedicated remote teams—virtual assistants, 24/7 support, IT helpdesk, and back-office excellence. New productivity tools launching soon.",
       "foundingDate": "2025",
       "address": {
         "@type": "PostalAddress",
@@ -162,8 +180,8 @@
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      "name": "Outsource Smarter | GDPR-Compliant BPO & Virtual Assistant Services – NovalSquad",
-      "description": "Scale faster with NovalSquad's GDPR-compliant outsourcing. Get 24/7 virtual assistants, IT helpdesk, and back-office support — ready in 5 days, cost-effective, and audit-ready.",
+      "name": "NovalSquad | Premium Outsourcing & Remote Teams — Tools Coming Soon",
+      "description": "Outsourcing, elevated: NovalSquad delivers GDPR-ready remote teams, meticulous ops, and white-glove BPO—without the bloat. New productivity tools are on the way. Book a consult.",
       "url": "https://novalsquad.com",
       "mainEntity": {
         "@type": "Organization",

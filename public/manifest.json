@@ -1,7 +1,7 @@
 {
   "name": "NovalSquad Outsourcing",
   "short_name": "NovalSquad",
-  "description": "Expert business process outsourcing services for companies looking to scale efficiently",
+  "description": "Premium outsourcing and remote teams—GDPR-ready, built to scale. Productivity tools coming soon.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -9,10 +9,22 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/src/assets/novalsquad-logo.svg",
-      "sizes": "64x64",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "src": "/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "categories": ["business", "productivity"],

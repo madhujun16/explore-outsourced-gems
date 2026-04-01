@@ -154,7 +154,7 @@ const VendorManagementBlog = () => {
         publishedTime={publishedDate}
         modifiedTime={modifiedDate}
         article={{
-          section: "Vendor Management",
+          section: "Vendor Intelligence & Ops",
           tags: ["vendor management", "excel", "vendor tracking", "procurement", "supply chain management", "vendor compliance"]
         }}
         breadcrumbs={[
@@ -193,13 +193,13 @@ const VendorManagementBlog = () => {
                 className="text-indigo-600 hover:text-indigo-700"
               >
                 <ArrowLeft className="w-4 h-4 mr-2" />
-                Vendor Management
+                Vendor Intelligence & Ops
               </Button>
             </div>
 
             {/* Category badge */}
             <Badge className="mb-4 bg-indigo-100 text-indigo-700 border-indigo-200 px-4 py-1.5">
-              Vendor Management
+              Vendor Intelligence & Ops
             </Badge>
 
             {/* Title */}
@@ -359,7 +359,7 @@ const VendorManagementBlog = () => {
           {/* What You Need Instead */}
           <section className="mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              What You Need Instead: A Vendor Management Platform
+              What You Need Instead: A Vendor Intelligence & Operations Platform
             </h2>
             <p className="text-lg text-gray-600 mb-8">
               A dedicated <strong>vendor management platform</strong> solves every problem Excel creates:
@@ -476,7 +476,7 @@ const VendorManagementBlog = () => {
                   Ready to Move Beyond Excel?
                 </h2>
                 <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-                  VMtool by NovalSquad is a complete vendor management platform designed to replace Excel spreadsheets. Get real-time collaboration, automated compliance tracking, and powerful analytics—all in one dashboard.
+                  VMtool is NovalSquad&apos;s Vendor Intelligence & Operations Platform—built to replace Excel with real-time collaboration, automated compliance, analytics, and operational workflows in one place.
                 </p>
                 <div className="flex flex-wrap justify-center gap-4">
                   <Button
@@ -531,7 +531,7 @@ const VendorManagementBlog = () => {
                 className="text-indigo-600 hover:text-indigo-700 p-0 h-auto"
               >
                 <LinkIcon className="w-4 h-4 mr-2" />
-                VMtool - Vendor Management Platform
+                VMtool — Vendor Intelligence & Operations Platform
               </Button>
             </div>
           </section>

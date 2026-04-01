@@ -333,7 +333,7 @@ const VendorComplianceMistakesBlog = () => {
                 className="text-indigo-600 hover:text-indigo-700"
               >
                 <ArrowLeft className="w-4 h-4 mr-2" />
-                Vendor Management
+                Vendor Intelligence & Ops
               </Button>
             </div>
 
@@ -724,7 +724,7 @@ const VendorComplianceMistakesBlog = () => {
                 className="text-indigo-600 hover:text-indigo-700 p-0 h-auto"
               >
                 <LinkIcon className="w-4 h-4 mr-2" />
-                VMtool - Vendor Management Platform
+                VMtool — Vendor Intelligence & Operations Platform
               </Button>
               <br />
               <Button

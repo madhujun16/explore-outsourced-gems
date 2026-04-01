@@ -19,6 +19,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 import Footer from "@/components/Footer";
 import { useFormValidation } from "@/hooks/useFormValidation";
 import { usePerformanceMonitoring, trackFormSubmission } from "@/hooks/usePerformanceMonitoring";
+import { useGA } from "@/components/GoogleAnalyticsProvider";
 import Lottie from "lottie-react";
 import rippleAnimation from "@/assets/ripple-animation.json";
 import { 
@@ -34,6 +35,7 @@ import { Helmet } from "react-helmet-async";
 
 const Contact = () => {
   const { t } = useTranslation();
+  const ga = useGA(); // Google Analytics hook
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -94,6 +96,15 @@ const Contact = () => {
       // Track successful form submission
       trackFormSubmission('contact_form', true);
       
+      // Track with Google Analytics
+      ga.trackFormSubmission('contact_form', true);
+      ga.trackEvent('form_submit', {
+        form_name: 'contact_form',
+        company_name: formData.company_name,
+        industry: formData.industry,
+        success: true
+      });
+      
       // Success animation
       toast({
         title: "Message sent successfully!",
@@ -131,6 +142,14 @@ const Contact = () => {
         variant: "destructive",
       });
       trackFormSubmission('contact_form', false);
+      
+      // Track form submission failure with Google Analytics
+      ga.trackFormSubmission('contact_form', false);
+      ga.trackEvent('form_error', {
+        form_name: 'contact_form',
+        error_message: errorMessage,
+        success: false
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -603,6 +622,7 @@ const Contact = () => {
                               variant="outline" 
                               onClick={(e) => {
                                 e.preventDefault();
+                                ga.trackButtonClick('edit_contact_form', 'contact_review_page');
                                 setShowReview(false);
                               }}
                               className="flex-1 h-12"
@@ -614,6 +634,7 @@ const Contact = () => {
                               type="button"
                               onClick={(e) => {
                                 e.preventDefault();
+                                ga.trackButtonClick('submit_contact_form', 'contact_review_page');
                                 handleFinalSubmit();
                               }}
                               className="flex-1 h-12 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
@@ -667,6 +688,7 @@ const Contact = () => {
                         variant="outline" 
                         onClick={(e) => {
                           e.preventDefault();
+                          ga.trackButtonClick('send_another_message', 'contact_success_page');
                           setIsSubmitted(false);
                         }}
                         className="mt-4"

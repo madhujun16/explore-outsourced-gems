@@ -48,6 +48,7 @@ const VendorManagement = () => {
   const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
   const [visibleSteps, setVisibleSteps] = useState<Set<number>>(new Set());
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [billingCycle, setBillingCycle] = useState<"monthly" | "annual">("monthly");
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -92,7 +93,7 @@ const VendorManagement = () => {
     },
     {
       icon: Users,
-      title: "Vendor Management",
+      title: "Vendor Directory & Profiles",
       description: "Complete vendor directory with advanced filters by Category, Cuisine, Location & Status. Track HSEQ scores, performance ratings, KYC status & manage vendor relationships.",
       gradient: "from-blue-500 to-cyan-600",
       glowColor: "blue"
@@ -218,56 +219,81 @@ const VendorManagement = () => {
   const pricingPlans = [
     {
       name: "Starter",
-      price: "$99.28",
-      originalPrice: "$149",
-      priceLabel: "/month",
-      description: "For teams managing up to 10 vendors",
+      description: "For growing teams who need structured vendor tracking",
+      subline: null,
+      monthlyLabel: "$179/month",
+      annualLabel: "$1,720 per year",
+      isCustom: false,
+      includesPlus: null,
       features: [
-        "Vendor master directory",
-        "Basic compliance tracking",
-        "3 user roles",
-        "Email support",
-        "Standard reports"
-      ]
+        "6 Users",
+        "50 Vendors",
+        "50 Clients",
+        "Vendor & Client Management",
+        "Analytics Dashboard",
+        "Compliance Monitoring",
+        "1GB Secure Document Storage"
+      ],
+      bestFor: [
+        "SMEs managing vendors manually",
+        "Teams moving away from spreadsheets"
+      ],
+      popular: false,
+      ctaLabel: "Get Started"
     },
     {
-      name: "Growth",
-      price: "$399.28",
-      originalPrice: "$479",
-      priceLabel: "/month",
-      description: "For scaling operations across locations",
+      name: "Professional",
+      description: "For growing organizations",
+      subline: "For operations-driven companies needing automation",
+      monthlyLabel: "$299/month",
+      annualLabel: "$2,870 per year",
+      isCustom: false,
+      includesPlus: "Everything in Basic PLUS:",
       features: [
-        "Unlimited vendors",
-        "Full HSEQ module",
-        "Finance & payments",
-        "Task management",
-        "Advanced analytics",
-        "Priority support"
+        "12 Users",
+        "100 Vendors",
+        "100 Clients",
+        "Finance Module",
+        "Task & Workflow Management",
+        "AI Assistant",
+        "5GB Document Storage"
       ],
-      popular: true
+      bestFor: [
+        "Companies with cross-functional vendor operations",
+        "Finance + Ops + IT collaboration"
+      ],
+      popular: true,
+      ctaLabel: "Get Started"
     },
     {
       name: "Enterprise",
-      price: "Custom",
-      originalPrice: null,
-      priceLabel: "",
-      description: "For organizations with strict governance",
+      description: "For large organizations with custom needs",
+      subline: "For enterprises that need full vendor intelligence & risk control",
+      monthlyLabel: "",
+      annualLabel: "",
+      isCustom: true,
+      includesPlus: "Everything in Premium PLUS:",
       features: [
-        "Custom workflows",
-        "SSO integration",
-        "Dedicated success manager",
-        "ERP integrations",
-        "Custom SLAs",
-        "On-premise option"
-      ]
+        "25 Users",
+        "Unlimited Vendors & Clients",
+        "Vendor Background Checks",
+        "Advanced Risk & Compliance Monitoring"
+      ],
+      bestFor: [
+        "Large vendor ecosystems",
+        "High compliance environments",
+        "Multi-location operations"
+      ],
+      popular: false,
+      ctaLabel: "Request Enterprise Demo"
     }
   ];
 
   // Generate structured data
   const organizationSchema = generateOrganizationSchema();
   const vmServiceSchema = generateServiceSchema({
-    name: "VMtool - Vendor Management Platform",
-    description: "Centralise all your vendors, documents, compliance, payments, and performance into one clean dashboard with role-based access for Ops, Finance, HSEQ, and Compliance teams.",
+    name: "VMtool — Vendor Intelligence & Operations Platform",
+    description: "Vendor intelligence and operations in one place: unified vendor data, documents, compliance, payments, and performance analytics with role-based access for Ops, Finance, HSEQ, and Compliance teams.",
     url: "https://novalsquad.com/vendor-management",
     provider: "NovalSquad",
     areaServed: "Worldwide"
@@ -275,8 +301,8 @@ const VendorManagement = () => {
 
   const vmFaqs = [
     {
-      question: "What is VMtool and how does it help with vendor management?",
-      answer: "VMtool is NovalSquad's vendor management platform that centralises all vendor data, documents, compliance tracking, payments, and performance metrics into one dashboard. It provides role-based access for different teams including Ops, Finance, HSEQ, and Compliance, ensuring each team sees only what they need."
+      question: "What is VMtool and how is it different from a basic vendor management tool?",
+      answer: "VMtool is NovalSquad's Vendor Intelligence & Operations Platform. It centralises vendor data, documents, compliance, payments, and performance metrics into one system—not just a directory, but analytics, risk signals, and workflows so Ops, Finance, HSEQ, and Compliance act on the same intelligence. Role-based access means each team sees what they need without losing the full picture."
     },
     {
       question: "What modules are available in VMtool?",
@@ -295,14 +321,14 @@ const VendorManagement = () => {
   return (
     <>
       <SEOHead
-        title="VMtool - Vendor Management Platform | NovalSquad"
-        description="Centralise your vendors, documents, compliance, payments, and performance into one clean dashboard. Role-based access for Ops, Finance, HSEQ, and Compliance teams. Built by NovalSquad."
-        keywords="vendor management, vendor compliance, HSEQ tracking, vendor onboarding, compliance management, vendor dashboard, procurement software, vendor risk management, VMtool, NovalSquad"
+        title="VMtool | Vendor Intelligence & Operations Platform | NovalSquad"
+        description="Vendor intelligence and operations in one platform: vendors, compliance, spend, HSEQ, and tasks—unified analytics and workflows for Ops, Finance, HSEQ, and Compliance. More than a VM tool. Built by NovalSquad."
+        keywords="vendor intelligence platform, vendor operations platform, vendor management, vendor compliance, HSEQ tracking, vendor onboarding, compliance management, vendor analytics, procurement software, vendor risk management, VMtool, NovalSquad"
         url="https://novalsquad.com/vendor-management"
         structuredData={[organizationSchema, vmServiceSchema]}
         breadcrumbs={[
           { name: "Home", url: "https://novalsquad.com" },
-          { name: "Vendor Management", url: "https://novalsquad.com/vendor-management" }
+          { name: "Vendor Intelligence & Operations", url: "https://novalsquad.com/vendor-management" }
         ]}
         faqData={vmFaqs}
       />
@@ -341,27 +367,30 @@ const VendorManagement = () => {
               {/* Left content */}
               <div className="space-y-6">
                 {/* Badge */}
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-indigo-200 backdrop-blur-sm shadow-sm">
+                <div className="inline-flex flex-wrap items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-indigo-200 backdrop-blur-sm shadow-sm">
                   <Sparkles className="w-4 h-4 text-indigo-600" />
                   <span className="text-sm text-gray-600">NovalSquad Product</span>
                   <span className="px-2 py-0.5 rounded-full bg-gradient-to-r from-indigo-600 to-blue-600 text-[10px] font-bold uppercase tracking-wider text-white">
                     VMtool
                   </span>
                 </div>
+                <p className="text-sm font-semibold text-indigo-700 tracking-tight">
+                  Vendor Intelligence & Operations Platform
+                </p>
 
                 {/* Main headline */}
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight">
-                  <span className="text-gray-900">Vendor Management</span>
+                  <span className="text-gray-900">Intelligence and execution</span>
                   <br />
                   <span className="bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-500 bg-clip-text text-transparent">
-                    Done the Right Way
+                    for your entire vendor stack
                   </span>
                 </h1>
 
                 {/* Subtitle */}
                 <p className="text-lg text-gray-600 max-w-xl leading-relaxed">
-                  One intelligent platform to manage vendors, track HSEQ scores, 
-                  monitor compliance, handle payments & give every team the visibility they need.
+                  Go beyond a basic VM tool: unify vendor data, risk and compliance signals, spend, 
+                  and performance analytics so every team runs on one source of truth—not scattered spreadsheets.
                 </p>
 
                 {/* Feature pills */}
@@ -813,6 +842,38 @@ const VendorManagement = () => {
                 <br />
                 <span className="text-gray-400">Pricing for Every Scale</span>
               </h2>
+              <div
+                className="flex flex-wrap items-center justify-center gap-3 mb-2"
+                role="group"
+                aria-label="Billing period"
+              >
+                <div className="inline-flex rounded-full bg-gray-100 p-1 border border-gray-200 shadow-inner">
+                  <button
+                    type="button"
+                    onClick={() => setBillingCycle("monthly")}
+                    className={`px-5 py-2 rounded-full text-sm font-semibold transition-all ${
+                      billingCycle === "monthly"
+                        ? "bg-white text-indigo-700 shadow-sm border border-gray-200"
+                        : "text-gray-600 hover:text-gray-900"
+                    }`}
+                    aria-pressed={billingCycle === "monthly"}
+                  >
+                    Monthly
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setBillingCycle("annual")}
+                    className={`px-5 py-2 rounded-full text-sm font-semibold transition-all ${
+                      billingCycle === "annual"
+                        ? "bg-white text-indigo-700 shadow-sm border border-gray-200"
+                        : "text-gray-600 hover:text-gray-900"
+                    }`}
+                    aria-pressed={billingCycle === "annual"}
+                  >
+                    Annual
+                  </button>
+                </div>
+              </div>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -831,40 +892,78 @@ const VendorManagement = () => {
                   } transition-all duration-300`}>
                     <CardHeader className="text-center pb-4">
                       <CardTitle className="text-2xl text-gray-900">{plan.name}</CardTitle>
-                      <CardDescription className="text-gray-500 mt-2">
-                        {plan.description}
+                      <CardDescription className="text-gray-500 mt-2 space-y-1">
+                        <span className="block">{plan.description}</span>
+                        {plan.subline && (
+                          <span className="block text-sm text-gray-600">{plan.subline}</span>
+                        )}
                       </CardDescription>
                     </CardHeader>
                     <CardContent>
-                      <div className="text-center mb-8">
-                        <div className="space-y-1">
-                          {plan.originalPrice && (
-                            <div className="text-lg text-gray-400 line-through">
-                              {plan.originalPrice}
-                            </div>
-                          )}
-                          <div>
-                            <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
-                            {plan.priceLabel && (
-                              <span className="text-lg text-gray-500">{plan.priceLabel}</span>
+                      <div className="mb-6">
+                        {plan.isCustom ? (
+                          <div className="text-center">
+                            <span className="text-4xl font-bold text-gray-900">Custom</span>
+                          </div>
+                        ) : (
+                          <div className="rounded-xl bg-gray-50 border border-gray-100 px-4 py-4 text-center">
+                            {billingCycle === "monthly" ? (
+                              <>
+                                <div className="text-4xl font-bold text-gray-900 tabular-nums">
+                                  {plan.monthlyLabel.replace("/month", "")}
+                                  <span className="text-lg font-semibold text-gray-600">/month</span>
+                                </div>
+                                <p className="mt-2 text-sm text-gray-500">
+                                  Or{" "}
+                                  <span className="font-medium text-gray-700">
+                                    {plan.annualLabel.replace(" per year", "")}/yr
+                                  </span>{" "}
+                                  (~20% off monthly)
+                                </p>
+                              </>
+                            ) : (
+                              <>
+                                <div className="text-4xl font-bold text-gray-900 tabular-nums">
+                                  {plan.annualLabel.replace(" per year", "")}
+                                  <span className="text-lg font-semibold text-gray-600">/yr</span>
+                                </div>
+                                <p className="mt-2 text-sm text-gray-500">
+                                  ~20% off monthly billing
+                                </p>
+                              </>
                             )}
                           </div>
-                          {plan.originalPrice && (
-                            <Badge className="bg-green-100 text-green-700 border-green-200 text-xs">
-                              Save {Math.round((1 - (parseFloat(plan.price.replace(/[^0-9.]/g, '')) / parseFloat(plan.originalPrice.replace(/[^0-9.]/g, '')))) * 100)}%
-                            </Badge>
-                          )}
-                        </div>
+                        )}
                       </div>
 
-                      <ul className="space-y-4 mb-8">
+                      {plan.includesPlus && (
+                        <p className="text-xs font-semibold text-indigo-700 uppercase tracking-wide mb-3">
+                          {plan.includesPlus}
+                        </p>
+                      )}
+
+                      <ul className="space-y-3 mb-6">
                         {plan.features.map((feature, i) => (
-                          <li key={i} className="flex items-center gap-3 text-sm text-gray-600">
-                            <CheckCircle className="w-5 h-5 text-indigo-600 flex-shrink-0" />
-                            {feature}
+                          <li key={i} className="flex items-start gap-3 text-sm text-gray-600">
+                            <CheckCircle className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
+                            <span>{feature}</span>
                           </li>
                         ))}
                       </ul>
+
+                      <div className="mb-6 pt-4 border-t border-gray-100">
+                        <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">
+                          Best for
+                        </p>
+                        <ul className="space-y-1.5 text-sm text-gray-600">
+                          {plan.bestFor.map((line, i) => (
+                            <li key={i} className="flex gap-2">
+                              <span className="text-indigo-400 flex-shrink-0" aria-hidden>•</span>
+                              <span>{line}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
 
                       <Button 
                         onClick={() => navigate('/contact')}
@@ -874,13 +973,43 @@ const VendorManagement = () => {
                             : 'bg-gray-100 hover:bg-gray-200 text-gray-900'
                         } transition-all duration-300`}
                       >
-                        Get Started
+                        {plan.ctaLabel}
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </Button>
                     </CardContent>
                   </Card>
                 </div>
               ))}
+            </div>
+
+            <div className="max-w-2xl mx-auto mt-12 rounded-2xl border-2 border-indigo-100 bg-indigo-50/50 px-6 py-6 text-center">
+              <h3 className="text-lg font-semibold text-gray-900 mb-1">Extra user pricing</h3>
+              <p className="text-sm text-gray-600 mb-4">Add seats beyond your plan limits.</p>
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-4 text-sm text-gray-700">
+                <div
+                  className={`rounded-xl border px-4 py-3 shadow-sm transition-colors ${
+                    billingCycle === "monthly"
+                      ? "bg-white border-indigo-300 ring-2 ring-indigo-200"
+                      : "bg-white/70 border-indigo-100"
+                  }`}
+                >
+                  <span className="text-gray-500">Monthly</span>
+                  <span className="mx-2 font-semibold text-gray-900">$30/user</span>
+                </div>
+                <div
+                  className={`rounded-xl border px-4 py-3 shadow-sm transition-colors ${
+                    billingCycle === "annual"
+                      ? "bg-white border-indigo-300 ring-2 ring-indigo-200"
+                      : "bg-white/70 border-indigo-100"
+                  }`}
+                >
+                  <span className="text-gray-500">Annual</span>
+                  <span className="mx-2 font-semibold text-gray-900">$25/user/month</span>
+                  <span className="block sm:inline text-xs text-gray-500 mt-1 sm:mt-0 sm:ml-1">
+                    billed yearly
+                  </span>
+                </div>
+              </div>
             </div>
 
             <p className="text-center text-gray-500 mt-8">
@@ -918,8 +1047,8 @@ const VendorManagement = () => {
             </h2>
 
             <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
-              Whether you're managing 11 vendors or 1,100, VMtool brings everything 
-              into one intelligent dashboard with real-time HSEQ scores, compliance tracking & analytics.
+              Whether you're managing 11 vendors or 1,100, VMtool brings intelligence and operations together in one
+              dashboard with real-time HSEQ scores, compliance tracking & analytics.
             </p>
 
             <div className="flex flex-wrap justify-center gap-4 mb-8">
